@@ -8611,14 +8611,10 @@
 	pixel_x = -2;
 	pixel_y = 2
 	},
-/obj/item/nullrod{
-	pixel_x = 4
-	},
 /obj/item/organ/internal/heart,
 /obj/item/soulstone/anybody/chaplain,
 /obj/machinery/light/small/red/dim/directional/south,
 /obj/item/radio/intercom/chapel/directional/east,
-/obj/item/nullrod/scythe/talking/chainsword,
 /turf/open/floor/iron/terracotta/diagonal,
 /area/station/service/chapel/office)
 "dzl" = (
@@ -21921,7 +21917,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/effect/landmark/start/techpriest,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
 "ifK" = (
@@ -67008,7 +67003,6 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/broken_floor,
-/obj/effect/landmark/start/techpriest,
 /turf/open/floor/carpet/lone,
 /area/station/service/chapel/office)
 "xgN" = (
