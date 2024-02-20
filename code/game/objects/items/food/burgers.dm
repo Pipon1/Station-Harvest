@@ -644,4 +644,4 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 	)
 	tastes = list("bun" = 2, "beef patty" = 3, "dépression" = 5)
-	foodtypes = GRAIN | MEAT | GORE
+	foodtypes = GRAIN | MEAT | DAIRY
