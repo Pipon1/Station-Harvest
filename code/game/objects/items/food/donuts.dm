@@ -476,4 +476,10 @@
 	tastes = list("jelly" = 3, "donut" = 1, "fizzy tutti frutti" = 1)
 	is_decorated = TRUE
 
+/obj/item/food/donut/Eazondev
+	name = "Eazon dev"
+	desc = "Ceci est un test, s'tu vois ça appelles un codeur !"
+	icon = 'icons/obj/food/donuts.dmi'
+	icon_state = "donut_ea"
+
 #undef DONUT_SPRINKLE_CHANCE
