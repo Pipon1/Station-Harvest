@@ -51,3 +51,10 @@ endmap
 
 map multiz_debug
 endmap
+
+map gardenstation
+	default
+	minplayer 15
+	maxplayer 45
+	votable
+endmap
