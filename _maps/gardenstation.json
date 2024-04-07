@@ -4,7 +4,7 @@
 	"map_path": "map_files/gardenstation",
 	"map_file": "gardenstation.dmm",
 	"shuttles": {
-		"cargo": "cargo_box",
+		"cargo": "cargo_gardenstation",
 		"ferry": "ferry_fancy",
 		"whiteship": "whiteship_box",
 		"emergency": "emergency_gardenstation"

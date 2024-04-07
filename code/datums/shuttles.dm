@@ -499,6 +499,10 @@
 	credit_cost = CARGO_CRATE_VALUE * 2
 	description = "Une navette d'évacuation neuve !"
 
+/datum/map_template/shuttle/cargo/gardenstation
+	suffix = "gardenstation"
+	name = "Garden Station cargo shuttle"
+
 /datum/map_template/shuttle/ferry/base
 	suffix = "base"
 	name = "transport ferry"
