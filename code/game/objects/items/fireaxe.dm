@@ -96,5 +96,5 @@
   	name = "Hache de fortune"
   	desc = "Une hache grossièrement assemblée de bouts de verres et d'une barre de métal"
   	slot_flags = ITEM_SLOT_BACK
-  	force_unwielded = 5
-  	force_wielded = 23
+  	force_unwielded = 3
+  	force_wielded = 7
