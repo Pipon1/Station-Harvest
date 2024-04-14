@@ -86,3 +86,15 @@
 	tool_behaviour = TOOL_CROWBAR
 	toolspeed = 1
 	usesound = 'sound/items/crowbar.ogg'
+
+  /*
+   * Makeshift Axe from glass shards and iron rod
+   */
+/obj/item/fireaxe/makeshift_glass_axe  // Imitation of the fireaxe, but with glass shards and iron rod.
+  	icon_state = "makeshift_glass_axe0"
+  	base_icon_state = "makeshift_glass_axe"
+  	name = "Hache de fortune"
+  	desc = "Une hache grossièrement assemblée de bouts de verres et d'une barre de métal"
+  	slot_flags = ITEM_SLOT_BACK
+  	force_unwielded = 3
+  	force_wielded = 7
