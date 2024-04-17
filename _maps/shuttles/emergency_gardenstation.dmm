@@ -24,7 +24,7 @@
 "kb" = (/turf/open/floor/mineral/titanium/blue,/area/shuttle/escape)
 "kp" = (/obj/effect/mapping_helpers/airlock/access/all/command/general,/obj/machinery/door/airlock/glass_large{name = "command bridge"},/turf/open/floor/mineral/titanium,/area/shuttle/escape)
 "kv" = (/obj/structure/table,/obj/item/restraints/handcuffs{pixel_y = 3},/turf/open/floor/mineral/titanium/tiled/blue,/area/shuttle/escape)
-"kA" = (/obj/structure/window/reinforced/spawner/directional/north,/obj/machinery/light/small/directional/west,/turf/open/floor/mineral/plastitanium/red,/area/shuttle/escape/brig)
+"kA" = (/obj/machinery/light/small/directional/west,/obj/machinery/door/window/brigdoor/left/directional/west{name = "Holding Cell"; req_access = list("security"); dir = 1},/turf/open/floor/mineral/plastitanium/red,/area/shuttle/escape/brig)
 "lr" = (/turf/open/floor/mineral/titanium/tiled/blue,/area/shuttle/escape)
 "nS" = (/obj/item/kirbyplants/random,/turf/open/floor/mineral/titanium/tiled,/area/shuttle/escape)
 "od" = (/turf/template_noop,/area/template_noop)
@@ -78,7 +78,7 @@
 "Qo" = (/obj/structure/chair/comfy/shuttle,/obj/machinery/light/cold/directional/north,/turf/open/floor/mineral/titanium/purple,/area/shuttle/escape)
 "Qp" = (/obj/structure/table/optable,/turf/open/floor/mineral/titanium,/area/shuttle/escape)
 "Rp" = (/obj/structure/chair/comfy/shuttle{dir = 1},/turf/open/floor/mineral/titanium/tiled/blue,/area/shuttle/escape)
-"Rr" = (/obj/machinery/door/window/brigdoor/left/directional/west{name = "Holding Cell"; req_access = list("security"); dir = 1},/turf/open/floor/mineral/plastitanium/red,/area/shuttle/escape/brig)
+"Rr" = (/obj/structure/chair/comfy/shuttle{dir = 8},/obj/structure/window/reinforced/spawner/directional/north,/turf/open/floor/mineral/plastitanium/red,/area/shuttle/escape/brig)
 "RY" = (/obj/machinery/door/airlock/public,/turf/open/floor/mineral/titanium/tiled,/area/shuttle/escape)
 "SC" = (/obj/machinery/light/cold/directional/south,/turf/open/floor/mineral/titanium/tiled,/area/shuttle/escape)
 "SW" = (/obj/machinery/computer/emergency_shuttle,/turf/open/floor/mineral/titanium/tiled/blue,/area/shuttle/escape)
@@ -119,9 +119,9 @@ BSBSererererererSZjOjOjOjOjOjOjOjOjOBSBS
 PWerererSCosososKzjOjOjOtxJvHvjOjOjOuPKz
 BSBSBSxABSKzKzKzBSjOjOjONHMKdXjOjOjOWxKz
 xAvovovovovovoczBSpujOjOjOqGjOjOjOjOXlKz
-BSBSkARrKzvovovoBSKzKzSZBSBSBSRYBSBSBSBS
-odBSvoaKKzcqHDQkBSerererEOBSiHererggBSod
-odBSvoaKBSBSBSBSBShlhlBSBSBSBSBSererBSod
+BSBSvovovovovovoBSKzKzSZBSBSBSRYBSBSBSBS
+odBSkARrKzcqHDQkBSerererEOBSiHererggBSod
+odBSvoaKKzBSBSBSBShlhlBSBSBSBSBSererBSod
 odBSKkaKBSododBSBSwWDABSodododBSosAYBSod
 odBSBSBSBSododBSBSBSKzBSodododBSKzBSBSod
 odBSEzEzBSododBSEzBSEzBSodododBSEzEzBSod
