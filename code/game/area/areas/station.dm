@@ -23,6 +23,14 @@
 	name = "Chapel Maintenance"
 	icon_state = "maint_chapel"
 
+/area/station/maintenance/department/oldpath
+	name = "Old path"
+	icon_state = "maint_chapel"
+
+/area/station/maintenance/department/oldpath_ext
+	name = "Old path Ext"
+	icon_state = "maint_chapel"
+
 /area/station/maintenance/department/chapel/monastery
 	name = "Monastery Maintenance"
 	icon_state = "maint_monastery"
