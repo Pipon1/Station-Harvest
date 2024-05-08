@@ -868,6 +868,16 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/mine/mechbay)
+"eI" = (
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman/pre_loaded{
+	anchored = 1;
+	active = 1;
+	sheets = 50;
+	power_output = 20
+	},
+/turf/open/floor/plating,
+/area/mine/maintenance/public/north)
 "eJ" = (
 /obj/machinery/mineral/processing_unit_console,
 /turf/closed/wall,
@@ -4667,6 +4677,9 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/smooth_large,
 /area/mine/laborcamp/production)
+"zn" = (
+/turf/open/floor/plating,
+/area/mine/maintenance/public/north)
 "zq" = (
 /obj/machinery/mech_bay_recharge_port{
 	dir = 8
@@ -8757,6 +8770,10 @@
 /obj/structure/flora/bush/ferny/style_random,
 /turf/open/floor/grass,
 /area/mine/laborcamp)
+"Wy" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors)
 "Wz" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 8
@@ -63039,9 +63056,9 @@ pU
 js
 js
 js
-js
-gb
-js
+zn
+eI
+zn
 js
 js
 js
@@ -63314,12 +63331,12 @@ pU
 pU
 pU
 pU
-pU
 Yz
-pU
-pU
-pU
-pU
+di
+di
+Wy
+di
+di
 pU
 pU
 pU
