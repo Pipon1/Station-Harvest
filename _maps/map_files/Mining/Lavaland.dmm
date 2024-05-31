@@ -873,7 +873,7 @@
 /obj/machinery/power/port_gen/pacman/pre_loaded{
 	anchored = 1;
 	active = 1;
-	sheets = 50;
+	sheets = 5;
 	power_output = 20
 	},
 /turf/open/floor/plating,
@@ -3255,11 +3255,7 @@
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
 	},
-/obj/machinery/portable_atmospherics/canister/nitrogen{
-	anchored = 1;
-	valve_open = 1;
-	connected_port = theomniconnectorport/obj/machinery/atmospherics/components/unary/portables_connector/visible[0x200a9bd]
-	},
+/obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/open/floor/iron/smooth,
 /area/mine/maintenance/public/north)
 "qJ" = (
@@ -6527,16 +6523,11 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Kl" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on/coldroom{
-	max_temperature = 73;
-	min_temperature = 73;
-	target_temperature = 73;
-	name = "Temperature control unit";
-	base_cooling = 73;
-	base_heating = 73
-	},
 /obj/effect/turf_decal/stripes/end{
 	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on{
+	dir = 8
 	},
 /turf/open/floor/iron/smooth,
 /area/mine/maintenance/public/north)
@@ -8770,10 +8761,6 @@
 /obj/structure/flora/bush/ferny/style_random,
 /turf/open/floor/grass,
 /area/mine/laborcamp)
-"Wy" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/turf/open/floor/plating,
-/area/lavaland/surface/outdoors)
 "Wz" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 8
@@ -63332,11 +63319,11 @@ pU
 pU
 pU
 Yz
-di
-di
-Wy
-di
-di
+js
+js
+gb
+js
+js
 pU
 pU
 pU
