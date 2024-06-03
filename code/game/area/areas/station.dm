@@ -1279,6 +1279,26 @@
 	name = "\improper Firing Range"
 	icon_state = "firingrange"
 
+/area/station/security/shame
+	name = "Couloir Of Shame"
+	icon_state = "sec_shame"
+
+/area/station/security/sec_anti_riot
+	name = "Anti-Riot Storage"
+	icon_state = "sec_anti_riot"
+
+/area/station/security/sec_lobby
+	name = "Security Lobby"
+	icon_state = "sec_lobby"
+
+/area/station/security/sec_entrance
+	name = "Security Entrance"
+	icon_state = "sec_entrance"
+
+/area/station/security/sec_secure_cell
+	name = "Reinforced Cell"
+	icon_state = "sec_secure_cell"
+
 /area/station/security/eva
 	name = "\improper Security EVA"
 	icon_state = "sec_eva"
