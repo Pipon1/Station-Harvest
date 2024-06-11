@@ -1063,7 +1063,7 @@
 	name = "Narcolepsy"
 	desc = "You fall asleep at random. The more you are stressed the more often you fall asleep."
 	icon = FA_ICON_BED
-	value = -6
+	value = -10
 	medical_record_text = "Patient suffer from narcolepsy."
 	hardcore_value = 5
 	quirk_flags = QUIRK_PROCESSES
