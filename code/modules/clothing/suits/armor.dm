@@ -360,8 +360,8 @@
 /datum/armor/advanced_police
 	melee = 90
 	bullet = 90
-	laser = 60
-	energy = 60
+	laser = 20
+	energy = 30
 	bomb = 100
 	bio = 100
 	fire = 100

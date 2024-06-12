@@ -321,7 +321,7 @@
 	desc = "Contains one fullbody sets of tough, fireproof suits designed in a joint \
 		effort by the SPC (Security Professionnal Corporation) and Nanotrasen. Each set contains a suit, helmet, mask, combat belt, \
 		and gorilla gloves."
-	cost = CARGO_CRATE_VALUE * 10
+	cost = CARGO_CRATE_VALUE * 12
 	contains = list(/obj/item/clothing/head/helmet/advanced_police,
 					/obj/item/clothing/suit/armor/advanced_police,
 					/obj/item/clothing/mask/gas/sechailer/swat,
