@@ -55,8 +55,42 @@
 	if (istype(imp, /obj/item/implant/restraining))
 		areaList = list(
 			"Bridge",
+			"Heads of Staff Meeting Room",
+			"Teleporter Room",
+			"Telecomms Control Room",
+			"Bar Lounge",
+			"Cafeteria",
+			"Kitchen",
+			"Bar",
+			"Theater",
+			"Library",
+			"Chapel",
+			"Custodial Closet",
+			"Hydroponics",
+			"Engineering Lobby",
+			"Supermatter Engine Room",
+			"Medbay Lobby",
+			"Medical Cold Room",
+			"Virology",
+			"Morgue",
+			"Pharmacy",
+			"Chemistry",
 			"Security Lobby",
-			"Medbay Lobby")
+			"Security Locker Room",
+			"Delivery Office",
+			"Warehouse",
+			"Cargo Office",
+			"Cargo Bay",
+			"Cargo Lobby",
+			"Mining Dock",
+			"Research and Development",
+			"Xenobiology Lab",
+			"Ordnance Lab",
+			"Genetics Lab",
+			"Robotics Lab",
+			"Mech Bay",
+			"Augmentation Theater"
+			)
 		tmpl = areaList
 		areaList = tgui_input_checkboxes(user, "Please choose the areas to restrain.", "Restraining Implantinator", tmpl, 1, 10, 0)
 		imp.rArea = areaList

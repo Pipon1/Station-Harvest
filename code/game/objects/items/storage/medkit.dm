@@ -552,6 +552,14 @@
 	for(var/i in 1 to 5)
 		new /obj/item/reagent_containers/pill/lsdpsych(src)
 
+/obj/item/storage/pill_bottle/nosleeppill
+	name = "Modafinil pills"
+	desc = "Contains pill to stay awake. Consume with precautions."
+
+/obj/item/storage/pill_bottle/nosleeppill/PopulateContents()
+	for(var/i in 1 to 8)
+		new /obj/item/reagent_containers/pill/nosleeppill(src)
+
 /obj/item/storage/pill_bottle/paxpsych
 	name = "pax pills"
 	desc = "Contains pills used to temporarily pacify patients that are deemed a harm to themselves or others."
