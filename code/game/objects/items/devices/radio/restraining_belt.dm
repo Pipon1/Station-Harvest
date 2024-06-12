@@ -28,7 +28,7 @@
 		radio.keyslot = new radio_key
 
 /obj/item/restraining_belt/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] hooks [user.p_them()]self to the electropack and spams the trigger! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] hooks [user.p_them()]self to the restraining belt and spams the trigger! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return FIRELOSS
 
 
@@ -58,7 +58,7 @@
 				COOLDOWN_START(src, sec_msg_cooldown_belt, 15 SECONDS)
 
 /obj/item/restraining_belt/attackby(obj/item/W, mob/user, params)
-	if (istype(W, /obj/item/screwdriver))
+	if (istype(W, /obj/item/screwdriver) && tdo == FALSE)
 		var/list/areaList = list()
 		var/list/tmpl = list()
 		areaList = list(

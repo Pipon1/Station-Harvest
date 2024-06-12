@@ -20,7 +20,7 @@
 	///how many times this can do something, only relevant for implants with limited uses
 	var/uses = -1
 	//for restraining implant
-	var/list/rArea = list()
+	var/list/rArea = list("Bridge")
 
 /obj/item/implant/proc/activate()
 	SEND_SIGNAL(src, COMSIG_IMPLANT_ACTIVATED)
