@@ -1367,7 +1367,7 @@
 "dOx" = (/obj/structure/stairs/north{dir = 4},/obj/structure/sign/warning/cold_temp/directional/north,/obj/structure/railing{dir = 1},/turf/open/floor/iron/dark/textured,/area/station/tcommsat/server)
 "dOI" = (/obj/structure/chair/comfy/carp{dir = 1; pixel_y = 8},/turf/open/floor/glass/reinforced,/area/station/command/bridge)
 "dOV" = (/obj/effect/turf_decal/tile/dark_red/fourcorners,/obj/machinery/door/airlock/security/glass{name = "Engineering Security Post"},/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,/obj/structure/cable,/obj/machinery/door/firedoor,/obj/effect/mapping_helpers/airlock/access/all/security/general,/turf/open/floor/catwalk_floor/iron_dark,/area/station/security/checkpoint/engineering)
-"dOY" = (/turf/open/space/openspace,/area/station/tcommsat/server)
+"dOY" = (/turf/open/openspace,/area/station/tcommsat/server)
 "dPb" = (/obj/structure/chair/office{dir = 1},/turf/open/floor/iron,/area/station/construction/mining/aux_base)
 "dPf" = (/obj/machinery/door/airlock/external/glass,/obj/effect/mapping_helpers/airlock/cyclelink_helper,/obj/effect/mapping_helpers/airlock/access/all/engineering/general,/turf/open/floor/iron/smooth,/area/station/maintenance/department/engine/atmos)
 "dPl" = (/obj/structure/chair/wood{dir = 4},/obj/effect/landmark/start/hangover,/turf/open/floor/wood/tile,/area/station/service/bar)
