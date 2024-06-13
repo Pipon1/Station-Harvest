@@ -58,7 +58,7 @@
 				COOLDOWN_START(src, sec_msg_cooldown_belt, 15 SECONDS)
 
 /obj/item/restraining_belt/attackby(obj/item/W, mob/user, params)
-	if (istype(W, /obj/item/screwdriver) && tdo == FALSE)
+	if (istype(W, /obj/item/screwdriver) && dto == FALSE)
 		var/list/areaList = list()
 		var/list/tmpl = list()
 		areaList = list(
