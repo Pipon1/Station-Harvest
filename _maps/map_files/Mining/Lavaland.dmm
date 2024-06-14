@@ -5220,9 +5220,7 @@
 /area/mine/lounge)
 "CF" = (
 /obj/machinery/mineral/processing_unit{
-	dir = 1;
-	input_dir = 8;
-	output_dir = 4
+	dir = 1
 	},
 /turf/open/floor/iron/smooth_large,
 /area/mine/laborcamp/production)
