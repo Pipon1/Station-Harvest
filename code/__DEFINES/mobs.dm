@@ -93,6 +93,7 @@
 #define SPECIES_ABDUCTOR "abductor"
 #define SPECIES_ANDROID "android"
 #define SPECIES_DULLAHAN "dullahan"
+#define SPECIES_DRONE "drone"
 #define SPECIES_ETHEREAL "ethereal"
 #define SPECIES_FELINE "felinid"
 #define SPECIES_FLYPERSON "fly"
