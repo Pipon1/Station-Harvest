@@ -12,10 +12,9 @@
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_GENELESS,
-		TRAIT_LIMBATTACHMENT,
+		TRAIT_EASYDISMEMBER,
 		TRAIT_NOBREATH,
 		TRAIT_NOFIRE,
-		TRAIT_NOHUNGER,
 		TRAIT_NOMETABOLISM,
 		TRAIT_EASILY_WOUNDED,
 		TRAIT_PIERCEIMMUNE,
@@ -35,7 +34,8 @@
 	mutantheart = null
 	mutantliver = null
 	mutantlungs = null
-	exotic_blood = /datum/reagent/fuel //Liquid Electricity. fuck you think of something better gamer
+	exotic_blood = /datum/reagent/fuel/oil //À voir entre ça ou welding fuel
+	exotic_bloodtype = "AAA"
 	disliked_food = NONE
 	liked_food = NONE
 	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
@@ -52,10 +52,19 @@
 	)
 	examine_limb_id = SPECIES_DRONE
 
-/datum/species/android/on_species_gain(mob/living/carbon/C)
-	. = ..()
-	// Androids don't eat, hunger or metabolise foods. Let's do some cleanup.
-	C.set_safe_hunger_level()
+/datum/species/drone/create_pref_unique_perks()
+	var/list/to_add = list()
+
+	to_add += list(
+		list(
+			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+			SPECIES_PERK_ICON = "bolt",
+			SPECIES_PERK_NAME = "Shockingly Tasty",
+			SPECIES_PERK_DESC = "Drones can feed on electricity from APCs, and do not otherwise need to eat.",
+		),
+	)
+
+	return to_add
 
 /datum/species/drone/get_species_description()
 	return "A drone, or an android, what you prefer \
