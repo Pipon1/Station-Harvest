@@ -15,9 +15,7 @@
 		TRAIT_EASYDISMEMBER,
 		TRAIT_NOBREATH,
 		TRAIT_NOFIRE,
-		TRAIT_NOMETABOLISM,
-		TRAIT_EASILY_WOUNDED,
-		TRAIT_PIERCEIMMUNE,
+		TRAIT_EASILY_WOUNDED,,
 		TRAIT_RADIMMUNE,
 		TRAIT_RESISTCOLD,
 		TRAIT_RESISTHEAT,
@@ -30,16 +28,18 @@
 	meat = null
 	mutanteyes = /obj/item/organ/internal/eyes/drone
 	mutanttongue = /obj/item/organ/internal/tongue/robot
-	mutantstomach = null
-	mutantheart = null
-	mutantliver = null
-	mutantlungs = null
+	mutantstomach = /obj/item/organ/internal/stomach/drone
+	mutantheart = /obj/item/organ/internal/heart/cybernetic
+	mutantliver = /obj/item/organ/internal/liver/cybernetic
+	mutantlungs = /obj/item/organ/internal/lungs/cybernetic
 	exotic_blood = /datum/reagent/fuel/oil //À voir entre ça ou welding fuel
 	exotic_bloodtype = "AAA"
 	disliked_food = NONE
 	liked_food = NONE
 	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP
+	siemens_coeff = 1.5 //They're vulnerable to energy
+	brutemod = 1.25 //They're weak to punches
 	payday_modifier = 0.5
 
 	bodypart_overrides = list(

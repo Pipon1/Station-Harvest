@@ -1743,6 +1743,17 @@
 	addiction_types = null
 	default_container = /obj/effect/decal/cleanable/oil
 
+/datum/reagent/fuel/expose_turf(turf/exposed_turf, reac_volume)//splash the fuel all over the place
+	. = ..()
+	if(!istype(exposed_turf))
+		return
+	if(reac_volume < 3)
+		return
+
+	var/obj/effect/decal/cleanable/oil/bloodsplatter = locate() in exposed_turf //find some blood here
+	if(!bloodsplatter)
+		bloodsplatter = new(exposed_turf)
+
 /datum/reagent/stable_plasma
 	name = "Stable Plasma"
 	description = "Non-flammable plasma locked into a liquid form that cannot ignite or become gaseous/solid."

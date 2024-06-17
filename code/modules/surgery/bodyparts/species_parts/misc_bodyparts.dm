@@ -688,19 +688,19 @@
 //DRONES
 /obj/item/bodypart/head/drone
 	icon_greyscale = 'icons/mob/species/drone/bodyparts.dmi'
-	biological_state = BIO_INORGANIC
+	biological_state = BIO_FLESH
 	limb_id = SPECIES_DRONE
 	is_dimorphic = FALSE
 
 /obj/item/bodypart/chest/drone
 	icon_greyscale = 'icons/mob/species/drone/bodyparts.dmi'
-	biological_state = BIO_INORGANIC
+	biological_state = BIO_FLESH
 	limb_id = SPECIES_DRONE
 	is_dimorphic = FALSE
 
 /obj/item/bodypart/arm/left/drone
 	icon_greyscale = 'icons/mob/species/drone/bodyparts.dmi'
-	biological_state = BIO_INORGANIC
+	biological_state = BIO_FLESH
 	limb_id = SPECIES_DRONE
 	is_dimorphic = FALSE
 	unarmed_attack_verb = "smash"
@@ -710,7 +710,7 @@
 
 /obj/item/bodypart/arm/right/drone
 	icon_greyscale = 'icons/mob/species/drone/bodyparts.dmi'
-	biological_state = BIO_INORGANIC
+	biological_state = BIO_FLESH
 	limb_id = SPECIES_DRONE
 	is_dimorphic = FALSE
 	unarmed_attack_verb = "smash"
@@ -720,12 +720,12 @@
 
 /obj/item/bodypart/leg/left/drone
 	icon_greyscale = 'icons/mob/species/drone/bodyparts.dmi'
-	biological_state = BIO_INORGANIC
+	biological_state = BIO_FLESH
 	limb_id = SPECIES_DRONE
 	is_dimorphic = FALSE
 
 /obj/item/bodypart/leg/right/drone
 	icon_greyscale = 'icons/mob/species/drone/bodyparts.dmi'
-	biological_state = BIO_INORGANIC
+	biological_state = BIO_FLESH
 	limb_id = SPECIES_DRONE
 	is_dimorphic = FALSE
