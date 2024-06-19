@@ -980,6 +980,9 @@
 /mob/living/carbon/human/species/dullahan
 	race = /datum/species/dullahan
 
+/mob/living/carbon/human/species/drone
+	race = /datum/species/drone
+
 /mob/living/carbon/human/species/felinid
 	race = /datum/species/human/felinid
 

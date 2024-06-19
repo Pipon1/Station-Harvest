@@ -3,7 +3,6 @@
 	id = SPECIES_DRONE
 	species_traits = list(
 		NO_DNA_COPY,
-		NOTRANSSTING,
 		EYECOLOR,
 		HAIR,
 		FACEHAIR,
@@ -15,7 +14,7 @@
 		TRAIT_EASYDISMEMBER,
 		TRAIT_NOBREATH,
 		TRAIT_NOFIRE,
-		TRAIT_EASILY_WOUNDED,,
+		TRAIT_EASILY_WOUNDED,
 		TRAIT_RADIMMUNE,
 		TRAIT_RESISTCOLD,
 		TRAIT_RESISTHEAT,
@@ -24,7 +23,7 @@
 		TRAIT_TOXIMMUNE,
 	)
 
-	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
+	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	meat = null
 	mutanteyes = /obj/item/organ/internal/eyes/drone
 	mutanttongue = /obj/item/organ/internal/tongue/robot
