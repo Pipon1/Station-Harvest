@@ -813,7 +813,7 @@
 		return FALSE
 
 	return TRUE
-	
+
 #undef JELLY_REGEN_RATE
 #undef JELLY_REGEN_RATE_EMPTY
 #undef BLOOD_VOLUME_LOSE_NUTRITION

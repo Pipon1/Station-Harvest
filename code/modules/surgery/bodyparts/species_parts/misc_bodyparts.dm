@@ -684,3 +684,52 @@
 	unarmed_damage_low = 0
 	unarmed_damage_high = 1
 	unarmed_stun_threshold = 2
+
+//GAS
+/obj/item/bodypart/head/gas
+	icon_greyscale = 'icons/mob/species/gas/bodyparts.dmi'
+	limb_id = SPECIES_GAS
+	is_dimorphic = FALSE
+
+/obj/item/bodypart/chest/gas
+	icon_greyscale = 'icons/mob/species/gas/bodyparts.dmi'
+	limb_id = SPECIES_GAS
+	is_dimorphic = FALSE
+
+/obj/item/bodypart/arm/left/gas
+	icon_greyscale = 'icons/mob/species/gas/bodyparts.dmi'
+	limb_id = SPECIES_GAS
+	unarmed_attack_verb = "slash"
+	unarmed_attack_effect = ATTACK_EFFECT_SLASH
+	unarmed_attack_sound = 'sound/weapons/slash.ogg'
+	unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
+	unarmed_damage_low = 10
+	unarmed_damage_high = 20
+
+/obj/item/bodypart/hand/left/gas
+	icon_greyscale = 'icons/mob/species/gas/bodyparts.dmi'
+	limb_id = SPECIES_GAS
+	is_dimorphic = FALSE
+
+/obj/item/bodypart/hand/right/gas
+	icon_greyscale = 'icons/mob/species/gas/bodyparts.dmi'
+	limb_id = SPECIES_GAS
+	is_dimorphic = FALSE
+
+/obj/item/bodypart/arm/right/gas
+	icon_greyscale = 'icons/mob/species/gas/bodyparts.dmi'
+	limb_id = SPECIES_GAS
+	unarmed_attack_verb = "slash"
+	unarmed_attack_effect = ATTACK_EFFECT_SLASH
+	unarmed_attack_sound = 'sound/weapons/slash.ogg'
+	unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
+	unarmed_damage_low = 10
+	unarmed_damage_high = 20
+
+/obj/item/bodypart/leg/right/gas
+	icon_greyscale = 'icons/mob/species/gas/bodyparts.dmi'
+	limb_id = SPECIES_GAS
+
+/obj/item/bodypart/leg/left/gas
+	icon_greyscale = 'icons/mob/species/gas/bodyparts.dmi'
+	limb_id = SPECIES_GAS

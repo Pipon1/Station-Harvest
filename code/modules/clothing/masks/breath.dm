@@ -42,3 +42,9 @@
 
 /datum/armor/breath_medical
 	bio = 90
+
+/obj/item/clothing/mask/breath/gas
+	name = "G.A.S breathing mask"
+	desc = "A close fitting breathing mask for Giant Armoured Serpentid"
+	icon_state = "gas_breath"
+	inhand_icon_state =  "m_mask"

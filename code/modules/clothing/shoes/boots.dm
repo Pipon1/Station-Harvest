@@ -39,6 +39,16 @@
 	fire = 90
 	acid = 50
 
+/obj/item/clothing/shoes/combat/gas
+	name = "\improper G.A.S boots"
+	desc = "If you see this, report to the dev."
+	icon_state = "gas_boot"
+	inhand_icon_state = "gas_boot"
+
+/obj/item/clothing/shoes/combat/gas/process()
+	qdel(src)
+
+
 /obj/item/clothing/shoes/jackboots
 	name = "jackboots"
 	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."

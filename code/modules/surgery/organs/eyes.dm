@@ -570,6 +570,54 @@
 	eye_icon_state = "jelleyes"
 	icon_state = "eyeballs-jelly"
 
+/obj/item/organ/internal/eyes/gas
+	name = "giant armoured serpentid eyes"
+	desc = "These eyes are made of a resistant material."
+	eye_icon_state = "gaseyes"
+	icon_state = "eyeballs-jelly"
+	flash_protect = FLASH_PROTECTION_HYPER_SENSITIVE
+	var/datum/action/innate/protect_eyes/protect_eyes
+
+/obj/item/organ/internal/eyes/gas/on_insert(mob/living/carbon/eye_owner)
+	. = ..()
+	if(ishuman(eye_owner))
+		protect_eyes = new
+		protect_eyes.Grant(eye_owner)
+
+/datum/action/innate/protect_eyes
+	name = "G.A.S protective eylids"
+	var/closed = FALSE
+	check_flags = AB_CHECK_CONSCIOUS
+	button_icon_state = "gas-shield-2"
+	button_icon = 'icons/mob/actions/actions_gas.dmi'
+	COOLDOWN_DECLARE(gas_eyes_2)
+
+/datum/action/innate/protect_eyes/Activate()
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/organ/internal/eyes/gas/eye_a = H.get_organ_by_type(/obj/item/organ/internal/eyes)
+	if (closed == FALSE && COOLDOWN_FINISHED(src, gas_eyes_2))
+		button_icon_state = "gas-shield-1"
+		build_all_button_icons()
+		H.update_icons()
+		closed = TRUE
+		eye_a.flash_protect = FLASH_PROTECTION_WELDER
+		eye_a.tint = 2
+		H.update_tint()
+		H.update_sight()
+	else if (closed == TRUE)
+		button_icon_state = "gas-shield-2"
+		build_all_button_icons()
+		H.update_icons()
+		closed = FALSE
+		eye_a.flash_protect = FLASH_PROTECTION_HYPER_SENSITIVE
+		eye_a.tint = 0
+		H.update_tint()
+		H.update_sight()
+		COOLDOWN_START(src, gas_eyes_2, 15 SECONDS)
+	else if (!COOLDOWN_FINISHED(src, gas_eyes_2))
+		var/timeleft = COOLDOWN_TIMELEFT(src, gas_eyes_2) / 10
+		to_chat(H, span_notice("This ability will be ready in [timeleft] seconds!"))
+
 /obj/item/organ/internal/eyes/night_vision/maintenance_adapted
 	name = "adapted eyes"
 	desc = "These red eyes look like two foggy marbles. They give off a particularly worrying glow in the dark."
