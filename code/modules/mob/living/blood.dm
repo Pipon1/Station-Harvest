@@ -308,6 +308,7 @@
 		"AB+" = list("A-", "A+", "B-", "B+", "O-", "O+", "AB-", "AB+"),
 		"O-" = list("O-"),
 		"O+" = list("O-", "O+"),
+		"Synth" = list("Synth"),
 		"L" = list("L"),
 		"U" = list("A-", "A+", "B-", "B+", "O-", "O+", "AB-", "AB+", "L", "U")
 	)

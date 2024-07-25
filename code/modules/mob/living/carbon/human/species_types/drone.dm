@@ -8,12 +8,12 @@
 		FACEHAIR,
 		NO_UNDERWEAR,
 	)
+
 	inherent_traits = list(
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_GENELESS,
-		TRAIT_EASYDISMEMBER,
+        TRAIT_EASYDISMEMBER,
 		TRAIT_NOBREATH,
-		TRAIT_NOFIRE,
 		TRAIT_EASILY_WOUNDED,
 		TRAIT_RADIMMUNE,
 		TRAIT_RESISTCOLD,
@@ -21,7 +21,7 @@
 		TRAIT_RESISTLOWPRESSURE,
 		TRAIT_RESISTHIGHPRESSURE,
 		TRAIT_TOXIMMUNE,
-	)
+    )
 
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	meat = null
@@ -31,8 +31,7 @@
 	mutantheart = /obj/item/organ/internal/heart/cybernetic
 	mutantliver = /obj/item/organ/internal/liver/cybernetic
 	mutantlungs = /obj/item/organ/internal/lungs/cybernetic
-	exotic_blood = /datum/reagent/fuel/oil //À voir entre ça ou welding fuel
-	exotic_bloodtype = "AAA"
+	exotic_bloodtype = "Synth"
 	disliked_food = NONE
 	liked_food = NONE
 	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
