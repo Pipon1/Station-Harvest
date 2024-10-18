@@ -258,6 +258,7 @@
 	input_level = 200000;
 	output_level = 190000
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "bJ" = (
@@ -911,6 +912,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
+	dir = 9
+	},
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "fa" = (
@@ -1667,13 +1671,13 @@
 	},
 /area/mine/production)
 "iK" = (
-/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
-	dir = 10
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/corner,
+/obj/machinery/atmospherics/pipe/smart/manifold/dark/visible{
+	dir = 1
+	},
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "iM" = (
@@ -3251,12 +3255,6 @@
 /obj/effect/turf_decal/trimline/yellow/arrow_ccw,
 /turf/open/floor/plating,
 /area/lavaland/surface/outdoors)
-"qI" = (
-/obj/machinery/atmospherics/components/tank/nitrogen{
-	dir = 8
-	},
-/turf/open/floor/iron/smooth,
-/area/mine/ming_sm)
 "qJ" = (
 /obj/machinery/computer/mechpad,
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -3663,17 +3661,14 @@
 /area/lavaland/surface/outdoors)
 "ts" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 4
+	dir = 1
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/components/binary/pump/on{
+	dir = 8;
+	name = "Gas to Filter";
+	target_pressure = 300
 	},
-/obj/machinery/light/directional/east,
-/obj/machinery/power/smes/engineering{
-	input_level = 200000;
-	output_level = 190000
-	},
-/obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "tw" = (
@@ -3908,14 +3903,6 @@
 "uO" = (
 /turf/closed/mineral/random/labormineral/volcanic,
 /area/mine/laborcamp/quarters)
-"uP" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/cable,
-/turf/open/floor/iron/smooth,
-/area/mine/ming_sm)
 "uQ" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Maintenance"
@@ -4553,12 +4540,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/orange/visible{
-	dir = 8
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "yv" = (
@@ -4854,6 +4839,9 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/light/directional/north,
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
+	dir = 8
+	},
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "Ai" = (
@@ -4927,6 +4915,7 @@
 /obj/machinery/camera/autoname/directional/north{
 	dir = 9
 	},
+/obj/machinery/atmospherics/components/tank/nitrogen,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "AA" = (
@@ -8243,6 +8232,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "TE" = (
@@ -60556,7 +60546,7 @@ Kl
 QX
 xj
 Ks
-qI
+nP
 uX
 MB
 gt
@@ -61107,7 +61097,7 @@ pU
 pU
 pU
 js
-TA
+ts
 zK
 Nn
 sr
@@ -61667,7 +61657,7 @@ oq
 gL
 Je
 Qr
-uP
+TA
 Kw
 js
 pU
@@ -62221,7 +62211,7 @@ Cq
 gL
 IM
 zK
-uP
+TA
 PA
 js
 pU
@@ -62492,7 +62482,7 @@ pU
 pU
 js
 js
-uP
+TA
 zK
 zK
 Ki
@@ -62774,7 +62764,7 @@ bI
 zX
 zX
 FB
-ts
+bI
 vO
 js
 Yz
