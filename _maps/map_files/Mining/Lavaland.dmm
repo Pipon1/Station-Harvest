@@ -258,6 +258,7 @@
 	input_level = 200000;
 	output_level = 190000
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "bJ" = (
@@ -911,6 +912,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
+	dir = 9
+	},
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "fa" = (
@@ -1667,13 +1671,13 @@
 	},
 /area/mine/production)
 "iK" = (
-/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
-	dir = 10
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/corner,
+/obj/machinery/atmospherics/pipe/smart/manifold/dark/visible{
+	dir = 1
+	},
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "iM" = (
@@ -3251,13 +3255,6 @@
 /obj/effect/turf_decal/trimline/yellow/arrow_ccw,
 /turf/open/floor/plating,
 /area/lavaland/surface/outdoors)
-"qI" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/turf/open/floor/iron/smooth,
-/area/mine/ming_sm)
 "qJ" = (
 /obj/machinery/computer/mechpad,
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -3663,9 +3660,17 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "ts" = (
-/obj/structure/cable,
-/turf/closed/wall/mineral/plastitanium,
-/area/mine/ming_sm_room)
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/components/binary/pump/on{
+	dir = 8;
+	name = "Gas to Filter";
+	target_pressure = 300
+	},
+/turf/open/floor/iron/smooth,
+/area/mine/ming_sm)
 "tw" = (
 /obj/machinery/computer/prisoner/management{
 	dir = 8
@@ -3898,19 +3903,6 @@
 "uO" = (
 /turf/closed/mineral/random/labormineral/volcanic,
 /area/mine/laborcamp/quarters)
-"uP" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/turf/open/floor/iron/smooth,
-/area/mine/ming_sm)
 "uQ" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Maintenance"
@@ -4092,6 +4084,7 @@
 	dir = 1
 	},
 /obj/machinery/camera/autoname/directional/south,
+/obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "vP" = (
@@ -4547,12 +4540,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/orange/visible{
-	dir = 8
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "yv" = (
@@ -4848,6 +4839,9 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/light/directional/north,
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
+	dir = 8
+	},
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "Ai" = (
@@ -4921,6 +4915,7 @@
 /obj/machinery/camera/autoname/directional/north{
 	dir = 9
 	},
+/obj/machinery/atmospherics/components/tank/nitrogen,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "AA" = (
@@ -5179,6 +5174,8 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
+/obj/structure/cable,
+/obj/machinery/power/terminal,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "Cu" = (
@@ -5186,6 +5183,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "Cv" = (
@@ -6376,6 +6374,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "Jr" = (
@@ -6508,7 +6507,6 @@
 /obj/structure/window/reinforced/plasma{
 	dir = 8
 	},
-/obj/structure/cable,
 /turf/open/floor/engine,
 /area/mine/ming_sm_room)
 "Kj" = (
@@ -6771,6 +6769,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "LM" = (
@@ -7283,7 +7282,6 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
-/obj/structure/cable,
 /turf/open/floor/engine,
 /area/mine/ming_sm_room)
 "Or" = (
@@ -7625,7 +7623,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
 	dir = 8
 	},
-/obj/structure/cable,
 /turf/closed/wall/mineral/plastitanium,
 /area/mine/ming_sm_room)
 "Qs" = (
@@ -8235,6 +8232,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "TE" = (
@@ -8467,7 +8465,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
 	dir = 5
 	},
-/obj/structure/cable,
 /obj/machinery/meter,
 /turf/closed/wall/mineral/plastitanium,
 /area/mine/ming_sm_room)
@@ -8731,6 +8728,7 @@
 	dir = 1
 	},
 /obj/machinery/light/directional/south,
+/obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/mine/ming_sm)
 "Wl" = (
@@ -60548,7 +60546,7 @@ Kl
 QX
 xj
 Ks
-qI
+nP
 uX
 MB
 gt
@@ -61099,12 +61097,12 @@ pU
 pU
 pU
 js
-TA
+ts
 zK
 Nn
 sr
 zD
-ts
+zK
 Jq
 js
 pU
@@ -62212,7 +62210,7 @@ MM
 Cq
 gL
 IM
-ts
+zK
 TA
 PA
 js
@@ -62485,11 +62483,11 @@ pU
 js
 js
 TA
-ts
-ts
+zK
+zK
 Ki
-ts
-ts
+zK
+zK
 Jq
 js
 js
@@ -62763,7 +62761,7 @@ pU
 js
 Cs
 bI
-uP
+zX
 zX
 FB
 bI
