@@ -20562,11 +20562,8 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
 "hHO" = (
-/obj/structure/cable,
-/obj/structure/lattice/catwalk,
-/obj/effect/landmark/start/techpriest,
-/turf/open/space/basic,
-/area/station/solars/aft)
+/turf/closed/wall,
+/area/space)
 "hIe" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -83180,7 +83177,7 @@ dDB
 dDB
 dDB
 dDB
-dDB
+hHO
 slY
 ohl
 slY
@@ -95075,7 +95072,7 @@ rpi
 sOk
 blb
 rZi
-hHO
+sxT
 hCQ
 gzY
 lhv

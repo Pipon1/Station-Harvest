@@ -93,6 +93,7 @@
 #define SPECIES_ABDUCTOR "abductor"
 #define SPECIES_ANDROID "android"
 #define SPECIES_DULLAHAN "dullahan"
+#define SPECIES_DRONE "drone"
 #define SPECIES_ETHEREAL "ethereal"
 #define SPECIES_FELINE "felinid"
 #define SPECIES_FLYPERSON "fly"
@@ -295,6 +296,14 @@
 #define ETHEREAL_CHARGE_OVERLOAD 2500
 #define ETHEREAL_CHARGE_DANGEROUS 3000
 
+//Charge levels for Droness
+#define DRONE_CHARGE_NONE 0
+#define DRONE_CHARGE_LOWPOWER 400
+#define DRONE_CHARGE_NORMAL 1000
+#define DRONE_CHARGE_ALMOSTFULL 1500
+#define DRONE_CHARGE_FULL 2000
+#define DRONE_CHARGE_OVERLOAD 2500
+#define DRONE_CHARGE_DANGEROUS 3000
 
 #define CRYSTALIZE_COOLDOWN_LENGTH (120 SECONDS)
 #define CRYSTALIZE_PRE_WAIT_TIME (40 SECONDS)
@@ -434,6 +443,7 @@
 
 #define HUNGER_FACTOR 0.05 //factor at which mob nutrition decreases
 #define ETHEREAL_CHARGE_FACTOR 0.8 //factor at which ethereal's charge decreases per second
+#define DRONE_CHARGE_FACTOR 0.8 //factor at which ethereal's charge decreases per second
 /// How much nutrition eating clothes as moth gives and drains
 #define CLOTHING_NUTRITION_GAIN 15
 #define REAGENTS_METABOLISM 0.2 //How many units of reagent are consumed per second, by default.

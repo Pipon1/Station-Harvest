@@ -356,6 +356,13 @@
 	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))
 		..()
 
+/mob/living/carbon/human/species/drone/add_splatter_floor(turf/T, small_drip)
+	if(!T)
+		T = get_turf(src)
+	var/obj/effect/decal/cleanable/oil/B = locate() in T.contents
+	if(!B)
+		B = new(T)
+
 /mob/living/carbon/alien/add_splatter_floor(turf/T, small_drip)
 	if(!T)
 		T = get_turf(src)

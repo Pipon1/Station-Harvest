@@ -37,6 +37,18 @@
 	name = "Mining Station Lower EVA"
 	icon_state = "mining_eva"
 
+/area/mine/ming_sm_entrance
+	name = "Mining Super Matter Entrance"
+	icon_state = "mining_sm_entrance"
+
+/area/mine/ming_sm
+	name = "Mining Super Matter"
+	icon_state = "mining_sm"
+
+/area/mine/ming_sm_room
+	name = "Mining Super Matter Room"
+	icon_state = "mining_sm_room"
+
 /area/mine/maintenance
 	name = "Mining Station Maintenance"
 

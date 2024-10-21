@@ -551,6 +551,14 @@
 		set_light_flags(light_flags)
 
 
+
+/obj/item/organ/internal/eyes/drone
+	name = "drone eyes"
+	desc = "These eyes are like camera, a little organic for yourself, to be honest."
+	eye_icon_state = "droneye"
+	icon_state = "eyeballs"
+	flash_protect = FLASH_PROTECTION_WELDER
+
 /obj/item/organ/internal/eyes/moth
 	name = "moth eyes"
 	desc = "These eyes seem to have increased sensitivity to bright light, with no improvement to low light vision."
