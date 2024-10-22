@@ -1506,6 +1506,7 @@
 	dir = 9
 	},
 /obj/item/seeds/tea,
+/obj/item/seeds/onion,
 /turf/open/floor/iron/dark,
 /area/mine/laborcamp)
 "hT" = (
@@ -8476,8 +8477,6 @@
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 4
 	},
-/obj/machinery/hydroponics/constructable,
-/obj/item/seeds/onion,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -28426,7 +28425,7 @@ uU
 uU
 uU
 uU
-uU
+aj
 aj
 aj
 aj
@@ -28703,7 +28702,7 @@ uU
 uU
 aj
 aj
-uU
+aj
 aj
 aj
 aj
