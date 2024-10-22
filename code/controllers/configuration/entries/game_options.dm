@@ -332,7 +332,7 @@
 	min_val = 0
 
 /datum/config_entry/number/space_budget
-	default = 16
+	default = 32
 	integer = FALSE
 	min_val = 0
 
