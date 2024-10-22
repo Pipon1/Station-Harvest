@@ -289,7 +289,6 @@
 	suffix = "whiteshipdock.dmm"
 	name = "Whiteship Dock"
 	cost = 0
-	placement_weight = 10
 	description = "An abandoned but functional vessel parked in deep space, ripe for the taking."
 	always_place = TRUE
 
