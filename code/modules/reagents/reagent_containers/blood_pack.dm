@@ -43,7 +43,7 @@
 
 /obj/item/reagent_containers/blood/random/Initialize(mapload, vol)
 	icon_state = "bloodpack"
-	blood_type = pick("A+", "A-", "B+", "B-", "O+", "O-", "L")
+	blood_type = pick("A+", "A-", "B+", "B-", "O+", "O-", "L", "Synth")
 	return ..()
 
 /obj/item/reagent_containers/blood/a_plus
@@ -72,8 +72,7 @@
 	unique_blood = /datum/reagent/consumable/liquidelectricity
 
 /obj/item/reagent_containers/blood/drone
-	blood_type = "AAA"
-	unique_blood = /datum/reagent/fuel/oil
+	blood_type = "Synth"
 
 /obj/item/reagent_containers/blood/snail
 	blood_type = "S"
