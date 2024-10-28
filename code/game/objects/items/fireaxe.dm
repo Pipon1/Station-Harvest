@@ -96,8 +96,8 @@
   	name = "Hache de fortune"
   	desc = "Une hache grossièrement assemblée de bouts de verres et d'une barre de métal"
   	slot_flags = ITEM_SLOT_BACK
-  	force_unwielded = 5
-  	force_wielded = 7
+  	force_unwielded = 7
+  	force_wielded = 9
   	var/uses_left = 20 // Variable pour déterminer le nombre de coup possible
 
 /obj/item/fireaxe/makeshift_glass_axe/afterattack(atom/A, mob/user, proximity)
