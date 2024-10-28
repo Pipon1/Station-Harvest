@@ -96,19 +96,5 @@
   	name = "Hache de fortune"
   	desc = "Une hache grossièrement assemblée de bouts de verres et d'une barre de métal"
   	slot_flags = ITEM_SLOT_BACK
-  	force_unwielded = 7
-  	force_wielded = 9
-  	var/uses_left = 20 // Variable pour déterminer le nombre de coup possible
-
-/obj/item/fireaxe/makeshift_glass_axe/afterattack(atom/A, mob/user, proximity)
-  	. = ..()
-  	if (!proximity)
-  	  	return
-  	uses_left -= 1  // Décrémente le compteur d'utilisation après chaque attaque
-  	if (uses_left == 14)  // Si le nombre d'utilisations restantes arrive a 14 avertir une première fois
-  	  	user.visible_message("La [name] de [user] commence à se fissurer")
-  	if (uses_left == 5)  // Si le nombre d'utilisations restantes arrive a 5 avertir une dernière fois
-  	  	user.visible_message("La [name] de [user] commence à se désassembler..il ne reste plus que quelques coups")
-  	if (uses_left == 0)  // Si le nombre d'utilisations restantes est 0 ou moins
-  	  	user.visible_message("[user] brise son [name] en mille morceaux après l'attaque!")
-  	  	qdel(src)  // Supprime l'objet (brise la hache)
+  	force_unwielded = 5
+  	force_wielded = 23
