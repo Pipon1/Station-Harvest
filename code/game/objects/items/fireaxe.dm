@@ -96,5 +96,19 @@
   	name = "Hache de fortune"
   	desc = "Une hache grossièrement assemblée de bouts de verres et d'une barre de métal"
   	slot_flags = ITEM_SLOT_BACK
-  	force_unwielded = 3
-  	force_wielded = 7
+  	force_unwielded = 4
+  	force_wielded = 8
+  	var/uses_left = 20
+
+/obj/item/fireaxe/makeshift_glass_axe/afterattack(atom/A, mob/user, proximity)
+  	. = ..()
+  	if (!proximity)
+  	  	return
+  	uses_left -= 1
+  	if (uses_left == 14)
+  	  	user.visible_message("La [name] de [user] commence à se fissurer")
+  	if (uses_left == 5)
+  	  	user.visible_message("La [name] de [user] commence à se désassembler... il ne reste plus que quelques coups.")
+  	if (uses_left == 0)
+  	  	user.visible_message("La [name] de [user] se brise dans ses mains !")
+  	  	qdel(src)
