@@ -36,3 +36,6 @@ DEFINE_BITFIELD(check_flags, list(
 #define UPDATE_BUTTON_BACKGROUND (1<<2)
 #define UPDATE_BUTTON_OVERLAY (1<<3)
 #define UPDATE_BUTTON_STATUS (1<<4)
+
+/// Action button triggered by phobia
+#define SHUT_EYES_CLOSED "shut_eyes_closed"
