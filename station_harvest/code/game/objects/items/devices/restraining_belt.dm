@@ -2,7 +2,7 @@
 	name = "Restraining Belt"
 	desc = "Restrain the clown... or the engineer... or whoever you don't like."
 	icon = 'station_harvest/icons/obj/clothing/belts.dmi'
-	icon_state = "restraining_belt"
+	icon_state = "restraining"
 	inhand_icon_state = "restraining_belt"
 	lefthand_file = 'station_harvest/icons/mob/inhands/items/belt_lefthand.dmi'
 	righthand_file = 'station_harvest/icons/mob/inhands/items/belt_righthand.dmi'
