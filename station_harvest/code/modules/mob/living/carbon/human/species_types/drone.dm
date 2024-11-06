@@ -76,3 +76,6 @@
 		Those who worked those positions hated them for taking their jobs, \
 		and the others just saw them as nothing but repleacable cheap tools."
 	)
+
+/mob/living/carbon/human/species/drone
+	race = /datum/species/drone

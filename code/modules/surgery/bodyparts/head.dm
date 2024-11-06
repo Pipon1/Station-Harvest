@@ -233,8 +233,8 @@
 
 		// eyes
 		if(eyes) // This is a bit of copy/paste code from eyes.dm:generate_body_overlay
-			var/image/eye_left = image('icons/mob/species/human/human_face.dmi', "[eyes.eye_icon_state]_l", -BODY_LAYER, SOUTH)
-			var/image/eye_right = image('icons/mob/species/human/human_face.dmi', "[eyes.eye_icon_state]_r", -BODY_LAYER, SOUTH)
+			var/image/eye_left = image(eyes.eye_icon, "[eyes.eye_icon_state]_l", -BODY_LAYER, SOUTH) //Station Harvest Edit: Modular eye icons
+			var/image/eye_right = image(eyes.eye_icon, "[eyes.eye_icon_state]_r", -BODY_LAYER, SOUTH) //Station Harvest Edit: Modular eye icons
 			if(eyes.eye_color_left)
 				eye_left.color = eyes.eye_color_left
 			if(eyes.eye_color_right)
