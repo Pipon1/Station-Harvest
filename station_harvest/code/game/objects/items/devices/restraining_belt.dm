@@ -1,11 +1,11 @@
 /obj/item/restraining_belt
 	name = "Restraining Belt"
 	desc = "Restrain the clown... or the engineer... or whoever you don't like."
-	icon = 'icons/obj/radio.dmi'
-	icon_state = "restraining_belt"
+	icon = 'station_harvest/icons/obj/clothing/belts.dmi'
+	icon_state = "restraining"
 	inhand_icon_state = "restraining_belt"
-	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
+	lefthand_file = 'station_harvest/icons/mob/inhands/items/belt_lefthand.dmi'
+	righthand_file = 'station_harvest/icons/mob/inhands/items/belt_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_HUGE
 	custom_materials = list(/datum/material/iron=10000, /datum/material/glass=2500)
@@ -13,7 +13,7 @@
 	var/radio_key = /obj/item/encryptionkey/headset_sec
 	var/subspace_transmission = FALSE
 	var/list/rArea = list("Bridge")
-	var/mob/living/imp_in = null;
+	var/mob/living/imp_in = null
 	var/dto = FALSE
 	COOLDOWN_DECLARE(sec_msg_cooldown_belt)
 
@@ -30,7 +30,6 @@
 /obj/item/restraining_belt/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] hooks [user.p_them()]self to the restraining belt and spams the trigger! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return FIRELOSS
-
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/restraining_belt/attack_hand(mob/user, list/modifiers)

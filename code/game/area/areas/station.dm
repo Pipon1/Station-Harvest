@@ -23,14 +23,6 @@
 	name = "Chapel Maintenance"
 	icon_state = "maint_chapel"
 
-/area/station/maintenance/department/oldpath
-	name = "Old path"
-	icon_state = "old_path"
-
-/area/station/maintenance/department/oldpath_ext
-	name = "Old path Ext"
-	icon_state = "old_path_ext"
-
 /area/station/maintenance/department/chapel/monastery
 	name = "Monastery Maintenance"
 	icon_state = "maint_monastery"
@@ -382,10 +374,6 @@
 	name = "\improper Recreation Hallway"
 	icon_state = "hall"
 
-/area/station/hallway/secondary/syndi_outpost
-	name = "\improper Syndicate Outpost"
-	icon_state = "syndi_outpost"
-
 //Command
 
 /area/station/command
@@ -403,14 +391,6 @@
 	name = "\improper Heads of Staff Meeting Room"
 	icon_state = "meeting"
 	sound_environment = SOUND_AREA_MEDIUM_SOFTFLOOR
-
-/area/station/command/private_garden
-	name = "\improper Heads of staff private garden"
-	icon_state = "private_garden"
-	mood_bonus = 3
-	mood_message = "I feel at ease here."
-	sound_environment = SOUND_AREA_MEDIUM_SOFTFLOOR
-	ambientsounds = list('sound/ambience/aurora_caelus_short.ogg')
 
 /area/station/command/meeting_room/council
 	name = "\improper Council Chamber"
@@ -835,10 +815,6 @@
 /area/station/engineering/main
 	name = "Engineering"
 	icon_state = "engine"
-
-/area/station/engineering/secret_bbq
-	name = "Secret BBQ"
-	icon_state = "secret_bbq"
 
 /area/station/engineering/hallway
 	name = "Engineering Hallway"
@@ -1294,26 +1270,6 @@
 /area/station/security/range
 	name = "\improper Firing Range"
 	icon_state = "firingrange"
-
-/area/station/security/shame
-	name = "Couloir Of Shame"
-	icon_state = "sec_shame"
-
-/area/station/security/sec_anti_riot
-	name = "Anti-Riot Storage"
-	icon_state = "sec_anti_riot"
-
-/area/station/security/sec_lobby
-	name = "Security Lobby"
-	icon_state = "sec_lobby"
-
-/area/station/security/sec_entrance
-	name = "Security Entrance"
-	icon_state = "sec_entrance"
-
-/area/station/security/sec_secure_cell
-	name = "Reinforced Cell"
-	icon_state = "sec_secure_cell"
 
 /area/station/security/eva
 	name = "\improper Security EVA"

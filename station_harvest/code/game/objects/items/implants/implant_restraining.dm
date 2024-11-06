@@ -6,10 +6,11 @@
 	var/radio_key = /obj/item/encryptionkey/headset_sec
 	var/subspace_transmission = FALSE
 	COOLDOWN_DECLARE(sec_msg_cooldown)
+	//for restraining implant
+	var/list/rArea = list("Bridge")
 
 /obj/item/implant/restraining/proc/on_moved()
 	SIGNAL_HANDLER
-
 
 	for (var/i = 1, i <= rArea.len, i++)
 		if (get_area_name(imp_in, TRUE) == rArea[i])
@@ -53,6 +54,7 @@
 
 /obj/item/implantcase/restraining/attack_self(mob/user)
 	if (istype(imp, /obj/item/implant/restraining))
+		var/obj/item/implant/restraining/restrain_implant = imp
 		areaList = list(
 			"Bridge",
 			"Heads of Staff Meeting Room",
@@ -93,6 +95,6 @@
 			)
 		tmpl = areaList
 		areaList = tgui_input_checkboxes(user, "Please choose the areas to restrain.", "Restraining Implantinator", tmpl, 1, 10, 0)
-		imp.rArea = areaList
+		restrain_implant.rArea = areaList
 	else
 		to_chat(user, span_warning("There's no implant in this case!"))

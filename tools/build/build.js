@@ -75,6 +75,7 @@ export const DmTarget = new Juke.Target({
     'html/**',
     'icons/**',
     'interface/**',
+    'station_harvest/**',//Station Harvest edit: Adds folder as part of dependencies.
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],

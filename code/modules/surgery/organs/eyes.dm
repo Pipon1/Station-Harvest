@@ -119,8 +119,8 @@
 	if(!istype(parent) || parent.get_organ_by_type(/obj/item/organ/internal/eyes) != src)
 		CRASH("Generating a body overlay for [src] targeting an invalid parent '[parent]'.")
 
-	var/mutable_appearance/eye_left = mutable_appearance('icons/mob/species/human/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
-	var/mutable_appearance/eye_right = mutable_appearance('icons/mob/species/human/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
+	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -BODY_LAYER) //Station Harvest Edit: Modular eye icons
+	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -BODY_LAYER) //Station Harvest Edit: Modular eye icons
 	var/list/overlays = list(eye_left, eye_right)
 
 	if(EYECOLOR in parent.dna?.species.species_traits)
@@ -549,15 +549,6 @@
 		set_light_color(current_color_string)
 	if(!isnull(light_flags))
 		set_light_flags(light_flags)
-
-
-
-/obj/item/organ/internal/eyes/drone
-	name = "drone eyes"
-	desc = "These eyes are like camera, a little organic for yourself, to be honest."
-	eye_icon_state = "droneye"
-	icon_state = "eyeballs"
-	flash_protect = FLASH_PROTECTION_WELDER
 
 /obj/item/organ/internal/eyes/moth
 	name = "moth eyes"
