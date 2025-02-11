@@ -1,30 +1,30 @@
 ///Spawns a cargo pod containing a random cargo supply pack on a random area of the station
 /datum/round_event_control/stray_cargo
-	name = "Stray Cargo Pod"
+	name = "Capsule de fret égarée"
 	typepath = /datum/round_event/stray_cargo
 	weight = 20
 	max_occurrences = 4
 	earliest_start = 10 MINUTES
 	category = EVENT_CATEGORY_BUREAUCRATIC
-	description = "A pod containing a random supply crate lands on the station."
+	description = "Une capsule contenant une caisse de ravitaillement aléatoire atterrit sur la station."
 	admin_setup = list(/datum/event_admin_setup/set_location/stray_cargo, /datum/event_admin_setup/listed_options/stray_cargo)
 
 /datum/event_admin_setup/set_location/stray_cargo
-	input_text = "Aim pod at turf we're on?"
+	input_text = "Faire atterrir la capsule sur cette position ?"
 
 /datum/event_admin_setup/set_location/stray_cargo/apply_to_event(datum/round_event/stray_cargo/event)
 	event.admin_override_turf = chosen_turf
 
 /datum/event_admin_setup/listed_options/stray_cargo
-	input_text = "Choose a cargo crate to drop."
-	normal_run_option = "Random Crate"
+	input_text = "Choisissez une caisse."
+	normal_run_option = "Caisse aléatoire"
 
 /datum/event_admin_setup/listed_options/stray_cargo/get_list()
 	return sort_list(subtypesof(/datum/supply_pack), /proc/cmp_typepaths_asc)
 
 /datum/event_admin_setup/listed_options/stray_cargo/apply_to_event(datum/round_event/stray_cargo/event)
 	event.admin_override_contents = chosen
-	var/log_message = "[key_name_admin(usr)] has aimed a stray cargo pod at [event.admin_override_turf ? AREACOORD(event.admin_override_turf) : "a random location"]. The pod contents are [chosen ? chosen : "random"]."
+	var/log_message = "[key_name_admin(usr)] a fait atterrir une capsule de ravitaillement égarée à [event.admin_override_turf ? AREACOORD(event.admin_override_turf) : "une position aléatoire"]. La capsule contenait [chosen ? chosen : "des objets aléatoires"]."
 	message_admins(log_message)
 	log_admin(log_message)
 
@@ -42,7 +42,7 @@
 /datum/round_event/stray_cargo/announce(fake)
 	if(fake)
 		impact_area = find_event_area()
-	priority_announce("Stray cargo pod detected on long-range scanners. Expected location of impact: [impact_area.name].", "Collision Alert")
+	priority_announce("Une capsule de ravitaillement égarée a été détectée sur les scanners longue portée. Localisation attendue de l'impact : [impact_area.name].", "Alerte collision")
 
 /**
 * Tries to find a valid area, throws an error if none are found
@@ -55,10 +55,10 @@
 	else
 		impact_area = find_event_area()
 	if(!impact_area)
-		CRASH("No valid areas for cargo pod found.")
+		CRASH("Pas de zone valide pour la capsule de ravitaillement égarée.")
 	var/list/turf_test = get_area_turfs(impact_area)
 	if(!turf_test.len)
-		CRASH("Stray Cargo Pod : No valid turfs found for [impact_area] - [impact_area.type]")
+		CRASH("Capsule de ravitaillement égarée : pas d'endroit valide trouvé pour [impact_area] - [impact_area.type]")
 
 	if(!stray_spawnable_supply_packs.len)
 		stray_spawnable_supply_packs = SSshuttle.supply_packs.Copy()
@@ -130,12 +130,12 @@
 
 ///A rare variant that drops a crate containing syndicate uplink items
 /datum/round_event_control/stray_cargo/syndicate
-	name = "Stray Syndicate Cargo Pod"
+	name = "Capsule de fret du Syndicat égarée"
 	typepath = /datum/round_event/stray_cargo/syndicate
 	weight = 6
 	max_occurrences = 1
 	earliest_start = 30 MINUTES
-	description = "A pod containing syndicate gear lands on the station."
+	description = "Une capsule contenant des objets du Syndicat va atterrir sur la station."
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 6
 	admin_setup = list(/datum/event_admin_setup/set_location/stray_cargo, /datum/event_admin_setup/syndicate_cargo_pod)
@@ -145,11 +145,11 @@
 	var/pack_type_override
 
 /datum/event_admin_setup/syndicate_cargo_pod/prompt_admins()
-	var/admin_selected_pack = tgui_alert(usr,"Customize Pod contents?", "Pod Contents", list("Yes", "No", "Cancel"))
+	var/admin_selected_pack = tgui_alert(usr,"Personnaliser le contenu de la capsule ?", "Contenu de la capsule", list("Oui", "Non", "Annuler"))
 	switch(admin_selected_pack)
-		if("Yes")
+		if("Oui")
 			override_contents()
-		if("No")
+		if("Non")
 			pack_type_override = null
 		else
 			return ADMIN_CANCEL_EVENT
@@ -157,7 +157,7 @@
 ///This proc prompts admins to set a TC value and uplink type for the crate, those values are then passed to a new syndicate pack's setup_contents() to generate the contents before spawning it.
 /datum/event_admin_setup/syndicate_cargo_pod/proc/override_contents()
 	var/datum/supply_pack/misc/syndicate/custom_value/syndicate_pack = new
-	var/pack_telecrystals = tgui_input_number(usr, "Please input crate's value in telecrystals.", "Set Telecrystals.", 30)
+	var/pack_telecrystals = tgui_input_number(usr, "Rentrez la valeur de la caisse en télécristaux.", "Valeur de la caisse.", 30)
 	if(isnull(pack_telecrystals))
 		return ADMIN_CANCEL_EVENT
 	var/list/possible_uplinks = list("Traitor" = UPLINK_TRAITORS, "Nuke Op" = UPLINK_NUKE_OPS, "Clown Op" = UPLINK_CLOWN_OPS)

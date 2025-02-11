@@ -1,6 +1,6 @@
 /datum/round_event_control/mass_hallucination
-	name = "Mass Hallucination"
-	description = "All crewmembers start to hallucinate the same thing."
+	name = "Hallucination de masse"
+	description = "Tous les membres d'équipage vont commencer à voir des hallucinations de la même chose."
 	typepath = /datum/round_event/mass_hallucination
 	weight = 10
 	max_occurrences = 2
@@ -109,19 +109,19 @@
 	if(force != "Yes")
 		return
 
-	var/force_what = tgui_alert(usr, "Generic hallucination or Custom configured delusion? (Delusions are those which make people appear as other mobs)", event_control.name, list("Hallucination", "Custom Delusion", "Cancel"))
+	var/force_what = tgui_alert(usr, "Voulez vous une hallucination générique ou une illusion personnalisée (une illusion donne l'impression que les personnes ressemblent à d'autres êtres vivants) ?", event_control.name, list("Hallucination", "Illusion personnalisée", "Annuler"))
 	switch(force_what)
-		if("Cancel")
+		if("Annuler")
 			return ADMIN_CANCEL_EVENT
 
 		if("Hallucination")
-			var/chosen = select_hallucination_type(usr, "What hallucination should be forced for [event_control.name]?", event_control.name)
+			var/chosen = select_hallucination_type(usr, "Quelle hallucination devrait être forcée pour [event_control.name] ?", event_control.name)
 			if(!chosen || !check_rights(R_FUN))
 				return ADMIN_CANCEL_EVENT
 
 			admin_forced_hallucination = chosen
 
-		if("Custom Delusion")
+		if("Illusion personnalisée")
 			var/list/chosen_args = create_delusion(usr)
 			if(!length(chosen_args) || !check_rights(R_FUN))
 				return ADMIN_CANCEL_EVENT

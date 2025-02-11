@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/personal
-	desc = "It's a secure locker for personnel. The first card swiped gains control."
-	name = "personal closet"
+	desc = "C'est un casier sécurisé pour les membres du personnels. La première carte scanné devient propriétaire."
+	name = "casier personnel"
 	req_access = list(ACCESS_ALL_PERSONAL_LOCKERS)
 	var/registered_name = null
 
@@ -15,7 +15,7 @@
 	new /obj/item/radio/headset( src )
 
 /obj/structure/closet/secure_closet/personal/patient
-	name = "patient's closet"
+	name = "casier des patients"
 
 /obj/structure/closet/secure_closet/personal/patient/PopulateContents()
 	new /obj/item/clothing/under/color/white( src )
@@ -39,7 +39,7 @@
 	var/obj/item/card/id/I = W.GetID()
 	if(istype(I))
 		if(broken)
-			to_chat(user, span_danger("It appears to be broken."))
+			to_chat(user, span_danger("Il semble être cassé."))
 			return
 		if(!I || !I.registered_name)
 			return
@@ -50,9 +50,9 @@
 
 			if(!registered_name)
 				registered_name = I.registered_name
-				desc = "Owned by [I.registered_name]."
+				desc = "Le propriétaire est [I.registered_name]."
 		else
-			to_chat(user, span_danger("Access Denied."))
+			to_chat(user, span_danger("Accès non-authorisé."))
 	else
 		return ..()
 

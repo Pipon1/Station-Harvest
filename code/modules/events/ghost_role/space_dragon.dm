@@ -1,12 +1,12 @@
 /datum/round_event_control/space_dragon
-	name = "Spawn Space Dragon"
+	name = "Spawn de dragon de l'espace"
 	typepath = /datum/round_event/ghost_role/space_dragon
 	weight = 7
 	max_occurrences = 1
 	min_players = 20
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_ENTITIES
-	description = "Spawns a space dragon, which will try to take over the station."
+	description = "Spawn un dragon de l'espace, qui va essayer de renversation la station."
 	min_wizard_trigger_potency = 6
 	max_wizard_trigger_potency = 7
 
@@ -16,7 +16,7 @@
 	announce_when = 10
 
 /datum/round_event/ghost_role/space_dragon/announce(fake)
-	priority_announce("A large organic energy flux has been recorded near [station_name()], please stand by.", "Lifesign Alert")
+	priority_announce("Un large flux d'énergie organique a été enregistré près de [station_name()], restez vigilant.", "Alerte signe de vie")
 
 /datum/round_event/ghost_role/space_dragon/spawn_role()
 
@@ -37,7 +37,7 @@
 	dragon.mind.special_role = ROLE_SPACE_DRAGON
 	dragon.mind.add_antag_datum(/datum/antagonist/space_dragon)
 	playsound(dragon, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
-	message_admins("[ADMIN_LOOKUPFLW(dragon)] has been made into a Space Dragon by an event.")
-	dragon.log_message("was spawned as a Space Dragon by an event.", LOG_GAME)
+	message_admins("[ADMIN_LOOKUPFLW(dragon)] a été mis en tant que dragon de l'espace par un événement.")
+	dragon.log_message("a été mis en tant que dragon de l'espace par un événement.", LOG_GAME)
 	spawned_mobs += dragon
 	return SUCCESSFUL_SPAWN

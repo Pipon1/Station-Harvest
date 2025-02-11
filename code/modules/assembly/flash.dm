@@ -2,7 +2,7 @@
 
 /obj/item/assembly/flash
 	name = "flash"
-	desc = "A powerful and versatile flashbulb device, with applications ranging from disorienting attackers to acting as visual receptors in robot production."
+	desc = "Un outil de sécurité standard, utilisé pour aveugler les agresseurs et les robots."
 	icon_state = "flash"
 	inhand_icon_state = "flashtool"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
@@ -28,12 +28,12 @@
 
 /obj/item/assembly/flash/suicide_act(mob/living/user)
 	if(burnt_out)
-		user.visible_message(span_suicide("[user] raises \the [src] up to [user.p_their()] eyes and activates it ... but it's burnt out!"))
+		user.visible_message(span_suicide("[user] lève le [src] au niveau des yeux de [user.p_their()] et l'active... mais l'ampoule est brûlée !"))
 		return SHAME
 	else if(user.is_blind())
-		user.visible_message(span_suicide("[user] raises \the [src] up to [user.p_their()] eyes and activates it ... but [user.p_theyre()] blind!"))
+		user.visible_message(span_suicide("[user] lève le [src] au niveau des yeux de [user.p_their()]  et l'active... mais [user.p_theyre()] est aveugle !"))
 		return SHAME
-	user.visible_message(span_suicide("[user] raises \the [src] up to [user.p_their()] eyes and activates it! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] lève le [src] au niveau des yeux de [user.p_their()] et l'active ! Il semble que [user.p_theyre()] essaye de se suicider !"))
 	attack(user,user)
 	return FIRELOSS
 
@@ -68,7 +68,7 @@
 /obj/item/assembly/flash/proc/burn_out() //Made so you can override it if you want to have an invincible flash from R&D or something.
 	if(!burnt_out)
 		burnt_out = TRUE
-		loc?.visible_message(span_danger("[src] burns out!"),span_userdanger("[src] burns out!"))
+		loc?.visible_message(span_danger("[src] a l'ampoule brulée !"),span_userdanger("[src] a l'ampoule brulée !"))
 		update_appearance()
 
 /obj/item/assembly/flash/proc/flash_recharge(interval = 10)
@@ -89,7 +89,7 @@
 	var/list/mob/targets = get_flash_targets(get_turf(src), range, FALSE)
 	if(user)
 		targets -= user
-		to_chat(user, span_danger("[src] emits a blinding light!"))
+		to_chat(user, span_danger("[src] brille d'une lumière vive !"))
 	for(var/mob/living/carbon/nearby_carbon in targets)
 		flash_carbon(nearby_carbon, user, confusion_duration, targeted = FALSE, generic_message = TRUE)
 	return TRUE
@@ -144,7 +144,7 @@
 		flashed.log_message("was [targeted? "flashed(targeted)" : "flashed(AOE)"]", LOG_ATTACK)
 
 	if(generic_message && flashed != user)
-		to_chat(flashed, span_danger("[src] emits a blinding light!"))
+		to_chat(flashed, span_danger("[src] brille d'une lumière vive !"))
 
 	var/deviation = calculate_deviation(flashed, user || src)
 
@@ -167,16 +167,16 @@
 	if(targeted)
 		if(flashed.flash_act(1, 1))
 			flashed.set_confusion_if_lower(confusion_duration * CONFUSION_STACK_MAX_MULTIPLIER)
-			visible_message(span_danger("[user] blinds [flashed] with the flash!"), span_userdanger("[user] blinds you with the flash!"))
+			visible_message(span_danger("[user] aveugle [flashed] avec un flash !"), span_userdanger("[user] vous aveugle avec un flash !"))
 			//easy way to make sure that you can only long stun someone who is facing in your direction
 			flashed.adjustStaminaLoss(rand(80, 120) * (1 - (deviation * 0.5)))
 			flashed.Paralyze(rand(25, 50) * (1 - (deviation * 0.5)))
 			SEND_SIGNAL(user, COMSIG_MOB_SUCCESSFUL_FLASHED_CARBON, flashed, src, deviation)
 
 		else if(user)
-			visible_message(span_warning("[user] fails to blind [flashed] with the flash!"), span_danger("[user] fails to blind you with the flash!"))
+			visible_message(span_warning("[user] n'arrive pas à aveugler [flashed] avec le flash !"), span_danger("[user] échoue a vous aveugler avec un flash !"))
 		else
-			to_chat(flashed, span_danger("[src] fails to blind you!"))
+			to_chat(flashed, span_danger("[src] échoue à vous aveugler !"))
 	else
 		if(flashed.flash_act())
 			flashed.set_confusion_if_lower(confusion_duration * CONFUSION_STACK_MAX_MULTIPLIER)
@@ -244,14 +244,14 @@
 		log_combat(user, flashed_borgo, "flashed", src)
 		update_icon(ALL, TRUE)
 		if(!flashed_borgo.flash_act(affect_silicon = TRUE))
-			user.visible_message(span_warning("[user] fails to blind [flashed_borgo] with the flash!"), span_warning("You fail to blind [flashed_borgo] with the flash!"))
+			user.visible_message(span_warning("[user] échoue à aveugler [flashed_borgo] avec un flash !"), span_warning("Vous échouez à aveugler [flashed_borgo] avec un flash !"))
 			return
 		flashed_borgo.Paralyze(rand(80,120))
 		flashed_borgo.set_confusion_if_lower(5 SECONDS * CONFUSION_STACK_MAX_MULTIPLIER)
-		user.visible_message(span_warning("[user] overloads [flashed_borgo]'s sensors with the flash!"), span_danger("You overload [flashed_borgo]'s sensors with the flash!"))
+		user.visible_message(span_warning("[user] surcharge les senseurs de [flashed_borgo] avec un flash !"), span_danger("Vous surchargez les senseurs de [flashed_borgo] avec un flash !"))
 		return
 
-	user.visible_message(span_warning("[user] fails to blind [M] with the flash!"), span_warning("You fail to blind [M] with the flash!"))
+	user.visible_message(span_warning("[user] échoue a aveugler [M] avec un flash flash !"), span_warning("Vous échouez a aveugler [M] avec un flash !"))
 
 /obj/item/assembly/flash/attack_self(mob/living/carbon/user, flag = 0, emp = 0)
 	if(holder)
@@ -288,8 +288,8 @@
 	return
 
 /obj/item/assembly/flash/memorizer
-	name = "memorizer"
-	desc = "If you see this, you're not likely to remember it any time soon."
+	name = "memoriseur"
+	desc = "Si vous voyez ceci, vous n'êtes pas susceptible de vous en souvenir de sitôt."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "memorizer"
 	inhand_icon_state = "nullrod"
@@ -299,8 +299,8 @@
 /obj/item/assembly/flash/handheld //this is now the regular pocket flashes
 
 /obj/item/assembly/flash/armimplant
-	name = "photon projector"
-	desc = "A high-powered photon projector implant normally used for lighting purposes, but also doubles as a flashbulb weapon. Self-repair protocols fix the flashbulb if it ever burns out."
+	name = "projecteur à photons"
+	desc = "Un projecteur à photon à haute puissance normalement utilisé à des fins d'éclairage, mais sert également de flash. Les protocoles d'auto-réparation réparent l'ampoule si elle brûle."
 	var/flashcd = 20
 	var/overheat = 0
 	//Wearef to our arm
@@ -309,7 +309,7 @@
 /obj/item/assembly/flash/armimplant/burn_out()
 	var/obj/item/organ/internal/cyberimp/arm/flash/real_arm = arm.resolve()
 	if(real_arm?.owner)
-		to_chat(real_arm.owner, span_warning("Your photon projector implant overheats and deactivates!"))
+		to_chat(real_arm.owner, span_warning("Votre implant de projecteur à photons surchauffe et se désactive !"))
 		real_arm.Retract()
 	overheat = TRUE
 	addtimer(CALLBACK(src, PROC_REF(cooldown)), flashcd * 2)
@@ -318,7 +318,7 @@
 	if(overheat)
 		var/obj/item/organ/internal/cyberimp/arm/flash/real_arm = arm.resolve()
 		if(real_arm?.owner)
-			to_chat(real_arm.owner, span_warning("Your photon projector is running too hot to be used again so quickly!"))
+			to_chat(real_arm.owner, span_warning("Votre projecteur à photons est trop chaud pour être utilisé à nouveau si rapidement !"))
 		return FALSE
 	overheat = TRUE
 	addtimer(CALLBACK(src, PROC_REF(cooldown)), flashcd)
@@ -331,11 +331,11 @@
 	overheat = FALSE
 
 /obj/item/assembly/flash/armimplant/screwdriver_act(mob/living/user, obj/item/I)
-	to_chat(user, span_notice("\The [src] is an implant! It cannot be unsecured!"))
+	to_chat(user, span_notice("[src] est un implant ! Il ne peut être dévissé !"))
 	add_fingerprint(user)
 
 /obj/item/assembly/flash/hypnotic
-	desc = "A modified flash device, programmed to emit a sequence of subliminal flashes that can send a vulnerable target into a hypnotic trance."
+	desc = "Un flash modifié, programmé pour émettre une séquence de flashs subliminaux qui peuvent envoyer une cible vulnérable dans une transe hypnotique."
 	flashing_overlay = "flash-hypno"
 	light_color = LIGHT_COLOR_PINK
 	cooldown = 20
@@ -351,17 +351,17 @@
 	else //caused by emp/remote signal
 		M.log_message("was [targeted? "hypno-flashed(targeted)" : "hypno-flashed(AOE)"]", LOG_ATTACK)
 	if(generic_message && M != user)
-		to_chat(M, span_notice("[src] emits a soothing light..."))
+		to_chat(M, span_notice("[src] brille d'une lumière agréable..."))
 	if(targeted)
 		if(M.flash_act(1, 1))
 			var/hypnosis = FALSE
 			if(M.hypnosis_vulnerable())
 				hypnosis = TRUE
 			if(user)
-				user.visible_message(span_danger("[user] blinds [M] with the flash!"), span_danger("You hypno-flash [M]!"))
+				user.visible_message(span_danger("[user] aveugle [M] avec un flash !"), span_danger("Vous hypnotisez [M] avec un flash !"))
 
 			if(!hypnosis)
-				to_chat(M, span_hypnophrase("The light makes you feel oddly relaxed..."))
+				to_chat(M, span_hypnophrase("La lumière est agréable..."))
 				M.adjust_confusion_up_to(10 SECONDS, 20 SECONDS)
 				M.adjust_dizzy_up_to(20 SECONDS, 40 SECONDS)
 				M.adjust_drowsiness_up_to(20 SECONDS, 40 SECONDS)
@@ -370,12 +370,12 @@
 				M.apply_status_effect(/datum/status_effect/trance, 200, TRUE)
 
 		else if(user)
-			user.visible_message(span_warning("[user] fails to blind [M] with the flash!"), span_warning("You fail to hypno-flash [M]!"))
+			user.visible_message(span_warning("[user] échoue a vous aveugler [M] avec le flash !"), span_warning("Vous n'arrivez pas à hypnotiser [M] avec un flash !"))
 		else
-			to_chat(M, span_danger("[src] fails to blind you!"))
+			to_chat(M, span_danger("[src] échoue a vous aveugler !"))
 
 	else if(M.flash_act())
-		to_chat(M, span_notice("Such a pretty light..."))
+		to_chat(M, span_notice("Une lumière si jolie..."))
 		M.adjust_confusion_up_to(4 SECONDS, 20 SECONDS)
 		M.adjust_dizzy_up_to(8 SECONDS, 40 SECONDS)
 		M.adjust_drowsiness_up_to(8 SECONDS, 40 SECONDS)

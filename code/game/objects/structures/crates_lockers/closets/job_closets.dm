@@ -1,8 +1,8 @@
 // Closets for specific jobs
 
 /obj/structure/closet/gmcloset
-	name = "formal closet"
-	desc = "It's a storage unit for formal clothing."
+	name = "casier classieux"
+	desc = "Une unité de stockage pour pour tenue de soirée."
 	icon_door = "black"
 
 /obj/structure/closet/gmcloset/PopulateContents()
@@ -25,8 +25,8 @@
 	generate_items_inside(items_inside,src)
 
 /obj/structure/closet/chefcloset
-	name = "chef's closet"
-	desc = "It's a storage unit for foodservice garments and mouse traps."
+	name = "casier du chef"
+	desc = "Une unité de stockage pour tenue de cuisinier et piège à souris."
 	icon_door = "black"
 
 /obj/structure/closet/chefcloset/PopulateContents()
@@ -46,8 +46,8 @@
 	generate_items_inside(items_inside,src)
 
 /obj/structure/closet/jcloset
-	name = "custodial closet"
-	desc = "It's a storage unit for janitorial clothes and gear."
+	name = "casier de conciergerie"
+	desc = "Une unité de stockage pour l'équipement nécessaire au bon maintient de la station."
 	icon_door = "mixed"
 
 /obj/structure/closet/jcloset/PopulateContents()
@@ -70,8 +70,8 @@
 
 
 /obj/structure/closet/lawcloset
-	name = "legal closet"
-	desc = "It's a storage unit for courtroom apparel and items."
+	name = "casier de la justice"
+	desc = "Une unité de stockage pour bien s'habiller devant une cours de justice."
 	icon_door = "blue"
 
 /obj/structure/closet/lawcloset/PopulateContents()
@@ -94,8 +94,8 @@
 	new /obj/item/clothing/accessory/lawyers_badge(src)
 
 /obj/structure/closet/wardrobe/chaplain_black
-	name = "chapel wardrobe"
-	desc = "It's a storage unit for Nanotrasen-approved religious attire."
+	name = "casier de la chappelle"
+	desc = "Une unité de stockage pour des vêtements d'office religieux approuvé par Nanotrasen."
 	icon_door = "black"
 
 /obj/structure/closet/wardrobe/chaplain_black/PopulateContents()
@@ -110,11 +110,10 @@
 	new /obj/item/storage/backpack/cultpack(src)
 	new /obj/item/storage/fancy/candle_box(src)
 	new /obj/item/storage/fancy/candle_box(src)
-	new /obj/item/clothing/suit/hooded/techpriest(src)
 	return
 
 /obj/structure/closet/wardrobe/red
-	name = "security wardrobe"
+	name = "armoire de sécurité"
 	icon_door = "red"
 
 /obj/structure/closet/wardrobe/red/PopulateContents()
@@ -133,7 +132,7 @@
 	return
 
 /obj/structure/closet/wardrobe/cargotech
-	name = "cargo wardrobe"
+	name = "armoire du cargo"
 	icon_door = "orange"
 
 /obj/structure/closet/wardrobe/cargotech/PopulateContents()
@@ -147,7 +146,7 @@
 	generate_items_inside(items_inside,src)
 
 /obj/structure/closet/wardrobe/atmospherics_yellow
-	name = "atmospherics wardrobe"
+	name = "armoire de l'atmosphérique"
 	icon_door = "atmos_wardrobe"
 
 /obj/structure/closet/wardrobe/atmospherics_yellow/PopulateContents()
@@ -163,7 +162,7 @@
 	return
 
 /obj/structure/closet/wardrobe/engineering_yellow
-	name = "engineering wardrobe"
+	name = "armoire de l'ingénieurie"
 	icon_door = "yellow"
 
 /obj/structure/closet/wardrobe/engineering_yellow/PopulateContents()
@@ -181,7 +180,7 @@
 	return
 
 /obj/structure/closet/wardrobe/white/medical
-	name = "medical doctor's wardrobe"
+	name = "armoire des médecins"
 
 /obj/structure/closet/wardrobe/white/medical/PopulateContents()
 	var/static/items_inside = list(
@@ -202,7 +201,7 @@
 	return
 
 /obj/structure/closet/wardrobe/robotics_black
-	name = "robotics wardrobe"
+	name = "armoire de la robotique"
 	icon_door = "black"
 
 /obj/structure/closet/wardrobe/robotics_black/PopulateContents()
@@ -222,7 +221,7 @@
 
 
 /obj/structure/closet/wardrobe/chemistry_white
-	name = "chemistry wardrobe"
+	name = "armoire de la chimie"
 	icon_door = "white"
 
 /obj/structure/closet/wardrobe/chemistry_white/PopulateContents()
@@ -239,7 +238,7 @@
 
 
 /obj/structure/closet/wardrobe/genetics_white
-	name = "genetics wardrobe"
+	name = "armoire de la génétique"
 	icon_door = "white"
 
 /obj/structure/closet/wardrobe/genetics_white/PopulateContents()
@@ -255,7 +254,7 @@
 
 
 /obj/structure/closet/wardrobe/virology_white
-	name = "virology wardrobe"
+	name = "armoire de la virologie"
 	icon_door = "white"
 
 /obj/structure/closet/wardrobe/virology_white/PopulateContents()
@@ -271,7 +270,7 @@
 	return
 
 /obj/structure/closet/wardrobe/science_white
-	name = "science wardrobe"
+	name = "armoire de la science"
 	icon_door = "white"
 
 /obj/structure/closet/wardrobe/science_white/PopulateContents()
@@ -290,7 +289,7 @@
 	return
 
 /obj/structure/closet/wardrobe/botanist
-	name = "botanist wardrobe"
+	name = "armoire de la botanie"
 	icon_door = "green"
 
 /obj/structure/closet/wardrobe/botanist/PopulateContents()
@@ -306,7 +305,7 @@
 	generate_items_inside(items_inside,src)
 
 /obj/structure/closet/wardrobe/curator
-	name = "treasure hunting wardrobe"
+	name = "armoire du chasseur de trésor"
 	icon_door = "black"
 
 /obj/structure/closet/wardrobe/curator/PopulateContents()

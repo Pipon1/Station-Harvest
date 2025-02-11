@@ -2,7 +2,7 @@
 	filename = "robotact"
 	filedesc = "RoboTact"
 	category = PROGRAM_CATEGORY_SCI
-	extended_desc = "A built-in app for cyborg self-management and diagnostics."
+	extended_desc = "Une application embarquée pour la gestion et le diagnostic des cyborgs."
 	ui_header = "robotact.gif" //DEBUG -- new icon before PR
 	program_icon_state = "command"
 	requires_ntnet = FALSE
@@ -15,7 +15,7 @@
 
 /datum/computer_file/program/robotact/on_start(mob/living/user)
 	if(!istype(computer, /obj/item/modular_computer/pda/silicon))
-		to_chat(user, span_warning("A warning flashes across \the [computer]: Device Incompatible."))
+		to_chat(user, span_warning("Une erreur s'affiche sur le [computer] : Appareil incompatible."))
 		return FALSE
 	. = ..()
 	if(.)
@@ -48,16 +48,16 @@
 	data["maxcharge"] = maxcharge //Cell max charge
 	data["integrity"] = ((cyborg.health + 100) / 2) //health, as percentage
 	data["lampIntensity"] = cyborg.lamp_intensity //lamp power setting
-	data["sensors"] = "[cyborg.sensors_on?"ACTIVE":"DISABLED"]"
+	data["sensors"] = "[cyborg.sensors_on?"ACTIVER":"DESACTIVER"]" //Sensor status
 	data["printerPictures"] = cyborg.connected_ai? cyborg.connected_ai.aicamera.stored.len : cyborg.aicamera.stored.len //Number of pictures taken, synced to AI if available
 	data["printerToner"] = cyborg.toner //amount of toner
 	data["printerTonerMax"] = cyborg.tonermax //It's a variable, might as well use it
 	data["thrustersInstalled"] = cyborg.ionpulse //If we have a thruster uprade
-	data["thrustersStatus"] = "[cyborg.ionpulse_on?"ACTIVE":"DISABLED"]" //Feedback for thruster status
+	data["thrustersStatus"] = "[cyborg.ionpulse_on?"ACTIVER":"DESACTIVER"]" //Feedback for thruster status
 	data["selfDestructAble"] = (cyborg.emagged || istype(cyborg, /mob/living/silicon/robot/model/syndicate))
 
 	//Cover, TRUE for locked
-	data["cover"] = "[cyborg.locked? "LOCKED":"UNLOCKED"]"
+	data["cover"] = "[cyborg.locked? "VEROUILLER":"DEVERRILLER"]" //Cover status
 	//Ability to move. FAULT if lockdown wire is cut, DISABLED if borg locked, ENABLED otherwise
 	data["locomotion"] = "[cyborg.wires.is_cut(WIRE_LOCKDOWN)?"FAULT":"[cyborg.lockcharge?"DISABLED":"ENABLED"]"]"
 	//Model wire. FAULT if cut, NOMINAL otherwise
@@ -95,9 +95,9 @@
 				cyborg.locked = FALSE
 				cyborg.update_icons()
 				if(cyborg.emagged)
-					cyborg.logevent("ChÃ¥vÃis cover lock has been [cyborg.locked ? "engaged" : "released"]") //"The cover interface glitches out for a split second"
+					cyborg.logevent("Le verrou du chassis a été [cyborg.locked ? "activé" : "desactivé"]") //"The cover interface glitches out for a split second"
 				else
-					cyborg.logevent("Chassis cover lock has been [cyborg.locked ? "engaged" : "released"]")
+					cyborg.logevent("Le verrou du chassis a été [cyborg.locked ? "activé" : "desactivé"]")
 
 		if("lawchannel")
 			cyborg.set_autosay()
@@ -108,8 +108,8 @@
 		if("alertPower")
 			if(cyborg.stat == CONSCIOUS)
 				if(!cyborg.cell || !cyborg.cell.charge)
-					cyborg.visible_message(span_notice("The power warning light on [span_name("[cyborg]")] flashes urgently."), \
-						"You announce you are operating in low power mode.")
+					cyborg.visible_message(span_notice("La lumière d'alèrte de charge de [span_name("[cyborg]")] clignote rapidement."), \
+						"Vous annoncez que vous n'avez plus beaucoup de charge.")
 					playsound(cyborg, 'sound/machines/buzz-two.ogg', 50, FALSE)
 
 		if("toggleSensors")

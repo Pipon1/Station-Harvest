@@ -14,7 +14,7 @@ export const NtosArcade = (props, context) => {
               <Grid.Column size={2}>
                 <Box m={1} />
                 <LabeledList>
-                  <LabeledList.Item label="Player Health">
+                  <LabeledList.Item label="Point de vie du joueur">
                     <ProgressBar
                       value={data.PlayerHitpoints}
                       minValue={0}
@@ -28,7 +28,7 @@ export const NtosArcade = (props, context) => {
                       {data.PlayerHitpoints}HP
                     </ProgressBar>
                   </LabeledList.Item>
-                  <LabeledList.Item label="Player Magic">
+                  <LabeledList.Item label="Magie du joueur">
                     <ProgressBar
                       value={data.PlayerMP}
                       minValue={0}
@@ -72,45 +72,45 @@ export const NtosArcade = (props, context) => {
             <Box my={1} mx={4} />
             <Button
               icon="fist-raised"
-              tooltip="Go in for the kill!"
+              tooltip="Allez, tuez les !"
               tooltipPosition="top"
               disabled={data.GameActive === 0 || data.PauseState === 1}
               onClick={() => act('Attack')}
-              content="Attack!"
+              content="Attaquez !"
             />
             <Button
               icon="band-aid"
-              tooltip="Heal yourself!"
+              tooltip="Soignez-vous !"
               tooltipPosition="top"
               disabled={data.GameActive === 0 || data.PauseState === 1}
               onClick={() => act('Heal')}
-              content="Heal!"
+              content="Soignez !"
             />
             <Button
               icon="magic"
-              tooltip="Recharge your magic!"
+              tooltip="Rechargez votre magie !"
               tooltipPosition="top"
               disabled={data.GameActive === 0 || data.PauseState === 1}
               onClick={() => act('Recharge_Power')}
-              content="Recharge!"
+              content="Rechargez !"
             />
           </Box>
           <Box>
             <Button
               icon="sync-alt"
-              tooltip="One more game couldn't hurt."
+              tooltip="Une partie de plus ne vous fera pas de mal."
               tooltipPosition="top"
               disabled={data.GameActive === 1}
               onClick={() => act('Start_Game')}
-              content="Begin Game"
+              content="Commencer la partie"
             />
             <Button
               icon="ticket-alt"
-              tooltip="Claim at your local Arcade Computer for Prizes!"
+              tooltip="Donner le à votre arcade locale pour gagner des prix !"
               tooltipPosition="top"
               disabled={data.GameActive === 1}
               onClick={() => act('Dispense_Tickets')}
-              content="Claim Tickets"
+              content="Recevoir des tickets"
             />
           </Box>
           <Box color={data.TicketCount >= 1 ? 'good' : 'normal'}>

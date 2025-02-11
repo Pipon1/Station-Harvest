@@ -15,8 +15,8 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 ))
 
 /obj/item/radio/headset
-	name = "radio headset"
-	desc = "An updated, modular intercom that fits over the head. Takes encryption keys."
+	name = "oreillette"
+	desc = "Un intercom modulaire et amélioré qui se fixe sur la tête. Prend des clés d'encryption."
 	icon_state = "headset"
 	inhand_icon_state = "headset"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
@@ -39,7 +39,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	overlay_mic_active = null
 
 /obj/item/radio/headset/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins putting \the [src]'s antenna up [user.p_their()] nose! It looks like [user.p_theyre()] trying to give [user.p_them()]self cancer!"))
+	user.visible_message(span_suicide("[user] commence à mettre l'antenne de [src] dans le nez de [user.p_their()] ! il semble que [user.p_theyre()] essaye de donner le cancer à [user.p_them()] !"))
 	return TOXLOSS
 
 /obj/item/radio/headset/examine(mob/user)
@@ -47,21 +47,21 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 	if(item_flags & IN_INVENTORY && loc == user)
 		// construction of frequency description
-		var/list/avail_chans = list("Use [RADIO_KEY_COMMON] for the currently tuned frequency")
+		var/list/avail_chans = list("Utilisez [RADIO_KEY_COMMON] pour accéder à la fréquence actuelle")
 		if(translate_binary)
-			avail_chans += "use [MODE_TOKEN_BINARY] for [MODE_BINARY]"
+			avail_chans += "Utilisez [MODE_TOKEN_BINARY] pour accéder à [MODE_BINARY]"
 		if(length(channels))
 			for(var/i in 1 to length(channels))
 				if(i == 1)
-					avail_chans += "use [MODE_TOKEN_DEPARTMENT] or [GLOB.channel_tokens[channels[i]]] for [lowertext(channels[i])]"
+					avail_chans += "Utilisez [MODE_TOKEN_DEPARTMENT] ou [GLOB.channel_tokens[channels[i]]] pour [lowertext(channels[i])]"
 				else
-					avail_chans += "use [GLOB.channel_tokens[channels[i]]] for [lowertext(channels[i])]"
-		. += span_notice("A small screen on the headset displays the following available frequencies:\n[english_list(avail_chans)].")
+					avail_chans += "Utilisez [GLOB.channel_tokens[channels[i]]] pour [lowertext(channels[i])]"
+		. += span_notice("Un petit écran sur l'affichage tête haute affiche les fréquences disponibles : \n[english_list(avail_chans)].")
 
 		if(command)
-			. += span_info("Alt-click to toggle the high-volume mode.")
+			. += span_info("Alt-click pour activer le mode haute-volume.")
 	else
-		. += span_notice("A small screen on the headset flashes, it's too small to read without holding or wearing the headset.")
+		. += span_notice("Un petit écran sur l'affichage tête haute clignote, il est trop petit pour être lu sans tenir ou porter l'oreillette.")
 
 /obj/item/radio/headset/Initialize(mapload)
 	. = ..()
@@ -120,8 +120,8 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	make_syndie()
 
 /obj/item/radio/headset/syndicate/alt //undisguised bowman with flash protection
-	name = "syndicate headset"
-	desc = "A syndicate headset that can be used to hear all radio frequencies. Protects ears from flashbangs."
+	name = "oreillette du syndicat"
+	desc = "Une oreillette du syndicat qui peut être utilisée pour entendre toutes les fréquences radio. Protège les oreilles des flashbangs."
 	icon_state = "syndie_headset"
 	worn_icon_state = "syndie_headset"
 
@@ -130,12 +130,12 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/radio/headset/syndicate/alt/leader
-	name = "team leader headset"
+	name = "oreillette du chef d'équipe"
 	command = TRUE
 
 /obj/item/radio/headset/syndicate/alt/psyker
-	name = "psychic headset"
-	desc = "A headset designed to boost psychic waves. Protects ears from flashbangs."
+	name = "oreillette psychique"
+	desc = "Une oreillette conçue pour amplifier les ondes psychiques. Protège les oreilles des flashbangs."
 	icon_state = "psyker_headset"
 	worn_icon_state = "syndie_headset"
 
@@ -152,15 +152,15 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	keyslot = /obj/item/encryptionkey/binary
 
 /obj/item/radio/headset/headset_sec
-	name = "security radio headset"
-	desc = "This is used by your elite security force."
+	name = "oreillette de sécurité"
+	desc = "Oreillette utilisée par les forces de sécurité."
 	icon_state = "sec_headset"
 	worn_icon_state = "sec_headset"
 	keyslot = /obj/item/encryptionkey/headset_sec
 
 /obj/item/radio/headset/headset_sec/alt
-	name = "security bowman headset"
-	desc = "This is used by your elite security force. Protects ears from flashbangs."
+	name = "oreillette de sécurité bowman"
+	desc = "Oreiilette utilisée par les forces de sécurité. Protège les oreilles des flashbangs."
 	icon_state = "sec_headset_alt"
 	worn_icon_state = "sec_headset_alt"
 
@@ -169,57 +169,57 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/radio/headset/headset_eng
-	name = "engineering radio headset"
-	desc = "When the engineers wish to chat like girls."
+	name = "oreillette d'ingénieurie"
+	desc = "Quand les ingénieurs veulent discuter comme des filles."
 	icon_state = "eng_headset"
 	worn_icon_state = "eng_headset"
 	keyslot = /obj/item/encryptionkey/headset_eng
 
 /obj/item/radio/headset/headset_rob
-	name = "robotics radio headset"
-	desc = "Made specifically for the roboticists, who cannot decide between departments."
+	name = "oreillette de robotique"
+	desc = "Fait spécifiquement pour les roboticistes, qui ne peuvent pas décider entre les départements."
 	icon_state = "rob_headset"
 	worn_icon_state = "rob_headset"
 	keyslot = /obj/item/encryptionkey/headset_rob
 
 /obj/item/radio/headset/headset_med
-	name = "medical radio headset"
-	desc = "A headset for the trained staff of the medbay."
+	name = "oreillette médicale"
+	desc = "Une oreillette pour le personnel formé de la zone-médicale."
 	icon_state = "med_headset"
 	worn_icon_state = "med_headset"
 	keyslot = /obj/item/encryptionkey/headset_med
 
 /obj/item/radio/headset/headset_sci
-	name = "science radio headset"
-	desc = "A sciency headset. Like usual."
+	name = "oreillette scientifique"
+	desc = "Un oreillette scientifique. Comme d'habitude."
 	icon_state = "sci_headset"
 	worn_icon_state = "sci_headset"
 	keyslot = /obj/item/encryptionkey/headset_sci
 
 /obj/item/radio/headset/headset_medsci
-	name = "medical research radio headset"
-	desc = "A headset that is a result of the mating between medical and science."
+	name = "oreillette de recherche médicale"
+	desc = "Une oreillette qui est le résultat de l'accouplement entre la médecine et la science."
 	icon_state = "medsci_headset"
 	worn_icon_state = "medsci_headset"
 	keyslot = /obj/item/encryptionkey/headset_medsci
 
 /obj/item/radio/headset/headset_srvsec
-	name = "law and order headset"
-	desc = "In the criminal justice headset, the encryption key represents two separate but equally important groups. Sec, who investigate crime, and Service, who provide services. These are their comms."
+	name = "oreillette loi et ordre"
+	desc = "Dans l'oerillette de justice criminelle, la clé d'encryption représente deux groupes distincts mais tout aussi importants. La sécurité, qui enquête sur les crimes, et le service, qui fournit des services. Ce sont leurs communications."
 	icon_state = "srvsec_headset"
 	worn_icon_state = "srvsec_headset"
 	keyslot = /obj/item/encryptionkey/headset_srvsec
 
 /obj/item/radio/headset/headset_srvmed
-	name = "psychology headset"
-	desc = "A headset allowing the wearer to communicate with medbay and service."
+	name = "oreillette de psychologie"
+	desc = "Une oreillette permettant à son porteur de communiquer avec la zone médicale et le service."
 	icon_state = "med_headset"
 	worn_icon_state = "med_headset"
 	keyslot = /obj/item/encryptionkey/headset_srvmed
 
 /obj/item/radio/headset/headset_com
-	name = "command radio headset"
-	desc = "A headset with a commanding channel."
+	name = "oreillette de commandement"
+	desc = "Une oreillette avec accès au canal de commandement."
 	icon_state = "com_headset"
 	worn_icon_state = "com_headset"
 	keyslot = /obj/item/encryptionkey/headset_com
@@ -228,15 +228,15 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	command = TRUE
 
 /obj/item/radio/headset/heads/captain
-	name = "\proper the captain's headset"
-	desc = "The headset of the king."
+	name = "\proper oreillette du capitaine"
+	desc = "L'oreillette du roi."
 	icon_state = "com_headset"
 	worn_icon_state = "com_headset"
 	keyslot = /obj/item/encryptionkey/heads/captain
 
 /obj/item/radio/headset/heads/captain/alt
-	name = "\proper the captain's bowman headset"
-	desc = "The headset of the boss. Protects ears from flashbangs."
+	name = "\proper oreillette du capitaine bowman"
+	desc = "L'oreillette du roi. Protège les oreilles des flashbangs."
 	icon_state = "com_headset_alt"
 	worn_icon_state = "com_headset_alt"
 
@@ -245,22 +245,22 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/radio/headset/heads/rd
-	name = "\proper the research director's headset"
-	desc = "Headset of the fellow who keeps society marching towards technological singularity."
+	name = "\proper oreillette du directeur de la recherche"
+	desc = "Oreillette de la personne qui fait avancer la société vers la singularité technologique."
 	icon_state = "com_headset"
 	worn_icon_state = "com_headset"
 	keyslot = /obj/item/encryptionkey/heads/rd
 
 /obj/item/radio/headset/heads/hos
-	name = "\proper the head of security's headset"
-	desc = "The headset of the man in charge of keeping order and protecting the station."
+	name = "\proper oreillette du chef de la sécurité"
+	desc = "L'oreillette de la personne en charge de maintenir l'ordre et de protéger la station."
 	icon_state = "com_headset"
 	worn_icon_state = "com_headset"
 	keyslot = /obj/item/encryptionkey/heads/hos
 
 /obj/item/radio/headset/heads/hos/alt
-	name = "\proper the head of security's bowman headset"
-	desc = "The headset of the man in charge of keeping order and protecting the station. Protects ears from flashbangs."
+	name = "\proper oreillette du chef de la sécurité bowman"
+	desc = "L'oreillette de la personne en charge de maintenir l'ordre et de protéger la station. Protège les oreilles des flashbangs."
 	icon_state = "com_headset_alt"
 	worn_icon_state = "com_headset_alt"
 
@@ -269,43 +269,43 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/radio/headset/heads/ce
-	name = "\proper the chief engineer's headset"
-	desc = "The headset of the guy in charge of keeping the station powered and undamaged."
+	name = "\proper oreillette du chef de l'ingénierie"
+	desc = "L'oreillette de la personne en charge de maintenir la station alimentée et non endommagée."
 	icon_state = "com_headset"
 	worn_icon_state = "com_headset"
 	keyslot = /obj/item/encryptionkey/heads/ce
 
 /obj/item/radio/headset/heads/cmo
-	name = "\proper the chief medical officer's headset"
-	desc = "The headset of the highly trained medical chief."
+	name = "\proper l'oreillette du chef médical"
+	desc = "L'oreillette d'un chef médical hautement qualifié."
 	icon_state = "com_headset"
 	worn_icon_state = "com_headset"
 	keyslot = /obj/item/encryptionkey/heads/cmo
 
 /obj/item/radio/headset/heads/hop
-	name = "\proper the head of personnel's headset"
-	desc = "The headset of the guy who will one day be captain."
+	name = "\proper l'oreillette du chef du personnel"
+	desc = "L'oreillette de la personne qui sera un jour capitaine."
 	icon_state = "com_headset"
 	worn_icon_state = "com_headset"
 	keyslot = /obj/item/encryptionkey/heads/hop
 
 /obj/item/radio/headset/heads/qm
-	name = "\proper the quartermaster's headset"
-	desc = "The headset of the guy who runs the cargo department."
+	name = "\proper oreillette du quartier-maître"
+	desc = "L'oreillette de la personne qui gère le département de la logistique."
 	icon_state = "com_headset"
 	worn_icon_state = "com_headset"
 	keyslot = /obj/item/encryptionkey/heads/qm
 
 /obj/item/radio/headset/headset_cargo
-	name = "supply radio headset"
-	desc = "A headset used by the QM's slaves."
+	name = "oreillette de la logistique"
+	desc = "Une oreillette utilisée par les esclaves du QM."
 	icon_state = "cargo_headset"
 	worn_icon_state = "cargo_headset"
 	keyslot = /obj/item/encryptionkey/headset_cargo
 
 /obj/item/radio/headset/headset_cargo/mining
-	name = "mining radio headset"
-	desc = "Headset used by shaft miners."
+	name = "oreillette de mineur"
+	desc = "Une oreillette utilisée par les mineurs."
 	icon_state = "mine_headset"
 	worn_icon_state = "mine_headset"
 	// "puts the antenna down" while the headset is off
@@ -314,15 +314,15 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	keyslot = /obj/item/encryptionkey/headset_mining
 
 /obj/item/radio/headset/headset_srv
-	name = "service radio headset"
-	desc = "Headset used by the service staff, tasked with keeping the station full, happy and clean."
+	name = "oreillette du service"
+	desc = "Oreiilette utilisée par le personnel de service, chargé de garder la station pleine, heureuse et propre."
 	icon_state = "srv_headset"
 	worn_icon_state = "srv_headset"
 	keyslot = /obj/item/encryptionkey/headset_service
 
 /obj/item/radio/headset/headset_cent
-	name = "\improper CentCom headset"
-	desc = "A headset used by the upper echelons of Nanotrasen."
+	name = "\improper oreillette de CentCom"
+	desc = "Une oreillette utilisée par les échelons supérieurs de Nanotrasen."
 	icon_state = "cent_headset"
 	worn_icon_state = "cent_headset"
 	keyslot = /obj/item/encryptionkey/headset_cent
@@ -336,8 +336,8 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	keyslot2 = /obj/item/encryptionkey/heads/captain
 
 /obj/item/radio/headset/headset_cent/alt
-	name = "\improper CentCom bowman headset"
-	desc = "A headset especially for emergency response personnel. Protects ears from flashbangs."
+	name = "\improper oreillette de CentCom bowman"
+	desc = "Une oreillette spécialement conçue pour le personnel de réponse d'urgence. Protège les oreilles des flashbangs."
 	icon_state = "cent_headset_alt"
 	worn_icon_state = "cent_headset_alt"
 	keyslot2 = null
@@ -347,12 +347,12 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/radio/headset/silicon/pai
-	name = "\proper mini Integrated Subspace Transceiver "
+	name = "\proper mini Transmetteur Subspatial Intégré "
 	subspace_transmission = FALSE
 
 
 /obj/item/radio/headset/silicon/ai
-	name = "\proper Integrated Subspace Transceiver "
+	name = "\proper Transmetteur Subspatial Intégré "
 	keyslot2 = new /obj/item/encryptionkey/ai
 	command = TRUE
 
@@ -371,10 +371,10 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 			keyslot2 = null
 
 		recalculateChannels()
-		to_chat(user, span_notice("You pop out the encryption keys in the headset."))
+		to_chat(user, span_notice("Vous placez la clés d'encryption dans l'oreillette."))
 
 	else
-		to_chat(user, span_warning("This headset doesn't have any unique encryption keys! How useless..."))
+		to_chat(user, span_warning("Cette oreillette n'a pas de clé d'encryption unique! Quelle inutilité..."))
 	tool.play_tool_sound(src, 10)
 	return TRUE
 
@@ -383,7 +383,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 
 	if(istype(W, /obj/item/encryptionkey))
 		if(keyslot && keyslot2)
-			to_chat(user, span_warning("The headset can't hold another key!"))
+			to_chat(user, span_warning("Cette oreillette ne peut pas contenir une autre clé !"))
 			return
 
 		if(!keyslot)
@@ -441,4 +441,4 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		return
 	if (command)
 		use_command = !use_command
-		to_chat(user, span_notice("You toggle high-volume mode [use_command ? "on" : "off"]."))
+		to_chat(user, span_notice("Vous changez l'état du mode volume fort [use_command ? "on" : "off"]."))

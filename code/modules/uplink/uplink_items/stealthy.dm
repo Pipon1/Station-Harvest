@@ -56,7 +56,7 @@
 			The pen holds one dose of the mixture, and can be refilled with any chemicals. Note that before the target \
 			falls asleep, they will be able to move and act."
 	item = /obj/item/pen/sleepy
-	cost = 4
+	cost = 2
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
 
@@ -91,6 +91,6 @@
 	of bolts, but takes time to automatically recharge after each shot."
 	item = /obj/item/gun/energy/recharge/ebow
 	progression_minimum = 30 MINUTES
-	cost = 10
+	cost = 6
 	surplus = 50
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)

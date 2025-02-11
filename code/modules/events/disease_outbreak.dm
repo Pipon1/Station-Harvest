@@ -20,13 +20,13 @@
 #define ADV_SPREAD_MID 85
 
 /datum/round_event_control/disease_outbreak
-	name = "Disease Outbreak: Classic"
+	name = "Épidémie : Classique"
 	typepath = /datum/round_event/disease_outbreak
 	max_occurrences = 1
 	min_players = 10
 	weight = 5
 	category = EVENT_CATEGORY_HEALTH
-	description = "A 'classic' virus will infect some members of the crew."
+	description = "Un virus 'classique' va infecter quelques membres de l'équipage."
 	min_wizard_trigger_potency = 2
 	max_wizard_trigger_potency = 6
 	admin_setup = list(/datum/event_admin_setup/minimum_candidate_requirement/disease_outbreak, /datum/event_admin_setup/listed_options/disease_outbreak)
@@ -61,7 +61,7 @@
 
 ///Handles checking and alerting admins about the number of valid candidates
 /datum/event_admin_setup/minimum_candidate_requirement/disease_outbreak
-	output_text = "There are no candidates eligible to recieve a disease!"
+	output_text = "Il n'y a aucune personne en mesure de recevoir une maladie !"
 
 /datum/event_admin_setup/minimum_candidate_requirement/disease_outbreak/count_candidates()
 	var/datum/round_event_control/disease_outbreak/disease_control = event_control
@@ -71,9 +71,9 @@
 
 ///Handles actually selecting whicch disease will spawn.
 /datum/event_admin_setup/listed_options/disease_outbreak
-	input_text = "Select a specific disease? Warning: Some are EXTREMELY dangerous."
-	normal_run_option = "Random Classic Disease (Safe)"
-	special_run_option = "Entirely Random Disease (Dangerous)"
+	input_text = "Choisir une maladie spécifique ? Attention : Certaines sont TRÈS dangereuses."
+	normal_run_option = "Maladie 'classique' aléatoire (sûr)"
+	special_run_option = "Maladie entièrement aléatoire (dangereux)"
 
 /datum/event_admin_setup/listed_options/disease_outbreak/get_list()
 	return subtypesof(/datum/disease)
@@ -96,7 +96,7 @@
 	var/list/afflicted = list()
 
 /datum/round_event/disease_outbreak/announce(fake)
-	priority_announce("Confirmed outbreak of level 7 viral biohazard aboard [station_name()]. All personnel must contain the outbreak.", "[illness_type] Alert", ANNOUNCER_OUTBREAK7)
+	priority_announce("Épidémie de niveau 7-Danger-Biologique-Viral confirmée à bord de [station_name()]. Tout le personnel doit prendre les mésures nécessaires au confinement de l'épidémie.", "Alerte [illness_type]", ANNOUNCER_OUTBREAK7)
 
 /datum/round_event/disease_outbreak/setup()
 	announce_when = ADV_ANNOUNCE_DELAY
@@ -129,8 +129,8 @@
 	while(length(afflicted))
 		victim = pick_n_take(afflicted)
 		if(victim.ForceContractDisease(new_disease, FALSE))
-			message_admins("Event triggered: Disease Outbreak - [new_disease.name] starting with patient zero [ADMIN_LOOKUPFLW(victim)]!")
-			log_game("Event triggered: Disease Outbreak - [new_disease.name] starting with patient zero [key_name(victim)].")
+			message_admins("Événement déclanché : Épidémie - [new_disease.name] a commencé avec le patient zero : [ADMIN_LOOKUPFLW(victim)]!")
+			log_game("Événement déclanché : Épidémie - [new_disease.name] a commencé avec le patient zero : [key_name(victim)].")
 			announce_to_ghosts(victim)
 			return
 		CHECK_TICK //don't lag the server to death
@@ -138,13 +138,13 @@
 		log_game("Event Disease Outbreak: Classic attempted to start, but failed.")
 
 /datum/round_event_control/disease_outbreak/advanced
-	name = "Disease Outbreak: Advanced"
+	name = "Épidémie : Avancée"
 	typepath = /datum/round_event/disease_outbreak/advanced
 	category = EVENT_CATEGORY_HEALTH
 	weight = 15
 	min_players = 35 // To avoid shafting lowpop
 	earliest_start = 15 MINUTES // give the chemist a chance
-	description = "An 'advanced' disease will infect some members of the crew."
+	description = "Une maladie 'avancée' va infecter quelques membres d'équipage."
 	min_wizard_trigger_potency = 2
 	max_wizard_trigger_potency = 6
 	admin_setup = list(
@@ -160,35 +160,35 @@
  */
 
 /datum/event_admin_setup/listed_options/disease_outbreak_advanced
-	input_text = "Pick a severity!"
-	normal_run_option = "Random Severity"
+	input_text = "Choisissez la sévérité !"
+	normal_run_option = "Sévérité aléatoire"
 
 /datum/event_admin_setup/listed_options/disease_outbreak_advanced/get_list()
-	return list("Medium", "Harmful", "Dangerous")
+	return list("Modérée", "Nocive", "Dangereuse")
 
 /datum/event_admin_setup/listed_options/disease_outbreak_advanced/apply_to_event(datum/round_event/disease_outbreak/advanced/event)
 	switch(chosen)
-		if("Medium")
+		if("Modérée")
 			event.requested_severity = ADV_DISEASE_MEDIUM
-		if("Harmful")
+		if("Nocive")
 			event.requested_severity = ADV_DISEASE_HARMFUL
-		if("Dangerous")
+		if("Dangereuse")
 			event.requested_severity = ADV_DISEASE_DANGEROUS
 		else
 			event.requested_severity = null
 
 /datum/event_admin_setup/input_number/disease_outbreak_advanced
-	input_text = "How many symptoms do you want your virus to have?"
+	input_text = "Combien de symptomes voulez-vous que votre virus ait ?"
 	default_value = 4
 	max_value = 7
 	min_value = 1
 
 /datum/event_admin_setup/input_number/disease_outbreak_advanced/prompt_admins()
-	var/customize_number_of_symptoms = tgui_alert(usr, "Select number of symptoms?", event_control.name, list("Custom", "Random", "Cancel"))
+	var/customize_number_of_symptoms = tgui_alert(usr, "Sélectionnez le nombre de symptomes.", event_control.name, list("Personnalisé", "Aléatoire", "Annuler"))
 	switch(customize_number_of_symptoms)
-		if("Custom")
+		if("Personnalisé")
 			return ..()
-		if("Random")
+		if("Aléatoire")
 			chosen_value = null
 		else
 			return ADMIN_CANCEL_EVENT
@@ -240,17 +240,17 @@
 	while(length(afflicted))
 		victim = pick_n_take(afflicted)
 		if(victim.ForceContractDisease(advanced_disease, FALSE))
-			message_admins("Event triggered: Disease Outbreak: Advanced - starting with patient zero [ADMIN_LOOKUPFLW(victim)]! Details: [advanced_disease.admin_details()] sp:[advanced_disease.spread_flags] ([advanced_disease.spread_text])")
-			log_game("Event triggered: Disease Outbreak: Advanced - starting with patient zero [key_name(victim)]. Details: [advanced_disease.admin_details()] sp:[advanced_disease.spread_flags] ([advanced_disease.spread_text])")
-			log_virus("Disease Outbreak: Advanced has triggered a custom virus outbreak of [advanced_disease.admin_details()] in [victim]!")
+			message_admins("Événement déclanché : Épidémie : Avancée. Patient zero : [ADMIN_LOOKUPFLW(victim)]. Détails : [advanced_disease.admin_details()] sp:[advanced_disease.spread_flags] ([advanced_disease.spread_text])")
+			log_game("Événement déclanché : Épidémie : Avancée. Patient zero : [key_name(victim)]. Détails : [advanced_disease.admin_details()] sp:[advanced_disease.spread_flags] ([advanced_disease.spread_text])")
+			log_virus("Épidémie : Avancée a déclanché l'épidémie du virus personnalisé : [advanced_disease.admin_details()]. Patient zero : [victim].")
 			announce_to_ghosts(victim)
 			return
 		CHECK_TICK //don't lag the server to death
 	if(isnull(victim))
-		log_game("Event Disease Outbreak: Advanced attempted to start, but failed.")
+		log_game("Événement Épidémie : Avancée a essayé de se lancer mais a échoué.")
 
 /datum/disease/advance/random/event
-	name = "Event Disease"
+	name = "Épidémie"
 	copy_type = /datum/disease/advance
 
 /datum/round_event/disease_outbreak/advance/setup()
@@ -307,7 +307,7 @@
 		var/datum/symptom/chosen_symptom = pick_n_take(possible_symptoms)
 
 		if(!chosen_symptom)
-			stack_trace("Advanced disease could not pick a symptom!")
+			stack_trace("La maladie avancée n'a pas pu prendre un symptome !")
 			return
 
 		//Checks if the chosen symptom is severe enough to meet requested severity. If not, pick a new symptom.
@@ -364,10 +364,10 @@
 
 	//If we have an advanced (high stage) disease, add it to the name.
 	if(properties["stage_rate"] >= 7)
-		name = "Advanced [name]"
+		name = "[name] Avancée"
 
 	//If severe enough, alert immediately on scanners
-	if(severity == "Dangerous" || severity == "BIOHAZARD")
+	if(severity == "Dangerereuse" || severity == "DANGER-BIOLOGIQUE")
 		visibility_flags &= ~HIDDEN_SCANNER
 		set_spread(DISEASE_SPREAD_CONTACT_SKIN)
 
@@ -395,13 +395,13 @@
 	switch(spread_id)
 		if(DISEASE_SPREAD_CONTACT_FLUIDS)
 			spread_flags = DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_FLUIDS
-			spread_text = "Fluids"
+			spread_text = "fluides"
 		if(DISEASE_SPREAD_CONTACT_SKIN)
 			spread_flags = DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_FLUIDS | DISEASE_SPREAD_CONTACT_SKIN
-			spread_text = "Skin contact"
+			spread_text = "contact de la peau"
 		if(DISEASE_SPREAD_AIRBORNE)
 			spread_flags = DISEASE_SPREAD_BLOOD | DISEASE_SPREAD_CONTACT_FLUIDS | DISEASE_SPREAD_CONTACT_SKIN | DISEASE_SPREAD_AIRBORNE
-			spread_text = "Respiration"
+			spread_text = "respiration"
 
 /**
  * Determine the cure

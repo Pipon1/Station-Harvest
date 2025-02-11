@@ -37,7 +37,7 @@
 	else
 		M.visible_message(span_danger("[user] attempts to force [M] to [apply_method] [src]."), \
 							span_userdanger("[user] attempts to force you to [apply_method] [src]."))
-		if(!do_after(user, CHEM_INTERACT_DELAY(3 SECONDS, user), M))
+		if(!do_after(user, CHEM_INTERACT_DELAY(2 SECONDS, user), M))
 			return FALSE
 		M.visible_message(span_danger("[user] forces [M] to [apply_method] [src]."), \
 							span_userdanger("[user] forces you to [apply_method] [src]."))
@@ -227,12 +227,6 @@
 	icon_state = "pill14"
 	rename_with_volume = TRUE
 
-/obj/item/reagent_containers/pill/nosleeppill
-	name = "modafinil pill"
-	desc = "Talk to your healthcare provider immediately if your sleeps become more frequent."
-	list_reagents = list(/datum/reagent/medicine/modafinil = 5)
-	icon_state = "pill14"
-	rename_with_volume = TRUE
 //////////////////////////////////////// drugs
 /obj/item/reagent_containers/pill/zoom
 	name = "yellow pill"

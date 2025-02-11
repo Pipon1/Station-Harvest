@@ -1,12 +1,12 @@
 /datum/round_event_control/stray_meteor
-	name = "Stray Meteor"
+	name = "Météore errant"
 	typepath = /datum/round_event/stray_meteor
 	weight = 15 //Number subject to change based on how often meteors actually collide with the station
 	min_players = 15
 	max_occurrences = 3
 	earliest_start = 20 MINUTES
 	category = EVENT_CATEGORY_SPACE
-	description = "Throw a random meteor somewhere near the station."
+	description = "Envoie un météore quelque part sur la station."
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 7
 	admin_setup = list(/datum/event_admin_setup/listed_options/stray_meteor)
@@ -30,10 +30,10 @@
 	if(GLOB.meteor_list)
 		var/obj/effect/meteor/detected_meteor = pick(GLOB.meteor_list) //If we accidentally pick a meteor not spawned by the event, we're still technically not wrong
 		var/sensor_name = detected_meteor.signature
-		priority_announce("Our [sensor_name] sensors have detected an incoming signature approaching [GLOB.station_name]. Please brace for impact.", "Meteor Alert")
+		priority_announce("Nos senseurs de [sensor_name] ont détectés une signature approchant de[GLOB.station_name]. Préparez vous à l'impact.", "Alerte collision")
 
 /datum/event_admin_setup/listed_options/stray_meteor
-	input_text = "Select a meteor type?"
+	input_text = "Choisir un type de météore ?"
 	normal_run_option = "Random Meteor"
 
 /datum/event_admin_setup/listed_options/stray_meteor/get_list()

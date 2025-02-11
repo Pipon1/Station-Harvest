@@ -1,5 +1,5 @@
 /datum/round_event_control/space_ninja
-	name = "Spawn Space Ninja"
+	name = "Spawn ninja de l'espace"
 	typepath = /datum/round_event/ghost_role/space_ninja
 	max_occurrences = 1
 	weight = 10
@@ -7,7 +7,7 @@
 	min_players = 20
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_INVASION
-	description = "A space ninja infiltrates the station."
+	description = "Un ninja de l'espace infiltrant la station."
 
 /datum/round_event/ghost_role/space_ninja
 	minimum_required = 1
@@ -31,8 +31,8 @@
 	ninja.key = key
 	ninja.mind.add_antag_datum(/datum/antagonist/ninja)
 	spawned_mobs += ninja
-	message_admins("[ADMIN_LOOKUPFLW(ninja)] has been made into a space ninja by an event.")
-	ninja.log_message("was spawned as a ninja by an event.", LOG_GAME)
+	message_admins("[ADMIN_LOOKUPFLW(ninja)] a été mis en tant que ninja de l'espace par un événement.")
+	ninja.log_message("a été mis en tant que ninja de l'espace par un événement.", LOG_GAME)
 
 	return SUCCESSFUL_SPAWN
 

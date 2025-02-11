@@ -34,9 +34,9 @@ const PaperPublishing = (props, context) => {
   } = data;
   return (
     <>
-      <Section title="Submission Form">
+      <Section title="Formulaire de publication">
         <LabeledList grow>
-          <LabeledList.Item label="Title">
+          <LabeledList.Item label="Titre">
             <Input
               fluid
               value={title}
@@ -47,7 +47,7 @@ const PaperPublishing = (props, context) => {
               }
             />
           </LabeledList.Item>
-          <LabeledList.Item label="Principal Author">
+          <LabeledList.Item label="Auteur principal">
             <Input
               fluid
               value={author}
@@ -58,10 +58,10 @@ const PaperPublishing = (props, context) => {
               }
             />
             <Button selected={etAlia} onClick={() => act('et_alia')}>
-              {'Multiple Authors'}
+              {'Plusieurs auteurs'}
             </Button>
           </LabeledList.Item>
-          <LabeledList.Item label="Abstract">
+          <LabeledList.Item label="Abstrait">
             <Input
               fluid
               value={abstract}
@@ -72,7 +72,7 @@ const PaperPublishing = (props, context) => {
               }
             />
           </LabeledList.Item>
-          <LabeledList.Item label="Selected File">
+          <LabeledList.Item label="Fichiers séléctionnés">
             <Stack>
               <Stack.Item>
                 <Dropdown
@@ -89,13 +89,13 @@ const PaperPublishing = (props, context) => {
               <Stack.Item align="center">
                 <Tooltip
                   position="left"
-                  content="The selected file containing experimental data for our paper. Must be present in the HDD to be accesible. Transfer files with the File Manager program.">
+                  content="Le fichier qui contient des données expérimentales pour notre article. Doit être présent dans le disque dur pour être accessible. Transférez les fichiers avec le programme Gestionnaire de fichiers.">
                   <Icon size={1.15} name="info-circle" />
                 </Tooltip>
               </Stack.Item>
             </Stack>
           </LabeledList.Item>
-          <LabeledList.Item label="Selected Experiment">
+          <LabeledList.Item label="Equipement séléctionné">
             <Stack>
               <Stack.Item>
                 <Dropdown
@@ -112,13 +112,13 @@ const PaperPublishing = (props, context) => {
               <Stack.Item align="center">
                 <Tooltip
                   position="left"
-                  content="The topic we want to publish our paper on. Different topics unlock different technologies and possible partners.">
+                  content="Le sujet sur lequel nous voulons publier notre article. Différents sujets débloquent différentes technologies et partenaires possibles.">
                   <Icon size={1.15} name="info-circle" />
                 </Tooltip>
               </Stack.Item>
             </Stack>
           </LabeledList.Item>
-          <LabeledList.Item label="Selected Tier">
+          <LabeledList.Item label="Niveaux séléctionnés">
             <Stack>
               <Stack.Item>
                 <Dropdown
@@ -135,13 +135,13 @@ const PaperPublishing = (props, context) => {
               <Stack.Item align="center">
                 <Tooltip
                   position="left"
-                  content="The tier we want to publish on. Higher tiers can confer better rewards but means our data will be judged more harshly.">
+                  content="Le niveau sur lequel nous voulons publier. Les niveaux plus élevés peuvent conférer de meilleures récompenses, mais signifie que nos données seront jugées plus sévèrement.">
                   <Icon size={1.15} name="info-circle" />
                 </Tooltip>
               </Stack.Item>
             </Stack>
           </LabeledList.Item>
-          <LabeledList.Item label="Selected Partner">
+          <LabeledList.Item label="Partenaires séléctionnés">
             <Stack>
               <Stack.Item>
                 <Dropdown
@@ -158,7 +158,7 @@ const PaperPublishing = (props, context) => {
               <Stack.Item align="center">
                 <Tooltip
                   position="left"
-                  content="Which organization to partner with. We can obtain research boosts in techs related to the partner's interests.">
+                  content="Les organisations avec lesquelles nous pouvons collaborer. Nous pouvons obtenir des boosts de recherche dans les technologies liées aux intérêts du partenaire.">
                   <Icon size={1.15} name="info-circle" />
                 </Tooltip>
               </Stack.Item>
@@ -166,24 +166,24 @@ const PaperPublishing = (props, context) => {
           </LabeledList.Item>
         </LabeledList>
       </Section>
-      <Section title="Expected Results" key="rewards">
+      <Section title="Résultats attendu" key="rewards">
         <Stack fill>
           <Stack.Item grow>
             <Tooltip
               position="top"
-              content="How much will our relation improve with the particular partner. Cooperation will be used to unlock boosts.">
+              content="De combien notre relation s'améliorera-t-elle avec le partenaire. La coopération sera utilisée pour débloquer des boosts.">
               <Icon size={1.15} name="info-circle" />
             </Tooltip>
-            {' Cooperation: '}
+            {' Coopération: '}
             <BlockQuote>{gains[coopIndex - 1]}</BlockQuote>
           </Stack.Item>
           <Stack.Item grow>
             <Tooltip
               position="top"
-              content="How much grant will we be endowed with upon the publication of this paper.">
+              content="De combien le don sera-t-il à la sortie de l'article.">
               <Icon size={1.15} name="info-circle" />
             </Tooltip>
-            {' Funding: '}
+            {' Donnation : '}
             <BlockQuote>{gains[fundingIndex - 1]}</BlockQuote>
           </Stack.Item>
         </Stack>
@@ -193,7 +193,7 @@ const PaperPublishing = (props, context) => {
           textAlign="center"
           fluid
           onClick={() => act('publish')}
-          content="Publish Paper"
+          content="Publier l'article"
         />
       </Section>
     </>
@@ -212,26 +212,26 @@ const PaperBrowser = (props, context) => {
         title={paper['title']}>
         <Section>
           <LabeledList>
-            <LabeledList.Item label="Topic">
+            <LabeledList.Item label="Sujet">
               {paper['experimentName'] + ' - ' + paper['tier']}
             </LabeledList.Item>
-            <LabeledList.Item label="Author">
+            <LabeledList.Item label="Auteur">
               {paper['author'] + (paper.etAlia ? ' et al.' : '')}
             </LabeledList.Item>
-            <LabeledList.Item label="Partner">
+            <LabeledList.Item label="Partenaire">
               {paper['partner']}
             </LabeledList.Item>
-            <LabeledList.Item label="Yield">
+            <LabeledList.Item label="Résultat">
               <LabeledList>
-                <LabeledList.Item label="Cooperation">
+                <LabeledList.Item label="Coopération">
                   {paper['gains'][coopIndex - 1]}
                 </LabeledList.Item>
-                <LabeledList.Item label="Funding">
+                <LabeledList.Item label="Dons">
                   {paper['gains'][fundingIndex - 1]}
                 </LabeledList.Item>
               </LabeledList>
             </LabeledList.Item>
-            <LabeledList.Item label="Abstract">
+            <LabeledList.Item label="Abstrait">
               {paper['abstract']}
             </LabeledList.Item>
           </LabeledList>
@@ -277,7 +277,7 @@ const PartnersBrowser = (props, context) => {
   } = data;
   return partnersInformation.map((partner) => (
     <Section title={partner.name} key={partner.path}>
-      <Collapsible title={'Relations: ' + relations[partner.path]}>
+      <Collapsible title={'Relations : ' + relations[partner.path]}>
         <LabeledList>
           <LabeledList.Item label="Description">
             {partner.flufftext}
@@ -285,25 +285,25 @@ const PartnersBrowser = (props, context) => {
           <LabeledList.Item label="Relations">
             {relations[partner.path]}
           </LabeledList.Item>
-          <LabeledList.Item label="Cooperation Bonus">
+          <LabeledList.Item label="Bonus de coopération">
             {partner.multipliers[coopIndex - 1] + 'x'}
           </LabeledList.Item>
-          <LabeledList.Item label="Funding Bonus">
+          <LabeledList.Item label="Bonus de dons">
             {partner.multipliers[fundingIndex - 1] + 'x'}
           </LabeledList.Item>
-          <LabeledList.Item label="Accepted Experiments">
+          <LabeledList.Item label="Expériences acceptées">
             {partner.acceptedExperiments.map((experiment_name) => (
               <Box key={experiment_name}>{experiment_name}</Box>
             ))}
           </LabeledList.Item>
-          <LabeledList.Item label="Technology Sharing">
+          <LabeledList.Item label="Partage de technologie">
             <Table>
               {partner.boostedNodes.map((node) => (
                 <TableRow key={node.id}>
                   <TableCell>
                     {visibleNodes.includes(node.id)
                       ? node.name
-                      : 'Unknown Technology'}
+                      : 'Technologie inconnue'}
                   </TableCell>
                   <TableCell>
                     <Button
@@ -313,8 +313,8 @@ const PartnersBrowser = (props, context) => {
                       disabled={
                         !purchaseableBoosts[partner.path].includes(node.id)
                       }
-                      content="Purchase"
-                      tooltip={'Discount: ' + node.discount}
+                      content="Acheter"
+                      tooltip={'Réduction : ' + node.discount}
                       onClick={() =>
                         act('purchase_boost', {
                           purchased_boost: node.id,
@@ -339,8 +339,8 @@ export const NtosScipaperContent = (props, context) => {
   return (
     <>
       {!has_techweb && (
-        <Section title="No techweb detected!" key="rewards">
-          Please sync this application to a valid techweb to upload progress!
+        <Section title="Aucune connexion !" key="rewards">
+          S'il vous plaît, connectez-vous à un Techweb valide pour télécharger !
         </Section>
       )}
       <Tabs key="navigation">
@@ -351,7 +351,7 @@ export const NtosScipaperContent = (props, context) => {
               new_tab: 1,
             })
           }>
-          {'Publish Papers'}
+          {'Publier l\'article'}
         </Tabs.Tab>
         <Tabs.Tab
           selected={currentTab === 2}
@@ -360,7 +360,7 @@ export const NtosScipaperContent = (props, context) => {
               new_tab: 2,
             })
           }>
-          {'View Previous Publications'}
+          {'Voir les publications précédentes'}
         </Tabs.Tab>
         <Tabs.Tab
           selected={currentTab === 3}
@@ -369,7 +369,7 @@ export const NtosScipaperContent = (props, context) => {
               new_tab: 3,
             })
           }>
-          {'View Available Experiments'}
+          {'Voir les expériences disponibles'}
         </Tabs.Tab>
         <Tabs.Tab
           selected={currentTab === 4}
@@ -378,7 +378,7 @@ export const NtosScipaperContent = (props, context) => {
               new_tab: 4,
             })
           }>
-          {'View Scientific Partners'}
+          {'Voir les partenaires disponibles'}
         </Tabs.Tab>
       </Tabs>
       {currentTab === 1 && <PaperPublishing />}

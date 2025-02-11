@@ -11,7 +11,7 @@
  * paper and getting rid of that crashing bug
  */
 /obj/item/paper
-	name = "paper"
+	name = "papier"
 	gender = NEUTER
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper"

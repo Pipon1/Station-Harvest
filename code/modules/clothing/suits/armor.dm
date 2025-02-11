@@ -29,15 +29,15 @@
 		allowed = GLOB.security_vest_allowed
 
 /obj/item/clothing/suit/armor/vest
-	name = "armor vest"
-	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
+	name = "gilet pare-balles"
+	desc = "Un gilet pare-balles de type I qui offre une protection décente contre la plupart des types de dégâts."
 	icon_state = "armoralt"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back/armorvest
 
 /obj/item/clothing/suit/armor/vest/alt
-	desc = "A Type I armored vest that provides decent protection against most types of damage."
+	desc = "Un gillet pare-balles de type I qui offre une protection décente contre la plupart des types de dégâts."
 	icon_state = "armor"
 	inhand_icon_state = "armor"
 
@@ -45,8 +45,8 @@
 	icon_state = "armor_sec"
 
 /obj/item/clothing/suit/armor/vest/marine
-	name = "tactical armor vest"
-	desc = "A set of the finest mass produced, stamped plasteel armor plates, containing an environmental protection unit for all-condition door kicking."
+	name = "un gilet pare-balles tactique"
+	desc = "Un set de plaques d'armure en plastacier estampé, contenant une unité de protection environnementale pour enfoncer les portes dans toutes les conditions."
 	icon_state = "marine_command"
 	inhand_icon_state = "armor"
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
@@ -69,42 +69,41 @@
 	wound = 20
 
 /obj/item/clothing/suit/armor/vest/marine/security
-	name = "large tactical armor vest"
+	name = "gillet pare-balles tactique large"
 	icon_state = "marine_security"
 
 /obj/item/clothing/suit/armor/vest/marine/engineer
-	name = "tactical utility armor vest"
+	name = "gillet pare-balles tactique polyvalent"
 	icon_state = "marine_engineer"
 
 /obj/item/clothing/suit/armor/vest/marine/medic
-	name = "tactical medic's armor vest"
+	name = "gillet pare-balles tactique médical"
 	icon_state = "marine_medic"
 	body_parts_covered = CHEST|GROIN
 
 /obj/item/clothing/suit/armor/vest/old
-	name = "degrading armor vest"
-	desc = "Older generation Type 1 armored vest. Due to degradation over time the vest is far less maneuverable to move in."
-	icon_state = "armor"
+	name = "gillet pare-balles dégradé"
+	desc = "Une plus vieille génération de gillet pare-balles de type I. En raison de la dégradation au fil du temps, le gillet est bien moins maniable."
 	inhand_icon_state = "armor"
 	slowdown = 1
 
 /obj/item/clothing/suit/armor/vest/blueshirt
-	name = "large armor vest"
-	desc = "A large, yet comfortable piece of armor, protecting you from some threats."
+	name = "gillet pare-balles large"
+	desc = "Un gillet pare-balles large mais confortable qui vous protégera contre certaines menances."
 	icon_state = "blueshift"
 	inhand_icon_state = null
 	custom_premium_price = PAYCHECK_COMMAND
 
 /obj/item/clothing/suit/armor/vest/cuirass
-	name = "cuirass"
-	desc = "A lighter plate armor used to still keep out those pesky arrows, while retaining the ability to move."
+	name = "cuirasse"
+	desc = "Une armure légère qui vous protégera contre les flèches tout en vous permettant de bouger facikement."
 	icon_state = "cuirass"
 	inhand_icon_state = "armor"
 	dog_fashion = null
 
 /obj/item/clothing/suit/armor/hos
-	name = "armored greatcoat"
-	desc = "A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence."
+	name = "pardessus blindé"
+	desc = "Un pardessus blindé pour ceux qui veulent ressembler à un commandent tout en étant protégé."
 	icon_state = "hos"
 	inhand_icon_state = "greatcoat"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
@@ -124,21 +123,21 @@
 	wound = 10
 
 /obj/item/clothing/suit/armor/hos/trenchcoat
-	name = "armored trenchcoat"
-	desc = "A trenchcoat enhanced with a special lightweight kevlar. The epitome of tactical plainclothes."
+	name = "trenchcoat blindé"
+	desc = "Un trenchcoat renforcé avec du kevlar léger. L'épitome de l'habillement tactique."
 	icon_state = "hostrench"
 	inhand_icon_state = "hostrench"
 	flags_inv = 0
 	strip_delay = 80
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter
-	name = "head of security's winter trenchcoat"
-	desc = "A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. You feel strangely lonely wearing this coat."
+	name = "tenchcoat d'hiver du chef de la sécurité"
+	desc = "Un trenchcoat renforcé avec du kevlar léger, rembourré de laine sur le col et à l'intérieur. Vous vous sentez étrangement seul en portant ce manteau."
 	icon_state = "hoswinter"
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/armor/hos/hos_formal
-	name = "\improper Head of Security's parade jacket"
+	name = "\improper Vêtement de parade du chef de la sécurité"
 	desc = "For when an armoured vest isn't fashionable enough."
 	icon_state = "hosformal"
 	inhand_icon_state = "hostrench"
@@ -149,8 +148,8 @@
 	AddComponent(/datum/component/toggle_icon)
 
 /obj/item/clothing/suit/armor/vest/warden
-	name = "warden's jacket"
-	desc = "A navy-blue armored jacket with blue shoulder designations and '/Warden/' stitched into one of the chest pockets."
+	name = "tenue du gardien"
+	desc = "Une tenue de couleur bleu marine avec des épaulettes bleues et '/Gardien/' brodé sur une des poches de poitrine."
 	icon_state = "warden_alt"
 	inhand_icon_state = "armor"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -161,13 +160,13 @@
 	dog_fashion = null
 
 /obj/item/clothing/suit/armor/vest/warden/alt
-	name = "warden's armored jacket"
-	desc = "A red jacket with silver rank pips and body armor strapped on top."
+	name = "tenue blindée du gardien"
+	desc = "Une tenue de couleur rouge avec des épaulettes argentées et une armure corporelle par dessus."
 	icon_state = "warden_jacket"
 
 /obj/item/clothing/suit/armor/vest/leather
-	name = "security overcoat"
-	desc = "Lightly armored leather overcoat meant as casual wear for high-ranking officers. Bears the crest of Nanotrasen Security."
+	name = "pardessus de sécurité"
+	desc = "Un pardessus légèrement blindé pour les officiers de haut rang. Porte le symbole de la sécurité de Nanotrasen."
 	icon_state = "leathercoat-sec"
 	inhand_icon_state = "hostrench"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
@@ -176,8 +175,8 @@
 	dog_fashion = null
 
 /obj/item/clothing/suit/armor/vest/capcarapace
-	name = "captain's carapace"
-	desc = "A fireproof armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."
+	name = "carapace du capitaine"
+	desc = "Une carapace blindée ignifugée renforcée avec des plaques de céramique et des épaulières en plastacier pour fournir une protection supplémentaire tout en offrant une mobilité et une flexibilité maximales. Émis uniquement aux meilleurs de la station, bien que cela vous irrite les tétons."
 	icon_state = "capcarapace"
 	inhand_icon_state = "armor"
 	body_parts_covered = CHEST|GROIN
@@ -196,13 +195,13 @@
 	wound = 10
 
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
-	name = "syndicate captain's vest"
-	desc = "A sinister looking vest of advanced armor worn over a black and red fireproof jacket. The gold collar and shoulders denote that this belongs to a high ranking syndicate officer."
+	name = "tenue de capitaine du syndicat"
+	desc = "Une tenue sinistre avec une armure avancée portée par dessus une veste ignifugée noire et rouge. Le col et les épaules dorés indiquent que cela appartient à un officier de haut rang du syndicat."
 	icon_state = "syndievest"
 
 /obj/item/clothing/suit/armor/vest/capcarapace/captains_formal
-	name = "captain's parade coat"
-	desc = "For when an armoured vest isn't fashionable enough."
+	name = "pardessus de parade du capitaine"
+	desc = "Pour quand un gilet pare-balles n'est pas assez élégant."
 	icon_state = "capformal"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -212,8 +211,8 @@
 	AddComponent(/datum/component/toggle_icon)
 
 /obj/item/clothing/suit/armor/riot
-	name = "riot suit"
-	desc = "A suit of semi-flexible polycarbonate body armor with heavy padding to protect against melee attacks. Helps the wearer resist shoving in close quarters."
+	name = "armure anti-émeute"
+	desc = "Une armure semi-flexible en polycarbonate avec des renforts pour protéger contre les attaques au corps à corps. Aide le porteur à résister aux bousculades dans les espaces restreints."
 	icon_state = "riot"
 	inhand_icon_state = "swat_suit"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -234,8 +233,8 @@
 	wound = 20
 
 /obj/item/clothing/suit/armor/bone
-	name = "bone armor"
-	desc = "A tribal armor plate, crafted from animal bone."
+	name = "armure en os"
+	desc = "Une armure tribale, fabriquée à partir d'os d'animaux."
 	icon_state = "bonearmor"
 	inhand_icon_state = null
 	blood_overlay_type = "armor"
@@ -253,8 +252,8 @@
 	wound = 10
 
 /obj/item/clothing/suit/armor/bulletproof
-	name = "bulletproof armor"
-	desc = "A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
+	name = "gillette pare-balles lourd"
+	desc = "Un gillet pare-balles lourd de type III qui excelle dans la protection contre les armes à projectiles traditionnelles et les explosifs dans une moindre mesure."
 	icon_state = "bulletproof"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
@@ -273,8 +272,8 @@
 	wound = 20
 
 /obj/item/clothing/suit/armor/laserproof
-	name = "reflector vest"
-	desc = "A vest that excels in protecting the wearer against energy projectiles, as well as occasionally reflecting them."
+	name = "veste réflectrice"
+	desc = "Une veste qui excelle dans la protection contre les projectiles énergétiques, ainsi que dans leur réflexion occasionnelle."
 	icon_state = "armor_reflec"
 	inhand_icon_state = "armor_reflec"
 	blood_overlay_type = "armor"
@@ -300,8 +299,8 @@
 		return TRUE
 
 /obj/item/clothing/suit/armor/vest/det_suit
-	name = "detective's flak vest"
-	desc = "An armored vest with a detective's badge on it."
+	name = "gillet pare-balles du détective"
+	desc = "Un gillet pare-balles avec un badge de détective dessus."
 	icon_state = "detective-armor"
 	resistance_flags = FLAMMABLE
 	dog_fashion = null
@@ -311,8 +310,8 @@
 	allowed = GLOB.detective_vest_allowed
 
 /obj/item/clothing/suit/armor/swat
-	name = "MK.I SWAT Suit"
-	desc = "A tactical suit first developed in a joint effort by the defunct IS-ERI and Nanotrasen in 2321 for military operations. It has a minor slowdown, but offers decent protection."
+	name = "Tenue du SWAT MK.I"
+	desc = "Une tenue tactique développée en 2321 par l'IS-ERI et Nanotrasen pour les opérations militaires. Elle ralentit légèrement le porteur, mais offre une protection décente."
 	icon_state = "heavy"
 	inhand_icon_state = "swat_suit"
 	armor_type = /datum/armor/armor_swat
@@ -339,39 +338,9 @@
 	acid = 100
 	wound = 15
 
-/obj/item/clothing/suit/armor/advanced_police
-	name = "Advanced Security Armor"
-	desc = "A tactical suit of armor originally intended for police use, but Nanotrasen uses it for security purpose."
-	icon_state = "heavy_sec"
-	inhand_icon_state = "swat_suit"
-	armor_type = /datum/armor/advanced_police
-	strip_delay = 120
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-	clothing_flags = THICKMATERIAL
-	cold_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
-	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT_OFF
-	heat_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
-	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
-	slowdown = 0.1
-	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-
-//All of the armor below is mostly unused
-
-/datum/armor/advanced_police
-	melee = 90
-	bullet = 90
-	laser = 20
-	energy = 30
-	bomb = 100
-	bio = 100
-	fire = 100
-	acid = 100
-	wound = 25
-
-
 /obj/item/clothing/suit/armor/heavy
-	name = "heavy armor"
-	desc = "A heavily armored suit that protects against moderate damage."
+	name = "armure lourde"
+	desc = "Une armure lourde qui protège contre les dégâts modérés."
 	icon_state = "heavy"
 	inhand_icon_state = "swat_suit"
 	w_class = WEIGHT_CLASS_BULKY
@@ -410,19 +379,19 @@
 	acid = 90
 
 /obj/item/clothing/suit/armor/tdome/red
-	name = "thunderdome suit"
-	desc = "Reddish armor."
+	name = "tenue du thunderdome"
+	desc = "Une armure rougeâtre."
 	icon_state = "tdred"
 	inhand_icon_state = "tdred"
 
 /obj/item/clothing/suit/armor/tdome/green
-	name = "thunderdome suit"
-	desc = "Pukish armor." //classy.
+	name = "tenue du thunderdome"
+	desc = "Armure couleur vomit." //classy.
 	icon_state = "tdgreen"
 	inhand_icon_state = "tdgreen"
 
 /obj/item/clothing/suit/armor/tdome/holosuit
-	name = "thunderdome suit"
+	name = "tenue du thunderdome"
 	armor_type = /datum/armor/tdome_holosuit
 	cold_protection = null
 	heat_protection = null
@@ -432,18 +401,18 @@
 	bullet = 10
 
 /obj/item/clothing/suit/armor/tdome/holosuit/red
-	desc = "Reddish armor."
+	desc = "Une armure rougeâtre."
 	icon_state = "tdred"
 	inhand_icon_state = "tdred"
 
 /obj/item/clothing/suit/armor/tdome/holosuit/green
-	desc = "Pukish armor."
+	desc = "Une armure couleur vomit." //classy.
 	icon_state = "tdgreen"
 	inhand_icon_state = "tdgreen"
 
 /obj/item/clothing/suit/armor/riot/knight
-	name = "plate armour"
-	desc = "A classic suit of plate armour, highly effective at stopping melee attacks."
+	name = "armure de plate"
+	desc = "Une armure classique, très efficace pour arrêter les attaques au corps à corps."
 	icon_state = "knight_green"
 	inhand_icon_state = null
 	allowed = list(
@@ -467,16 +436,16 @@
 	inhand_icon_state = null
 
 /obj/item/clothing/suit/armor/riot/knight/greyscale
-	name = "knight armour"
-	desc = "A classic suit of armour, able to be made from many different materials."
+	name = "armure de chevalier"
+	desc = "Une armure classique, très efficace pour arrêter les attaques au corps à corps. Peut être fabriquée à partir de nombreux matériaux différents."
 	icon_state = "knight_greyscale"
 	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS//Can change color and add prefix
 	armor_type = /datum/armor/knight_greyscale
 
 /obj/item/clothing/suit/armor/vest/durathread
-	name = "durathread vest"
-	desc = "A vest made of durathread with strips of leather acting as trauma plates."
+	name = "gilet en Fildurable"
+	desc = "Un gillet en Fildurable avec des bandes de cuir agissant comme des plaques de protection."
 	icon_state = "durathread"
 	inhand_icon_state = null
 	strip_delay = 60
@@ -496,8 +465,8 @@
 	acid = 50
 
 /obj/item/clothing/suit/armor/vest/russian
-	name = "russian vest"
-	desc = "A bulletproof vest with forest camo. Good thing there's plenty of forests to hide in around here, right?"
+	name = "gillet russe"
+	desc = "Un gilet pare-balles avec un camouflage forestier. Heureusement qu'il y a plein de forêts où se cacher par ici, non ?"
 	icon_state = "rus_armor"
 	inhand_icon_state = null
 	armor_type = /datum/armor/vest_russian
@@ -513,8 +482,8 @@
 	wound = 10
 
 /obj/item/clothing/suit/armor/vest/russian_coat
-	name = "russian battle coat"
-	desc = "Used in extremly cold fronts, made out of real bears."
+	name = "manteau de combat russe"
+	desc = "Utilisé dans les fronts extrêmement froids, fabriqué à partir de vrais ours."
 	icon_state = "rus_coat"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -535,8 +504,8 @@
 	wound = 10
 
 /obj/item/clothing/suit/armor/elder_atmosian
-	name = "\improper Elder Atmosian Armor"
-	desc = "A superb armor made with the toughest and rarest materials available to man."
+	name = "\improper Armure d'Ancien Atmosien"
+	desc = "Une superbe armure faite avec les matériaux les plus durs et les plus rares disponibles à l'homme."
 	icon_state = "h2armor"
 	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS//Can change color and add prefix
@@ -563,8 +532,8 @@
 	wound = 15
 
 /obj/item/clothing/suit/armor/centcom_formal
-	name = "\improper CentCom formal coat"
-	desc = "A stylish coat given to CentCom Commanders. Perfect for sending ERTs to suicide missions with style!"
+	name = "\improper manteau formel de CentCom"
+	desc = "Un manteau élégant donné au commandant de CentCom. Parfait pour envoyer l'ERT en mission suicide avec style."
 	icon_state = "centcom_formal"
 	inhand_icon_state = "centcom"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -585,8 +554,8 @@
 	AddComponent(/datum/component/toggle_icon)
 
 /obj/item/clothing/suit/armor/vest/hop
-	name = "head of personnel's coat"
-	desc = "A stylish coat given to a Head of Personnel."
+	name = "manteau du chef du personnel"
+	desc = "Un manteau élégant donné au chef du personnel. Parfait pour usurper le capitaine."
 	icon_state = "hop_coat"
 	inhand_icon_state = "b_suit"
 	body_parts_covered = CHEST|GROIN|ARMS

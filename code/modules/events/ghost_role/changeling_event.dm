@@ -6,14 +6,14 @@
 */
 
 /datum/round_event_control/changeling
-	name = "Changeling Meteor"
+	name = "Météore de changelin"
 	typepath = /datum/round_event/ghost_role/changeling
 	weight = 8
 	max_occurrences = 3
 	min_players = 20
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_ENTITIES
-	description = "A meteor containing a changeling is summoned and thrown at the exterior of the station."
+	description = "Un météore contenant un changelin a été créé et envoyé à l'extérieur de la station."
 
 /datum/round_event/ghost_role/changeling
 	minimum_required = 1

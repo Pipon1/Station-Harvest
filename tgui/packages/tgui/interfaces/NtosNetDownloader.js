@@ -20,7 +20,7 @@ export const NtosNetDownloader = (props, context) => {
     categories,
     programs,
   } = data;
-  const all_categories = ['All'].concat(categories);
+  const all_categories = ['Tous'].concat(categories);
   const downloadpercentage = toFixed(
     scale(downloadcompletion, 0, downloadsize) * 100
   );
@@ -52,13 +52,13 @@ export const NtosNetDownloader = (props, context) => {
         {!!error && (
           <NoticeBox>
             <Box mb={1}>{error}</Box>
-            <Button content="Reset" onClick={() => act('PRG_reseterror')} />
+            <Button content="Redémarrer" onClick={() => act('PRG_reseterror')} />
           </NoticeBox>
         )}
         <Section>
           <LabeledList>
             <LabeledList.Item
-              label="Hard drive"
+              label="Disque dur"
               buttons={
                 (!!downloading && (
                   <Button
@@ -67,7 +67,7 @@ export const NtosNetDownloader = (props, context) => {
                     tooltipPosition="left"
                     tooltip={
                       !!downloading &&
-                      `Download: ${downloadname}.prg (${downloadpercentage}%)`
+                      `Téléchargement : ${downloadname}.prg (${downloadpercentage}%)`
                     }
                   />
                 )) ||
@@ -76,7 +76,7 @@ export const NtosNetDownloader = (props, context) => {
                     color="good"
                     icon="download"
                     tooltipPosition="left"
-                    tooltip={`${downloadname}.prg downloaded`}
+                    tooltip={`${downloadname}.prg téléchargé`}
                   />
                 ))
               }>
@@ -85,7 +85,7 @@ export const NtosNetDownloader = (props, context) => {
                 minValue={0}
                 maxValue={disk_size}>
                 <Box textAlign="left">
-                  {`${disk_free_space} GQ free of ${disk_size} GQ`}
+                  {`${disk_free_space} GQ libre sur ${disk_size} GQ`}
                 </Box>
               </ProgressBar>
             </LabeledList.Item>
@@ -160,10 +160,10 @@ const Program = (props, context) => {
                 <Button
                   bold
                   icon="download"
-                  content="Download"
+                  content="Télécharger"
                   disabled={downloading}
                   tooltipPosition="left"
-                  tooltip={!!downloading && 'Awaiting download completion...'}
+                  tooltip={!!downloading && 'En attente de la fin du téléchargement...'}
                   onClick={() =>
                     act('PRG_downloadfile', {
                       filename: program.filename,
@@ -183,12 +183,12 @@ const Program = (props, context) => {
                 }
                 content={
                   program.installed
-                    ? 'Installed'
+                    ? 'Installé'
                     : !program.compatible
                       ? 'Incompatible'
                       : !program.access
-                        ? 'No Access'
-                        : 'No Space'
+                        ? 'Accès interdit'
+                        : 'Pas assez de place'
                 }
               />
             )}
@@ -199,8 +199,8 @@ const Program = (props, context) => {
       </Box>
       {!program.verifiedsource && PC_device_theme !== 'syndicate' && (
         <NoticeBox mt={1} mb={0} danger fontSize="12px">
-          Unverified source. Please note that Nanotrasen does not recommend
-          download and usage of software from non-official servers.
+          Source inconnu. Veuillez noter que Nanotrasen ne recommande pas le
+          téléchargement et l'utilisation de logiciels provenant de serveurs non-officiel.
         </NoticeBox>
       )}
     </Section>

@@ -9,7 +9,7 @@
 	/// Supply points earned for taking the deal.
 	var/bonus_points = 10000
 	/// Response for taking the deal.
-	var/thanks_msg = "The cargo shuttle should return in five minutes. Have some supply points for your trouble."
+	var/thanks_msg = "Votre navette cargo devrait revenir d'ici 5 minutes. Des points de livraison supplémentaires vous ont été envoyés en dédommagement."
 	/// Small description of the loan for easier log reading.
 	var/logging_desc
 
@@ -24,9 +24,9 @@
 	CRASH("Unimplemented get_spawned_items() on [src.type].")
 
 /datum/shuttle_loan_situation/antidote
-	sender = "CentCom Research Initiatives"
-	announcement_text = "Your station has been chosen for an epidemiological research project. Send us your cargo shuttle to receive your research samples."
-	shuttle_transit_text = "Virus samples incoming."
+	sender = "Initiative de recherche de CentCom"
+	announcement_text = "Votre station a été choisie pour un projet de recherche épidémiologique. Envoyez nous votre navette de cargo pour recevoir des échantillons de recherche."
+	shuttle_transit_text = "Échantillons de virus en approche."
 	logging_desc = "Virus shuttle"
 
 /datum/shuttle_loan_situation/antidote/spawn_items(list/spawn_list, list/empty_shuttle_turfs)
@@ -49,10 +49,10 @@
 	spawn_list.Add(/obj/item/reagent_containers/cup/bottle/magnitis)
 
 /datum/shuttle_loan_situation/department_resupply
-	sender = "CentCom Supply Department"
-	announcement_text = "Seems we've ordered doubles of our department resupply packages this month. Can we send them to you?"
-	shuttle_transit_text = "Department resupply incoming."
-	thanks_msg = "The cargo shuttle should return in five minutes."
+	sender = "Département logistique de CentCom"
+	announcement_text = "On dirait qu'on nous a envoyé le double de notre ravitaillement départemental de ce mois-ci. Est-ce qu'on peut vous envoyer les doublons ?"
+	shuttle_transit_text = "Ravitaillement doublon en approche."
+	thanks_msg = "Votre navette cargo devrait revenir d'ici 5 minutes."
 	bonus_points = 0
 	logging_desc = "Resupply packages"
 
@@ -77,9 +77,9 @@
 		new decal(pick_n_take(empty_shuttle_turfs))
 
 /datum/shuttle_loan_situation/syndiehijacking
-	sender = "CentCom Counterintelligence"
-	announcement_text = "The syndicate are trying to infiltrate your station. If you let them hijack your cargo shuttle, you'll save us a headache."
-	shuttle_transit_text = "Syndicate hijack team incoming."
+	sender = "Contre-espionnage de CentCom"
+	announcement_text = "Le Syndicat essaye d'infiltrer votre station. Si vous les laissez détourner votre navette cargo, vous nous épargerez une migraine."
+	shuttle_transit_text = "Équipe d'abordage du Syndicat en approche."
 	logging_desc = "Syndicate boarding party"
 
 /datum/shuttle_loan_situation/syndiehijacking/spawn_items(list/spawn_list, list/empty_shuttle_turfs)
@@ -94,9 +94,9 @@
 		spawn_list.Add(/mob/living/basic/syndicate/ranged/infiltrator)
 
 /datum/shuttle_loan_situation/lots_of_bees
-	sender = "CentCom Janitorial Division"
-	announcement_text = "One of our freighters carrying a bee shipment has been attacked by eco-terrorists. Can you clean up the mess for us?"
-	shuttle_transit_text = "Biohazard cleanup incoming."
+	sender = "Division conciergerie de CentCom"
+	announcement_text = "Une de nos navettes cargo transportant une cargaison d'abeille a été attaquée par des éco-terroristes. Vous pouvez nettoyer le bordel pour nous ?"
+	shuttle_transit_text = "Navette à nettoyer en approche."
 	bonus_points = 20000 //Toxin bees can be unbeelievably lethal
 	logging_desc = "Shuttle full of bees"
 
@@ -129,10 +129,10 @@
 		new casing(pick_n_take(empty_shuttle_turfs))
 
 /datum/shuttle_loan_situation/jc_a_bomb
-	sender = "CentCom Security Division"
-	announcement_text = "We have discovered an active Syndicate bomb near our VIP shuttle's fuel lines. If you feel up to the task, we will pay you for defusing it."
-	shuttle_transit_text = "Live explosive ordnance incoming. Exercise extreme caution."
-	thanks_msg = "Live explosive ordnance incoming via supply shuttle. Evacuating cargo bay is recommended."
+	sender = "Division de sécurité de CentCom"
+	announcement_text = "Nous avons découvert une bombe du Syndicat près des lignes de ravitaillement pour navette VIP. Si vous vous sentez à la hauteur, on vous payera pour la désamorcer."
+	shuttle_transit_text = "Équipement explosif sous tension en approche. Procédez avec extrême prudence."
+	thanks_msg = "Équipement explosif sous tension en approche via votre navette cargo. L'évacuation du département en question est recommandée."
 	bonus_points = 45000 //If you mess up, people die and the shuttle gets turned into swiss cheese
 	logging_desc = "Shuttle with a ticking bomb"
 
@@ -144,10 +144,10 @@
 		spawn_list.Add(/obj/item/paper/fluff/cargo/bomb/allyourbase)
 
 /datum/shuttle_loan_situation/papers_please
-	sender = "CentCom Paperwork Division"
-	announcement_text = "A neighboring station needs some help handling some paperwork. Could you help process it for us?"
-	shuttle_transit_text = "Paperwork incoming."
-	thanks_msg = "The cargo shuttle should return in five minutes. Payment will be rendered when the paperwork is processed and returned."
+	sender = "Division de la paperasse de CentCom"
+	announcement_text = "Une station voisine a besoin d'aide pour gérer de la paperasse. Est-ce que vous voulez bien les aider à s'en occuper pour nous ?"
+	shuttle_transit_text = "Paperasse en approche."
+	thanks_msg = "Votre navette cargo devrait revenir d'ici 5 minutes. Votre payement vous sera transféré dès que la paperasse sera signée et renvoyée."
 	bonus_points = 0 //Payout is made when the stamped papers are returned
 	logging_desc = "Paperwork shipment"
 
@@ -155,10 +155,10 @@
 	spawn_list += subtypesof(/obj/item/paperwork) - typesof(/obj/item/paperwork/photocopy) - typesof(/obj/item/paperwork/ancient)
 
 /datum/shuttle_loan_situation/pizza_delivery
-	sender = "CentCom Spacepizza Division"
-	announcement_text = "It looks like a neighbouring station accidentally delivered their pizza to you instead."
-	shuttle_transit_text = "Pizza delivery!"
-	thanks_msg = "The cargo shuttle should return in five minutes."
+	sender = "Division alimentation de CentCom"
+	announcement_text = "On dirait qu'une station voisine à donné votre adresse à la place la leur, pour leur commande de pizza."
+	shuttle_transit_text = "Livraison de pizza en approche !"
+	thanks_msg = "Votre navette cargo devrait revenir d'ici 5 minutes."
 	bonus_points = 0
 	logging_desc = "Pizza delivery"
 
@@ -169,9 +169,9 @@
 		spawn_list.Add(pick(prob(5) ? naughtypizza : nicepizza))
 
 /datum/shuttle_loan_situation/russian_party
-	sender = "CentCom Russian Outreach Program"
-	announcement_text = "A group of angry Russians want to have a party. Can you send them your cargo shuttle then make them disappear?"
-	shuttle_transit_text = "Partying Russians incoming."
+	sender = "Programme de recherche russo-terrien de CentCom"
+	announcement_text = "Un groupe de russes en colère veulent faire une fête. Est-ce qu'on peut vous les envoyer pour les faire disparaitre ?"
+	shuttle_transit_text = "Russes fêtards en approche."
 	logging_desc = "Russian party squad"
 
 /datum/shuttle_loan_situation/russian_party/spawn_items(list/spawn_list, list/empty_shuttle_turfs)
@@ -187,9 +187,9 @@
 		spawn_list.Add(/mob/living/simple_animal/hostile/bear/russian)
 
 /datum/shuttle_loan_situation/spider_gift
-	sender = "CentCom Diplomatic Corps"
-	announcement_text = "The Spider Clan has sent us a mysterious gift. Can we ship it to you to see what's inside?"
-	shuttle_transit_text = "Spider Clan gift incoming."
+	sender = "Corps diplomatique de CentCom"
+	announcement_text = "Le Clan des araignées nous a envoyé un mystérieux cadeau. Est-ce qu'on peut vous l'envoyer pour voir ce qu'il y a dedans ?"
+	shuttle_transit_text = "Cadeau du Cland des araignées en approche."
 	logging_desc = "Shuttle full of spiders"
 
 /datum/shuttle_loan_situation/spider_gift/spawn_items(list/spawn_list, list/empty_shuttle_turfs)

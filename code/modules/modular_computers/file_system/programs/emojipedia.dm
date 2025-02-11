@@ -4,7 +4,7 @@
 	filedesc = "EmojiPedia"
 	category = PROGRAM_CATEGORY_CREW // we want everyone to be able to access this application, since everyone can send emoji via PDA messages
 	program_icon_state = "generic"
-	extended_desc = "This program allows you to view all the emojis you can send via PDA messages."
+	extended_desc = "Ce programme vous permet de voir tous les emojis que vous pouvez envoyer via message du PDA."
 	size = 3
 	tgui_id = "NtosEmojipedia"
 	program_icon = "icons"

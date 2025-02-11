@@ -1,12 +1,12 @@
 /datum/bounty/item/security/recharger
-	name = "Rechargers"
-	description = "Nanotrasen military academy is conducting marksmanship exercises. They request that rechargers be shipped."
+	name = "Chargeur"
+	description = "L'academie militaire de Nanotrasen effectue des exercices de tir. Ils demandent que des chargeurs soient envoyés."
 	reward = CARGO_CRATE_VALUE * 4
 	required_count = 3
 	wanted_types = list(/obj/machinery/recharger = TRUE)
 
 /datum/bounty/item/security/pepperspray
-	name = "Pepperspray"
+	name = "Spray au poivre"
 	description = "We've been having a bad run of riots on Space Station 76. We could use some new pepperspray cans."
 	reward = CARGO_CRATE_VALUE * 6
 	required_count = 4

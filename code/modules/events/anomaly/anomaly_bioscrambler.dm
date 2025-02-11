@@ -1,11 +1,11 @@
 /datum/round_event_control/anomaly/anomaly_bioscrambler
-	name = "Anomaly: Bioscrambler"
+	name = "Anomalie : biobrouilleur"
 	typepath = /datum/round_event/anomaly/anomaly_bioscrambler
 
 	min_players = 10
 	max_occurrences = 5
 	weight = 20
-	description = "This anomaly replaces the limbs of nearby people."
+	description = "Cette anomalie remplace les membres des gens aux alentours avec d'autres membres."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 2
 
@@ -15,4 +15,4 @@
 	anomaly_path = /obj/effect/anomaly/bioscrambler
 
 /datum/round_event/anomaly/anomaly_bioscrambler/announce(fake)
-	priority_announce("Biologic limb swapping agent detected on [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name]. Wear biosuits or other protective gear to counter the effects. Calculated half-life of %9£$T$%F3 years.", "Anomaly Alert")
+	priority_announce("Agent remplaceur de membre détecté à [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name]. Portez des combinaisons HAZMAT pour prévenir les effets. Demie-vie calculée : %9£$T$%F3 ans.", "Alerte anomalie")

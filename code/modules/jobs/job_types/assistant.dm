@@ -5,11 +5,11 @@ Assistant
 */
 /datum/job/assistant
 	title = JOB_ASSISTANT
-	description = "Get your space legs, assist people, ask the HoP to give you a job."
+	description = "Apportez de l'aide aux gens, faites vous recaller, demandez au Chef du Personnel un vrai métier."
 	faction = FACTION_STATION
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "absolutely everyone"
+	supervisors = "absolument tout le monde"
 	exp_granted_type = EXP_TYPE_CREW
 	outfit = /datum/outfit/job/assistant
 	plasmaman_outfit = /datum/outfit/plasmaman

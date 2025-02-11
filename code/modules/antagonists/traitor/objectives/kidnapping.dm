@@ -1,8 +1,7 @@
 /datum/traitor_objective/target_player/kidnapping
-	name = "Kidnap %TARGET% the %JOB TITLE% and deliver them to %AREA%"
-	description = "%TARGET% holds extremely important information regarding secret NT projects - and you'll need to kidnap and deliver them to %AREA%, where our transport pod will be waiting. \
-		You'll get additional reward if %TARGET% is delivered alive."
-
+	name = "Kidnappez %TARGET% lae %JOB TITLE% et ammener lae en %AREA%"
+	description = "%TARGET% est votre cible et possède grand nombre d'information en rapport avec des projets secret de nanotrasen. Vous devez kidnapper %TARGET% et l'ammener en %AREA% là où un pod de transport vous attendra. \
+		Vous recevrez des recompenses supplémentaires si %TARGET% est en vie."
 	abstract_type = /datum/traitor_objective/target_player/kidnapping
 
 	/// The jobs that this objective is targetting.
@@ -186,9 +185,8 @@
 /datum/traitor_objective/target_player/kidnapping/generate_ui_buttons(mob/user)
 	var/list/buttons = list()
 	if(!pod_called)
-		buttons += add_ui_button("Call Extraction Pod", "Pressing this will call down an extraction pod.", "rocket", "call_pod")
+		buttons += add_ui_button("Call Extraction Pod", "Pressez ce boutton pour appeler un pod d'extraction.", "rocket", "call_pod")
 	return buttons
-
 /datum/traitor_objective/target_player/kidnapping/ui_perform_action(mob/living/user, action)
 	. = ..()
 	switch(action)
@@ -199,11 +197,11 @@
 			var/area/target_area = get_area(target)
 
 			if(user_area.type != dropoff_area)
-				to_chat(user, span_warning("You must be in [initial(dropoff_area.name)] to call the extraction pod."))
+				to_chat(user, span_warning("Vous devez être en [initial(dropoff_area.name)] pour appeler un pod d'extraction."))
 				return
 
 			if(target_area.type != dropoff_area)
-				to_chat(user, span_warning("[target.real_name] must be in [initial(dropoff_area.name)] for you to call the extraction pod."))
+				to_chat(user, span_warning("[target.real_name] doit être en [initial(dropoff_area.name)] pour appeler un pod d'extraction."))
 				return
 
 			call_pod(user)
@@ -240,7 +238,7 @@
 	if(cargo_account) //Just in case
 		cargo_account.adjust_money(-min(rand(1000, 3000), cargo_account.account_balance)) //Not so much, especially for competent cargo. Plus this can't be mass-triggered like it has been done with contractors
 
-	priority_announce("One of your crew was captured by a rival organisation - we've needed to pay their ransom to bring them back. As is policy we've taken a portion of the station's funds to offset the overall cost.", "Nanotrasen Asset Protection", has_important_message = TRUE)
+	priority_announce("L'un des membres de l'équipage a été capturé par une organisation rivale et nous avons dû payer sa rançon pour le ramener. Comme le veut notre politique, nous avons prélevé une partie des fonds de la station pour compenser le coût total.", "Nanotrasen Asset Protection", has_important_message = TRUE)
 
 	addtimer(CALLBACK(src, PROC_REF(handle_target), sent_mob), 1.5 SECONDS)
 
@@ -265,10 +263,9 @@
 	sent_mob.adjust_dizzy(10 SECONDS)
 	sent_mob.set_eye_blur_if_lower(100 SECONDS)
 	sent_mob.dna.species.give_important_for_life(sent_mob) // so plasmamen do not get left for dead
-	to_chat(sent_mob, span_hypnophrase(span_reallybig("A million voices echo in your head... <i>\"Your mind held many valuable secrets - \
-		we thank you for providing them. Your value is expended, and you will be ransomed back to your station. We always get paid, \
-		so it's only a matter of time before we ship you back...\"</i>")))
-
+	to_chat(sent_mob, span_hypnophrase(span_reallybig("Un million de voix font écho dans votre esprit... <i>\"Votre esprit contenait beaucoup de secrets - \
+		Nous vous remercions de nous les avoir fournits. Maintenant vous n'avez plus aucune valeure à nos yeux... mais vous serez échangé contre une rançon. Nous somme toujours payez, \
+		ce n'est qu'une question de temps avant que ne vous libérions.\"</i>")))
 /datum/traitor_objective/target_player/kidnapping/proc/return_target(mob/living/carbon/human/sent_mob)
 	if(!sent_mob || QDELETED(sent_mob)) //suicided and qdeleted themselves
 		return
@@ -282,7 +279,7 @@
 	if(!LAZYLEN(possible_turfs))
 		var/turf/new_turf = get_safe_random_station_turf()
 		if(!new_turf) //SOMEHOW
-			to_chat(sent_mob, span_hypnophrase(span_reallybig("A million voices echo in your head... <i>\"Seems where you got sent here from won't \
+			to_chat(sent_mob, span_hypnophrase(span_reallybig("Un million de voix font écho dans votre esprit... <i>\"Seems where you got sent here from won't \
 				be able to handle our pod... You will die here instead.\"</i></span>")))
 			if (sent_mob.can_heartattack())
 				sent_mob.set_heartattack(TRUE)

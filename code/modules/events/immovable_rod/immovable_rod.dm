@@ -1,7 +1,7 @@
 /// "What the fuck was that?!"
 /obj/effect/immovablerod
-	name = "immovable rod"
-	desc = "What the fuck is that?"
+	name = "barre inamovible"
+	desc = "Putain mais qu'est-ce que c'est que ce truc ?"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "immrod"
 	throwforce = 100
@@ -62,13 +62,13 @@
 		return
 
 	if(!num_mobs_hit)
-		. += span_notice("So far, this rod has not hit any mobs.")
+		. += span_notice("Pour l'instant cette barre n'a touché aucune créature.")
 		return
 
-	. += "\t<span class='notice'>So far, this rod has hit: \n\
-		\t\t[num_mobs_hit] mobs total, \n\
-		\t\t[num_sentient_mobs_hit] of which were sentient, and \n\
-		\t\t[num_sentient_people_hit] of which were sentient people</span>"
+	. += "\t<span class='notice'>Pour l'instant cette barre a touché : \n\
+		\t\t[num_mobs_hit] créature(s) au total, \n\
+		\t\t[num_sentient_mobs_hit] étaient sentientes, et \n\
+		\t\t[num_sentient_people_hit] étaient des personnes sentientes</span>"
 
 /obj/effect/immovablerod/Topic(href, href_list)
 	if(href_list["orbit"])
@@ -105,14 +105,14 @@
 			var/direction = z_diff > 0 ? UP : DOWN
 			var/turf/target_z_turf = get_step_multiz(src, direction)
 
-			visible_message(span_danger("[src] phases out of reality."))
+			visible_message(span_danger("[src] sort de cette réalité."))
 
 			if(!do_teleport(src, target_z_turf))
 				// We failed to teleport. Might as well admit defeat.
 				qdel(src)
 				return
 
-			visible_message(span_danger("[src] phases into reality."))
+			visible_message(span_danger("[src] apparait dans cette réalité."))
 			SSmove_manager.home_onto(src, special_target)
 
 		if(loc == target_turf)
@@ -159,7 +159,7 @@
 /obj/effect/immovablerod/Bump(atom/clong)
 	if(prob(10))
 		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
-		audible_message(span_danger("You hear a CLANG!"))
+		audible_message(span_danger("Vous entendez un CLAN !"))
 
 	if(special_target && clong == special_target)
 		complete_trajectory()
@@ -167,7 +167,7 @@
 	// If rod meets rod, they collapse into a singularity. Yes, this means that if two wizard rods collide,
 	// they ALSO collapse into a singulo.
 	if(istype(clong, /obj/effect/immovablerod))
-		visible_message(span_danger("[src] collides with [clong]! This cannot end well."))
+		visible_message(span_danger("[src] se fracasse avec un [clong] ! Ça ne peut pas bien finir."))
 		var/datum/effect_system/fluid_spread/smoke/smoke = new
 		smoke.set_up(2, holder = src, location = get_turf(src))
 		smoke.start()
@@ -200,7 +200,7 @@
 	CRASH("[src] Bump()ed into non-atom thing [clong] ([clong.type])")
 
 /obj/effect/immovablerod/proc/penetrate(mob/living/smeared_mob)
-	smeared_mob.visible_message(span_danger("[smeared_mob] is penetrated by an immovable rod!") , span_userdanger("The rod penetrates you!") , span_danger("You hear a CLANG!"))
+	smeared_mob.visible_message(span_danger("[smeared_mob] est transpercé par une barre inamovible !") , span_userdanger("La barre vous transperse !") , span_danger("Vous entendez un CLANG!"))
 
 	if(smeared_mob.stat != DEAD)
 		num_mobs_hit++
@@ -246,8 +246,8 @@
 /obj/effect/immovablerod/proc/suplex_rod(mob/living/strongman)
 	strongman.client?.give_award(/datum/award/achievement/misc/feat_of_strength, strongman)
 	strongman.visible_message(
-		span_boldwarning("[strongman] suplexes [src] into the ground!"),
-		span_warning("You suplex [src] into the ground!")
+		span_boldwarning("[strongman] suplexe la [src] dans le sol !"),
+		span_warning("Vous suplexez la [src] dans le sol !")
 		)
 	new /obj/structure/festivus/anchored(drop_location())
 	new /obj/effect/anomaly/flux(drop_location())

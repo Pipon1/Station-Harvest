@@ -15,7 +15,7 @@ GLOBAL_DATUM_INIT(objective_machine_handler, /datum/objective_target_machine_han
 	)
 
 /datum/traitor_objective/sabotage_machinery
-	name = "Sabotage the %MACHINE%"
+	name = "Sabotez lae %MACHINE%"
 	description = "Abstract objective holder which shouldn't appear in your uplink."
 	abstract_type = /datum/traitor_objective/sabotage_machinery
 
@@ -59,8 +59,8 @@ GLOBAL_DATUM_INIT(objective_machine_handler, /datum/objective_target_machine_han
 
 // Destroy machines which are in annoying locations, are annoying when destroyed, and aren't directly interacted with
 /datum/traitor_objective/sabotage_machinery/destroy
-	name = "Destroy the %MACHINE%"
-	description = "Destroy the %MACHINE% to cause disarray and disrupt the operations of the %JOB%'s department."
+	name = "Detruisez lae %MACHINE%"
+	description = "Détruisez lae %MACHINE% pour causer confusion et empêcher le bon fonctionnement du départemment de %JOB%"
 
 	progression_reward = list(5 MINUTES, 10 MINUTES)
 	telecrystal_reward = list(3, 4)
@@ -75,8 +75,8 @@ GLOBAL_DATUM_INIT(objective_machine_handler, /datum/objective_target_machine_han
 
 // Rig machines which are in public locations to explode when interacted with
 /datum/traitor_objective/sabotage_machinery/trap
-	name = "Sabotage the %MACHINE%"
-	description = "Destroy the %MACHINE% to cause disarray and disrupt the operations of the %JOB%'s department. If you can get another crew member to destroy the machine using the provided booby trap, you will be rewarded with an additional %PROGRESSION% reputation and %TC% telecrystals."
+	name = "Sabotez lae %MACHINE%"
+	description = "Détruisez lae %MACHINE% pour causer confusion et empêcher le bon fonctionnement du départemment de %JOB%. Si un membre de l'équipage autre que vous déclanche le piège et détruit la machine, vous serez recompensé avec de %PROGRESSION% de réputation et %TC% télécristaux."
 
 	progression_reward = list(2 MINUTES, 4 MINUTES)
 	telecrystal_reward = 0 // Only from completing the bonus objective
@@ -123,7 +123,8 @@ GLOBAL_DATUM_INIT(objective_machine_handler, /datum/objective_target_machine_han
 /datum/traitor_objective/sabotage_machinery/trap/generate_ui_buttons(mob/user)
 	var/list/buttons = list()
 	if(!tool)
-		buttons += add_ui_button("", "Pressing this will materialize an explosive trap in your hand, which you can conceal within the target machine", "wifi", "summon_gear")
+		buttons += add_ui_button("", "Pressez sur ce bouton matérialisera un piège explosif que vous pourrez placer dans la machine qui est votre cible.", "wifi", "summon_gear")
+		
 	return buttons
 
 /datum/traitor_objective/sabotage_machinery/trap/ui_perform_action(mob/living/user, action)
@@ -134,13 +135,13 @@ GLOBAL_DATUM_INIT(objective_machine_handler, /datum/objective_target_machine_han
 				return
 			tool = new(user.drop_location())
 			user.put_in_hands(tool)
-			tool.balloon_alert(user, "a booby trap materializes in your hand")
+			tool.balloon_alert(user, "Un piège se matérialise dans votre main.")
 			tool.target_machine_path = applicable_jobs[chosen_job]
 
 /// Item which you use on a machine to cause it to explode next time someone interacts with it
 /obj/item/traitor_machine_trapper
-	name = "suspicious device"
-	desc = "It looks dangerous."
+	name = "Un truc suspicieux."
+	desc = "Ca à l'air dangereux."
 	icon = 'icons/obj/weapons/grenade.dmi'
 	icon_state = "boobytrap"
 
@@ -156,8 +157,8 @@ GLOBAL_DATUM_INIT(objective_machine_handler, /datum/objective_target_machine_han
 	if(!IS_TRAITOR(user))
 		return
 	if(target_machine_path)
-		. += span_notice("This device must be placed by <b>clicking on a [initial(target_machine_path.name)]</b> with it. It can be removed with a screwdriver.")
-	. += span_notice("Remember, you may leave behind fingerprints on the device. Wear <b>gloves</b> when handling it to be safe!")
+		. += span_notice("Cet objet doit être placer en <b>cliquant sur [initial(target_machine_path.name)]</b> avec l'objet dans la main. Il peut être retiré avec un tournevis.")
+	. += span_notice("N'oubliez pas, vous risquez de laisser des empreintes digitales sur l'objet. Portez des <b>gants</b> quand vous le manipulez, on est jamais trop sûr !")
 
 /obj/item/traitor_machine_trapper/afterattack(atom/movable/target, mob/user, proximity_flag, click_parameters)
 	. = ..()

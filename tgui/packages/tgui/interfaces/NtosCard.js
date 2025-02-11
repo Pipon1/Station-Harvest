@@ -44,8 +44,8 @@ export const NtosCardContent = (props, context) => {
             <Button
               icon="question-circle"
               tooltip={
-                'Will attempt to apply all access for the template to the ID card.\n' +
-                'Does not use wildcards unless the template specifies them.'
+                'Va tenter d\'appliquer tous les accès pour le templates à la carte d\'identité.' +
+                'Ne pas utilisez de wildcards, excepté si spécifié.'
               }
               tooltipPosition="left"
             />
@@ -68,8 +68,8 @@ export const NtosCardContent = (props, context) => {
                 showBasic={!!showBasic}
                 extraButtons={
                   <Button.Confirm
-                    content="Terminate Employment"
-                    confirmContent="Fire Employee?"
+                    content="Mettre fin à l'emploi"
+                    confirmContent="Renvoyer l'employer ?"
                     color="bad"
                     onClick={() => act('PRG_terminate')}
                   />
@@ -103,18 +103,18 @@ const IdCardPage = (props, context) => {
 
   return (
     <Section
-      title={authenticatedUser ? 'Modify ID' : 'Login'}
+      title={authenticatedUser ? 'Modifier l\'ID' : 'Connexion'}
       buttons={
         <>
           <Button
             icon="print"
-            content="Print"
+            content="Imprimer"
             disabled={!has_id}
             onClick={() => act('PRG_print')}
           />
           <Button
             icon={authenticatedUser ? 'sign-out-alt' : 'sign-in-alt'}
-            content={authenticatedUser ? 'Log Out' : 'Log In'}
+            content={authenticatedUser ? 'Déconnexion' : 'Connexion'}
             color={authenticatedUser ? 'bad' : 'good'}
             onClick={() => {
               act(authenticatedUser ? 'PRG_logout' : 'PRG_authenticate');
@@ -133,13 +133,13 @@ const IdCardPage = (props, context) => {
           />
         </Stack.Item>
         <Stack.Item width="100%" mt={1} ml={0}>
-          Login: {authenticatedUser || '-----'}
+          Connexion : {authenticatedUser || '-----'}
         </Stack.Item>
       </Stack>
       {!!(has_id && authenticatedUser) && (
         <>
           <Stack mt={1}>
-            <Stack.Item align="center">Details:</Stack.Item>
+            <Stack.Item align="center">Détails :</Stack.Item>
             <Stack.Item grow={1} mr={1} ml={1}>
               <Input
                 width="100%"
@@ -166,7 +166,7 @@ const IdCardPage = (props, context) => {
             </Stack.Item>
           </Stack>
           <Stack>
-            <Stack.Item align="center">Assignment:</Stack.Item>
+            <Stack.Item align="center">Assigner à : </Stack.Item>
             <Stack.Item grow={1} ml={1}>
               <Input
                 fluid
@@ -201,7 +201,7 @@ const TemplateDropdown = (props, context) => {
       <Stack.Item grow>
         <Dropdown
           width="100%"
-          displayText={'Select a template...'}
+          displayText={'choisir un template...'}
           options={templateKeys.map((path) => {
             return templates[path];
           })}

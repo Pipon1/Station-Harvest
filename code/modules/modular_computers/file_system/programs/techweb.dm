@@ -1,9 +1,9 @@
 /datum/computer_file/program/science
 	filename = "experi_track"
-	filedesc = "Nanotrasen Science Hub"
+	filedesc = "HUB de recherche de Nanotrasen"
 	category = PROGRAM_CATEGORY_SCI
 	program_icon_state = "research"
-	extended_desc = "Connect to the internal science server in order to assist in station research efforts."
+	extended_desc = "Ce programme se connecte au serveur de recherche interne pour aider les efforts de recherche de la station."
 	requires_ntnet = TRUE
 	size = 10
 	tgui_id = "NtosTechweb"
@@ -91,18 +91,18 @@
 /datum/computer_file/program/science/ui_act(action, list/params)
 	// Check if the console is locked to block any actions occuring
 	if (locked && action != "toggleLock")
-		computer.say("Console is locked, cannot perform further actions.")
+		computer.say("L'ordinateur est vérouillé. Aucune action possible.")
 		return TRUE
 
 	switch (action)
 		if ("toggleLock")
 			if(computer.obj_flags & EMAGGED)
-				to_chat(usr, span_boldwarning("Security protocol error: Unable to access locking protocols."))
+				to_chat(usr, span_boldwarning("Erreur du protocole de sécurité : Incapable d'accéder au vérouillage."))
 				return TRUE
 			if(lock_access in computer?.computer_id_slot?.access)
 				locked = !locked
 			else
-				to_chat(usr, span_boldwarning("Unauthorized Access. Please insert research ID card."))
+				to_chat(usr, span_boldwarning("Accès interdit. Veuillez insérer un ID du département scientifique."))
 			return TRUE
 		if ("researchNode")
 			research_node(params["node_id"], usr)
@@ -185,11 +185,11 @@
 
 /datum/computer_file/program/science/proc/research_node(id, mob/user)
 	if(!stored_research || !stored_research.available_nodes[id] || stored_research.researched_nodes[id])
-		computer.say("Node unlock failed: Either no techweb is found, node is already researched or is not available!")
+		computer.say("Débloquage de la node échouée : Pas de connexion au réseau, le noeud est déjà recherché ou n'est pas disponible !")
 		return FALSE
 	var/datum/techweb_node/tech_node = SSresearch.techweb_node_by_id(id)
 	if(!istype(tech_node))
-		computer.say("Node unlock failed: Unknown error.")
+		computer.say("Débloquage de la node échouée : Erreure inconnue.")
 		return FALSE
 	var/list/price = tech_node.get_price(stored_research)
 	if(stored_research.can_afford(price))

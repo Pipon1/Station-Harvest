@@ -5,10 +5,10 @@
 
 /datum/computer_file/program/atmosscan
 	filename = "atmosscan"
-	filedesc = "AtmoZphere"
+	filedesc = "AtmoZphère"
 	category = PROGRAM_CATEGORY_ENGI
 	program_icon_state = "air"
-	extended_desc = "A small built-in sensor reads out the atmospheric conditions around the device."
+	extended_desc = "Un petit senseur intégré qui analyse les conditions atmosphériques autour de l'appareil."
 	size = 4
 	tgui_id = "NtosGasAnalyzer"
 	program_icon = "thermometer-half"
@@ -75,7 +75,7 @@
 				UnregisterSignal(computer, COMSIG_ITEM_ATTACK_SELF_SECONDARY)
 				return TRUE
 			if(!(computer.hardware_flag & PROGRAM_TABLET))
-				computer.say("Device incompatible for scanning objects!")
+				computer.say("Cet apareil n'est pas compatible !")
 				return FALSE
 			atmozphere_mode = ATMOZPHERE_SCAN_CLICK
 			RegisterSignal(computer, COMSIG_ITEM_ATTACK_SELF_SECONDARY, PROC_REF(turf_analyze))

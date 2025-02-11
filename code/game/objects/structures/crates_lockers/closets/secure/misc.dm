@@ -1,6 +1,6 @@
 /obj/structure/closet/secure_closet/ert_com
-	name = "emergency response team commander's locker"
-	desc = "A storage unit containing equipment for an Emergency Response Team Commander."
+	name = "casier du commandant de l'unité de réponse rapide"
+	desc = "Une unité de stockage contenant l'équipement du commandant de l'unité de réponse rapide."
 	req_access = list(ACCESS_CENT_CAPTAIN)
 	icon_state = "cap"
 
@@ -25,8 +25,8 @@
 	new /obj/item/aicard(src)
 
 /obj/structure/closet/secure_closet/ert_sec
-	name = "emergency response team security locker"
-	desc = "A storage unit containing equipment for an Emergency Response Team Security Officer."
+	name = "casier d'agent de sécurité de l'unité de réponse rapide"
+	desc = "Une unité de stockage contenant l'équipement des agents de sécurité de l'équipe de réponse rapide."
 	req_access = list(ACCESS_CENT_SPECOPS)
 	icon_state = "hos"
 
@@ -39,8 +39,8 @@
 	new /obj/item/shield/riot/tele(src)
 
 /obj/structure/closet/secure_closet/ert_med
-	name = "emergency response team medical locker"
-	desc = "A storage unit containing equipment for an Emergency Response Team Medical Officer."
+	name = "casier de médecin de l'unité de réponse rapide"
+	desc = "Une unité de stockage contenant l'équipement pour les médecins de l'équipe de réponse rapide."
 	req_access = list(ACCESS_CENT_MEDICAL)
 	icon_state = "cmo"
 
@@ -55,8 +55,8 @@
 	new /mob/living/simple_animal/bot/medbot(src)
 
 /obj/structure/closet/secure_closet/ert_engi
-	name = "emergency response team engineer locker"
-	desc = "A storage unit containing equipment for an Emergency Response Team Engineer."
+	name = "casier de l'ingénieur de l'unité de réponse rapide"
+	desc = "Une unité de stockage contenant l'équipement des ingénieurs de l'unité de réponse rapide."
 	req_access = list(ACCESS_CENT_STORAGE)
 	icon_state = "ce"
 

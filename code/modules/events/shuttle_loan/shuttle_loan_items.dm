@@ -5,8 +5,8 @@
 	new /obj/item/grenade/chem_grenade/facid(src)
 
 /obj/item/paper/fluff/bee_objectives
-	name = "Objectives of a Bee Liberation Front Operative"
-	default_raw_text = "<b>Objective #1</b>. Liberate all bees on the NT transport vessel 2416/B. <b>Success!</b>  <br><b>Objective #2</b>. Escape alive. <b>Failed.</b>"
+	name = "Objectifs d'un agent du Front de Libération des Abeilles"
+	default_raw_text = "<b>Objectif #1</b>. Libérer toutes les abeilles du vaisseau de transport 2416/B de NT. <b>Objectif atteint !</b>  <br><b>Objectif #2</b>. S'échaper. <b>Objectif échoué.</b>"
 
 /obj/machinery/syndicatebomb/shuttle_loan/Initialize(mapload)
 	. = ..()
@@ -16,8 +16,8 @@
 	update_appearance()
 
 /obj/item/paper/fluff/cargo/bomb
-	name = "hastly scribbled note"
-	default_raw_text = "GOOD LUCK!"
+	name = "note manuscrite écrite hativement"
+	default_raw_text = "BON COURAGE !"
 
 /obj/item/paper/fluff/cargo/bomb/allyourbase
-	default_raw_text = "Somebody set us up the bomb!"
+	default_raw_text = "Quelqu'un a mis en place nous la bombe !"

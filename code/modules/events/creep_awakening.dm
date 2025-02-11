@@ -1,10 +1,10 @@
 /datum/round_event_control/obsessed
-	name = "Obsession Awakening"
+	name = "Éveil d'une obessession"
 	typepath = /datum/round_event/obsessed
 	max_occurrences = 1
 	min_players = 20
 	category = EVENT_CATEGORY_HEALTH
-	description = "A random crewmember becomes obsessed with another."
+	description = "Un membre d'équipage au hazard devient obessédé par un autre."
 
 /datum/round_event/obsessed
 	fakeable = FALSE

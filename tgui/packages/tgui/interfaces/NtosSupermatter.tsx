@@ -25,11 +25,11 @@ export const NtosSupermatter = (props, context) => {
           />
         ) : (
           <Section
-            title="Detected Supermatters"
+            title="Super matières détectées"
             buttons={
               <Button
                 icon="sync"
-                content="Refresh"
+                content="Rafraichir"
                 onClick={() => act('PRG_refresh')}
               />
             }>
@@ -38,7 +38,7 @@ export const NtosSupermatter = (props, context) => {
                 <Table.Row key={sm.uid}>
                   <Table.Cell>{sm.uid + '. ' + sm.area_name}</Table.Cell>
                   <Table.Cell collapsing color="label">
-                    Integrity:
+                    Intégrité :
                   </Table.Cell>
                   <Table.Cell collapsing width="120px">
                     <ProgressBar
@@ -59,7 +59,7 @@ export const NtosSupermatter = (props, context) => {
                   </Table.Cell>
                   <Table.Cell collapsing>
                     <Button
-                      content="Details"
+                      content="Détails"
                       onClick={() => setActiveUID(sm.uid)}
                     />
                   </Table.Cell>

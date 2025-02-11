@@ -480,22 +480,22 @@
 	purity = REAGENT_STANDARD_PURITY
 	color = "#000067" // rgb: 0, 0, 103
 	toxpwr = 0
-	metabolization_rate = 1.5 * REAGENTS_METABOLISM
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	ph = 11
 	inverse_chem = /datum/reagent/impurity/chloralax
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/toxin/chloralhydrate/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	switch(current_cycle)
-		if(1 to 10)
+		if(1 to 2)
 			affected_mob.adjust_confusion(2 SECONDS * REM * normalise_creation_purity() * seconds_per_tick)
 			affected_mob.adjust_drowsiness(4 SECONDS * REM * normalise_creation_purity() * seconds_per_tick)
-		if(10 to 50)
+		if(2 to 75)
 			affected_mob.Sleeping(40 * REM * normalise_creation_purity() * seconds_per_tick)
 			. = TRUE
-		if(51 to INFINITY)
+		if(75 to INFINITY)
 			affected_mob.Sleeping(40 * REM * normalise_creation_purity() * seconds_per_tick)
-			affected_mob.adjustToxLoss(1 * (current_cycle - 50) * REM * normalise_creation_purity() * seconds_per_tick, FALSE, required_biotype = affected_biotype)
+			affected_mob.adjustToxLoss(1 * (current_cycle - 75) * REM * normalise_creation_purity() * seconds_per_tick, FALSE, required_biotype = affected_biotype)
 			. = TRUE
 	..()
 

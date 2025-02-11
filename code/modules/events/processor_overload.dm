@@ -1,20 +1,20 @@
 /datum/round_event_control/processor_overload
-	name = "Processor Overload"
+	name = "Surcharge des processeurs"
 	typepath = /datum/round_event/processor_overload
 	weight = 15
 	min_players = 20
 	category = EVENT_CATEGORY_ENGINEERING
-	description = "Emps the telecomm processors, scrambling radio speech. Might blow up a few."
+	description = "EMP les processeurs des télécoms, brouillant les radios. Peut exploser un peu."
 
 /datum/round_event/processor_overload
 	announce_when = 1
 
 /datum/round_event/processor_overload/announce(fake)
-	var/alert = pick("Exospheric bubble inbound. Processor overload is likely. Please contact you*%xp25)`6cq-BZZT",
-		"Exospheric bubble inbound. Processor overload is likel*1eta;c5;'1v¬-BZZZT",
-		"Exospheric bubble inbound. Processor ov#MCi46:5.;@63-BZZZZT",
-		"Exospheric bubble inbo'Fz\\k55_@-BZZZZZT",
-		"Exospheri:%£ QCbyj^j</.3-BZZZZZZT",
+	var/alert = pick("Bulle exosphérique en approche. Surcharge des processeurs probable. Contactez votr*%xp25)`6cq-BZZT",
+		"Bulle exosphérique en approche. Surcharge des processeurs pro*1eta;c5;'1v¬-BZZZT",
+		"Bulle exosphérique en approche. Surcharg#MCi46:5.;@63-BZZZZT",
+		"Bulle exosphérique e'Fz\\k55_@-BZZZZZT",
+		"Bulle exo:%£ QCbyj^j</.3-BZZZZZZT",
 		"!!hy%;f3l7e,<$^-BZZZZZZZT",
 	)
 

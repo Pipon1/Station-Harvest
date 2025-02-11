@@ -1,13 +1,13 @@
 /datum/mood_event/it_was_on_the_mouse
-	description = "Heh heh. \"It's on the mouse\". What a play on words."
+	description = "Je pourrais peut-être être ami.e avec une langue de vipère."
 	mood_change = 1
 	timeout = 2 MINUTES
 
 /datum/mood_event/gondola_serenity
-	description = "There's a lot that could be on your mind right now. But this feeling of contentedness, a universal calling to simply sit back and observe is washing over you..."
+	description = "Beaucoup de choses pourraient traverser votre tête à cet instant présent, mais ce sentiment de satisfaction, cet appel universel à s'assoir simplement et observer paisiblement, déferle sur vous..."
 	mood_change = 10
 	special_screen_obj = "mood_gondola"
 
 /datum/mood_event/obviously_not_listening
-	description = "Talking to someone and realizing they're clearly not listening is a bit upsetting."
+	description = "Parler à quelqu'un pour ensuite réaliser qu'il n'écoute pas du tout, c'est un peu énervant."
 	mood_change = -1

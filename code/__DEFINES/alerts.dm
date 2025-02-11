@@ -32,10 +32,6 @@
 #define ALERT_ETHEREAL_CHARGE "ethereal_charge"
 #define ALERT_ETHEREAL_OVERCHARGE "ethereal_overcharge"
 
-//drone alerts
-#define ALERT_DRONE_CHARGE "ethereal_charge"
-#define ALERT_DRONE_OVERCHARGE "ethereal_overcharge"
-
 /** Alien related */
 #define ALERT_XENO_FIRE "alien_fire"
 #define ALERT_XENO_PLASMA "alien_plas"

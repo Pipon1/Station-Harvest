@@ -1,11 +1,11 @@
 /datum/round_event_control/nightmare
-	name = "Spawn Nightmare"
+	name = "Spawn de cauchemar"
 	typepath = /datum/round_event/ghost_role/nightmare
 	max_occurrences = 1
 	min_players = 20
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_ENTITIES
-	description = "Spawns a nightmare, aiming to darken the station."
+	description = "Spawn un cauchemar voulant amener les ténèbres dans la station."
 	min_wizard_trigger_potency = 6
 	max_wizard_trigger_potency = 7
 
@@ -35,7 +35,7 @@
 	player_mind.add_antag_datum(/datum/antagonist/nightmare)
 	S.set_species(/datum/species/shadow/nightmare)
 	playsound(S, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
-	message_admins("[ADMIN_LOOKUPFLW(S)] has been made into a Nightmare by an event.")
-	S.log_message("was spawned as a Nightmare by an event.", LOG_GAME)
+	message_admins("[ADMIN_LOOKUPFLW(S)] a été mis en tant que cauchemar par un événement.")
+	S.log_message("a été mis en tant que cauchemar par un événement.", LOG_GAME)
 	spawned_mobs += S
 	return SUCCESSFUL_SPAWN

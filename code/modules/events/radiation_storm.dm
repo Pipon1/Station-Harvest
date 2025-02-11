@@ -1,9 +1,9 @@
 /datum/round_event_control/radiation_storm
-	name = "Radiation Storm"
+	name = "Tempête de radiation"
 	typepath = /datum/round_event/radiation_storm
 	max_occurrences = 1
 	category = EVENT_CATEGORY_SPACE
-	description = "Radiation storm affects the station, forcing the crew to escape to maintenance."
+	description = "Une tempête de radiation va passer sur la station, forçant l'équipage à aller dans les maintenances."
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 7
 
@@ -16,7 +16,7 @@
 	announce_when = 1
 
 /datum/round_event/radiation_storm/announce(fake)
-	priority_announce("High levels of radiation detected near the station. Maintenance is best shielded from radiation.", "Anomaly Alert", ANNOUNCER_RADIATION)
+	priority_announce("Haut taux de radiation détecté près de la station. Dirigez-vous vers les maintenances.", "Alerte anomalie", ANNOUNCER_RADIATION)
 	//sound not longer matches the text, but an audible warning is probably good
 
 /datum/round_event/radiation_storm/start()

@@ -1,10 +1,10 @@
 /datum/round_event_control/wizard/summonguns //The Classic
-	name = "Summon Guns"
+	name = "Invocation d'armes à feu"
 	weight = 1
 	typepath = /datum/round_event/wizard/summonguns
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
-	description = "Summons a gun for everyone. Might turn people into survivalists."
+	description = "Invoque un flingue pour tout le monde. Peut rendre les gens survivaliste."
 
 /datum/round_event_control/wizard/summonguns/New()
 	if(CONFIG_GET(flag/no_summon_guns))
@@ -15,12 +15,12 @@
 	summon_guns(survivor_probability = 10)
 
 /datum/round_event_control/wizard/summonmagic //The Somewhat Less Classic
-	name = "Summon Magic"
+	name = "Invocation d'objet magique"
 	weight = 1
 	typepath = /datum/round_event/wizard/summonmagic
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
-	description = "Summons a magic item for everyone. Might turn people into survivalists."
+	description = "Invoque un objet magique pour tout le monde. Peut rendre les gens survivaliste"
 
 /datum/round_event_control/wizard/summonmagic/New()
 	if(CONFIG_GET(flag/no_summon_magic))

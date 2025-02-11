@@ -2,46 +2,46 @@
 //MAKE SURE THESE DO NOT MAJORLY IMPACT GAMEPLAY. those should be positive or negative traits.
 
 /datum/quirk/extrovert
-	name = "Extrovert"
-	desc = "You are energized by talking to others, and enjoy spending your free time in the bar."
+	name = "Extraverti"
+	desc = "Vous tirez votre énergie des discussions que vous avez avec les autres, et vous aimez passer votre temps libre au bar."
 	icon = FA_ICON_USERS
 	value = 0
 	mob_trait = TRAIT_EXTROVERT
-	gain_text = span_notice("You feel like hanging out with other people.")
-	lose_text = span_danger("You feel like you're over the bar scene.")
-	medical_record_text = "Patient will not shut the hell up."
+	gain_text = span_notice("Vous avez envie de traîner avec d'autres personnes.")
+	lose_text = span_danger("Vous sentez que vous n'avez plus d'attrait pour le bar.")
+	medical_record_text = "Le patient ne se taît jamais."
 	mail_goodies = list(/obj/item/reagent_containers/cup/glass/flask)
 
 /datum/quirk/introvert
-	name = "Introvert"
-	desc = "You are energized by having time to yourself, and enjoy spending your free time in the library."
+	name = "Introverti"
+	desc = "Vous tirez votre énergie du temps du temps que vous passez seul, et vous aimez passer votre temps livre à la bibliothèque."
 	icon = FA_ICON_BOOK_READER
 	value = 0
 	mob_trait = TRAIT_INTROVERT
-	gain_text = span_notice("You feel like reading a good book quietly.")
-	lose_text = span_danger("You feel like libraries are boring.")
-	medical_record_text = "Patient doesn't seem to say much."
+	gain_text = span_notice("Vous sentez que vous avez envie de lire un bon livre tranquillement.")
+	lose_text = span_danger("Vous sentez que les libraires sont ennuyeuses.")
+	medical_record_text = "Le patient ne parle pas beaucoup (quel était son nom déjà?)"
 	mail_goodies = list(/obj/item/book/random)
 
 /datum/quirk/no_taste
-	name = "Ageusia"
-	desc = "You can't taste anything! Toxic food will still poison you."
+	name = "Agueusie"
+	desc = "Rien n'a de goût pour vous! La nourriture toxique vous empoisonnera quand même."
 	icon = FA_ICON_MEH_BLANK
 	value = 0
 	mob_trait = TRAIT_AGEUSIA
-	gain_text = span_notice("You can't taste anything!")
-	lose_text = span_notice("You can taste again!")
-	medical_record_text = "Patient suffers from ageusia and is incapable of tasting food or reagents."
+	gain_text = span_notice("Plus rien n'a de goût! (covid?)")
+	lose_text = span_notice("Le goût revient!")
+	medical_record_text = "Le patient souffre d'agueusie et est incapable de ressentir le goût. "
 	mail_goodies = list(/obj/effect/spawner/random/food_or_drink/condiment) // but can you taste the salt? CAN YOU?!
 
 /datum/quirk/foreigner
-	name = "Foreigner"
-	desc = "You're not from around here. You don't know Galactic Common!"
+	name = "Étranger"
+	desc = "Vous n'êtes pas d'ici. Vous ne connaissez pas le language Galactique Commun!"
 	icon = FA_ICON_LANGUAGE
 	value = 0
-	gain_text = span_notice("The words being spoken around you don't make any sense.")
-	lose_text = span_notice("You've developed fluency in Galactic Common.")
-	medical_record_text = "Patient does not speak Galactic Common and may require an interpreter."
+	gain_text = span_notice("Les mots parlés autour de vous ne font plus sens.")
+	lose_text = span_notice("Vous êtes désormais bilingue en Galactique Commun.")
+	medical_record_text = "Le patient ne parle pas Galactique Commun et aurait besoin d'un traducteur."
 	mail_goodies = list(/obj/item/taperecorder) // for translation
 
 /datum/quirk/foreigner/add(client/client_source)
@@ -57,13 +57,13 @@
 		human_holder.remove_language(/datum/language/uncommon)
 
 /datum/quirk/vegetarian
-	name = "Vegetarian"
-	desc = "You find the idea of eating meat morally and physically repulsive."
+	name = "Végetarien"
+	desc = "Vous trouvez l'idée de manger de la viande répugnante physiquement."
 	icon = FA_ICON_CARROT
 	value = 0
-	gain_text = span_notice("You feel repulsion at the idea of eating meat.")
-	lose_text = span_notice("You feel like eating meat isn't that bad.")
-	medical_record_text = "Patient reports a vegetarian diet."
+	gain_text = span_notice("Vous vous sentez répugné à l'idée de manger de la viande.")
+	lose_text = span_notice("Vous vous sentez de manger de la viande à nouveau.")
+	medical_record_text = "Le patient consomme un régime végétarien (non, il ne mange pas de graines)"
 	mail_goodies = list(/obj/effect/spawner/random/food_or_drink/salad)
 
 /datum/quirk/vegetarian/add(client/client_source)
@@ -90,23 +90,23 @@
 
 /datum/quirk/snob
 	name = "Snob"
-	desc = "You care about the finer things, if a room doesn't look nice its just not really worth it, is it?"
+	desc = "Vous avez le souci des détails : si une chambre n'est pas belle, cela ne vaut pas le coup n'est-ce pas?"
 	icon = FA_ICON_USER_TIE
 	value = 0
-	gain_text = span_notice("You feel like you understand what things should look like.")
-	lose_text = span_notice("Well who cares about deco anyways?")
-	medical_record_text = "Patient seems to be rather stuck up."
+	gain_text = span_notice("Vous avez le souci du détail")
+	lose_text = span_notice("Bah qui se soucie de la déco même?")
+	medical_record_text = "Le patient a l'air d'être coincé."
 	mob_trait = TRAIT_SNOB
 	mail_goodies = list(/obj/item/chisel, /obj/item/paint_palette)
 
 /datum/quirk/pineapple_liker
-	name = "Ananas Affinity"
-	desc = "You find yourself greatly enjoying fruits of the ananas genus. You can't seem to ever get enough of their sweet goodness!"
+	name = "Affinité pour l'ananas"
+	desc = "Vous êtes un enthousiaste de l'ananas. Vous ne pouvez vous passer de cette douceur divine!"
 	icon = FA_ICON_THUMBS_UP
 	value = 0
-	gain_text = span_notice("You feel an intense craving for pineapple.")
-	lose_text = span_notice("Your feelings towards pineapples seem to return to a lukewarm state.")
-	medical_record_text = "Patient demonstrates a pathological love of pineapple."
+	gain_text = span_notice("Vous avez une énorme envie d'ananas.")
+	lose_text = span_notice("Votre ressentiment envers l'ananas s'estompe.")
+	medical_record_text = "Le patient démontre une forte affection pour les ananas."
 	mail_goodies = list(/obj/item/food/pizzaslice/pineapple)
 
 /datum/quirk/pineapple_liker/add(client/client_source)
@@ -126,13 +126,13 @@
 	UnregisterSignal(human_holder, COMSIG_SPECIES_GAIN)
 
 /datum/quirk/pineapple_hater
-	name = "Ananas Aversion"
-	desc = "You find yourself greatly detesting fruits of the ananas genus. Serious, how the hell can anyone say these things are good? And what kind of madman would even dare putting it on a pizza!?"
+	name = "Aversion pour l'ananas"
+	desc = "Vous êtes dégoûté par l'ananas, comment quelqu'un peut il trouver cela bon? Et qui est le fou qui le met sur sa pizza ?!"
 	icon = FA_ICON_THUMBS_DOWN
 	value = 0
-	gain_text = span_notice("You find yourself pondering what kind of idiot actually enjoys pineapples...")
-	lose_text = span_notice("Your feelings towards pineapples seem to return to a lukewarm state.")
-	medical_record_text = "Patient is correct to think that pineapple is disgusting."
+	gain_text = span_notice("Vous commencez à vous demander qui est assez idiot pour aimer l'ananas...")
+	lose_text = span_notice("Votre ressentiment envers l'ananas s'estompe.")
+	medical_record_text = "Le patient pense, à juste titre, que l'ananas est dégoûtant."
 	mail_goodies = list( // basic pizza slices
 		/obj/item/food/pizzaslice/margherita,
 		/obj/item/food/pizzaslice/meat,
@@ -158,13 +158,13 @@
 	UnregisterSignal(human_holder, COMSIG_SPECIES_GAIN)
 
 /datum/quirk/deviant_tastes
-	name = "Deviant Tastes"
-	desc = "You dislike food that most people enjoy, and find delicious what they don't."
+	name = "Goûts différents"
+	desc = "Vous détestez la nourriture que la majorité des gens aiment, et vous adorez ce que la majorité des gens détestent."
 	icon = FA_ICON_GRIN_TONGUE_SQUINT
 	value = 0
-	gain_text = span_notice("You start craving something that tastes strange.")
-	lose_text = span_notice("You feel like eating normal food again.")
-	medical_record_text = "Patient demonstrates irregular nutrition preferences."
+	gain_text = span_notice("Vous avez envie de quelque chose qui goûte bizarrement.")
+	lose_text = span_notice("Vos envie de nourriture reviennent à la normale.")
+	medical_record_text = "Le patient démontre une attirance pour des goûts singuliers."
 	mail_goodies = list(/obj/item/food/urinalcake, /obj/item/food/badrecipe) // Mhhhmmm yummy
 
 /datum/quirk/deviant_tastes/add(client/client_source)
@@ -189,8 +189,8 @@
 	UnregisterSignal(human_holder, COMSIG_SPECIES_GAIN)
 
 /datum/quirk/heterochromatic
-	name = "Heterochromatic"
-	desc = "One of your eyes is a different color than the other!"
+	name = "Hétérochromie"
+	desc = "L'un de vos yeux est de couleur différente!"
 	icon = FA_ICON_EYE_LOW_VISION // Ignore the icon name, its actually a fairly good representation of different color eyes
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
 	value = 0
@@ -244,11 +244,11 @@
 	UnregisterSignal(human_holder, COMSIG_CARBON_LOSE_ORGAN)
 
 /datum/quirk/monochromatic
-	name = "Monochromacy"
-	desc = "You suffer from full colorblindness, and perceive nearly the entire world in blacks and whites."
+	name = "Daltonisme"
+	desc = "Vous souffrez de daltonisme, et vous voyez le monde en nuances de noir et blanc."
 	icon = FA_ICON_ADJUST
 	value = 0
-	medical_record_text = "Patient is afflicted with almost complete color blindness."
+	medical_record_text = "Le patient souffre de daltonisme complet."
 	mail_goodies = list( // Noir detective wannabe
 		/obj/item/clothing/suit/jacket/det_suit/noir,
 		/obj/item/clothing/suit/jacket/det_suit/dark,
@@ -261,18 +261,18 @@
 
 /datum/quirk/monochromatic/post_add()
 	if(is_detective_job(quirk_holder.mind.assigned_role))
-		to_chat(quirk_holder, span_boldannounce("Mmm. Nothing's ever clear on this station. It's all shades of gray..."))
+		to_chat(quirk_holder, span_boldannounce("Mmm. Rien n'est plus clair sur cette station. Tout est en nuance de gris..."))
 		quirk_holder.playsound_local(quirk_holder, 'sound/ambience/ambidet1.ogg', 50, FALSE)
 
 /datum/quirk/monochromatic/remove()
 	quirk_holder.remove_client_colour(/datum/client_colour/monochrome)
 
 /datum/quirk/phobia
-	name = "Phobia"
-	desc = "You are irrationally afraid of something."
+	name = "Phobique"
+	desc = "Vous êtes irrémédiablement effrayé par quelque chose."
 	icon = FA_ICON_SPIDER
 	value = 0
-	medical_record_text = "Patient has an irrational fear of something."
+	medical_record_text = "Le patient a une peur irrationnelle de quelque chose."
 	mail_goodies = list(/obj/item/clothing/glasses/blindfold, /obj/item/storage/pill_bottle/psicodine)
 
 // Phobia will follow you between transfers
@@ -289,23 +289,23 @@
 	human_holder.cure_trauma_type(/datum/brain_trauma/mild/phobia, TRAUMA_RESILIENCE_ABSOLUTE)
 
 /datum/quirk/shifty_eyes
-	name = "Shifty Eyes"
-	desc = "Your eyes tend to wander all over the place, whether you mean to or not, causing people to sometimes think you're looking directly at them when you aren't."
+	name = "Yeux curieux"
+	desc = "Vos yeux ont tendance à regarder partout que vous le vouliez ou non ce qui peut donner l'impression aux gens que vous les regarder directement dans les yeux même si ce n'est pas le cas."
 	icon = FA_ICON_EYE
 	value = 0
-	medical_record_text = "Fucking creep kept staring at me the whole damn checkup. I'm only diagnosing this because it's less awkward than thinking it was on purpose."
+	medical_record_text = "Le patient m'a regardé pendant tout l'examen. Je diagnotisque juste pour éviter de penser que c'était intentionnel."
 	mob_trait = TRAIT_SHIFTY_EYES
 	mail_goodies = list(/obj/item/clothing/head/costume/papersack, /obj/item/clothing/head/costume/papersack/smiley)
 
 /datum/quirk/item_quirk/bald
-	name = "Smooth-Headed"
-	desc = "You have no hair and are quite insecure about it! Keep your wig on, or at least your head covered up."
+	name = "Chauve"
+	desc = "Vous n'avez pas de cheveux, et êtes sensible sur ce sujet! Gardez votre tête couverte par une perruque ou un chapeau."
 	icon = FA_ICON_EGG
 	value = 0
 	mob_trait = TRAIT_BALD
-	gain_text = span_notice("Your head is as smooth as can be, it's terrible.")
-	lose_text = span_notice("Your head itches, could it be... growing hair?!")
-	medical_record_text = "Patient starkly refused to take off headwear during examination."
+	gain_text = span_notice("Une calvasse terrible s'empare de vous.")
+	lose_text = span_notice("L'opération à réussie, des cheveux repoussent!")
+	medical_record_text = "Le patient a strictement refusé de quitter son couvre-chef durant l'examen."
 	mail_goodies = list(/obj/item/clothing/head/wig/random)
 	/// The user's starting hairstyle
 	var/old_hair
@@ -354,14 +354,14 @@
 	quirk_holder.add_mood_event("bad_hair_day", /datum/mood_event/bald)
 
 /datum/quirk/item_quirk/photographer
-	name = "Photographer"
-	desc = "You carry your camera and personal photo album everywhere you go, and your scrapbooks are legendary among your coworkers."
+	name = "Photographe"
+	desc = "Vous avez toujours votre appareil photo et votre album sur vous, et vos clichés sont réputés comme légendaires par vos collègues."
 	icon = FA_ICON_CAMERA
 	value = 0
 	mob_trait = TRAIT_PHOTOGRAPHER
-	gain_text = span_notice("You know everything about photography.")
-	lose_text = span_danger("You forget how photo cameras work.")
-	medical_record_text = "Patient mentions photography as a stress-relieving hobby."
+	gain_text = span_notice("Vous savez tout de la photographie.")
+	lose_text = span_danger("Vous avez oublié comment un appareil photo fonctionne.")
+	medical_record_text = "Le patient a mentionné plusieurs fois sa passio nde la photographie et a tenu à me montrer ses clichés."
 	mail_goodies = list(/obj/item/camera_film)
 
 /datum/quirk/item_quirk/photographer/add_unique(client/client_source)
@@ -369,7 +369,7 @@
 	var/obj/item/storage/photo_album/personal/photo_album = new(get_turf(human_holder))
 	photo_album.persistence_id = "personal_[human_holder.last_mind?.key]" // this is a persistent album, the ID is tied to the account's key to avoid tampering
 	photo_album.persistence_load()
-	photo_album.name = "[human_holder.real_name]'s photo album"
+	photo_album.name = "album photo de [human_holder.real_name]"
 
 	give_item_to_holder(photo_album, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
 	give_item_to_holder(
@@ -384,11 +384,11 @@
 	)
 
 /datum/quirk/item_quirk/colorist
-	name = "Colorist"
-	desc = "You like carrying around a hair dye spray to quickly apply color patterns to your hair."
+	name = "Capilairement instable"
+	desc = "Vous vous promenez toujours avec une teinture à cheveux pour rapidement changer de couleur."
 	icon = FA_ICON_FILL_DRIP
 	value = 0
-	medical_record_text = "Patient enjoys dyeing their hair with pretty colors."
+	medical_record_text = "Le patient change souvent de couleur de cheveux."
 	mail_goodies = list(/obj/item/dyespray)
 
 /datum/quirk/item_quirk/colorist/add_unique(client/client_source)
@@ -396,13 +396,13 @@
 
 #define GAMING_WITHDRAWAL_TIME (15 MINUTES)
 /datum/quirk/gamer
-	name = "Gamer"
-	desc = "You are a hardcore gamer, and you have a need to game. You love winning and hate losing. You only like gamer food."
+	name = "Joueur"
+	desc = "Vous êtes un joueur acharné, et vous avez besoin de joué. Vous aimez gagner et détestez perdre. Vous n'aimez que la nourriture de joueur."
 	icon = FA_ICON_GAMEPAD
 	value = 0
-	gain_text = span_notice("You feel the sudden urge to game.")
-	lose_text = span_notice("You've lost all interest in gaming.")
-	medical_record_text = "Patient has a severe video game addiction."
+	gain_text = span_notice("Vous avez le besoin soudain de lancer une game de LoL.")
+	lose_text = span_notice("Vous perdez l'envie de jouer.")
+	medical_record_text = "Le patient a une addiction sévère aux jeux vidéos."
 	mob_trait = TRAIT_GAMER
 	mail_goodies = list(/obj/item/toy/intento, /obj/item/clothing/head/fedora)
 	/// Timer for gaming withdrawal to kick in
@@ -483,7 +483,7 @@
 /datum/quirk/gamer/proc/gamer_moment()
 	// It was a heated gamer moment...
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	human_holder.say(";[pick("SHIT", "PISS", "FUCK", "CUNT", "COCKSUCKER", "MOTHERFUCKER")]!!", forced = name)
+	human_holder.say(";[pick("MERDE", "FAIT CHIER", "PUTAIN", "SALOPE", "GOBE MES BOULES", "FILS DE PUTE")]!!", forced = name)
 
 /datum/quirk/gamer/proc/enter_withdrawal()
 	var/mob/living/carbon/human/human_holder = quirk_holder
@@ -493,13 +493,13 @@
 
 
 /datum/quirk/item_quirk/pride_pin
-	name = "Pride Pin"
-	desc = "Show off your pride with this changing pride pin!"
+	name = "Pin's de la fierté"
+	desc = "Montrez votre soutien avec ce badge de fierté!"
 	icon = FA_ICON_RAINBOW
 	value = 0
-	gain_text = span_notice("You feel fruity.")
-	lose_text = span_danger("You feel only slightly less fruity than before.")
-	medical_record_text = "Patient appears to be fruity."
+	gain_text = span_notice("Vous vous sentez émoustillé.")
+	lose_text = span_danger("Vous vous sentez moins émoustillé.")
+	medical_record_text = "Le patient a l'air émoustillé."
 
 /datum/quirk/item_quirk/pride_pin/add_unique(client/client_source)
 	var/obj/item/clothing/accessory/pride/pin = new(get_turf(quirk_holder))

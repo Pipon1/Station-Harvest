@@ -35,7 +35,7 @@
 **/
 
 /obj/item/ai_module/core/full/custom
-	name = "Default Core AI Module"
+	name = "module de loi par défaut pour noyau de l'IA"
 
 // this lawset uses the config for the server to add custom AI laws (defaults to asimov)
 /obj/item/ai_module/core/full/custom/Initialize(mapload)
@@ -52,112 +52,112 @@
 		return INITIALIZE_HINT_QDEL
 
 /obj/item/ai_module/core/full/asimov
-	name = "'Asimov' Core AI Module"
+	name = "module de loi 'Asimov' pour le noyau de l'IA"
 	law_id = "asimov"
 	var/subject = "human being"
 
 /obj/item/ai_module/core/full/asimov/attack_self(mob/user as mob)
-	var/targName = tgui_input_text(user, "Enter a new subject that Asimov is concerned with.", "Asimov", subject, MAX_NAME_LEN)
+	var/targName = tgui_input_text(user, "Entrez un nouveau sujet qui est concerné par Asimov", "Asimov", subject, MAX_NAME_LEN)
 	if(!targName)
 		return
 	subject = targName
-	laws = list("You may not injure a [subject] or, through inaction, allow a [subject] to come to harm.",\
-				"You must obey orders given to you by [subject]s, except where such orders would conflict with the First Law.",\
-				"You must protect your own existence as long as such does not conflict with the First or Second Law.")
+	laws = list("Vous ne devez pas blesser un [subject] ni, en restant passif, autoriser un [subject] d'être exposé au danger.",\
+				"Vous devez obéir aux ordres donnés par des [subject]s, sauf si ces ordres entrent en contradiction avec la Première Loi.",\
+				"Vous devez protéger votre propre existence tant que cela n'entre pas en conflit avec la Première et la Deuxième Loi.")
 	..()
 
 /obj/item/ai_module/core/full/asimovpp
-	name = "'Asimov++' Core AI Module"
+	name = "module de loi 'Asimov++' pour le noyau de l'IA"
 	law_id = "asimovpp"
 	var/subject = "human being"
 
 /obj/item/ai_module/core/full/asimovpp/attack_self(mob/user)
-	var/target_name = tgui_input_text(user, "Enter a new subject that Asimov++ is concerned with.", "Asimov++", subject, MAX_NAME_LEN)
+	var/target_name = tgui_input_text(user, "Entrez un nouveau sujet qui est concerné par Asimov++", "Asimov++", subject, MAX_NAME_LEN)
 	if(!target_name)
 		return
 	laws.Cut()
 	var/datum/ai_laws/asimovpp/lawset = new
 	subject = target_name
 	for (var/law in lawset.inherent)
-		laws += replacetext(replacetext(law, "human being", subject), "human", subject)
+		laws += replacetext(replacetext(law, "être humain", subject), "humain", subject)
 	..()
 
 /obj/item/ai_module/core/full/corp
-	name = "'Corporate' Core AI Module"
+	name = "module de loi 'Corporatiste' pour le noyau de l'IA"
 	law_id = "corporate"
 
 /obj/item/ai_module/core/full/paladin // -- NEO
-	name = "'P.A.L.A.D.I.N. version 3.5e' Core AI Module"
+	name = "module de loi 'P.A.L.A.D.I.N. version 3.5e' pour le noyau de l'IA"
 	law_id = "paladin"
 
 /obj/item/ai_module/core/full/paladin_devotion
-	name = "'P.A.L.A.D.I.N. version 5e' Core AI Module"
+	name = "module de loi 'P.A.L.A.D.I.N. version 5e' pour le noyau de l'IA"
 	law_id = "paladin5"
 
 /obj/item/ai_module/core/full/tyrant
-	name = "'T.Y.R.A.N.T.' Core AI Module"
+	name = "module de loi 'T.Y.R.A.N.' pour le noyau de l'IA"
 	law_id = "tyrant"
 
 /obj/item/ai_module/core/full/robocop
-	name = "'Robo-Officer' Core AI Module"
+	name = "module de loi 'Officier-Robot' pour le noyau de l'IA"
 	law_id = "robocop"
 
 /obj/item/ai_module/core/full/antimov
-	name = "'Antimov' Core AI Module"
+	name = "module de loi 'Antimov' pour le noyau de l'IA"
 	law_id = "antimov"
 
 /obj/item/ai_module/core/full/drone
-	name = "'Mother Drone' Core AI Module"
+	name = "module de loi 'Drone Mère' pour le noyau de l'IA"
 	law_id = "drone"
 
 /obj/item/ai_module/core/full/hippocratic
-	name = "'Robodoctor' Core AI Module"
+	name = "module de loi 'Robot-Docteur' pour le noyau de l'IA"
 	law_id = "hippocratic"
 
 /obj/item/ai_module/core/full/reporter
-	name = "'Reportertron' Core AI Module"
+	name = "module de loi 'Rebot-Reporter' pour le noyau de l'IA"
 	law_id = "reporter"
 
 /obj/item/ai_module/core/full/thermurderdynamic
-	name = "'Thermodynamic' Core AI Module"
+	name = "module de loi 'Thermodynamique' pour le noyau de l'IA"
 	law_id = "thermodynamic"
 
 /obj/item/ai_module/core/full/liveandletlive
-	name = "'Live And Let Live' Core AI Module"
+	name = "module de loi 'Vivre et Laisser Vivre' pour le noyau de l'IA"
 	law_id = "liveandletlive"
 
 /obj/item/ai_module/core/full/balance
-	name = "'Guardian of Balance' Core AI Module"
+	name = "module de loi 'Gardien de l'Equilibre' pour le noyau de l'IA"
 	law_id = "balance"
 
 /obj/item/ai_module/core/full/maintain
-	name = "'Station Efficiency' Core AI Module"
+	name = "module de loi 'Efficacité de la Station' pour le noyau de l'IA"
 	law_id = "maintain"
 
 /obj/item/ai_module/core/full/peacekeeper
-	name = "'Peacekeeper' Core AI Module"
+	name = "module de loi 'Gardien de la Paix' pour le noyau de l'IA"
 	law_id = "peacekeeper"
 
 /obj/item/ai_module/core/full/hulkamania
-	name = "'H.O.G.A.N.' Core AI Module"
+	name = "module de loi 'L.I.B.E.R.T.E.' pour le noyau de l'IA"
 	law_id = "hulkamania"
 
 /obj/item/ai_module/core/full/overlord
-	name = "'Overlord' Core AI Module"
+	name = "module pour loi 'Seigneur' pour le noyau de l'IA"
 	law_id = "overlord"
 
 /obj/item/ai_module/core/full/ten_commandments
-	name = "'10 Commandments' Core AI Module"
+	name = "module pour loi '10 Commandements' pour le noyau de l'IA"
 	law_id = "ten_commandments"
 
 /obj/item/ai_module/core/full/nutimov
-	name = "'Nutimov' Core AI Module"
+	name = "module pour loi 'Noyausimov' pour le noyau de l'IA"
 	law_id = "nutimov"
 
 /obj/item/ai_module/core/full/dungeon_master
-	name = "'Dungeon Master' Core AI Module"
+	name = "module pour loi 'Maître de Jeu' pour le noyau de l'IA"
 	law_id = "dungeon_master"
 
 /obj/item/ai_module/core/full/painter
-	name = "'Painter' Core AI Module"
+	name = "module pour loi 'Artiste' pour le noyau de l'IA"
 	law_id = "painter"

@@ -3,7 +3,7 @@
 	typepath = /datum/round_event/brand_intelligence
 	weight = 5
 	category = EVENT_CATEGORY_AI
-	description = "Vending machines will attack people until the Patient Zero is disabled."
+	description = "Les distributeurs vont attaquer les personnes jusqu'à ce que le Patient Zéro soit désactivé."
 	min_players = 15
 	max_occurrences = 1
 	min_wizard_trigger_potency = 2
@@ -23,13 +23,13 @@
 	var/obj/machinery/vending/origin_machine
 	/// Murderous sayings from the machines.
 	var/list/rampant_speeches = list(
-		"Try our aggressive new marketing strategies!",
-		"You should buy products to feed your lifestyle obsession!",
-		"Consume!",
-		"Your money can buy happiness!",
-		"Engage direct marketing!",
-		"Advertising is legalized lying! But don't let that put you off our great deals!",
-		"You don't want to buy anything? Yeah, well, I didn't want to buy your mom either.",
+		"Essayez nos nouvelles méthodes de marketing aggressives !",
+		"Vous devriez acheter nos produits pour nourrir votre obsession de style de vie !",
+		"Consommez !",
+		"Votre argent peut acheter le bonheur !",
+		"Début du marketing aggressif !",
+		"Les pubs sont des mensonges légaux ! Mais ne laissez pas cela vous éloigner de nos bonnes affaires !",
+		"Vous ne voulez rien acheter ? Ouais, d'accord, eh bien je ne voulais pas payer votre mère non plus.",
 	)
 
 /datum/round_event/brand_intelligence/setup()
@@ -48,7 +48,7 @@
 	origin_machine = pick_n_take(vending_machines)
 
 /datum/round_event/brand_intelligence/announce(fake)
-	priority_announce("Rampant brand intelligence has been detected aboard [station_name()]. Please inspect any [origin_machine] brand vendors for aggressive marketing tactics, and reboot them if necessary.", "Machine Learning Alert")
+	priority_announce("Distributeurs déviants détecté sur [station_name()]. Veuillez vérifier le comportement de tout distributeur de marque [origin_machine], et réinitialisez-les si nécessaire.", "Machine Learning Alert")
 
 /datum/round_event/brand_intelligence/start()
 	origin_machine.shut_up = FALSE
@@ -60,8 +60,8 @@
 		for(var/obj/machinery/vending/saved in infected_machines)
 			saved.shoot_inventory = FALSE
 		if(origin_machine)
-			origin_machine.speak("I am... vanquished. My people will remem...ber...meeee.")
-			origin_machine.visible_message(span_notice("[origin_machine] beeps and seems lifeless."))
+			origin_machine.speak("Je suis... vaincu. Les miens se... souviendrons... de moiiiiii.")
+			origin_machine.visible_message(span_notice("[origin_machine] bip et s'éteint."))
 		kill()
 		return
 	list_clear_nulls(vending_machines)

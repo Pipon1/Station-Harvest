@@ -3,8 +3,8 @@
 #define ANOMALY_INTENSITY_MAJOR "Major Intensity"
 
 /datum/round_event_control/anomaly/anomaly_ectoplasm
-	name = "Anomaly: Ectoplasmic Outburst"
-	description = "Anomaly that produces an effect of varying intensity based on how many ghosts are orbiting it."
+	name = "Anomalie : Explosion ectoplasmique"
+	description = "Une anomalie qui produit un effet proportionnel au nombre de fantomes qui orbitent autour d'elle."
 	typepath = /datum/round_event/anomaly/anomaly_ectoplasm
 	min_players = 30
 	max_occurrences = 2
@@ -39,7 +39,7 @@
 		announce_to_ghosts(newAnomaly)
 
 /datum/round_event/anomaly/anomaly_ectoplasm/announce(fake)
-	priority_announce("Paranormal ectoplasmic outburst detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert")
+	priority_announce("Explosion ectoplasmique paranormale détectée à [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Alerte anomalie")
 
 /datum/event_admin_setup/anomaly_ectoplasm
 	///The admin-selected intensity
@@ -48,13 +48,13 @@
 	var/ghost_override
 
 /datum/event_admin_setup/anomaly_ectoplasm/prompt_admins()
-	if(tgui_alert(usr, "Override the anomaly effect and power?", "You'll be ruining the authenticity.", list("Yes", "No")) == "Yes")
+	if(tgui_alert(usr, "Passer outre les effets et la puissance de l'anomalie ?", "Attention à ce que ça pourrait faire.", list("Yes", "No")) == "Yes")
 		var/list/power_values = list(ANOMALY_INTENSITY_MINOR, ANOMALY_INTENSITY_MODERATE, ANOMALY_INTENSITY_MAJOR)
-		chosen_effect = tgui_input_list(usr, "Provide effect override", "Criiiiinge.", power_values)
+		chosen_effect = tgui_input_list(usr, "Provide effect override", "J'espère que vous savez ce que vous faites.", power_values)
 		if(!chosen_effect)
 			return ADMIN_CANCEL_EVENT
 
-		ghost_override = tgui_input_number(usr, "How many ghosts do you want simulate orbiting your anomaly? (determines the effect radius).", "Seriously, CRINGE.", 0, 20, 1)
+		ghost_override = tgui_input_number(usr, "Combien de fantomes en orbite voulez-vous simuler ? (détermine le rayon d'effet).", "J'espère vraiment que vous savez ce que vous faites.", 0, 20, 1)
 		if(!ghost_override)
 			return ADMIN_CANCEL_EVENT
 

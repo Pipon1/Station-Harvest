@@ -1,11 +1,11 @@
 /datum/round_event_control/portal_storm_syndicate
-	name = "Portal Storm: Syndicate Shocktroops"
+	name = "Tempête de portails : troupe d'assault du Syndicat"
 	typepath = /datum/round_event/portal_storm/syndicate_shocktroop
 	weight = 2
 	min_players = 15
 	earliest_start = 30 MINUTES
 	category = EVENT_CATEGORY_ENTITIES
-	description = "Syndicate troops pour out of portals."
+	description = "Des troupes du syndicats vont sortir de portails."
 
 /datum/round_event/portal_storm/syndicate_shocktroop
 	boss_types = list(/mob/living/basic/syndicate/melee/space/stormtrooper = 2)
@@ -13,12 +13,12 @@
 						/mob/living/basic/syndicate/ranged/space = 2)
 
 /datum/round_event_control/portal_storm_narsie
-	name = "Portal Storm: Constructs"
+	name = "Tempête de portails : Invocations"
 	typepath = /datum/round_event/portal_storm/portal_storm_narsie
 	weight = 0
 	max_occurrences = 0
 	category = EVENT_CATEGORY_ENTITIES
-	description = "Nar'sie constructs pour out of portals."
+	description = "Des invocations de Nar'sie vont sortir de portails."
 	min_wizard_trigger_potency = 5
 	max_wizard_trigger_potency = 7
 
@@ -70,7 +70,7 @@
 	set waitfor = 0
 	sound_to_playing_players('sound/magic/lightning_chargeup.ogg')
 	sleep(8 SECONDS)
-	priority_announce("Massive bluespace anomaly detected en route to [station_name()]. Brace for impact.")
+	priority_announce("Signes de nombreuses anomalies plieuses d'espaces détectées dans la zone de [station_name()]. Préparez vous.")
 	sleep(2 SECONDS)
 	sound_to_playing_players('sound/magic/lightningbolt.ogg')
 

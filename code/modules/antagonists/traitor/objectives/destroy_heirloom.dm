@@ -12,9 +12,8 @@
 	)
 
 /datum/traitor_objective/destroy_heirloom
-	name = "Destroy %ITEM%, the family heirloom that belongs to %TARGET% the %JOB TITLE%"
-	description = "%TARGET% has been on our shitlist for a while and we want to show them we mean business. Find their %ITEM% and destroy it."
-
+	name = "Détruisez %ITEM%, l'objet de famille de %TARGET% lae %JOB TITLES%"
+	description = "%TARGET% a été placé il y a un bon moment sur notre liste de sac à merde et on veut lui montrer qu'on rigole pas. Trouvez son %ITEM% et détruisez le."
 	abstract_type = /datum/traitor_objective/destroy_heirloom
 
 	/// The jobs that this objective is targetting.

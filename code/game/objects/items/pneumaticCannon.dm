@@ -237,8 +237,44 @@
 	else
 		loadedWeightClass--
 	AM.forceMove(get_turf(src))
-	AM.throw_at(target, pressure_setting * 10 * range_multiplier, pressure_setting * 2, user, spin_item)
+	//Create a var named "hit" and assign it a proc nammed "hit_callback" to know what to do when hiting someone.
+	var/datum/callback/hit = new(src, /obj/item/pneumatic_cannon/proc/hit_callback, target, AM, user)
+	//check if the user is targeting the mouth. If the user is targeting the mouth
+	// We fire the pneumati cannon and assign hit to callback, else we just follow the standard procedure.
+	if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+		AM.throw_at(target, pressure_setting * 10 * range_multiplier, pressure_setting * 2, user, spin_item, callback = hit)
+	else
+		AM.throw_at(target, pressure_setting * 10 * range_multiplier, pressure_setting * 2, user, spin_item)
+
 	return TRUE
+
+
+/obj/item/pneumatic_cannon/proc/hit_callback(turf/target, atom/movable/AM, mob/user)
+	var/mob/living/carbon/eater = target
+	var/covered = ""
+	//we check if the mouth is covered.
+	if(eater.is_mouth_covered())
+		covered = "no"
+	//Here we check if what we're launching contain reagents, if the target is a human,
+	// if the container as hit and finally, if the mouth is covered(I may refector this later).
+	if(AM.reagents.total_volume && ishuman(target) && AM.Adjacent(target) && covered != "no")
+		user.visible_message("Trigger triggered")
+		var/mob/living/carbon/human/victim = target
+		var/obj/item/reagent_containers/CONT = AM
+		//Here we check for the pressure settings, if it's not high, the target does not eat the container.
+		if(pressure_setting == LOW_PRESSURE)
+			CONT.attack(target,target)
+
+		if(pressure_setting == MID_PRESSURE)
+			CONT.attack(target,target)
+			CONT.attack(target,target)
+		//If the pressure is high enough, the target is force fed the container and the sound of eating is played.
+		// And a message is displayed.
+		if(pressure_setting == HIGH_PRESSURE)
+			playsound(target, 'sound/items/eatfood.ogg', 50, TRUE, -1)
+			AM.reagents.trans_to(victim, AM.reagents.total_volume, transfered_by = user, methods = INGEST)
+			qdel(AM)
+			target.visible_message("You have eaten [AM]")
 
 /obj/item/pneumatic_cannon/proc/get_target(turf/target, turf/starting)
 	if(range_multiplier == 1)

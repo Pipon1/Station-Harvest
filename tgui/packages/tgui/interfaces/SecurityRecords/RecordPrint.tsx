@@ -82,41 +82,41 @@ export const RecordPrint = (props, context) => {
             icon="question"
             onClick={() => swapTabs(PRINTOUT.Missing)}
             selected={printType === PRINTOUT.Missing}
-            tooltip="Prints a poster with mugshot and description."
+            tooltip="Imprime un poster avec une photo du suspect."
             tooltipPosition="bottom">
-            Missing
+            Disparu
           </Button>
           <Button
             disabled={innocent}
             icon="file-alt"
             onClick={() => swapTabs(PRINTOUT.Rapsheet)}
             selected={printType === PRINTOUT.Rapsheet}
-            tooltip={`Prints a standard paper with the record on it. ${
+            tooltip={`Imprime le casier judiciaire du suspect. ${
               innocent && ' (Requires crimes)'
             }`}
             tooltipPosition="bottom">
-            Rapsheet
+            Casier Judiciaire
           </Button>
           <Button
             disabled={innocent}
             icon="handcuffs"
             onClick={() => swapTabs(PRINTOUT.Wanted)}
             selected={printType === PRINTOUT.Wanted}
-            tooltip={`Prints a poster with mugshot and crimes.${
+            tooltip={`Imprime un poster avec une photo du suspect et une description de son crime.${
               innocent && ' (Requires crimes)'
             }`}
             tooltipPosition="bottom">
-            Wanted
+            Recherché
           </Button>
           <Button color="bad" icon="times" onClick={reset} />
         </>
       }
       fill
       scrollable
-      title="Print Record">
+      title="Imprimer un casier">
       <Stack color="label" fill vertical>
         <Stack.Item>
-          <Box>Enter a Header:</Box>
+          <Box>Entrez un dessus de page : </Box>
           <Input
             onChange={(event, value) => setHeader(value)}
             maxLength={7}
@@ -129,7 +129,7 @@ export const RecordPrint = (props, context) => {
           />
         </Stack.Item>
         <Stack.Item>
-          <Box>Enter an Alias:</Box>
+          <Box>Entrez un alias : </Box>
           <Input
             onChange={(event, value) => setAlias(value)}
             maxLength={42}
@@ -143,7 +143,7 @@ export const RecordPrint = (props, context) => {
           />
         </Stack.Item>
         <Stack.Item>
-          <Box>Enter a Description:</Box>
+          <Box>Entrez une description : </Box>
           <Stack fill>
             <Stack.Item grow>
               <Input

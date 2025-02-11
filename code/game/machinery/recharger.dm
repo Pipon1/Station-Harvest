@@ -1,9 +1,9 @@
 /obj/machinery/recharger
-	name = "recharger"
+	name = "station de charge"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "recharger"
 	base_icon_state = "recharger"
-	desc = "A charging dock for energy based weaponry, PDAs, and other devices."
+	desc = "Une station de charge pour les armes énergétiques, les PDA et autres appareils."
 	circuit = /obj/item/circuitboard/machine/recharger
 	pass_flags = PASSTABLE
 	var/obj/item/charging = null
@@ -27,19 +27,19 @@
 /obj/machinery/recharger/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += span_warning("You're too far away to examine [src]'s contents and display!")
+		. += span_warning("Vous êtes trop loin pour examiner le contenu de la [src] et son affichage !")
 		return
 
 	if(charging)
-		. += {"[span_notice("\The [src] contains:")]
+		. += {"[span_notice("La [src] contient : ")]
 		[span_notice("- \A [charging].")]"}
 
 	if(!(machine_stat & (NOPOWER|BROKEN)))
-		. += span_notice("The status display reads:")
-		. += span_notice("- Recharging <b>[recharge_coeff*10]%</b> cell charge per cycle.")
+		. += span_notice("L'écran de statut affiche : ")
+		. += span_notice("- recharge <b>[recharge_coeff*10]%</b> de batterie par cycle.")
 		if(charging)
 			var/obj/item/stock_parts/cell/C = charging.get_cell()
-			. += span_notice("- \The [charging]'s cell is at <b>[C.percent()]%</b>.")
+			. += span_notice("- La batterie de [charging] est à <b>[C.percent()]%</b>.")
 
 
 /obj/machinery/recharger/proc/setCharging(new_charging)
@@ -58,11 +58,11 @@
 /obj/machinery/recharger/attackby(obj/item/G, mob/user, params)
 	if(G.tool_behaviour == TOOL_WRENCH)
 		if(charging)
-			to_chat(user, span_notice("Remove the charging item first!"))
+			to_chat(user, span_notice("Retirez d'abord l'objet en charge !"))
 			return
 		set_anchored(!anchored)
 		power_change()
-		to_chat(user, span_notice("You [anchored ? "attached" : "detached"] [src]."))
+		to_chat(user, span_notice("Vous l'avez [anchored ? "attaché" : "detaché"] [src]."))
 		G.play_tool_sound(src)
 		return
 
@@ -76,13 +76,13 @@
 			//Checks to make sure he's not in space doing it, and that the area got proper power.
 			var/area/a = get_area(src)
 			if(!isarea(a) || a.power_equip == 0)
-				to_chat(user, span_notice("[src] blinks red as you try to insert [G]."))
+				to_chat(user, span_notice("[src] clignote en rouge alors que vous essayez d'insérer [G]."))
 				return 1
 
 			if (istype(G, /obj/item/gun/energy))
 				var/obj/item/gun/energy/E = G
 				if(!E.can_charge)
-					to_chat(user, span_notice("Your gun has no external power connector."))
+					to_chat(user, span_notice("Votre arme n'a pas de connecteur d'alimentation externe."))
 					return 1
 
 			if(!user.transferItemToLoc(G, src))
@@ -90,7 +90,7 @@
 			setCharging(G)
 
 		else
-			to_chat(user, span_notice("[src] isn't connected to anything!"))
+			to_chat(user, span_notice("[src] n'est pas connecté à quoi que ce soit !"))
 		return 1
 
 	if(anchored && !charging)
@@ -151,7 +151,7 @@
 		if(!using_power && !finished_recharging) //Inserted thing is at max charge/ammo, notify those around us
 			finished_recharging = TRUE
 			playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
-			say("[charging] has finished recharging!")
+			say("[charging] a finit de se rechargé !")
 
 	else
 		return PROCESS_KILL

@@ -38,29 +38,29 @@
 	if((status == WAITING_FOR_SOMETHING))
 		var/retry_count = 0
 		if(retry_count >= MAX_SPAWN_ATTEMPT)
-			message_admins("[role_name] event has exceeded maximum spawn attempts. Aborting and refunding.")
+			message_admins("L'événement [role_name] a dépassé le nombre maximum d'essaie de spawn. Annulation et re-création..")
 			if(control && control.occurrences > 0) //Don't refund if it hasn't
 				control.occurrences--
 			return
 		var/waittime = 300 * (2**retry_count)
-		message_admins("The event will not spawn a [role_name] until certain \
-			conditions are met. Waiting [waittime/10]s and then retrying.")
+		message_admins("L'événement ne créera pas de [role_name] jusqu'à ce que \
+			les conditions soient présentes. Attente de [waittime/10] secondes puis nouvel essaie.")
 		addtimer(CALLBACK(src, PROC_REF(try_spawning), 0, ++retry_count), waittime)
 		return
 
 	if(!status)
-		message_admins("An attempt to spawn [role_name] returned [status], this is a bug.")
+		message_admins("Un essaie pour spawn [role_name] a renvoyé [status], c'est un bug.")
 		kill()
 		return
 
 	switch(status)
 		if(MAP_ERROR)
-			message_admins("[role_name] cannot be spawned due to a map error.")
+			message_admins("[role_name] ne peut pas être créé à cause d'une erreur de la map.")
 			kill()
 			return
 		if(NOT_ENOUGH_PLAYERS)
-			message_admins("[role_name] cannot be spawned due to lack of players signing up.")
-			deadchat_broadcast(" did not get enough candidates ([minimum_required]) to spawn.", "<b>[role_name]</b>", message_type=DEADCHAT_ANNOUNCEMENT)
+			message_admins("[role_name] ne peut pas être créé à cause d'un manque de joueur.")
+			deadchat_broadcast(" n'a pas eu assez de candidats ([minimum_required])", "<b>[role_name]</b>", message_type=DEADCHAT_ANNOUNCEMENT)
 			kill()
 			return
 		if(SUCCESSFUL_SPAWN)
@@ -69,7 +69,7 @@
 				for (var/mob/mobs as anything in spawned_mobs)
 					announce_to_ghosts(mobs)
 			else
-				message_admins("No mobs found in the `spawned_mobs` list, this is a bug.")
+				message_admins("Pas de mobs trouvé dans la liste `spawned_mobs`, c'est un bug.")
 
 	processing = TRUE
 
@@ -99,7 +99,7 @@
 	var/list/mob/dead/observer/regular_candidates
 	// don't get their hopes up
 	if(priority_candidates.len < minimum_required)
-		regular_candidates = poll_ghost_candidates("Do you wish to be considered for the special role of '[role_name]'?", jobban, be_special)
+		regular_candidates = poll_ghost_candidates("Est-ce que vous voudriez être envisagé pour le rôle de '[role_name]'?", jobban, be_special)
 	else
 		regular_candidates = list()
 

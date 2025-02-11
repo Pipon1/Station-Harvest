@@ -313,8 +313,8 @@
 	return to_preload
 
 /obj/item/storage/belt/security
-	name = "security belt"
-	desc = "Can hold security gear like handcuffs and flashes."
+	name = "ceinture de la sécurité"
+	desc = "Peut contenir des équipements de sécurité comme des menottes et des flash."
 	icon_state = "security"
 	inhand_icon_state = "security"//Could likely use a better one.
 	worn_icon_state = "security"
@@ -351,8 +351,8 @@
 	update_appearance()
 
 /obj/item/storage/belt/security/webbing
-	name = "security webbing"
-	desc = "Unique and versatile chest rig, can hold security gear."
+	name = "gilet de sécurité"
+	desc = "Unique et polyvalent, peut contenir des équipements de sécurité."
 	icon_state = "securitywebbing"
 	inhand_icon_state = "securitywebbing"
 	worn_icon_state = "securitywebbing"

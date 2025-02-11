@@ -11,8 +11,8 @@
 	weight = OBJECTIVE_WEIGHT_UNLIKELY
 
 /datum/traitor_objective/demoralise
-	name = "Debug your code."
-	description = "If you actually get this objective someone fucked up."
+	name = "Debug ton code."
+	description = "Si tu peux voir cet objectif, quelqu'un à chier dans la colle."
 
 	abstract_type = /datum/traitor_objective/demoralise
 

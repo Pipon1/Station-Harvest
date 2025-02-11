@@ -2,23 +2,23 @@
 //this file is named weirdly so that positive traits are listed above negative ones
 
 /datum/quirk/alcohol_tolerance
-	name = "Alcohol Tolerance"
-	desc = "You become drunk more slowly and suffer fewer drawbacks from alcohol."
+	name = "Tolérance à l'alcool"
+	desc = "Vous mettez plus de temps à ressentir les effets de l'alcool"
 	icon = FA_ICON_BEER
 	value = 4
 	mob_trait = TRAIT_ALCOHOL_TOLERANCE
-	gain_text = span_notice("You feel like you could drink a whole keg!")
-	lose_text = span_danger("You don't feel as resistant to alcohol anymore. Somehow.")
-	medical_record_text = "Patient demonstrates a high tolerance for alcohol."
+	gain_text = span_notice("Vous sentez que vous pourriez boire un tonneau entier!")
+	lose_text = span_danger("Vous sentez que vous ne tenez plus aussi bien l'alcool.")
+	medical_record_text = "Le patient démontre une forte résistance a l'alcool."
 	mail_goodies = list(/obj/item/skillchip/wine_taster)
 
 /datum/quirk/apathetic
-	name = "Apathetic"
-	desc = "You just don't care as much as other people. That's nice to have in a place like this, I guess."
+	name = "Adiaphorie"
+	desc = "Vous éprouvez une indifférence à ce qui vous entoure. Un point positif dans un endroit comme ceci, je suppose."
 	icon = FA_ICON_MEH
 	value = 4
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_MOODLET_BASED
-	medical_record_text = "Patient was administered the Apathy Evaluation Scale but did not bother to complete it."
+	medical_record_text = "Le patient s'est vu proposé le Test d'Evaluation de l'Adiaphorie mais ne s'est pas embêté à le traduire."
 	mail_goodies = list(/obj/item/hourglass)
 
 /datum/quirk/apathetic/add(client/client_source)
@@ -29,7 +29,7 @@
 
 /datum/quirk/drunkhealing
 	name = "Drunken Resilience"
-	desc = "Nothing like a good drink to make you feel on top of the world. Whenever you're drunk, you slowly recover from injuries."
+	desc = "Rien ne vous plaît plus que la sensation d'ivresse. Quand vous êtes ivre, vous récupérez lentement de vos blessures."
 	icon = FA_ICON_WINE_BOTTLE
 	value = 8
 	gain_text = span_notice("You feel like a drink would do you good.")
@@ -51,19 +51,19 @@
 			quirk_holder.adjustFireLoss(-0.4 * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC)
 
 /datum/quirk/empath
-	name = "Empath"
-	desc = "Whether it's a sixth sense or careful study of body language, it only takes you a quick glance at someone to understand how they feel."
+	name = "Empathie"
+	desc = "Que ce soir un sixième sense ou une étude attentive du language corporel, ca ne vous prends qu'un regard pour comprendre les ressentiments d'une personne."
 	icon = FA_ICON_SMILE_BEAM
 	value = 8
 	mob_trait = TRAIT_EMPATH
-	gain_text = span_notice("You feel in tune with those around you.")
-	lose_text = span_danger("You feel isolated from others.")
-	medical_record_text = "Patient is highly perceptive of and sensitive to social cues, or may possibly have ESP. Further testing needed."
+	gain_text = span_notice("Vous vous sentez connecté aux gens autour de vous.")
+	lose_text = span_danger("Vous vous sentez isolé des autres.")
+	medical_record_text = "Le patient est très réceptif aux stimulus sociaux. Tests approfondis nécessaires."
 	mail_goodies = list(/obj/item/toy/foamfinger)
 
 /datum/quirk/item_quirk/clown_enjoyer
-	name = "Clown Enjoyer"
-	desc = "You enjoy clown antics and get a mood boost from wearing your clown pin."
+	name = "Fan des clowns"
+	desc = "Vous adorez les clowns et vous gagnez un bonus d'humeur en portant votre pin's de clown."
 	icon = FA_ICON_MAP_PIN
 	value = 2
 	mob_trait = TRAIT_CLOWN_ENJOYER
@@ -91,8 +91,8 @@
 	fan.show_to(quirk_holder)
 
 /datum/quirk/item_quirk/mime_fan
-	name = "Mime Fan"
-	desc = "You're a fan of mime antics and get a mood boost from wearing your mime pin."
+	name = "Fan des mimes"
+	desc = "Vous adorez les mimes et vous gagnez un bonus d'humeur en portant votre pin's de mime."
 	icon = FA_ICON_THUMBTACK
 	value = 2
 	mob_trait = TRAIT_MIME_FAN
@@ -121,8 +121,8 @@
 	fan.show_to(quirk_holder)
 
 /datum/quirk/freerunning
-	name = "Freerunning"
-	desc = "You're great at quick moves! You can climb tables more quickly and take no damage from short falls."
+	name = "Coureur de marathon"
+	desc = "Vous êtes agile et rapide! Vous pouvez escalader les tables plus rapidement et vous ne prenez pas de dégât de chute d'une faible hauteur."
 	icon = FA_ICON_RUNNING
 	value = 8
 	mob_trait = TRAIT_FREERUNNING
@@ -132,8 +132,8 @@
 	mail_goodies = list(/obj/item/melee/skateboard, /obj/item/clothing/shoes/wheelys/rollerskates)
 
 /datum/quirk/friendly
-	name = "Friendly"
-	desc = "You give the best hugs, especially when you're in the right mood."
+	name = "Amical"
+	desc = "Vous donnez les meilleurs câlins, surtout quand vous êtes dans une bonne humeur."
 	icon = FA_ICON_HANDS_HELPING
 	value = 2
 	mob_trait = TRAIT_FRIENDLY
@@ -144,8 +144,8 @@
 	mail_goodies = list(/obj/item/storage/box/hug)
 
 /datum/quirk/jolly
-	name = "Jolly"
-	desc = "You sometimes just feel happy, for no reason at all."
+	name = "Heureux"
+	desc = "Vous vous sentez parfois juste heureux, sans raison particulière."
 	icon = FA_ICON_GRIN
 	value = 4
 	mob_trait = TRAIT_JOLLY
@@ -154,8 +154,8 @@
 	mail_goodies = list(/obj/item/clothing/mask/joy)
 
 /datum/quirk/light_step
-	name = "Light Step"
-	desc = "You walk with a gentle step; footsteps and stepping on sharp objects is quieter and less painful. Also, your hands and clothes will not get messed in case of stepping in blood."
+	name = "Pas légers"
+	desc = "Vous marchez d'un pas léger; marcher sur des objets pointus fais moins de bruit et moins mal. De plus, vos mains et vêtements ne seront pas tachés dans le cas où vous marchez sur du sang."
 	icon = FA_ICON_SHOE_PRINTS
 	value = 4
 	mob_trait = TRAIT_LIGHT_STEP
@@ -165,8 +165,8 @@
 	mail_goodies = list(/obj/item/clothing/shoes/sandal)
 
 /datum/quirk/item_quirk/musician
-	name = "Musician"
-	desc = "You can tune handheld musical instruments to play melodies that clear certain negative effects and soothe the soul."
+	name = "Musicien"
+	desc = "Vous pouvez modifier des intruments tenus à la main pour jouer des mélodies qui chassent certains effets négatifs et apaisent l'âme."
 	icon = FA_ICON_GUITAR
 	value = 2
 	mob_trait = TRAIT_MUSICIAN
@@ -179,8 +179,8 @@
 	give_item_to_holder(/obj/item/choice_beacon/music, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
 
 /datum/quirk/night_vision
-	name = "Night Vision"
-	desc = "You can see slightly more clearly in full darkness than most people."
+	name = "Nyctalope"
+	desc = "Vous voyez mieux dans le noir comparé à certaines personnes."
 	icon = FA_ICON_MOON
 	value = 4
 	mob_trait = TRAIT_NIGHT_VISION
@@ -208,8 +208,8 @@
 	eyes.refresh()
 
 /datum/quirk/item_quirk/poster_boy
-	name = "Poster Boy"
-	desc = "You have some great posters! Hang them up and make everyone have a great time."
+	name = "Fan de posters"
+	desc = "Vous avez de beaux posters! Arrcohez les pour que tout le monde passe un bon moment."
 	icon = FA_ICON_TAPE
 	value = 4
 	mob_trait = TRAIT_POSTERBOY
@@ -223,8 +223,8 @@
 	give_item_to_holder(newbox, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
 
 /obj/item/storage/box/posterbox
-	name = "Box of Posters"
-	desc = "You made them yourself!"
+	name = "Boîte de posters"
+	desc = "Vous les avez fait vous même!"
 
 /// fills box of posters based on job, one neutral poster and 2 department posters
 /obj/item/storage/box/posterbox/proc/add_quirk_posters(datum/mind/posterboy)
@@ -240,8 +240,8 @@
 		new potential_poster(src)
 
 /datum/quirk/selfaware
-	name = "Self-Aware"
-	desc = "You know your body well, and can accurately assess the extent of your wounds."
+	name = "Pleinement conscient"
+	desc = "Vous connaissez votre corps par coeur, et vous pouvez ressentir chaque blessure précisément."
 	icon = FA_ICON_BONE
 	value = 8
 	mob_trait = TRAIT_SELF_AWARE
@@ -249,8 +249,8 @@
 	mail_goodies = list(/obj/item/clothing/neck/stethoscope, /obj/item/skillchip/entrails_reader)
 
 /datum/quirk/skittish
-	name = "Skittish"
-	desc = "You're easy to startle, and hide frequently. Run into a closed locker to jump into it, as long as you have access. You can walk to avoid this."
+	name = "Peureux"
+	desc = "Vous êtes facile a effrayer, et vous cachez souvent. Courez dans un casier pour vous réfugiez dedans (tant que vous y avez accès), marchez pour éviter cela."
 	icon = FA_ICON_TRASH
 	value = 8
 	mob_trait = TRAIT_SKITTISH
@@ -258,8 +258,8 @@
 	mail_goodies = list(/obj/structure/closet/cardboard)
 
 /datum/quirk/item_quirk/spiritual
-	name = "Spiritual"
-	desc = "You hold a spiritual belief, whether in God, nature or the arcane rules of the universe. You gain comfort from the presence of holy people, and believe that your prayers are more special than others. Being in the chapel makes you happy."
+	name = "Croyant"
+	desc = "Vous avez des croyances, que ce soir vers Dieu, la nature ou les arcanes de cet univers. Vous êtes rassurés par la présence des hommes de foi, et êtes persuadé que vos prières sont plus spéciales que les autres. Traîner dans la chapelle vous rend heureux."
 	icon = FA_ICON_BIBLE
 	value = 4
 	mob_trait = TRAIT_SPIRITUAL
@@ -279,8 +279,8 @@
 	give_item_to_holder(/obj/item/storage/box/matches, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
 
 /datum/quirk/item_quirk/tagger
-	name = "Tagger"
-	desc = "You're an experienced artist. People will actually be impressed by your graffiti, and you can get twice as many uses out of drawing supplies."
+	name = "Artiste de rue"
+	desc = "Vous êtes un artiste de rue expérimenté. Les gens seront impressionés par vos graffitis, et vous tirez mieux profit de vos matériel de dessin de rue."
 	icon = FA_ICON_SPRAY_CAN
 	value = 4
 	mob_trait = TRAIT_TAGGER
@@ -300,8 +300,8 @@
 	give_item_to_holder(can, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
 
 /datum/quirk/throwingarm
-	name = "Throwing Arm"
-	desc = "Your arms have a lot of heft to them! Objects that you throw just always seem to fly further than everyone elses, and you never miss a toss."
+	name = "Ancien joueur de baseball"
+	desc = "Vous avez de la force dans les bras. Les objets que vous jetez vont plus loin et ne ratent jamais leur cible."
 	icon = FA_ICON_BASEBALL
 	value = 7
 	mob_trait = TRAIT_THROWINGARM
@@ -311,8 +311,8 @@
 	mail_goodies = list(/obj/item/toy/beach_ball/baseball, /obj/item/toy/basketball, /obj/item/toy/dodgeball)
 
 /datum/quirk/voracious
-	name = "Voracious"
-	desc = "Nothing gets between you and your food. You eat faster and can binge on junk food! Being fat suits you just fine."
+	name = "Vorace"
+	desc = "Rien ne s'interpose entre vous et votre nourriture. Vous mangez plus vite et vous jetez sur la malbouffe. Être en surpoid vous sied bien."
 	icon = FA_ICON_DRUMSTICK_BITE
 	value = 4
 	mob_trait = TRAIT_VORACIOUS
@@ -321,8 +321,8 @@
 	mail_goodies = list(/obj/effect/spawner/random/food_or_drink/dinner)
 
 /datum/quirk/item_quirk/signer
-	name = "Signer"
-	desc = "You possess excellent communication skills in sign language."
+	name = "Signant"
+	desc = "Vous savez parler en langue des signes."
 	icon = FA_ICON_HANDS
 	value = 4
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE

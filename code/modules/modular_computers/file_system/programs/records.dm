@@ -1,7 +1,7 @@
 /datum/computer_file/program/records
 	filename = "ntrecords"
-	filedesc = "Records"
-	extended_desc = "Allows the user to view several basic records from the crew."
+	filedesc = "Archives personnel"
+	extended_desc = "Permet à l'utilisateur de consulter plusieurs dossiers de l'équipage."
 	category = PROGRAM_CATEGORY_MISC
 	program_icon = "clipboard"
 	program_icon_state = "crew"
@@ -14,18 +14,18 @@
 	var/mode
 
 /datum/computer_file/program/records/medical
-	filedesc = "Medical Records"
+	filedesc = "Archives médicales"
 	filename = "medrecords"
 	program_icon = "book-medical"
-	extended_desc = "Allows the user to view several basic medical records from the crew."
+	extended_desc = "Permet à l'utilisateur de consulter plusieurs dossiers de l'équipage."
 	transfer_access = list(ACCESS_MEDICAL, ACCESS_FLAG_COMMAND)
 	available_on_ntnet = TRUE
 	mode = "medical"
 
 /datum/computer_file/program/records/security
-	filedesc = "Security Records"
+	filedesc = "Archives de sécurité"
 	filename = "secrecords"
-	extended_desc = "Allows the user to view several basic security records from the crew."
+	extended_desc = "Permet à l'utilisateur de consulter les dossiers de l'équipage."
 	transfer_access = list(ACCESS_SECURITY, ACCESS_FLAG_COMMAND)
 	available_on_ntnet = TRUE
 	mode = "security"

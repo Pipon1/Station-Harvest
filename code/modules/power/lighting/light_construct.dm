@@ -1,6 +1,6 @@
 /obj/structure/light_construct
-	name = "light fixture frame"
-	desc = "A light fixture under construction."
+	name = "monture de lampe"
+	desc = "Une monture de lampe encours de construction."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube-construct-stage1"
 	anchored = TRUE
@@ -45,23 +45,23 @@
 	. = ..()
 	switch(stage)
 		if(LIGHT_CONSTRUCT_EMPTY)
-			. += "It's an empty frame."
+			. += "C'est une monture vide."
 		if(LIGHT_CONSTRUCT_WIRED)
-			. += "It's wired."
+			. += "Elle est câblée."
 		if(LIGHT_CONSTRUCT_CLOSED)
-			. += "The casing is closed."
+			. += "La monture est complète."
 	if(cell_connectors)
 		if(cell)
-			. += "You see [cell] inside the casing."
+			. += "Vous voyez une [cell] dans la monture."
 		else
-			. += "The casing has no power cell for backup power."
+			. += "La monture n'a pas de batterie de secours."
 	else
-		. += span_danger("This casing doesn't support power cells for backup power.")
+		. += span_danger("Cette monture ne peut pas accepter de batterie de secours.")
 
 /obj/structure/light_construct/attack_hand(mob/user, list/modifiers)
 	if(!cell)
 		return
-	user.visible_message(span_notice("[user] removes [cell] from [src]!"), span_notice("You remove [cell]."))
+	user.visible_message(span_notice("[user] retire la [cell] de la [src] !"), span_notice("Vous retirez la [cell]."))
 	user.put_in_hands(cell)
 	cell.update_appearance()
 	cell = null
@@ -70,7 +70,7 @@
 /obj/structure/light_construct/attack_tk(mob/user)
 	if(!cell)
 		return
-	to_chat(user, span_notice("You telekinetically remove [cell]."))
+	to_chat(user, span_notice("Vous retirez avec votre télékinésie la [cell]."))
 	var/obj/item/stock_parts/cell/cell_reference = cell
 	cell = null
 	cell_reference.forceMove(drop_location())
@@ -80,37 +80,37 @@
 	add_fingerprint(user)
 	if(istype(tool, /obj/item/stock_parts/cell))
 		if(!cell_connectors)
-			to_chat(user, span_warning("This [name] can't support a power cell!"))
+			to_chat(user, span_warning("Cette [name] ne peut pas accepter de batterie de secours."))
 			return
 		if(HAS_TRAIT(tool, TRAIT_NODROP))
-			to_chat(user, span_warning("[tool] is stuck to your hand!"))
+			to_chat(user, span_warning("[tool] semble être coller à votre main !"))
 			return
 		if(cell)
-			to_chat(user, span_warning("There is a power cell already installed!"))
+			to_chat(user, span_warning("Il y'a déja une batterie de secours !"))
 			return
 		if(user.temporarilyRemoveItemFromInventory(tool))
-			user.visible_message(span_notice("[user] hooks up [tool] to [src]."), \
-			span_notice("You add [tool] to [src]."))
+			user.visible_message(span_notice("[user] connecte lae [tool] à la [src]."), \
+			span_notice("Vous ajoutez lae [tool] à la [src]."))
 			playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 			tool.forceMove(src)
 			cell = tool
 			add_fingerprint(user)
 			return
 	if(istype(tool, /obj/item/light))
-		to_chat(user, span_warning("This [name] isn't finished being setup!"))
+		to_chat(user, span_warning("Cette [name] n'est pas complètement construite !"))
 		return
 
 	switch(stage)
 		if(LIGHT_CONSTRUCT_EMPTY)
 			if(tool.tool_behaviour == TOOL_WRENCH)
 				if(cell)
-					to_chat(user, span_warning("You have to remove the cell first!"))
+					to_chat(user, span_warning("Vous devez retirer la batterie de secours en premier !"))
 					return
-				to_chat(user, span_notice("You begin deconstructing [src]..."))
+				to_chat(user, span_notice("Vous commencez à déconstruire la [src]..."))
 				if (tool.use_tool(src, user, 30, volume=50))
 					new /obj/item/stack/sheet/iron(drop_location(), sheets_refunded)
-					user.visible_message(span_notice("[user.name] deconstructs [src]."), \
-						span_notice("You deconstruct [src]."), span_hear("You hear a ratchet."))
+					user.visible_message(span_notice("[user.name] déconstruit la [src]."), \
+						span_notice("Vous déconstruisez la [src]."), span_hear("Vous entendez une clée à molette."))
 					playsound(src, 'sound/items/deconstruct.ogg', 75, TRUE)
 					qdel(src)
 				return
@@ -120,28 +120,28 @@
 				if(coil.use(1))
 					icon_state = "[fixture_type]-construct-stage2"
 					stage = LIGHT_CONSTRUCT_WIRED
-					user.visible_message(span_notice("[user.name] adds wires to [src]."), \
-						span_notice("You add wires to [src]."))
+					user.visible_message(span_notice("[user.name] ajoute des câbles dans la [src]."), \
+						span_notice("Vous ajoutez des câbles dans la [src]."))
 				else
-					to_chat(user, span_warning("You need one length of cable to wire [src]!"))
+					to_chat(user, span_warning("Vous besoin d'au moins un câble pour câbler la [src] !"))
 				return
 		if(LIGHT_CONSTRUCT_WIRED)
 			if(tool.tool_behaviour == TOOL_WRENCH)
-				to_chat(usr, span_warning("You have to remove the wires first!"))
+				to_chat(usr, span_warning("Vous devez retirer le câblage !"))
 				return
 
 			if(tool.tool_behaviour == TOOL_WIRECUTTER)
 				stage = LIGHT_CONSTRUCT_EMPTY
 				icon_state = "[fixture_type]-construct-stage1"
 				new /obj/item/stack/cable_coil(drop_location(), 1, "red")
-				user.visible_message(span_notice("[user.name] removes the wiring from [src]."), \
-					span_notice("You remove the wiring from [src]."), span_hear("You hear clicking."))
+				user.visible_message(span_notice("[user.name] retire le câblage de la [src]."), \
+					span_notice("Vous retirez le câblage de la [src]."), span_hear("Vous entendez un cliquetement."))
 				tool.play_tool_sound(src, 100)
 				return
 
 			if(tool.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message(span_notice("[user.name] closes [src]'s casing."), \
-					span_notice("You close [src]'s casing."), span_hear("You hear screwing."))
+				user.visible_message(span_notice("[user.name] ferme le compartiment interne de la [src]."), \
+					span_notice("Vous fermez le compartiment interne de la [src]."), span_hear("Vous entendez un tournevis."))
 				tool.play_tool_sound(src, 75)
 				switch(fixture_type)
 					if("tube")
@@ -168,7 +168,7 @@
 	qdel(src)
 
 /obj/structure/light_construct/small
-	name = "small light fixture frame"
+	name = "petite monture de lampe"
 	icon_state = "bulb-construct-stage1"
 	fixture_type = "bulb"
 	sheets_refunded = 1

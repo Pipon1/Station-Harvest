@@ -29,7 +29,7 @@ export const NtosNetMonitor = (props, context) => {
               lineHeight="23px"
               selected={tab_main === 2}
               onClick={() => setTab_main(2)}>
-              Tablets ({tablets.length})
+              Tablette ({tablets.length})
             </Tabs.Tab>
           </Tabs>
         </Stack.Item>
@@ -59,10 +59,10 @@ const MainPage = (props, context) => {
   return (
     <Section>
       <NoticeBox>
-        WARNING: Disabling wireless transmitters when using a wireless device
-        may prevent you from reenabling them!
+        ATTENTION: Désactiver les émetteurs sans fil lors de l'utilisation d'un appareil sans fil
+        peut vous empêcher de les réactiver !
       </NoticeBox>
-      <Section title="Wireless Connectivity">
+      <Section title="Connexion sans-fil">
         {ntnetrelays.map((relay) => (
           <Section
             key={relay.ref}
@@ -70,7 +70,7 @@ const MainPage = (props, context) => {
             buttons={
               <Button.Confirm
                 color={relay.is_operational ? 'good' : 'bad'}
-                content={relay.is_operational ? 'ENABLED' : 'DISABLED'}
+                content={relay.is_operational ? 'ACTIVE' : 'DESACTIVE'}
                 onClick={() =>
                   act('toggle_relay', {
                     ref: relay.ref,
@@ -81,30 +81,30 @@ const MainPage = (props, context) => {
           />
         ))}
       </Section>
-      <Section title="Security Systems">
+      <Section title="Système de sécurité">
         {!!idsalarm && (
           <>
-            <NoticeBox>NETWORK INCURSION DETECTED</NoticeBox>
+            <NoticeBox>INTRUSION DU SYSTEME DETECTEE</NoticeBox>
             <Box italics>
-              Abnormal activity has been detected in the network. Check system
-              logs for more information
+              Activité anormale détectée dans le réseau.
+              Vérifiez les logs système pour plus d'informations
             </Box>
           </>
         )}
         <LabeledList>
           <LabeledList.Item
-            label="IDS Status"
+            label="Statut de l'IDS"
             buttons={
               <>
                 <Button
                   icon={idsstatus ? 'power-off' : 'times'}
-                  content={idsstatus ? 'ENABLED' : 'DISABLED'}
+                  content={idsstatus ? 'ACTIVE' : 'DESTACTIVE'}
                   selected={idsstatus}
                   onClick={() => act('toggleIDS')}
                 />
                 <Button
                   icon="sync"
-                  content="Reset"
+                  content="Redémarrer"
                   color="bad"
                   onClick={() => act('resetIDS')}
                 />
@@ -113,11 +113,11 @@ const MainPage = (props, context) => {
           />
         </LabeledList>
         <Section
-          title="System Log"
+          title="Log système"
           buttons={
             <Button.Confirm
               icon="trash"
-              content="Clear Logs"
+              content="Vider les logs"
               onClick={() => act('purgelogs')}
             />
           }>
@@ -159,8 +159,8 @@ const TabletPage = (props, context) => {
                     color={tablet.enabled_spam ? 'good' : 'default'}
                     content={
                       tablet.enabled_spam
-                        ? 'Restrict Mass PDA'
-                        : 'Allow Mass PDA'
+                        ? 'Autoriser le spam'
+                        : 'Désautoriser le spam'
                     }
                     onClick={() =>
                       act('toggle_mass_pda', {

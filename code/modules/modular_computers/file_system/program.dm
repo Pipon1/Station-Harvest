@@ -10,7 +10,7 @@
 	/// PROGRAM_STATE_KILLED or PROGRAM_STATE_BACKGROUND or PROGRAM_STATE_ACTIVE - specifies whether this program is running.
 	var/program_state = PROGRAM_STATE_KILLED
 	/// User-friendly name of this program.
-	var/filedesc = "Unknown Program"
+	var/filedesc = "Programme inconnu"
 	/// Short description of this program's function.
 	var/extended_desc = "N/A"
 	/// Category in the NTDownloader.
@@ -87,7 +87,7 @@
 /datum/computer_file/program/proc/is_supported_by_hardware(hardware_flag = NONE, loud = FALSE, mob/user)
 	if(!(hardware_flag & usage_flags))
 		if(loud && computer && user)
-			to_chat(user, span_danger("\The [computer] flashes a \"Hardware Error - Incompatible software\" warning."))
+			to_chat(user, span_danger("Le [computer] affiche \"ERREUR MATERIEL - programme incompatible\" attention."))
 		return FALSE
 	return TRUE
 
@@ -132,7 +132,7 @@
 
 		if(!accesscard)
 			if(loud)
-				to_chat(user, span_danger("\The [computer] flashes an \"RFID Error - Unable to scan ID\" warning."))
+				to_chat(user, span_danger("Le [computer] affiche \"ERREUR RFID - impossible de scanner l'ID\" attention."))
 			return FALSE
 		access = accesscard.GetAccess()
 
@@ -141,7 +141,7 @@
 			return TRUE
 
 	if(loud)
-		to_chat(user, span_danger("\The [computer] flashes an \"Access Denied\" warning."))
+		to_chat(user, span_danger("Le [computer] affiche \"Accès non-autorisé\" attention."))
 	return FALSE
 
 /**
@@ -157,7 +157,7 @@
 	if(can_run(user, loud = TRUE))
 		if(requires_ntnet)
 			var/obj/item/card/id/ID = computer.computer_id_slot?.GetID()
-			generate_network_log("Connection opened -- Program ID:[filename] User:[ID?"[ID.registered_name]":"None"]")
+			generate_network_log("Connexion ouverte -- ID du programme : [filename] Utilisateur : [ID?"[ID.registered_name]":"None"]")
 		program_state = PROGRAM_STATE_ACTIVE
 		return TRUE
 	return FALSE
@@ -176,5 +176,5 @@
 		computer.idle_threads.Remove(src)
 	if(requires_ntnet)
 		var/obj/item/card/id/ID = computer.computer_id_slot?.GetID()
-		generate_network_log("Connection closed -- Program ID: [filename] User:[ID ? "[ID.registered_name]" : "None"]")
+		generate_network_log("Connexion fermée -- ID du programme : [filename] Utilisateur : [ID ? "[ID.registered_name]" : "None"]")
 	return TRUE

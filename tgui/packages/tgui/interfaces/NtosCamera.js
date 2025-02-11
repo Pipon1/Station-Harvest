@@ -19,7 +19,7 @@ export const NtosCameraContent = (props, context) => {
   if (!photo) {
     return (
       <NoticeBox>
-        Phototrasen Images - Tap (right-click) with your tablet to snap a photo!
+        Images Phototrasen - Appuyez (clic droit) avec votre tablette pour prendre une photo
       </NoticeBox>
     );
   }
@@ -29,7 +29,7 @@ export const NtosCameraContent = (props, context) => {
       <Stack.Item>
         <Button
           fluid
-          content="Print photo"
+          content="Imprimer la photo"
           disabled={paper_left === 0}
           onClick={() => act('print_photo')}
         />

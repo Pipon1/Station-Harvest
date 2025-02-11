@@ -112,15 +112,15 @@
 		if(I.tool_behaviour == TOOL_SCREWDRIVER)
 			toggle_panel_open()
 			I.play_tool_sound(src)
-			to_chat(user, span_notice("You [panel_open ? "remove":"attach"] the screws around the power connection."))
+			to_chat(user, span_notice("Vous [panel_open ? "désérez" : "sérez"] les vis."))
 			return
 		else if(I.tool_behaviour == TOOL_WELDER && panel_open)
 			if(!I.tool_start_check(user, amount=0))
 				return
 
-			to_chat(user, span_notice("You start slicing the floorweld off \the [src]..."))
+			to_chat(user, span_notice("Vous commencez à séparer la [src] du sol..."))
 			if(I.use_tool(src, user, 20, volume=100) && panel_open)
-				to_chat(user, span_notice("You slice the floorweld off \the [src]."))
+				to_chat(user, span_notice("Vous séparez la [src] du sol !"))
 				deconstruct()
 			return
 
@@ -135,29 +135,29 @@
 
 /// The regal rat spawns ratty treasures from the disposal
 /obj/machinery/disposal/proc/rat_rummage(mob/living/simple_animal/hostile/regalrat/king)
-	king.visible_message(span_warning("[king] starts rummaging through [src]."),span_notice("You rummage through [src]..."))
+	king.visible_message(span_warning("[king] commence à fouiller la [src]."),span_notice("Vous avez finit de fouiller la [src]..."))
 	if (!do_after(king, 2 SECONDS, src, interaction_key = "regalrat"))
 		return
 	var/loot = rand(1,100)
 	switch(loot)
 		if(1 to 5)
-			to_chat(king, span_notice("You find some leftover coins. More for the royal treasury!"))
+			to_chat(king, span_notice("Vous avez trouvé un peu de monnaies. Plus d'argent pour la trésorerie royale !"))
 			var/pickedcoin = pick(GLOB.ratking_coins)
 			for(var/i = 1 to rand(1,3))
 				new pickedcoin(get_turf(king))
 		if(6 to 33)
 			king.say(pick("Treasure!","Our precious!","Cheese!"), ignore_spam = TRUE, forced = "regal rat rummaging")
-			to_chat(king, span_notice("Score! You find some cheese!"))
+			to_chat(king, span_notice("ET BUUUUUUT ! Vous avez trouvé du fromage !"))
 			new /obj/item/food/cheese/wedge(get_turf(king))
 		else
 			var/pickedtrash = pick(GLOB.ratking_trash)
-			to_chat(king, span_notice("You just find more garbage and dirt. Lovely, but beneath you now."))
+			to_chat(king, span_notice("Vous avez trouvé uniquement des ordures et de la saleté. Adorable... mais en indigne de vous."))
 			new pickedtrash(get_turf(king))
 
 /// Moves an item into the diposal bin
 /obj/machinery/disposal/proc/place_item_in_disposal(obj/item/I, mob/user)
 	I.forceMove(src)
-	user.visible_message(span_notice("[user.name] places \the [I] into \the [src]."), span_notice("You place \the [I] into \the [src]."))
+	user.visible_message(span_notice("[user.name] place lae [I] dans la [src]."), span_notice("Vous placez lae [I] dans la [src]."))
 
 /// Mouse drop another mob or self
 /obj/machinery/disposal/MouseDrop_T(mob/living/target, mob/living/user)
@@ -179,22 +179,22 @@
 	if(target.buckled || target.has_buckled_mobs())
 		return
 	if(target.mob_size > MOB_SIZE_HUMAN)
-		to_chat(user, span_warning("[target] doesn't fit inside [src]!"))
+		to_chat(user, span_warning("[target] ne rentre pas dans la [src]!"))
 		return
 	add_fingerprint(user)
 	if(user == target)
-		user.visible_message(span_warning("[user] starts climbing into [src]."), span_notice("You start climbing into [src]..."))
+		user.visible_message(span_warning("[user] commence à grimper dans la [src]."), span_notice("Vous commencez à grimper dans la [src]..."))
 	else
-		target.visible_message(span_danger("[user] starts putting [target] into [src]."), span_userdanger("[user] starts putting you into [src]!"))
+		target.visible_message(span_danger("[user] commence à mettre [target] dans la [src]."), span_userdanger("[user] commence à vous mettre dans la [src]."))
 	if(do_after(user, 2 SECONDS, target))
 		if (!loc)
 			return
 		target.forceMove(src)
 		if(user == target)
-			user.visible_message(span_warning("[user] climbs into [src]."), span_notice("You climb into [src]."))
+			user.visible_message(span_warning("[user] a grimpé dans la [src]."), span_notice("Vous avez grimpé dans la [src]."))
 			. = TRUE
 		else
-			target.visible_message(span_danger("[user] places [target] in [src]."), span_userdanger("[user] places you in [src]."))
+			target.visible_message(span_danger("[user] place [target] dans la [src]."), span_userdanger("[user] vous place dans la [src]."))
 			log_combat(user, target, "stuffed", addition="into [src]")
 			target.LAssailant = WEAKREF(user)
 			. = TRUE
@@ -293,7 +293,7 @@
 
 	. = STORAGE_DUMP_HANDLED
 
-	to_chat(user, span_notice("You dump out [storage_source] into [src]."))
+	to_chat(user, span_notice("Vous videz lae [storage_source] dans la [src]."))
 
 	for(var/obj/item/to_dump in storage_source)
 		if(to_dump.loc != storage_source)
@@ -313,15 +313,15 @@
 // Can hold items and human size things, no other draggables
 
 /obj/machinery/disposal/bin
-	name = "disposal unit"
-	desc = "A pneumatic waste disposal unit."
+	name = "poubelle pneumatique"
+	desc = "Une poubelle pneumatique."
 	icon_state = "disposal"
 
 // attack by item places it in to disposal
 /obj/machinery/disposal/bin/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/storage/bag/trash)) //Not doing component overrides because this is a specific type.
 		var/obj/item/storage/bag/trash/bag = I
-		to_chat(user, span_warning("You empty the bag."))
+		to_chat(user, span_warning("Vous videz le sac."))
 		bag.atom_storage.remove_all(src)
 		update_appearance()
 	else
@@ -384,10 +384,10 @@
 	if(isitem(AM) && AM.CanEnterDisposals())
 		if((throwingdatum.thrower && HAS_TRAIT(throwingdatum.thrower, TRAIT_THROWINGARM)) || prob(75))
 			AM.forceMove(src)
-			visible_message(span_notice("[AM] lands in [src]."))
+			visible_message(span_notice("[AM] attérit dans la [src]."))
 			update_appearance()
 		else
-			visible_message(span_notice("[AM] bounces off of [src]'s rim!"))
+			visible_message(span_notice("[AM] rebondit sur le bords de la [src] !"))
 			return ..()
 	else
 		return ..()
@@ -491,8 +491,8 @@
 //Delivery Chute
 
 /obj/machinery/disposal/delivery_chute
-	name = "delivery chute"
-	desc = "A chute for big and small packages alike!"
+	name = "trappe de livraison"
+	desc = "Une trappe pour les petits et gros paquets !"
 	density = TRUE
 	icon_state = "intake"
 	pressure_charging = FALSE // the chute doesn't need charging and always works
@@ -525,7 +525,7 @@
 	else if(ismob(AM))
 		var/mob/M = AM
 		if(prob(2)) // to prevent mobs being stuck in infinite loops
-			to_chat(M, span_warning("You hit the edge of the chute."))
+			to_chat(M, span_warning("Vous vous tapez sur le bords de la trappe."))
 			return
 		M.forceMove(src)
 	flush()
@@ -556,8 +556,8 @@
 		return
 	target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
 	target.forceMove(src)
-	target.visible_message(span_danger("[shover.name] shoves [target.name] into \the [src]!"),
-		span_userdanger("You're shoved into \the [src] by [target.name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
+	target.visible_message(span_danger("[shover.name] pousse [target.name] dans la [src] !"),
+		span_userdanger("Vous êtes poussé dans la [src] par [target.name] !"), span_hear("Vous entendez des bruits de bagarre suivit d'un gros \"BOUM\" !"), COMBAT_MESSAGE_RANGE, src)
 	to_chat(src, span_danger("You shove [target.name] into \the [src]!"))
 	log_combat(src, target, "shoved", "into [src] (disposal bin)")
 	return COMSIG_CARBON_SHOVE_HANDLED

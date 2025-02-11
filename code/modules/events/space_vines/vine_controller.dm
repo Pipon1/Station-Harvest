@@ -51,7 +51,7 @@ GLOBAL_LIST_INIT(vine_mutations_list, init_vine_mutation_list())
 /datum/spacevine_controller/vv_do_topic(href_list)
 	. = ..()
 	if(href_list[VV_HK_SPACEVINE_PURGE])
-		if(tgui_alert(usr, "Are you sure you want to delete this spacevine cluster?", "Delete Vines", list("Yes", "No")) == "Yes")
+		if(tgui_alert(usr, "Êtes-vous sûr.e de vouloir supprimer ce cluster de vigne ?", "Supprimer les vignes", list("Oui", "Non")) == "Oui")
 			DeleteVines()
 
 /datum/spacevine_controller/proc/DeleteVines() //this is kill

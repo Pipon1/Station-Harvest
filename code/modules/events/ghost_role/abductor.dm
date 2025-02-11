@@ -1,12 +1,12 @@
 /datum/round_event_control/abductor
-	name = "Abductors"
+	name = "Abducteurs"
 	typepath = /datum/round_event/ghost_role/abductor
 	weight = 10
 	max_occurrences = 1
 	min_players = 20
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_INVASION
-	description = "One or more abductor teams spawns, and they plan to experiment on the crew."
+	description = "Une ou plusieurs équipes d'abducteurs apparaissent, ils planifient de faire des expériences sur l'équipage."
 
 /datum/round_event/ghost_role/abductor
 	minimum_required = 2
@@ -27,7 +27,7 @@
 	if(T.team_number > ABDUCTOR_MAX_TEAMS)
 		return MAP_ERROR
 
-	scientist.log_message("has been selected as [T.name] abductor scientist.", LOG_GAME)
+	scientist.log_message("a été choisi en tant que [T.name] scientfique abducteur.", LOG_GAME)
 	agent.log_message("has been selected as [T.name] abductor agent.", LOG_GAME)
 
 	scientist.mind.add_antag_datum(/datum/antagonist/abductor/scientist, T)

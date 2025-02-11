@@ -4,8 +4,8 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 // Other types expand it - tablets and laptops are subtypes
 // consoles use "procssor" item that is held inside it.
 /obj/item/modular_computer
-	name = "modular microcomputer"
-	desc = "A small portable microcomputer."
+	name = "micro-ordinateur modulaire"
+	desc = "Un petit ordinateur modulaire et portable."
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "laptop"
 	light_on = FALSE
@@ -208,7 +208,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 
 	if(istype(inserted_pai)) // Remove pAI
 		user.put_in_hands(inserted_pai)
-		balloon_alert(user, "removed pAI")
+		balloon_alert(user, "AIp retiré")
 		inserted_pai = null
 		update_appearance(UPDATE_ICON)
 		return TRUE
@@ -227,7 +227,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 /obj/item/modular_computer/get_id_examine_strings(mob/user)
 	. = ..()
 	if(computer_id_slot)
-		. += "\The [src] is displaying [computer_id_slot]."
+		. += "l'[src] affiche [computer_id_slot]."
 		. += computer_id_slot.get_id_examine_strings(user)
 
 /obj/item/modular_computer/proc/print_text(text_to_print, paper_title = "")
@@ -258,7 +258,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	if(user)
 		if(!user.transferItemToLoc(inserting_id, src))
 			return FALSE
-		to_chat(user, span_notice("You insert \the [inserting_id] into the card slot."))
+		to_chat(user, span_notice("vous inserez [inserting_id] dans le lecteur de carte."))
 	else
 		inserting_id.forceMove(src)
 
@@ -286,8 +286,8 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	if(user)
 		if(!issilicon(user) && in_range(src, user))
 			user.put_in_hands(computer_id_slot)
-		balloon_alert(user, "removed ID")
-		to_chat(user, span_notice("You remove the card from the card slot."))
+		balloon_alert(user, "ID retiré")
+		to_chat(user, span_notice("Vous retirez la carte de l'ordinateur."))
 	else
 		computer_id_slot.forceMove(drop_location())
 
@@ -318,22 +318,22 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	if(enabled)
 		ui_interact(user)
 	else if(isAdminGhostAI(user))
-		var/response = tgui_alert(user, "This computer is turned off. Would you like to turn it on?", "Admin Override", list("Yes", "No"))
+		var/response = tgui_alert(user, "Cet ordinateur est éteint. Souhaitez vous l'allumer ?", "Admin Override", list("Yes", "No"))
 		if(response == "Yes")
 			turn_on(user)
 
 /obj/item/modular_computer/emag_act(mob/user, forced)
 	if(!enabled && !forced)
-		to_chat(user, span_warning("You'd need to turn the [src] on first."))
+		to_chat(user, span_warning("Vous devez allumer le [src] en premier."))
 		return FALSE
 	if(obj_flags & EMAGGED)
-		to_chat(user, span_notice("You swipe \the [src]. A console window fills the screen, but it quickly closes itself after only a few lines are written to it."))
+		to_chat(user, span_notice("Vous scannez le [src]. Une fenêtre de console s'ouvre, mais se ferme rapidement après seulement quelques lignes de texte."))
 		return FALSE
 
 	. = ..()
 	obj_flags |= EMAGGED
 	device_theme = PDA_THEME_SYNDICATE
-	to_chat(user, span_notice("You swipe \the [src]. A console window momentarily fills the screen, with white text rapidly scrolling past."))
+	to_chat(user, span_notice("Vous scannez le [src]. Une fenêtre de console s'ouvre, mais se ferme rapidement après avoir fait défiler de longue ligne de texte sur fond blanc."))
 	return TRUE
 
 /obj/item/modular_computer/examine(mob/user)
@@ -341,50 +341,50 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	var/healthpercent = round((atom_integrity/max_integrity) * 100, 1)
 	switch(healthpercent)
 		if(50 to 99)
-			. += span_info("It looks slightly damaged.")
+			. += span_info("Il a l'air d'être un peu endommagé.")
 		if(25 to 50)
-			. += span_info("It appears heavily damaged.")
+			. += span_info("Il a l'air d'être lourdement endommagé.")
 		if(0 to 25)
-			. += span_warning("It's falling apart!")
+			. += span_warning("Il étrait de tomber en morceaux.")
 
 	if(long_ranged)
-		. += "It is upgraded with an experimental long-ranged network capabilities, picking up NTNet frequencies while further away."
-	. += span_notice("It has [max_capacity] GQ of storage capacity.")
+		. += "Il a été amélioré avec une capacité de réseau longue portée expérimentale, captant les fréquences NTNet à plus grande distance."
+	. += span_notice("Il a une capacité maximum de [max_capacity] GQ.")
 
 	if(computer_id_slot)
 		if(Adjacent(user))
-			. += "It has \the [computer_id_slot] card installed in its card slot."
+			. += "Il a la carte [computer_id_slot] installé dans son lecteur de carte."
 		else
-			. += "Its identification card slot is currently occupied."
-		. += span_info("Alt-click [src] to eject the identification card.")
+			. += "Son lecteur de carte est occupé."
+		. += span_info("Alt-click sur le [src] pour éjecter la carte d'identité.")
 
 /obj/item/modular_computer/examine_more(mob/user)
 	. = ..()
-	. += "Storage capacity: [used_capacity]/[max_capacity]GQ"
+	. += "Capacité de stockage : [used_capacity]/[max_capacity]GQ"
 
 	for(var/datum/computer_file/app_examine as anything in stored_files)
 		if(app_examine.on_examine(src, user))
 			. += app_examine.on_examine(src, user)
 
 	if(Adjacent(user))
-		. += span_notice("Paper level: [stored_paper] / [max_paper].")
+		. += span_notice("Niveau de papier : [stored_paper] / [max_paper].")
 
 /obj/item/modular_computer/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	. = ..()
 
 	if(held_item?.tool_behaviour == TOOL_WRENCH)
-		context[SCREENTIP_CONTEXT_RMB] = "Deconstruct"
+		context[SCREENTIP_CONTEXT_RMB] = "Déconstruire"
 		. = CONTEXTUAL_SCREENTIP_SET
 
 	if(computer_id_slot) // ID get removed first before pAIs
-		context[SCREENTIP_CONTEXT_ALT_LMB] = "Remove ID"
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Retirer l'ID"
 		. = CONTEXTUAL_SCREENTIP_SET
 	else if(inserted_pai)
-		context[SCREENTIP_CONTEXT_ALT_LMB] = "Remove pAI"
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Retirer le AIp"
 		. = CONTEXTUAL_SCREENTIP_SET
 
 	if(inserted_disk)
-		context[SCREENTIP_CONTEXT_CTRL_SHIFT_LMB] = "Remove Disk"
+		context[SCREENTIP_CONTEXT_CTRL_SHIFT_LMB] = "Retirer le disque"
 		. = CONTEXTUAL_SCREENTIP_SET
 	return . || NONE
 
@@ -438,16 +438,16 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	var/issynth = issilicon(user) // Robots and AIs get different activation messages.
 	if(atom_integrity <= integrity_failure * max_integrity)
 		if(issynth)
-			to_chat(user, span_warning("You send an activation signal to \the [src], but it responds with an error code. It must be damaged."))
+			to_chat(user, span_warning("Vous envoyez un signal d'activation au [src], mais il répond avec un code d'erreur. Il doit être endommagé."))
 		else
-			to_chat(user, span_warning("You press the power button, but the computer fails to boot up, displaying variety of errors before shutting down again."))
+			to_chat(user, span_warning("Vous allumez l'ordinateur mais il ne parvient pas à démarrer, affichant une variété d'erreurs avant de s'éteindre à nouveau."))
 		return FALSE
 
 	if(use_power()) // use_power() checks if the PC is powered
 		if(issynth)
-			to_chat(user, span_notice("You send an activation signal to \the [src], turning it on."))
+			to_chat(user, span_notice("Vous envoyez le signal d'activation à [src], l'allumant."))
 		else
-			to_chat(user, span_notice("You press the power button and start up \the [src]."))
+			to_chat(user, span_notice("Vous allumer le [src]."))
 		if(looping_sound)
 			soundloop.start()
 		enabled = TRUE
@@ -457,9 +457,9 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		return TRUE
 	else // Unpowered
 		if(issynth)
-			to_chat(user, span_warning("You send an activation signal to \the [src] but it does not respond."))
+			to_chat(user, span_warning("Vous envoyez le signal d'activation à [src] mais il ne répond pas."))
 		else
-			to_chat(user, span_warning("You press the power button but \the [src] does not respond."))
+			to_chat(user, span_warning("Vous allumer le [src] mais rien ne semble se passer."))
 		return FALSE
 
 // Process currently calls handle_power(), may be expanded in future if more things are added.
@@ -586,10 +586,10 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 
 /obj/item/modular_computer/proc/open_program(mob/user, datum/computer_file/program/program)
 	if(program.computer != src)
-		CRASH("tried to open program that does not belong to this computer")
+		CRASH("Vous avez essayé d'ouvrir un programme non-compatible avec cet ordinateur.")
 
 	if(!program || !istype(program)) // Program not found or it's not executable program.
-		to_chat(user, span_danger("\The [src]'s screen shows \"I/O ERROR - Unable to run program\" warning."))
+		to_chat(user, span_danger("l'écrant de [src] montres \"ERREUR D'IO - INCAPABLE DE FAIRE FONCTIONNER LE PROGRAMME\" attention."))
 		return FALSE
 
 	// The program is already running. Resume it.
@@ -605,11 +605,11 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		return FALSE
 
 	if(idle_threads.len > max_idle_programs)
-		to_chat(user, span_danger("\The [src] displays a \"Maximal CPU load reached. Unable to run another program.\" error."))
+		to_chat(user, span_danger("Le [src] affiche une erreur \"Charge CPU maximale atteinte. Impossible d'exécuter un autre programme.\" Erreur."))
 		return FALSE
 
 	if(program.requires_ntnet && !get_ntnet_status()) // The program requires NTNet connection, but we are not connected to NTNet.
-		to_chat(user, span_danger("\The [src]'s screen shows \"Unable to connect to NTNet. Please retry. If problem persists contact your system administrator.\" warning."))
+		to_chat(user, span_danger("L'écran de [src] montre \"Impossible de se connecter à NTNet. Veuillez réessayer. Si le problème persiste, contactez votre administrateur système.\" attention."))
 		return FALSE
 
 	if(!program.on_start(user))
@@ -657,7 +657,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	if(looping_sound)
 		soundloop.stop()
 	if(physical && loud)
-		physical.visible_message(span_notice("\The [src] shuts down."))
+		physical.visible_message(span_notice("Le [src] s'éteint."))
 	enabled = FALSE
 	update_appearance()
 
@@ -720,7 +720,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		if(!user.transferItemToLoc(attacking_item, src))
 			return
 		inserted_pai = attacking_item
-		balloon_alert(user, "inserted pai")
+		balloon_alert(user, "AIp inséré")
 		update_appearance(UPDATE_ICON)
 		return
 
@@ -728,12 +728,12 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		if(ismachinery(loc))
 			return
 		if(internal_cell)
-			to_chat(user, span_warning("You try to connect \the [attacking_item] to \the [src], but its connectors are occupied."))
+			to_chat(user, span_warning("vous essayez de connecter le [attacking_item] au [src], mais tous ses connecteurs sont occupés."))
 			return
 		if(user && !user.transferItemToLoc(attacking_item, src))
 			return
 		internal_cell = attacking_item
-		to_chat(user, span_notice("You plug \the [attacking_item] to \the [src]."))
+		to_chat(user, span_notice("vous branchez le [attacking_item] au [src]."))
 		return
 
 	// Check if any Applications need it
@@ -743,18 +743,18 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 
 	if(istype(attacking_item, /obj/item/paper))
 		if(stored_paper >= max_paper)
-			balloon_alert(user, "no more room!")
+			balloon_alert(user, "plus de place !")
 			return
 		if(!user.temporarilyRemoveItemFromInventory(attacking_item))
 			return FALSE
-		balloon_alert(user, "inserted paper")
+		balloon_alert(user, "papier inséré")
 		qdel(attacking_item)
 		stored_paper++
 		return
 	if(istype(attacking_item, /obj/item/paper_bin))
 		var/obj/item/paper_bin/bin = attacking_item
 		if(bin.total_paper <= 0)
-			balloon_alert(user, "empty bin!")
+			balloon_alert(user, "plus de papier !")
 			return
 		var/papers_added //just to keep track
 		while((bin.total_paper > 0) && (stored_paper < max_paper))
@@ -763,8 +763,8 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 			bin.remove_paper()
 		if(!papers_added)
 			return
-		balloon_alert(user, "inserted paper")
-		to_chat(user, span_notice("Added in [papers_added] new sheets. You now have [stored_paper] / [max_paper] printing paper stored."))
+		balloon_alert(user, "papier inséré")
+		to_chat(user, span_notice("Vous avez ajouté [papers_added] feuilles de papier. Il y'a maintenant [stored_paper] / [max_paper]  feuilles storées."))
 		bin.update_appearance()
 		return
 
@@ -772,7 +772,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	if(istype(attacking_item, /obj/item/computer_disk))
 		if(inserted_disk)
 			user.put_in_hands(inserted_disk)
-			balloon_alert(user, "disks swapped")
+			balloon_alert(user, "disque changé")
 		if(!user.transferItemToLoc(attacking_item, src))
 			return
 		inserted_disk = attacking_item
@@ -789,7 +789,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	inserted_disk?.forceMove(drop_location())
 	inserted_pai?.forceMove(drop_location())
 	new /obj/item/stack/sheet/iron(get_turf(loc), steel_sheet_cost)
-	user.balloon_alert(user, "disassembled")
+	user.balloon_alert(user, "dissassemblé")
 	relay_qdel()
 	qdel(src)
 	return TOOL_ACT_TOOLTYPE_SUCCESS
@@ -797,17 +797,17 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 /obj/item/modular_computer/welder_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(atom_integrity == max_integrity)
-		to_chat(user, span_warning("\The [src] does not require repairs."))
+		to_chat(user, span_warning("Le [src] n'as pas besoin de réparation."))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 	if(!tool.tool_start_check(user, amount=1))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-	to_chat(user, span_notice("You begin repairing damage to \the [src]..."))
+	to_chat(user, span_notice("Vous commencez à réparer le [src]..."))
 	if(!tool.use_tool(src, user, 20, volume=50, amount=1))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 	atom_integrity = max_integrity
-	to_chat(user, span_notice("You repair \the [src]."))
+	to_chat(user, span_notice("Vous réparez le [src]."))
 	update_appearance()
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
@@ -817,7 +817,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 
 /obj/item/modular_computer/proc/break_apart()
 	if(!(flags_1 & NODECONSTRUCT_1))
-		physical.visible_message(span_notice("\The [src] breaks apart!"))
+		physical.visible_message(span_notice("Le [src] tombe en morceaux !"))
 		var/turf/newloc = get_turf(src)
 		new /obj/item/stack/sheet/iron(newloc, round(steel_sheet_cost / 2))
 	relay_qdel()

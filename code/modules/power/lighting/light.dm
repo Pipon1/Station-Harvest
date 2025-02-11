@@ -1,9 +1,9 @@
 // the standard tube light fixture
 /obj/machinery/light
-	name = "light fixture"
+	name = "lampe tubulaire"
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube"
-	desc = "A lighting fixture."
+	desc = "Une lampe tubulaire."
 	layer = WALL_OBJ_LAYER
 	plane = GAME_PLANE_UPPER
 	max_integrity = 100
@@ -120,7 +120,7 @@
 		if("tube")
 			if(prob(2))
 				break_light_tube(TRUE)
-		if("bulb")
+		if("ampoule")
 			if(prob(5))
 				break_light_tube(TRUE)
 	update(trigger = FALSE)
@@ -298,15 +298,15 @@
 	. = ..()
 	switch(status)
 		if(LIGHT_OK)
-			. += "It is turned [on? "on" : "off"]."
+			. += "Elle est [on ? "allumée" : "éteinte"]."
 		if(LIGHT_EMPTY)
-			. += "The [fitting] has been removed."
+			. += "Lae [fitting] est manquant.e."
 		if(LIGHT_BURNED)
-			. += "The [fitting] is burnt out."
+			. += "Lae [fitting] est brulé.e."
 		if(LIGHT_BROKEN)
-			. += "The [fitting] has been smashed."
+			. += "Lae [fitting] a été brisé."
 	if(cell || has_mock_cell)
-		. += "Its backup power charge meter reads [has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
+		. += "La batterie de secours a [has_mock_cell ? 100 : round((cell.charge / cell.maxcharge) * 100, 0.1)]% de charge."
 
 
 
@@ -323,12 +323,12 @@
 	// attempt to insert light
 	if(istype(tool, /obj/item/light))
 		if(status == LIGHT_OK)
-			to_chat(user, span_warning("There is a [fitting] already inserted!"))
+			to_chat(user, span_warning("Il y'a deja un.e [fitting] d'inséré !"))
 			return
 		add_fingerprint(user)
 		var/obj/item/light/light_object = tool
 		if(!istype(light_object, light_type))
-			to_chat(user, span_warning("This type of light requires a [fitting]!"))
+			to_chat(user, span_warning("Ce type de lampe requiète un.e [fitting] !"))
 			return
 		if(!user.temporarilyRemoveItemFromInventory(light_object))
 			return
@@ -670,8 +670,8 @@
 		INVOKE_ASYNC(src, PROC_REF(flicker))
 
 /obj/machinery/light/floor
-	name = "floor light"
-	desc = "A lightbulb you can walk on without breaking it, amazing."
+	name = "lampe de sol"
+	desc = "Une ampoule sur laquelle vous pouvez marcher sans la briser... Incroyable !"
 	icon = 'icons/obj/lighting.dmi'
 	base_state = "floor" // base description and icon_state
 	icon_state = "floor"
@@ -679,5 +679,5 @@
 	layer = LOW_OBJ_LAYER
 	plane = FLOOR_PLANE
 	light_type = /obj/item/light/bulb
-	fitting = "bulb"
+	fitting = "ampoule"
 	fire_brightness = 2

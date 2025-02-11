@@ -1,12 +1,12 @@
 #define DONUT_SPRINKLE_CHANCE 30
 
 /obj/item/food/donut
-	name = "donut"
-	desc = "Goes great with robust coffee."
+	name = "Donut"
+	desc = "Se marie parfaitement avec un bon café."
 	icon = 'icons/obj/food/donuts.dmi'
 	bite_consumption = 5
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/sugar = 3)
-	tastes = list("donut" = 1)
+	tastes = list("de donut" = 1)
 	foodtypes = JUNKFOOD | GRAIN | FRIED | SUGAR | BREAKFAST
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -50,11 +50,11 @@
 	icon_state = "donut"
 
 /obj/item/food/donut/chaos
-	name = "chaos donut"
-	desc = "Like life, it never quite tastes the same."
+	name = "Donut chaos"
+	desc = "Comme la vie, le goût n'est jamais tout à fait le même."
 	icon_state = "donut_chaos"
 	bite_consumption = 10
-	tastes = list("donut" = 3, "chaos" = 1)
+	tastes = list("de donut" = 3, "de chaos" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/chaos/Initialize(mapload)
@@ -74,21 +74,21 @@
 	reagents.add_reagent(extra_reagent, 3)
 
 /obj/item/food/donut/meat
-	name = "Meat Donut"
-	desc = "Tastes as gross as it looks."
+	name = "Donut à la viande"
+	desc = "A également le goût affreux qu'il a l'air d'avoir."
 	icon_state = "donut_meat"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/ketchup = 3,
 	)
-	tastes = list("meat" = 1)
+	tastes = list("de viande" = 1)
 	foodtypes = JUNKFOOD | MEAT | GORE | FRIED | BREAKFAST
 	is_decorated = TRUE
 
 /obj/item/food/donut/berry
-	name = "pink donut"
-	desc = "Goes great with a soy latte."
+	name = "Donut rose"
+	desc = "Se marie bien avec un latte au lait de soja."
 	icon_state = "donut_pink"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -99,20 +99,20 @@
 	decorated_icon = "donut_homer"
 
 /obj/item/food/donut/trumpet
-	name = "spaceman's donut"
-	desc = "Goes great with a cold beaker of malk."
+	name = "Donut de l'astronaute"
+	desc = "Se marie bien avec du lait froid."
 	icon_state = "donut_purple"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/sprinkles = 1,
 	)
-	tastes = list("donut" = 3, "violets" = 1)
+	tastes = list("de donut" = 3, "de violettes" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/apple
-	name = "apple donut"
-	desc = "Goes great with a shot of cinnamon schnapps."
+	name = "Donut à la pomme"
+	desc = "Se marie bien avec un shot de schnapps à la cannelle."
 	icon_state = "donut_green"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -120,12 +120,12 @@
 		/datum/reagent/consumable/applejuice = 3,
 		/datum/reagent/consumable/sprinkles = 1,
 	)
-	tastes = list("donut" = 3, "green apples" = 1)
+	tastes = list("de donut" = 3, "de pommes vertes" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/caramel
-	name = "caramel donut"
-	desc = "Goes great with a mug of hot coco."
+	name = "Donut au caramel"
+	desc = "Se marie bien avec une tasse de chocolat chaud."
 	icon_state = "donut_beige"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -133,12 +133,12 @@
 		/datum/reagent/consumable/caramel = 3,
 		/datum/reagent/consumable/sprinkles = 1,
 	)
-	tastes = list("donut" = 3, "buttery sweetness" = 1)
+	tastes = list("de donut" = 3, "de beurre sucré" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/choco
-	name = "chocolate donut"
-	desc = "Goes great with a glass of warm milk."
+	name = "Donut au chocolat"
+	desc = "Se marie bien avec un verre de lait chaud."
 	icon_state = "donut_choc"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -146,12 +146,12 @@
 		/datum/reagent/consumable/hot_coco = 3,
 		/datum/reagent/consumable/sprinkles = 1,
 	) //the coco reagent is just bitter.
-	tastes = list("donut" = 4, "bitterness" = 1)
+	tastes = list("de donut" = 4, "amer" = 1)
 	decorated_icon = "donut_choc_sprinkles"
 
 /obj/item/food/donut/blumpkin
-	name = "blumpkin donut"
-	desc = "Goes great with a mug of soothing drunken blumpkin."
+	name = "Donut à la trouillebleu"
+	desc = "Se marie bien avec une tasse d'alcool de trouillebleus."
 	icon_state = "donut_blue"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -159,12 +159,12 @@
 		/datum/reagent/consumable/blumpkinjuice = 3,
 		/datum/reagent/consumable/sprinkles = 1,
 	)
-	tastes = list("donut" = 2, "blumpkin" = 1)
+	tastes = list("de donut" = 2, "de trouillebleu" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/bungo
-	name = "bungo donut"
-	desc = "Goes great with a mason jar of hippie's delight."
+	name = "Donut au bungo"
+	desc = "Se marie bien avec un bocal de laitue du diable."
 	icon_state = "donut_yellow"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -172,12 +172,12 @@
 		/datum/reagent/consumable/bungojuice = 3,
 		/datum/reagent/consumable/sprinkles = 1,
 	)
-	tastes = list("donut" = 3, "tropical sweetness" = 1)
+	tastes = list("de donut" = 3, "d'une douceur tropicale" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/matcha
-	name = "matcha donut"
-	desc = "Goes great with a cup of tea."
+	name = "Donut au matcha"
+	desc = "Se marie bien avec une tasse de thé."
 	icon_state = "donut_olive"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -185,26 +185,26 @@
 		/datum/reagent/toxin/teapowder = 3,
 		/datum/reagent/consumable/sprinkles = 1,
 	)
-	tastes = list("donut" = 3, "matcha" = 1)
+	tastes = list("de donut" = 3, "de matcha" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/laugh
-	name = "sweet pea donut"
-	desc = "Goes great with a bottle of Bastion Burbon!"
+	name = "Donut aux petits pois sympa"
+	desc = "Se marie bien avec une bouteille de bourbon Bastion !"
 	icon_state = "donut_laugh"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/laughter = 3,
 	)
-	tastes = list("donut" = 3, "fizzy tutti frutti" = 1,)
+	tastes = list("de donut" = 3, "de tutti frutti pétillant" = 1,)
 	is_decorated = TRUE
 
 //////////////////////JELLY DONUTS/////////////////////////
 
 /obj/item/food/donut/jelly
-	name = "jelly donut"
-	desc = "You jelly?"
+	name = "Donut à la confiture"
+	desc = "Bonne maman ?"
 	icon_state = "jelly"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -213,7 +213,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	extra_reagent = /datum/reagent/consumable/berryjuice
-	tastes = list("jelly" = 1, "donut" = 3)
+	tastes = list("jelly" = 1, "de donut" = 3)
 	foodtypes = JUNKFOOD | GRAIN | FRIED | FRUIT | SUGAR | BREAKFAST
 
 // Jelly donuts don't have holes, but look the same on the outside
@@ -229,15 +229,15 @@
 	decorated_icon = "jelly_homer"
 
 /obj/item/food/donut/jelly/berry
-	name = "pink jelly donut"
-	desc = "Goes great with a soy latte."
+	name = "Donut rose à la confiture"
+	desc = "Se marie bien avec un latte au lait de soja."
 	icon_state = "jelly_pink"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/sugar = 3, /datum/reagent/consumable/berryjuice = 3, /datum/reagent/consumable/sprinkles = 1, /datum/reagent/consumable/nutriment/vitamin = 1) //Extra sprinkles to reward frosting.
 	decorated_icon = "jelly_homer"
 
 /obj/item/food/donut/jelly/trumpet
-	name = "spaceman's jelly donut"
-	desc = "Goes great with a cold beaker of malk."
+	name = "Donut d'astronaute à la confiture"
+	desc = "Se marie bien avec du lait froid."
 	icon_state = "jelly_purple"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -245,12 +245,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "violets" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 3, "de violettes" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/apple
-	name = "apple jelly donut"
-	desc = "Goes great with a shot of cinnamon schnapps."
+	name = "Donut à la confiture de pomme"
+	desc = "Se marie bien avec un shot de schnapps à la cannelle."
 	icon_state = "jelly_green"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -259,12 +259,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "green apples" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 3, "de pommes vertes" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/caramel
-	name = "caramel jelly donut"
-	desc = "Goes great with a mug of hot coco."
+	name = "Donut caramel-confiture"
+	desc = "Se marie bien avec une tasse de chocolat chaud."
 	icon_state = "jelly_beige"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -273,12 +273,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "buttery sweetness" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 3, "de beurre sucré" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/choco
-	name = "chocolate jelly donut"
-	desc = "Goes great with a glass of warm milk."
+	name = "Donut chocolat-confiture"
+	desc = "Se marie bien avec un verre de lait chaud."
 	icon_state = "jelly_choc"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -287,12 +287,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 4, "bitterness" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 4, "amer" = 1)
 	decorated_icon = "jelly_choc_sprinkles"
 
 /obj/item/food/donut/jelly/blumpkin
-	name = "blumpkin jelly donut"
-	desc = "Goes great with a mug of soothing drunken blumpkin."
+	name = "Donut trouillebleu-confiture"
+	desc = "Se marie bien avec une tasse d'alcool de trouillebleus."
 	icon_state = "jelly_blue"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -301,12 +301,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 2, "blumpkin" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 2, "de trouillebleu" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/bungo
-	name = "bungo jelly donut"
-	desc = "Goes great with a mason jar of hippie's delight."
+	name = "Donut bungo-confiture"
+	desc = "Se marie bien avec un bocal de laitue du diable."
 	icon_state = "jelly_yellow"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -315,12 +315,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "tropical sweetness" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 3, "de douceur tropicale" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/matcha
-	name = "matcha jelly donut"
-	desc = "Goes great with a cup of tea."
+	name = "Donut matcha-confiture"
+	desc = "Se marie bien avec une tasse thé."
 	icon_state = "jelly_olive"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -329,26 +329,26 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "matcha" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 3, "de matcha" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/laugh
-	name = "sweet pea jelly donut"
-	desc = "Goes great with a bottle of Bastion Burbon!"
+	name = "Donut petits pois sympa-confiture"
+	desc = "Se marie bien avec une bouteille de bourbon Bastion !"
 	icon_state = "jelly_laugh"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/laughter = 3,
 	)
-	tastes = list("jelly" = 3, "donut" = 1, "fizzy tutti frutti" = 1)
+	tastes = list("de confiture" = 3, "de donut" = 1, "de tutti frutti pétillant" = 1)
 	is_decorated = TRUE
 
 //////////////////////////SLIME DONUTS/////////////////////////
 
 /obj/item/food/donut/jelly/slimejelly
-	name = "jelly donut"
-	desc = "You jelly?"
+	name = "Donut à la confiture"
+	desc = "Bonne maman ?"
 	extra_reagent = /datum/reagent/toxin/slimejelly
 	foodtypes = JUNKFOOD | GRAIN | FRIED | TOXIC | SUGAR | BREAKFAST
 
@@ -356,8 +356,8 @@
 	icon_state = "jelly"
 
 /obj/item/food/donut/jelly/slimejelly/berry
-	name = "pink jelly donut"
-	desc = "Goes great with a soy latte."
+	name = "Donut rose à la confiture"
+	desc = "Se marie bien avec un latte au lait de soja."
 	icon_state = "jelly_pink"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -368,8 +368,8 @@
 	) //Extra sprinkles to reward frosting
 
 /obj/item/food/donut/jelly/slimejelly/trumpet
-	name = "spaceman's jelly donut"
-	desc = "Goes great with a cold beaker of malk."
+	name = "Donut d'astronaute à la confiture"
+	desc = "Se marie bien avec du lait froid."
 	icon_state = "jelly_purple"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -377,12 +377,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "violets" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 3, "de violettes" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/slimejelly/apple
-	name = "apple jelly donut"
-	desc = "Goes great with a shot of cinnamon schnapps."
+	name = "Donut à la confiture de pomme"
+	desc = "Se marie bien avec un shot de schnapps à la cannelle."
 	icon_state = "jelly_green"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -391,12 +391,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "green apples" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 3, "de pommes vertes" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/slimejelly/caramel
-	name = "caramel jelly donut"
-	desc = "Goes great with a mug of hot coco."
+	name = "Donut caramel-confiture"
+	desc = "Se marie bien avec une tasse de chocolat chaud."
 	icon_state = "jelly_beige"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -405,12 +405,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "buttery sweetness" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 3, "de beurre sucré" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/slimejelly/choco
-	name = "chocolate jelly donut"
-	desc = "Goes great with a glass of warm milk."
+	name = "Donut chocolat-confiture"
+	desc = "Se marie bien avec un verre de lait chaud."
 	icon_state = "jelly_choc"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -419,12 +419,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 4, "bitterness" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 4, "amer" = 1)
 	decorated_icon = "jelly_choc_sprinkles"
 
 /obj/item/food/donut/jelly/slimejelly/blumpkin
-	name = "blumpkin jelly donut"
-	desc = "Goes great with a mug of soothing drunken blumpkin."
+	name = "Donut trouillebleu-confiture"
+	desc = "Se marie bien avec une tasse d'alcool de trouillebleus."
 	icon_state = "jelly_blue"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -433,12 +433,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 2, "blumpkin" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 2, "de trouillebleu" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/slimejelly/bungo
-	name = "bungo jelly donut"
-	desc = "Goes great with a mason jar of hippie's delight."
+	name = "Donut bungo-confiture"
+	desc = "Se marie bien avec un bocal de laitue du diable."
 	icon_state = "jelly_yellow"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -447,12 +447,12 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "tropical sweetness" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 3, "de douceur tropicale" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/slimejelly/matcha
-	name = "matcha jelly donut"
-	desc = "Goes great with a cup of tea."
+	name = "Donut matcha-confiture"
+	desc = "Se marie bien avec une tasse thé."
 	icon_state = "jelly_olive"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -461,25 +461,19 @@
 		/datum/reagent/consumable/sprinkles = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("jelly" = 1, "donut" = 3, "matcha" = 1)
+	tastes = list("de confiture" = 1, "de donut" = 3, "de matcha" = 1)
 	is_decorated = TRUE
 
 /obj/item/food/donut/jelly/slimejelly/laugh
-	name = "sweet pea jelly donut"
-	desc = "Goes great with a bottle of Bastion Burbon!"
+	name = "Donut petits pois sympa-confiture"
+	desc = "Se marie bien avec une bouteille de bourbon Bastion !"
 	icon_state = "jelly_laugh"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/sugar = 3,
 		/datum/reagent/consumable/laughter = 3,
 	)
-	tastes = list("jelly" = 3, "donut" = 1, "fizzy tutti frutti" = 1)
+	tastes = list("de confiture" = 3, "de donut" = 1, "de tutti frutti pétillant" = 1)
 	is_decorated = TRUE
-
-/obj/item/food/donut/Eazondev
-	name = "Eazon dev"
-	desc = "Ceci est un test, s'tu vois ça appelles un codeur !"
-	icon = 'icons/obj/food/donuts.dmi'
-	icon_state = "donut_ea"
 
 #undef DONUT_SPRINKLE_CHANCE

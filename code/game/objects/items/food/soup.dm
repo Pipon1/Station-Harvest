@@ -4,26 +4,26 @@
 	bite_consumption = 5
 	max_volume = 80
 	foodtypes = NONE
-	eatverbs = list("slurp", "sip", "inhale", "drink")
+	eatverbs = list("aspire", "mange", "avale", "boit")
 	venue_value = FOOD_PRICE_CHEAP
 
 /obj/item/food/bowled/wish
-	name = "wish soup"
-	desc = "I wish this was soup."
+	name = "soupe de vœux"
+	desc = "J'aimerais que ce soit de la soupe."
 	icon_state = "wishsoup"
 	food_reagents = list(/datum/reagent/water = 10)
-	tastes = list("wishes" = 1)
+	tastes = list("de voeux" = 1)
 
 /obj/item/food/bowled/wish/Initialize(mapload)
 	. = ..()
 	if(prob(25))
-		desc = "A wish come true!"
+		desc = "Un voeux a été exaucé !"
 		reagents.add_reagent(/datum/reagent/consumable/nutriment, 9)
 		reagents.add_reagent(/datum/reagent/consumable/nutriment/vitamin, 1)
 
 /obj/item/food/bowled/mammi
 	name = "Mammi"
-	desc = "A bowl of mushy bread and milk. It reminds you, not too fondly, of a bowel movement."
+	desc = "Un bol de pain mou et de lait. Attention à la tête !"
 	icon_state = "mammi"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 11,
@@ -32,8 +32,8 @@
 	foodtypes = SUGAR | DAIRY
 
 /obj/item/food/bowled/spacylibertyduff
-	name = "spacy liberty duff"
-	desc = "Jello gelatin, from Alfred Hubbard's cookbook."
+	name = "pudding spacy liberty"
+	desc = "Jello gelatin, du livre de cuisine d'Alfred Hubbard."
 	icon_state = "spacylibertyduff"
 	bite_consumption = 3
 	food_reagents = list(
@@ -41,12 +41,12 @@
 		/datum/reagent/drug/mushroomhallucinogen = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("jelly" = 1, "mushroom" = 1)
+	tastes = list("de gelée" = 1, "de champignon" = 1)
 	foodtypes = VEGETABLES
 
 /obj/item/food/bowled/amanitajelly
-	name = "amanita jelly"
-	desc = "Looks curiously toxic."
+	name = "gelée d'amanite"
+	desc = "Ça semble curieusement toxique."
 	icon_state = "amanitajelly"
 	bite_consumption = 3
 	food_reagents = list(
@@ -55,5 +55,5 @@
 		/datum/reagent/toxin/amatoxin = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	tastes = list("jelly" = 1, "mushroom" = 1)
+	tastes = list("de gelée" = 1, "de champignon" = 1)
 	foodtypes = VEGETABLES | TOXIC

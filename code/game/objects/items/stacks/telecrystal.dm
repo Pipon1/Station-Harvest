@@ -28,3 +28,15 @@
 
 /obj/item/stack/telecrystal/twenty
 	amount = 20
+
+/obj/item/stack/telecrystal/attack(mob/target, mob/user)
+	if(target == user) //You can't go around smacking people with crystals to find out if they have an uplink or not.
+		for(var/obj/item/implant/uplink/I in target)
+			if(I?.imp_in)
+				var/datum/component/uplink/hidden_uplink = I.GetComponent(/datum/component/uplink)
+				if(hidden_uplink)
+					hidden_uplink.add_telecrystals(amount)
+					use(amount)
+					to_chat(user, span_notice("You press [src] onto yourself and charge your hidden uplink."))
+	else
+		return ..()

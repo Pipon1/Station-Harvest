@@ -29,23 +29,23 @@ const ShippingHub = (props, context) => {
 
   return (
     <Section
-      title="NTOS Shipping Hub."
+      title="Menu de commande de Nanotrasen."
       buttons={
         <Button
           icon="eject"
-          content="Eject Id"
+          content="Ejecter l'ID"
           onClick={() => act('ejectid')}
         />
       }>
       <LabeledList>
-        <LabeledList.Item label="Current User">
+        <LabeledList.Item label="Utilisateur actuel">
           {current_user || 'N/A'}
         </LabeledList.Item>
-        <LabeledList.Item label="Inserted Card">
+        <LabeledList.Item label="Carte insérée">
           {card_owner || 'N/A'}
         </LabeledList.Item>
-        <LabeledList.Item label="Available Paper">{paperamt}</LabeledList.Item>
-        <LabeledList.Item label="Profit on Sale">
+        <LabeledList.Item label="Papier disponible">{paperamt}</LabeledList.Item>
+        <LabeledList.Item label="Profit en action">
           {barcode_split}%
         </LabeledList.Item>
       </LabeledList>
@@ -59,40 +59,40 @@ const ShippingOptions = (props, context) => {
   const { has_id_slot, current_user } = data;
 
   return (
-    <Section title="Shipping Options">
+    <Section title="Options de livraison">
       <Box>
         <Button
           icon="id-card"
-          tooltip="The currently ID card will become the current user."
+          tooltip="L'ID actuel deviendra l'utilisateur actuel."
           tooltipPosition="right"
           disabled={!has_id_slot}
           onClick={() => act('selectid')}
-          content="Set Current ID"
+          content="Définir l'ID actuel"
         />
       </Box>
       <Box>
         <Button
           icon="print"
-          tooltip="Print a barcode to use on a wrapped package."
+          tooltip="Imprime un code-barres à utiliser sur un colis emballé."
           tooltipPosition="right"
           disabled={!current_user}
           onClick={() => act('print')}
-          content="Print Barcode"
+          content="Imprimer un code-barres"
         />
       </Box>
       <Box>
         <Button
           icon="tags"
-          tooltip="Set how much profit you'd like on your package."
+          tooltip="Définir le prix du colis."
           tooltipPosition="right"
           onClick={() => act('setsplit')}
-          content="Set Profit Margin"
+          content="Définir le prix"
         />
       </Box>
       <Box>
         <Button
           icon="sync-alt"
-          content="Reset ID"
+          content="Réinitialiser l'ID."
           onClick={() => act('resetid')}
         />
       </Box>

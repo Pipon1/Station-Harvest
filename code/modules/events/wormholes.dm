@@ -1,13 +1,13 @@
 GLOBAL_LIST_EMPTY(all_wormholes) // So we can pick wormholes to teleport to
 
 /datum/round_event_control/wormholes
-	name = "Wormholes"
+	name = "Trou de ver"
 	typepath = /datum/round_event/wormholes
 	max_occurrences = 3
 	weight = 2
 	min_players = 2
 	category = EVENT_CATEGORY_SPACE
-	description = "Space time anomalies appear on the station, randomly teleporting people who walk into them."
+	description = "Anomalie dans l'espace-temps apparaissent dans la station, téléportant aléatoirement les personnes qui marchent dedans."
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 7
 
@@ -34,7 +34,7 @@ GLOBAL_LIST_EMPTY(all_wormholes) // So we can pick wormholes to teleport to
 		wormholes += new /obj/effect/portal/wormhole(T, 0, null, FALSE)
 
 /datum/round_event/wormholes/announce(fake)
-	priority_announce("Space-time anomalies detected on the station. There is no additional data.", "Anomaly Alert", ANNOUNCER_SPANOMALIES)
+	priority_announce("Anomalie dans l'espace-temps détectées près de la station. Aucune donnée additionnelle.", "Alerte anomalie", ANNOUNCER_SPANOMALIES)
 
 /datum/round_event/wormholes/tick()
 	if(activeFor % shift_frequency == 0)
@@ -48,8 +48,8 @@ GLOBAL_LIST_EMPTY(all_wormholes) // So we can pick wormholes to teleport to
 	wormholes = null
 
 /obj/effect/portal/wormhole
-	name = "wormhole"
-	desc = "It looks highly unstable; It could close at any moment."
+	name = "trou de ver"
+	desc = "Ça a l'air très instable, ça pourrait se fermer à tout moment."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "anom"
 	mech_sized = TRUE

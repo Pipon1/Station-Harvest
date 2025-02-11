@@ -7,9 +7,9 @@ export const CRIMESTATUS2COLOR = {
 } as const;
 
 export const CRIMESTATUS2DESC = {
-  Arrest: 'Arrest. Target must have valid crimes to set this status.',
-  Discharged: 'Discharged. Individual has been acquitted from wrongdoing.',
-  Incarcerated: 'Incarcerated. Individual is currently serving a sentence.',
-  Parole: 'Parole. Released from prison, but still under supervision.',
-  Suspected: 'Suspected. Monitor closely for criminal activity.',
+  Arrest: 'Arreté. La cible doit avoir commit un crime valable pour recevoir ce statut.',
+  Discharged: 'Innocenté. La cible a été innocenté.',
+  Incarcerated: 'Enfermé. La cible a été enfermé pour son crime.',
+  Parole: 'Libéré sous conditionnelle. La cible est libre mais sous supervision.',
+  Suspected: 'Suspecté. Surveille de près la cible pour découvrire toute activitée illégales.',
 } as const;

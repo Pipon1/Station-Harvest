@@ -6,63 +6,63 @@
 	var/datum/action/lung_punch/lungpunch = new/datum/action/lung_punch()
 
 /datum/action/neck_chop
-	name = "Neck Chop - Injures the neck, stopping the victim from speaking for a while."
+	name = "Coup à la nuque - Blesse la nuque, empêchant la victime de parler pendant un certain temps."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "neckchop"
 
 /datum/action/neck_chop/Trigger(trigger_flags)
 	if(owner.incapacitated())
-		to_chat(owner, span_warning("You can't use [name] while you're incapacitated."))
+		to_chat(owner, span_warning("Vous ne pouvez pas utiliser le [name] pendant que vous êtes incapacité."))
 		return
 	if (owner.mind.martial_art.streak == "neck_chop")
-		owner.visible_message(span_danger("[owner] assumes a neutral stance."), "<b><i>Your next attack is cleared.</i></b>")
+		owner.visible_message(span_danger("[owner] prend une posture neutre."), "<b><i>Votre prochaine attaque sera normal.</i></b>")
 		owner.mind.martial_art.streak = ""
 	else
-		owner.visible_message(span_danger("[owner] assumes the Neck Chop stance!"), "<b><i>Your next attack will be a Neck Chop.</i></b>")
+		owner.visible_message(span_danger("[owner] prend la position du coup à la nuque !"), "<b><i>Votre prochaine attaque sera un coup à la nuque.</i></b>")
 		owner.mind.martial_art.streak = "neck_chop"
 
 /datum/action/leg_sweep
-	name = "Leg Sweep - Trips the victim, knocking them down for a brief moment."
+	name = "Balayette - Fait trébucher la victime, la faisant tomber pendant un bref instant."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "legsweep"
 
 /datum/action/leg_sweep/Trigger(trigger_flags)
 	if(owner.incapacitated())
-		to_chat(owner, span_warning("You can't use [name] while you're incapacitated."))
+		to_chat(owner, span_warning("Vous ne pouvez pas utiliser la [name] pendant que vous êtes incapacité."))
 		return
 	if (owner.mind.martial_art.streak == "leg_sweep")
-		owner.visible_message(span_danger("[owner] assumes a neutral stance."), "<b><i>Your next attack is cleared.</i></b>")
+		owner.visible_message(span_danger("[owner] prend une posture neutre."), "<b><i>Votre prochaine attaque sera normal.</i></b>")
 		owner.mind.martial_art.streak = ""
 	else
-		owner.visible_message(span_danger("[owner] assumes the Leg Sweep stance!"), "<b><i>Your next attack will be a Leg Sweep.</i></b>")
+		owner.visible_message(span_danger("[owner] prend une posture de balayette."), "<b><i>Votre prochaine attaque sera une balayette.</i></b>")
 		owner.mind.martial_art.streak = "leg_sweep"
 
 /datum/action/lung_punch//referred to internally as 'quick choke'
-	name = "Lung Punch - Delivers a strong punch just above the victim's abdomen, constraining the lungs. The victim will be unable to breathe for a short time."
+	name = "Coup au poumon - Donne un coup de poing fort juste au-dessus de l'abdomen de la victime, contraignant les poumons. La victime sera incapable de respirer pendant un court instant."
 	button_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "lungpunch"
 
 /datum/action/lung_punch/Trigger(trigger_flags)
 	if(owner.incapacitated())
-		to_chat(owner, span_warning("You can't use [name] while you're incapacitated."))
+		to_chat(owner, span_warning("Vous ne pouvez pas utiliser le [name] pendant que vous êtes incapacité."))
 		return
 	if (owner.mind.martial_art.streak == "quick_choke")
-		owner.visible_message(span_danger("[owner] assumes a neutral stance."), "<b><i>Your next attack is cleared.</i></b>")
+		owner.visible_message(span_danger("[owner] prend une posture neutre."), "<b><i>Votre prochaine attaque sera normal.</i></b>")
 		owner.mind.martial_art.streak = ""
 	else
-		owner.visible_message(span_danger("[owner] assumes the Lung Punch stance!"), "<b><i>Your next attack will be a Lung Punch.</i></b>")
+		owner.visible_message(span_danger("[owner] prend une posture de coup au poumon."), "<b><i>Votre prochaine attaque sera un coup au poumon.</i></b>")
 		owner.mind.martial_art.streak = "quick_choke"//internal name for lung punch
 
 /datum/martial_art/krav_maga/teach(mob/living/owner, make_temporary=FALSE)
 	if(..())
-		to_chat(owner, span_userdanger("You know the arts of [name]!"))
-		to_chat(owner, span_danger("Place your cursor over a move at the top of the screen to see what it does."))
+		to_chat(owner, span_userdanger("Vous connaissez l'art du [name] !"))
+		to_chat(owner, span_danger("Placez votre curseur sur un coup en haut de l'écran pour voir ce qu'il fait."))
 		neckchop.Grant(owner)
 		legsweep.Grant(owner)
 		lungpunch.Grant(owner)
 
 /datum/martial_art/krav_maga/on_remove(mob/living/owner)
-	to_chat(owner, span_userdanger("You suddenly forget the arts of [name]..."))
+	to_chat(owner, span_userdanger("Vous oubliez soudainement l'art du [name]..."))
 	neckchop.Remove(owner)
 	legsweep.Remove(owner)
 	lungpunch.Remove(owner)
@@ -86,8 +86,8 @@
 /datum/martial_art/krav_maga/proc/leg_sweep(mob/living/attacker, mob/living/defender)
 	if(defender.stat || defender.IsParalyzed())
 		return FALSE
-	defender.visible_message(span_warning("[attacker] leg sweeps [defender]!"), \
-					span_userdanger("Your legs are sweeped by [attacker]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), null, attacker)
+	defender.visible_message(span_warning("[attacker] fait une balayettee à [defender] !"), \
+					span_userdanger("Vous vous faites balayez par  [attacker] !"), span_hear("Vous entendez le sons dégoutant d'un membre contre un membre !"), null, attacker)
 	to_chat(attacker, span_danger("You leg sweep [defender]!"))
 	playsound(get_turf(attacker), 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
 	defender.apply_damage(5, BRUTE, BODY_ZONE_CHEST)
@@ -96,9 +96,9 @@
 	return TRUE
 
 /datum/martial_art/krav_maga/proc/quick_choke(mob/living/attacker, mob/living/defender)//is actually lung punch
-	defender.visible_message(span_warning("[attacker] pounds [defender] on the chest!"), \
-					span_userdanger("Your chest is slammed by [attacker]! You can't breathe!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, attacker)
-	to_chat(attacker, span_danger("You pound [defender] on the chest!"))
+	defender.visible_message(span_warning("[attacker] frappe [defender] sur le torse !"), \
+					span_userdanger("Votre torse est frappé par [attacker] ! Vous ne pouvez plus respirer !"), span_hear("Vous entendez le sons dégoutant d'un membre contre un membre !"), COMBAT_MESSAGE_RANGE, attacker)
+	to_chat(attacker, span_danger("Vous frappez [defender] sur le torse !"))
 	playsound(get_turf(attacker), 'sound/effects/hit_punch.ogg', 50, TRUE, -1)
 	if(defender.losebreath <= 10)
 		defender.losebreath = clamp(defender.losebreath + 5, 0, 10)
@@ -107,9 +107,9 @@
 	return TRUE
 
 /datum/martial_art/krav_maga/proc/neck_chop(mob/living/attacker, mob/living/defender)
-	defender.visible_message(span_warning("[attacker] karate chops [defender]'s neck!"), \
-					span_userdanger("Your neck is karate chopped by [attacker], rendering you unable to speak!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, attacker)
-	to_chat(attacker, span_danger("You karate chop [defender]'s neck, rendering [defender.p_them()] unable to speak!"))
+	defender.visible_message(span_warning("[attacker] frappe la nuque de [defender] !"), \
+					span_userdanger("Votre nuque est frappé par [attacker], vous empêchant de parler !"), span_hear("Vous entendez le sons dégoutant d'un membre contre un membre !"), COMBAT_MESSAGE_RANGE, attacker)
+	to_chat(attacker, span_danger("Vous frappez la nuque de [defender], empêchant [defender.p_them()] de parler !"))
 	playsound(get_turf(attacker), 'sound/effects/hit_punch.ogg', 50, TRUE, -1)
 	defender.apply_damage(10, attacker.get_attack_type(), BODY_ZONE_HEAD)
 	defender.adjust_silence_up_to(20 SECONDS, 20 SECONDS)
@@ -140,7 +140,7 @@
 		attacker.do_attack_animation(defender, ATTACK_EFFECT_PUNCH)
 		playsound(get_turf(defender), 'sound/effects/hit_punch.ogg', 50, TRUE, -1)
 	defender.visible_message(span_danger("[attacker] [picked_hit_type]s [defender]!"), \
-					span_userdanger("You're [picked_hit_type]ed by [attacker]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, attacker)
+					span_userdanger("You're [picked_hit_type]ed by [attacker]!"), span_hear("Vous entendez le sons dégoutant d'un membre contre un membre !"), COMBAT_MESSAGE_RANGE, attacker)
 	to_chat(attacker, span_danger("You [picked_hit_type] [defender]!"))
 	log_combat(attacker, defender, "[picked_hit_type] with [name]")
 	return TRUE
@@ -153,9 +153,9 @@
 	if(prob(60) && stuff_in_hand)
 		if(defender.temporarilyRemoveItemFromInventory(stuff_in_hand))
 			attacker.put_in_hands(stuff_in_hand)
-			defender.visible_message("<span class='danger'>[attacker] disarms [defender]!</span>", \
-				"<span class='userdanger'>You're disarmed by [attacker]!</span>", "<span class='hear'>You hear aggressive shuffling!</span>", COMBAT_MESSAGE_RANGE, attacker)
-			to_chat(attacker, "<span class='danger'>You disarm [defender]!</span>")
+			defender.visible_message("<span class='danger'>[attacker] désarme [defender] !</span>", \
+				"<span class='userdanger'>Vous êtes désarmé par [attacker] !</span>", "<span class='hear'>Vous entendez un son aggressif !</span>", COMBAT_MESSAGE_RANGE, attacker)
+			to_chat(attacker, "<span class='danger'>Vous désarmez [defender] !</span>")
 			playsound(defender, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 	log_combat(attacker, defender, "shoved (Krav Maga)", "[stuff_in_hand ? " removing \the [stuff_in_hand]" : ""]")
 	return FALSE
@@ -176,8 +176,8 @@
 		style.remove(user)
 
 /obj/item/clothing/gloves/krav_maga/sec//more obviously named, given to sec
-	name = "krav maga gloves"
-	desc = "These gloves can teach you to perform Krav Maga using nanochips."
+	name = "gants de krav maga"
+	desc = "Ces gants vous apprendront l'art du Krav Maga grâce à des nano puces."
 	icon_state = "fightgloves"
 	greyscale_colors = "#c41e0d"
 	cold_protection = HANDS
@@ -187,8 +187,8 @@
 	resistance_flags = NONE
 
 /obj/item/clothing/gloves/krav_maga/combatglovesplus
-	name = "combat gloves plus"
-	desc = "These tactical gloves are fireproof and electrically insulated, and through the use of nanochip technology will teach you the martial art of krav maga."
+	name = "gants de combat amélioré"
+	desc = "Ces gants tactiques sont ignifuges et isolés électriquement, et grâce à la technologie de nano puces, ils vous apprendront l'art martial du krav maga."
 	icon_state = "black"
 	greyscale_colors = "#2f2e31"
 	siemens_coefficient = 0

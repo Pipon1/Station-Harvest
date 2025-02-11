@@ -1,8 +1,8 @@
 #define MAX_DENT_DECALS 15
 
 /turf/closed/wall
-	name = "wall"
-	desc = "A huge chunk of iron used to separate rooms."
+	name = "mur"
+	desc = "Un gros morceau de fer utilisé pour séparer les pièces"
 	icon = 'icons/turf/walls/wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
@@ -64,7 +64,7 @@
 	. += deconstruction_hints(user)
 
 /turf/closed/wall/proc/deconstruction_hints(mob/user)
-	return span_notice("The outer plating is <b>welded</b> firmly in place.")
+	return span_notice("Les plaques extérieures sont <b>soudées</b> fermement en place.")
 
 /turf/closed/wall/attack_tk()
 	return
@@ -144,9 +144,9 @@
 	else
 		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
 		add_dent(WALL_DENT_HIT)
-		user.visible_message(span_danger("[user] smashes \the [src]!"), \
-					span_danger("You smash \the [src]!"), \
-					span_hear("You hear a booming smash!"))
+		user.visible_message(span_danger("[user] frappes le [src] !"), \
+					span_danger("Vous frappez le [src] !"), \
+					span_hear("Vous entendez un bruit sourd !"))
 	return TRUE
 
 /**
@@ -172,14 +172,14 @@
 	if(.)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	to_chat(user, span_notice("You push the wall but nothing happens!"))
+	to_chat(user, span_notice("Vous pousser le mur mais rien ne se passe !"))
 	playsound(src, 'sound/weapons/genhit.ogg', 25, TRUE)
 	add_fingerprint(user)
 
 /turf/closed/wall/attackby(obj/item/W, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
 	if (!ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, span_warning("Vous n'avez pas la dextérité pour faire ça !"))
 		return
 
 	//get the user's location
@@ -205,7 +205,7 @@
 		to_chat(user, span_notice("You begin fixing dents on the wall..."))
 		if(W.use_tool(src, user, 0, volume=100))
 			if(iswallturf(src) && LAZYLEN(dent_decals))
-				to_chat(user, span_notice("You fix some dents on the wall."))
+				to_chat(user, span_notice("Vous réparez quelques bosses sur le mur."))
 				cut_overlay(dent_decals)
 				dent_decals.Cut()
 			return TRUE
@@ -231,10 +231,10 @@
 		if(!I.tool_start_check(user, amount=0))
 			return FALSE
 
-		to_chat(user, span_notice("You begin slicing through the outer plating..."))
+		to_chat(user, span_notice("Vous commencez à découper les plaques extérieure..."))
 		if(I.use_tool(src, user, slicing_duration, volume=100))
 			if(iswallturf(src))
-				to_chat(user, span_notice("You remove the outer plating."))
+				to_chat(user, span_notice("Vous retirez les plaques extérieure."))
 				dismantle_wall()
 			return TRUE
 
@@ -286,7 +286,7 @@
 				return FALSE
 			return TRUE
 		if(RCD_DECONSTRUCT)
-			to_chat(user, span_notice("You deconstruct the wall."))
+			to_chat(user, span_notice("Vous déconstruisez le mur."))
 			ScrapeAway()
 			return TRUE
 	return FALSE

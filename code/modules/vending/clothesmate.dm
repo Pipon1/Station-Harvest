@@ -1,14 +1,14 @@
 /obj/machinery/vending/clothing
-	name = "ClothesMate"
-	desc = "A vending machine for clothing."
+	name = "Habille-omatique"
+	desc = "Un distributeur de vêtement."
 	icon_state = "clothes"
 	icon_deny = "clothes-deny"
 	panel_type = "panel15"
-	product_slogans = "Dress for success!;Prepare to look swagalicious!;Look at all this swag!;Why leave style up to fate? Use the ClothesMate!"
+	product_slogans = "Habillez vous pour un rendez-vous !;Préparez vous à être habillé merveilcieusement bien !;Tellement de style !;Pourquoi garder cet uniforme ? Utilisez l'Habille-omatique !"
 	vend_reply = "Thank you for using the ClothesMate!"
 	product_categories = list(
 		list(
-			"name" = "Head",
+			"name" = "Tête",
 			"icon" = "hat-cowboy",
 			"products" = list(
 				/obj/item/clothing/head/wig/natural = 4,
@@ -35,7 +35,7 @@
 		),
 
 		list(
-			"name" = "Accessories",
+			"name" = "Accessoires",
 			"icon" = "glasses",
 			"products" = list(
 				/obj/item/clothing/accessory/pride = 15,
@@ -55,7 +55,7 @@
 		),
 
 		list(
-			"name" = "Under",
+			"name" = "Couche intérieur",
 			"icon" = "shirt",
 			"products" = list(
 				/obj/item/clothing/under/pants/slacks = 5,
@@ -80,7 +80,7 @@
 		),
 
 		list(
-			"name" = "Suits & Skirts",
+			"name" = "Vestes et jupes",
 			"icon" = "vest",
 			"products" = list(
 				/obj/item/clothing/suit/toggle/jacket/sweater = 4,
@@ -109,7 +109,7 @@
 		),
 
 		list(
-			"name" = "Shoes",
+			"name" = "Chaussures",
 			"icon" = "socks",
 			"products" = list(
 				/obj/item/clothing/shoes/sneakers/black = 4,
@@ -194,5 +194,5 @@
 	light_color = LIGHT_COLOR_ELECTRIC_GREEN
 
 /obj/item/vending_refill/clothing
-	machine_name = "ClothesMate"
+	machine_name = "Habille-omatique"
 	icon_state = "refill_clothes"

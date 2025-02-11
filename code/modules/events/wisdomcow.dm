@@ -1,10 +1,10 @@
 /datum/round_event_control/wisdomcow
-	name = "Wisdom Cow"
+	name = "Vache sage"
 	typepath = /datum/round_event/wisdomcow
 	max_occurrences = 1
 	weight = 20
 	category = EVENT_CATEGORY_FRIENDLY
-	description = "A cow appears to tell you wise words."
+	description = "Une vache qui apparait pour vous dire des mots d'une grande sagesse."
 	admin_setup = list(
 		/datum/event_admin_setup/set_location/wisdom_cow,
 		/datum/event_admin_setup/listed_options/wisdom_cow,
@@ -20,7 +20,7 @@
 	var/selected_experience
 
 /datum/round_event/wisdomcow/announce(fake)
-	priority_announce("A wise cow has been spotted in the area. Be sure to ask for her advice.", "Nanotrasen Cow Ranching Agency")
+	priority_announce("Une vache d'une grande sagesse a été repérée par chez vous. Demandez lui conseil.", "Agence de ranch de vache de Nanotrasen")
 
 /datum/round_event/wisdomcow/start()
 	var/turf/targetloc
@@ -33,14 +33,14 @@
 	announce_to_ghosts(wise)
 
 /datum/event_admin_setup/set_location/wisdom_cow
-	input_text = "Spawn on current turf?"
+	input_text = "Spawn à votre localisation actuelle ?"
 
 /datum/event_admin_setup/set_location/wisdom_cow/apply_to_event(datum/round_event/wisdomcow/event)
 	event.spawn_location = chosen_turf
 
 /datum/event_admin_setup/listed_options/wisdom_cow
-	input_text = "Select a specific wisdom type?"
-	normal_run_option = "Random Wisdom"
+	input_text = "Sélectionner une sagesse d'un certain type ?"
+	normal_run_option = "Sagesse aléatoire"
 
 /datum/event_admin_setup/listed_options/wisdom_cow/get_list()
 	return subtypesof(/datum/skill)
@@ -49,7 +49,7 @@
 	event.selected_wisdom = chosen
 
 /datum/event_admin_setup/input_number/wisdom_cow
-	input_text = "How much experience should this cow grant?"
+	input_text = "Combien de points d'expérience voulez vous que cette vache donne ? (défaut : 500, min : -2500, max : 2500)"
 	default_value = 500
 	max_value = 2500
 	min_value = -2500

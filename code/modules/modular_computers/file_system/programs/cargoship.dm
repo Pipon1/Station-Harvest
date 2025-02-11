@@ -1,9 +1,9 @@
 /datum/computer_file/program/shipping
 	filename = "shipping"
-	filedesc = "GrandArk Exporter"
+	filedesc = "Livreur de la grande arche"
 	category = PROGRAM_CATEGORY_SUPL
 	program_icon_state = "shipping"
-	extended_desc = "A combination printer/scanner app that enables modular computers to print barcodes for easy scanning and shipping."
+	extended_desc = "Une combinaison d'imprimante/scanneur qui permet aux ordinateurs modulaires d'imprimer des codes-barres pour un balayage et une expédition faciles."
 	size = 6
 	tgui_id = "NtosShipping"
 	program_icon = "tags"
@@ -42,17 +42,17 @@
 		if("resetid")
 			payments_acc = null
 		if("setsplit")
-			var/potential_cut = input("How much would you like to pay out to the registered card?","Percentage Profit ([round(cut_min*100)]% - [round(cut_max*100)]%)") as num|null
+			var/potential_cut = input("Combien souhaitez-vous payer à la carte enregistrée ?","Pourcentage de profit : ([round(cut_min*100)]% - [round(cut_max*100)]%)") as num|null
 			cut_multiplier = potential_cut ? clamp(round(potential_cut/100, cut_min), cut_min, cut_max) : initial(cut_multiplier)
 		if("print")
 			if(computer.stored_paper <= 0)
-				to_chat(usr, span_notice("Printer is out of paper."))
+				to_chat(usr, span_notice("L'imprimante n'a plus de papier."))
 				return TRUE
 			if(!payments_acc)
-				to_chat(usr, span_notice("Software error: Please set a current user first."))
+				to_chat(usr, span_notice("Erreur logiciel : Veuillez définir un utilisateur."))
 				return TRUE
 			var/obj/item/barcode/barcode = new /obj/item/barcode(get_turf(computer.ui_host()))
 			barcode.payments_acc = payments_acc
 			barcode.cut_multiplier = cut_multiplier
 			computer.stored_paper--
-			to_chat(usr, span_notice("The computer prints out a barcode."))
+			to_chat(usr, span_notice("L'ordinateur imprime un code-barre."))

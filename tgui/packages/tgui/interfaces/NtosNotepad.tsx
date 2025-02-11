@@ -10,10 +10,11 @@ import { Box, Section, TextArea, MenuBar, Divider } from '../components';
 import { Component, createRef, RefObject } from 'inferno';
 import { createLogger } from '../logging';
 import { Dialog, UnsavedChangesDialog } from '../components/Dialog';
+import { DesignBrowser } from './Fabrication/DesignBrowser';
 
 const logger = createLogger('NtosNotepad');
 
-const DEFAULT_DOCUMENT_NAME = 'Untitled';
+const DEFAULT_DOCUMENT_NAME = 'Sans-titre';
 
 type PartiallyUnderlinedProps = {
   str: string;
@@ -138,50 +139,50 @@ const NtosNotepadMenuBar = (props: MenuBarProps, context) => {
       <MenuBar.Dropdown
         entry="file"
         openWidth="22rem"
-        display={<PartiallyUnderlined str="File" indexStart={0} />}
+        display={<PartiallyUnderlined str="Fichier" indexStart={0} />}
         {...itemProps}>
-        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('new', 'New')} />
-        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('save', 'Save')} />
+        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('new', 'Nouveau')} />
+        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('save', 'Sauvegarder')} />
         <MenuBar.Dropdown.Separator key="firstSep" />
-        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('exit', 'Exit...')} />
+        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('exit', 'Quitter...')} />
       </MenuBar.Dropdown>
       <MenuBar.Dropdown
         entry="edit"
         openWidth="22rem"
-        display={<PartiallyUnderlined str="Edit" indexStart={0} />}
+        display={<PartiallyUnderlined str="Editer" indexStart={0} />}
         {...itemProps}>
-        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('cut', 'Cut')} />
-        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('copy', 'Copy')} />
-        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('paste', 'Paste')} />
-        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('delete', 'Delete')} />
+        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('cut', 'Couper')} />
+        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('copy', 'Copier')} />
+        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('paste', 'Coller')} />
+        <MenuBar.Dropdown.MenuItem {...getMenuItemProps('delete', 'Supprimer')} />
       </MenuBar.Dropdown>
       <MenuBar.Dropdown
         entry="format"
         openWidth="15rem"
-        display={<PartiallyUnderlined str="Format" indexStart={1} />}
+        display={<PartiallyUnderlined str="Formater" indexStart={1} />}
         {...itemProps}>
         <MenuBar.Dropdown.MenuItemToggle
           checked={wordWrap}
-          {...getMenuItemProps('wordWrap', 'Word Wrap')}
+          {...getMenuItemProps('wordWrap', 'Retour à la ligne')}
         />
       </MenuBar.Dropdown>
       <MenuBar.Dropdown
         entry="view"
         openWidth="15rem"
-        display={<PartiallyUnderlined str="View" indexStart={0} />}
+        display={<PartiallyUnderlined str="Voir" indexStart={0} />}
         {...itemProps}>
         <MenuBar.Dropdown.MenuItemToggle
           checked={showStatusBar}
-          {...getMenuItemProps('statusBar', 'Status Bar')}
+          {...getMenuItemProps('statusBar', 'Bar de statut')}
         />
       </MenuBar.Dropdown>
       <MenuBar.Dropdown
         entry="help"
         openWidth="17rem"
-        display={<PartiallyUnderlined str="Help" indexStart={0} />}
+        display={<PartiallyUnderlined str="Aide" indexStart={0} />}
         {...itemProps}>
         <MenuBar.Dropdown.MenuItem
-          {...getMenuItemProps('aboutNotepad', 'About Notepad')}
+          {...getMenuItemProps('aboutNotepad', 'A propos du bloc-note')}
         />
       </MenuBar.Dropdown>
     </MenuBar>
@@ -337,19 +338,19 @@ const AboutDialog = (props: AboutDialogProps) => {
             Version 7815696ecbf1c96e6894b779456d330e
           </span>
           <span style={paragraphStyle}>
-            &copy; NT Corporation. All rights reserved.
+            &copy; Corporation NT. Tout droit reservé.
           </span>
           <span style={{ 'padding': '3rem 1rem 3rem 2rem' }}>
-            The NtOS operating system and its user interface are protected by
-            trademark and other pending or existing intellectual property rights
-            in the Sol system and other regions.
+            Le système d'operation NtOS et son interface utilisateur sont protégés
+            pour un copyright au nom de Nanotrasen. Ce copyright est effectif dans
+            tous les systèmes solaire y comprit celui de sol.
           </span>
           <span
             style={{
               'padding': '3rem 1rem 0.5rem 2rem',
               'max-width': '35rem',
             }}>
-            This product is licensed under the NT Corporation Terms to:
+            Ce produit est licensié sous les termes de la Corporation NT à :
           </span>
           <span style={{ 'padding': '0 1rem 0 4rem' }}>{clientName}</span>
         </Box>
@@ -407,11 +408,11 @@ export const NtosNotepad = (props, context) => {
   );
   const handleCloseDialog = () => setActiveDialog(Dialogs.NONE);
   const handleSave = (newDocumentName: string = documentName) => {
-    logger.log(`Saving the document as ${newDocumentName}`);
+    logger.log(`Sauver le document en tant que : ${newDocumentName}`);
     act('UpdateNote', { newnote: text });
     setOriginalText(text);
     setDocumentName(newDocumentName);
-    logger.log('Attempting to retry previous action');
+    logger.log('Essayer De refaire la précédente action');
     setActiveDialog(Dialogs.NONE);
 
     // Retry the previous action now that we've saved. The previous action could be to

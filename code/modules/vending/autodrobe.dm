@@ -1,11 +1,11 @@
 /obj/machinery/vending/autodrobe
-	name = "\improper AutoDrobe"
-	desc = "A vending machine for costumes."
+	name = "\improper Costumator"
+	desc = "Un distributeur vendant des costumes."
 	icon_state = "theater"
 	icon_deny = "theater-deny"
 	panel_type = "panel16"
 	req_access = list(ACCESS_THEATRE)
-	product_slogans = "Dress for success!;Suited and booted!;It's show time!;Why leave style up to fate? Use AutoDrobe!"
+	product_slogans = "Habillez vous pour un rendez-vous !;Costumé.e et décidé.e !;C'est l'heure de la fête !;Pourquoi s'en tenir à un uniforme ? Utilisez le Customator !"
 	vend_reply = "Thank you for using AutoDrobe!"
 	product_categories = list(
 		list(
@@ -61,7 +61,7 @@
 			),
 		),
 		list(
-			"name" = "Supernatural",
+			"name" = "Supernaturel",
 			"icon" = "hand-sparkles",
 			"products" = list(
 				/obj/item/clothing/suit/costume/imperium_monk = 1,
@@ -80,7 +80,7 @@
 			),
 		),
 		list(
-			"name" = "Entertainers",
+			"name" = "Comique",
 			"icon" = "masks-theater",
 			"products" = list(
 				/obj/item/clothing/under/rank/civilian/clown/blue = 1,
@@ -108,7 +108,7 @@
 			),
 		),
 		list(
-			"name" = "Fancy",
+			"name" = "Chic",
 			"icon" = "user-tie",
 			"products" = list(
 				/obj/item/clothing/under/rank/captain/suit = 1,
@@ -133,7 +133,7 @@
 			),
 		),
 		list(
-			"name" = "Animals",
+			"name" = "Animaux",
 			"icon" = "paw",
 			"products" = list(
 				/obj/item/clothing/head/costume/kitty = 1,
@@ -236,7 +236,7 @@
 	light_mask="theater-light-mask"
 
 /obj/machinery/vending/autodrobe/all_access
-	desc = "A vending machine for costumes. This model appears to have no access restrictions."
+	desc = "Un distributeur pour les costumes. Ce modèle semble ne pas avoir de restrictions."
 	req_access = null
 
 /obj/item/vending_refill/autodrobe

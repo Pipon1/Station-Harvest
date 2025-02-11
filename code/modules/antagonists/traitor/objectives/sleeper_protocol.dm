@@ -6,8 +6,8 @@
 	)
 
 /datum/traitor_objective/sleeper_protocol
-	name = "Perform the sleeper protocol on a crewmember"
-	description = "Use the button below to materialize a surgery disk in your hand, where you'll then be able to perform the sleeper protocol on a crewmember. If the disk gets destroyed, the objective will fail. This will only work on living and sentient crewmembers."
+	name = "Opérez un membre d'équipage pour en faire un agent dormant"
+	description = "Utilisez le bouton pour matérialiser un disque content une opération dans votre main, vous pourrez l'utiliser pour apprendre l'opératio de création d'agent dormant. Si le disque est détruit, l'objetif sera considéré comme échoué. L'opération ne fonctionne que sur des êtres vivants."
 
 	progression_minimum = 0 MINUTES
 
@@ -31,7 +31,7 @@
 /datum/traitor_objective/sleeper_protocol/generate_ui_buttons(mob/user)
 	var/list/buttons = list()
 	if(!disk)
-		buttons += add_ui_button("", "Clicking this will materialize the sleeper protocol surgery in your hand", "save", "summon_disk")
+		buttons += add_ui_button("", "Cliquez sur ce bouton pour matérialiser le disque d'opération dans votre main", "save", "summon_disk")
 	return buttons
 
 /datum/traitor_objective/sleeper_protocol/ui_perform_action(mob/living/user, action)
@@ -67,13 +67,13 @@
 /datum/traitor_objective/sleeper_protocol/ungenerate_objective()
 	disk = null
 /obj/item/disk/surgery/sleeper_protocol
-	name = "Suspicious Surgery Disk"
-	desc = "The disk provides instructions on how to turn someone into a sleeper agent for the Syndicate."
+	name = "Un disque d'opération suspicieux"
+	desc = "Ce disque vous donne toutes les connaissances nécessaire pour effectuer une opération de création d'agent dormant."
 	surgeries = list(/datum/surgery/advanced/brainwashing_sleeper)
 
 /datum/surgery/advanced/brainwashing_sleeper
-	name = "Sleeper Agent Surgery"
-	desc = "A surgical procedure which implants the sleeper protocol into the patient's brain, making it their absolute priority. It can be cleared using a mindshield implant."
+	name = "Opération de création d'agent dormant"
+	desc = "Une opération qui modifie le cerveau du patient pour le transformer en agent dormant. Cela peut être annuler avec un implant de protection de l'esprit."
 	possible_locs = list(BODY_ZONE_HEAD)
 	steps = list(
 		/datum/surgery_step/incise,
@@ -96,12 +96,15 @@
 /datum/surgery_step/brainwash/sleeper_agent
 	time = 25 SECONDS
 	var/static/list/possible_objectives = list(
-		"You love the Syndicate.",
-		"Do not trust Nanotrasen.",
-		"The Captain is a lizardperson.",
-		"Nanotrasen isn't real.",
-		"They put something in the food to make you forget.",
-		"You are the only real person on the station."
+		"Vous aimez le syndicat.",
+		"Vous ne devez pas croire Nanotrasen.",
+		"Le capitaine est un homme lézard.",
+		"Nanotrasen n'est pas réel.",
+		"Il ont mit quelque chose dans la nourriture pour vous faire oublier.",
+		"Vous êtes la seule personne réelle sur la station.",
+		"Les sols non-standard sont vos ennemis.",
+		"Votre coeur n'est pas le votre.",
+		"Vous êtes un clone."
 	)
 
 /datum/surgery_step/brainwash/sleeper_agent/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -109,15 +112,15 @@
 	display_results(
 		user,
 		target,
-		span_notice("You begin to brainwash [target]..."),
-		span_notice("[user] begins to fix [target]'s brain."),
-		span_notice("[user] begins to perform surgery on [target]'s brain."),
+		span_notice("Vous commencer à laver l'esprit de [target]..."),
+		span_notice("[user] soigne le cerveau de [target]."),
+		span_notice("[user] commence à opérer le cerveau de [target]."),
 	)
-	display_pain(target, "Your head pounds with unimaginable pain!") // Same message as other brain surgeries
+	display_pain(target, "Vous avez une migraine insupportable !") // Same message as other brain surgeries
 
 /datum/surgery_step/brainwash/sleeper_agent/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = FALSE)
 	if(target.stat == DEAD)
-		to_chat(user, span_warning("They need to be alive to perform this surgery!"))
+		to_chat(user, span_warning("Ils doivent être en vie pour être opérer !"))
 		return FALSE
 	. = ..()
 	if(!.)

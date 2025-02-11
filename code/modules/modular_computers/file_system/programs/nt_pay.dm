@@ -1,9 +1,9 @@
 /datum/computer_file/program/nt_pay
 	filename = "ntpay"
-	filedesc = "Nanotrasen Pay System"
+	filedesc = "Système de paiement de Nanotrasen"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "generic"
-	extended_desc = "An application that locally (in your sector) helps to transfer money or track your expenses and profits."
+	extended_desc = "Une application qui localement (dans votre secteur) aide à transférer de l'argent ou à suivre vos dépenses et vos profits."
 	size = 2
 	tgui_id = "NtosPay"
 	program_icon = "money-bill-wave"
@@ -24,11 +24,11 @@
 			money_to_send = params["amount"]
 			var/datum/bank_account/recipient
 			if(!token)
-				return to_chat(usr, span_notice("You need to enter your transfer target's pay token."))
+				return to_chat(usr, span_notice("Vous devez entrer le numéro de compte de la personne à qui vous voulez envoyer de l'argent."))
 			if(!money_to_send)
-				return to_chat(usr, span_notice("You need to specify how much you're sending."))
+				return to_chat(usr, span_notice("Vous devez préciser le montant que vous voulez envoyer."))
 			if(token == current_user.pay_token)
-				return to_chat(usr, span_notice("You can't send credits to yourself."))
+				return to_chat(usr, span_notice("Vous ne pouvez pas vous envoyer des crédits à vous même."))
 
 			for(var/account as anything in SSeconomy.bank_accounts_by_id)
 				var/datum/bank_account/acc = SSeconomy.bank_accounts_by_id[account]
@@ -37,23 +37,23 @@
 					break
 
 			if(!recipient)
-				return to_chat(usr, span_notice("The app can't find who you're trying to pay. Did you enter the pay token right?"))
+				return to_chat(usr, span_notice("Cette application ne trouve pas la personne que vous essayez de payer. Avez-vous entré un token de paiement valide ?"))
 			if(!current_user.has_money(money_to_send) || money_to_send < 1)
-				return current_user.bank_card_talk("You cannot afford it.")
+				return current_user.bank_card_talk("Vous n'avez pas assez de crédits.")
 
-			recipient.bank_card_talk("You received [money_to_send] credit(s). Reason: transfer from [current_user.account_holder]")
+			recipient.bank_card_talk("Vous avez reçu [money_to_send] credit(s). Raisons : envoyé depuis le compte de [current_user.account_holder]")
 			recipient.transfer_money(current_user, money_to_send)
-			current_user.bank_card_talk("You send [money_to_send] credit(s) to [recipient.account_holder]. Now you have [current_user.account_balance] credit(s)")
+			current_user.bank_card_talk("Vous avez envoyé [money_to_send] credit(s) à [recipient.account_holder]. Vous avez maintenant [current_user.account_balance] credit(s) sur votre compte")
 
 		if("GetPayToken")
 			wanted_token = null
 			for(var/account in SSeconomy.bank_accounts_by_id)
 				var/datum/bank_account/acc = SSeconomy.bank_accounts_by_id[account]
 				if(acc.account_holder == params["wanted_name"])
-					wanted_token = "Token: [acc.pay_token]"
+					wanted_token = "Token : [acc.pay_token]"
 					break
 			if(!wanted_token)
-				return wanted_token = "Account \"[params["wanted_name"]]\" not found."
+				return wanted_token = "Compte \"[params["wanted_name"]]\" inexistant."
 
 
 

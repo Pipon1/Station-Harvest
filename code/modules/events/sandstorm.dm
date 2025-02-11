@@ -8,13 +8,13 @@
  */
 
 /datum/round_event_control/sandstorm
-	name = "Sandstorm: Directional"
+	name = "Tempête de poussière directionnelle"
 	typepath = /datum/round_event/sandstorm
 	max_occurrences = 3
 	min_players = 35
 	earliest_start = 35 MINUTES
 	category = EVENT_CATEGORY_SPACE
-	description = "A wave of space dust continually grinds down a side of the station."
+	description = "Une vague de poussières stellaires va éroder un côté de la station en continue."
 	min_wizard_trigger_potency = 6
 	max_wizard_trigger_potency = 7
 	admin_setup = list(/datum/event_admin_setup/listed_options/sandstorm)
@@ -35,23 +35,23 @@
 	if(!start_side)
 		start_side = pick(GLOB.cardinals)
 
-	var/start_side_text = "unknown"
+	var/start_side_text = "inconnu"
 	switch(start_side)
 		if(NORTH)
-			start_side_text = "fore"
+			start_side_text = "nord"
 		if(SOUTH)
-			start_side_text = "aft"
+			start_side_text = "sud"
 		if(EAST)
-			start_side_text = "starboard"
+			start_side_text = "est"
 		if(WEST)
-			start_side_text = "port"
+			start_side_text = "ouest"
 		else
-			stack_trace("Sandstorm event given [start_side] as unrecognized direction. Cancelling event...")
+			stack_trace("La tempête de poussière ne reconnait pas '[start_side]' comme une direction valide. Annulation...")
 			kill()
 			return
 
-	priority_announce("A large wave of space dust is approaching from the [start_side_text] side of the station. \
-		Impact is expected in the next two minutes. All employees are encouranged to assist in repairs and damage mitigation if possible.", "Collision Emergency Alert")
+	priority_announce("Une large tempête de poussières stellaires approche depuis le [start_side_text] de la station. \
+		L'impact est estimé à dans moins de 2 minutes. Tous les employés sont encouragés à assister aux réparations et à la minimisation des dommages.", "Alerte urgence collision")
 
 /datum/round_event/sandstorm/tick()
 	spawn_meteors(15, GLOB.meteors_sandstorm, start_side)
@@ -65,13 +65,13 @@
  */
 
 /datum/round_event_control/sandstorm_classic
-	name = "Sandstorm: Classic"
+	name = "Tempête de poussière originale"
 	typepath = /datum/round_event/sandstorm_classic
 	weight = 0
 	max_occurrences = 0
 	earliest_start = 0 MINUTES
 	category = EVENT_CATEGORY_SPACE
-	description = "The station is pelted by an extreme amount of dust, from all sides, for several minutes. Very destructive and likely to cause lag. Use at own risk."
+	description = "La station va être bombardée par une grande quantité de poussière venue de tous les côtés et pour plusieurs minutes. Très destructeur et a beaucoup de chance de faire du lag."
 	map_flags = EVENT_SPACE_ONLY
 
 /datum/round_event/sandstorm_classic

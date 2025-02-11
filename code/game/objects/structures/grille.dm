@@ -2,7 +2,7 @@
 #define CLEAR_TILE_MOVE_LIMIT 20
 
 /obj/structure/grille
-	desc = "A flimsy framework of iron rods."
+	desc = "Un tas de barres de fer."
 	name = "grille"
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "grille"
@@ -53,9 +53,9 @@
 /obj/structure/grille/examine(mob/user)
 	. = ..()
 	if(anchored)
-		. += span_notice("It's secured in place with <b>screws</b>. The rods look like they could be <b>cut</b> through.")
+		. += span_notice("La grille est fixée en place avec des <b>vis</b>. Les barres semblent pouvoir être <b>coupées</b>.")
 	if(!anchored)
-		. += span_notice("The anchoring screws are <i>unscrewed</i>. The rods look like they could be <b>cut</b> through.")
+		. += span_notice("Les vis de fixation sont <i>dévissées</i>. Les barres semblent pouvoir être <b>coupées</b>.")
 
 /obj/structure/grille/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	switch(the_rcd.mode)
@@ -88,7 +88,7 @@
 /obj/structure/grille/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
-			to_chat(user, span_notice("You deconstruct the grille."))
+			to_chat(user, span_notice("Vous démontez la grille."))
 			qdel(src)
 			return TRUE
 		if(RCD_WINDOWGRILLE)
@@ -97,7 +97,7 @@
 			var/turf/T = loc
 
 			if(repair_grille())
-				balloon_alert(user, "grille rebuilt")
+				balloon_alert(user, "grille reconstruite")
 
 			if(!clear_tile(user))
 				return FALSE
@@ -106,7 +106,7 @@
 			if(!ispath(window_path))
 				CRASH("Invalid window path type in RCD: [window_path]")
 			if(!valid_build_direction(T, user.dir, is_fulltile = initial(window_path.fulltile)))
-				balloon_alert(user, "window already here!")
+				balloon_alert(user, "Il y a déjà une fenêtre ici !")
 				return FALSE
 			var/obj/structure/window/WD = new the_rcd.window_type(T, user.dir)
 			WD.set_anchored(TRUE)
@@ -128,10 +128,10 @@
 	if(!unanchored_items_on_tile)
 		return TRUE
 
-	to_chat(user, span_notice("You move [unanchored_items_on_tile == 1 ? "[last_item_moved]" : "some things"] out of the way."))
+	to_chat(user, span_notice("Vous déplacez [unanchored_items_on_tile == 1 ? "[last_item_moved]" : "quelque chose"] hors du chemin."))
 
 	if(unanchored_items_on_tile - CLEAR_TILE_MOVE_LIMIT > 0)
-		to_chat(user, span_warning("There's still too much stuff in the way!"))
+		to_chat(user, span_warning("Il y a encore trop de choses sur le chemin !"))
 		return FALSE
 
 	return TRUE
@@ -166,7 +166,7 @@
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.do_attack_animation(src, ATTACK_EFFECT_KICK)
-	user.visible_message(span_warning("[user] hits [src]."), null, null, COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_warning("[user] frappe [src]."), null, null, COMBAT_MESSAGE_RANGE)
 	log_combat(user, src, "hit")
 	if(!shock(user, 70))
 		take_damage(rand(5,10), BRUTE, MELEE, 1)
@@ -174,7 +174,7 @@
 /obj/structure/grille/attack_alien(mob/living/user, list/modifiers)
 	user.do_attack_animation(src)
 	user.changeNext_move(CLICK_CD_MELEE)
-	user.visible_message(span_warning("[user] mangles [src]."), null, null, COMBAT_MESSAGE_RANGE)
+	user.visible_message(span_warning("[user] ammoche [src]."), null, null, COMBAT_MESSAGE_RANGE)
 	if(!shock(user, 70))
 		take_damage(20, BRUTE, MELEE, 1)
 
@@ -205,8 +205,8 @@
 	if(!tool.use_tool(src, user, 0, volume=100))
 		return FALSE
 	set_anchored(!anchored)
-	user.visible_message(span_notice("[user] [anchored ? "fastens" : "unfastens"] [src]."), \
-		span_notice("You [anchored ? "fasten [src] to" : "unfasten [src] from"] the floor."))
+	user.visible_message(span_notice("[user] [anchored ? "serre" : "déssere"] [src]."), \
+		span_notice("You [anchored ? "serre [src] contre le" : "déssere [src] du"] sol."))
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/structure/grille/attackby(obj/item/W, mob/user, params)
@@ -215,8 +215,8 @@
 		if(shock(user, 90))
 			return
 		var/obj/item/stack/rods/R = W
-		user.visible_message(span_notice("[user] rebuilds the broken grille."), \
-			span_notice("You rebuild the broken grille."))
+		user.visible_message(span_notice("[user] reconstruit la grille cassée."), \
+			span_notice("Vous reconstruisez la grille cassée."))
 		repair_grille()
 		R.use(1)
 		return TRUE
@@ -226,18 +226,18 @@
 		if (!broken)
 			var/obj/item/stack/ST = W
 			if (ST.get_amount() < 2)
-				to_chat(user, span_warning("You need at least two sheets of glass for that!"))
+				to_chat(user, span_warning("Vous avez besoin d'au moins deux feuilles de verre pour cela !"))
 				return
 			var/dir_to_set = SOUTHWEST
 			if(!anchored)
-				to_chat(user, span_warning("[src] needs to be fastened to the floor first!"))
+				to_chat(user, span_warning("Vous devez d'abord fixer [src] au sol !"))
 				return
 			for(var/obj/structure/window/WINDOW in loc)
-				to_chat(user, span_warning("There is already a window there!"))
+				to_chat(user, span_warning("Il y a déjà une fenêtre ici !"))
 				return
 			if(!clear_tile(user))
 				return
-			to_chat(user, span_notice("You start placing the window..."))
+			to_chat(user, span_notice("Vous commencez à placer la fenêtre..."))
 			if(do_after(user,20, target = src))
 				if(!src.loc || !anchored) //Grille broken or unanchored while waiting
 					return
@@ -264,7 +264,7 @@
 				WD.set_anchored(FALSE)
 				WD.state = 0
 				ST.use(2)
-				to_chat(user, span_notice("You place [WD] on [src]."))
+				to_chat(user, span_notice("Vous placez[WD] sur [src]."))
 			return
 //window placing end
 

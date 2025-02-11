@@ -2,8 +2,8 @@
 //Put handheld rocket launchers here if someone ever decides to make something so hilarious ~Paprika
 
 /obj/item/gun/ballistic/revolver/grenadelauncher//this is only used for underbarrel grenade launchers at the moment, but admins can still spawn it if they feel like being assholes
-	desc = "A break-operated grenade launcher."
-	name = "grenade launcher"
+	desc = "Un lance grenade un coup."
+	name = "lance grenade"
 	icon_state = "dshotgun_sawn"
 	inhand_icon_state = "gun"
 	mag_type = /obj/item/ammo_box/magazine/internal/grenadelauncher
@@ -21,8 +21,8 @@
 		chamber_round()
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/cyborg
-	desc = "A 6-shot grenade launcher."
-	name = "multi grenade launcher"
+	desc = "Lance grenade à 6 coups."
+	name = "lance grenade multi coup"
 	icon = 'icons/mecha/mecha_equipment.dmi'
 	icon_state = "mecha_grenadelnchr"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/grenademulti
@@ -32,8 +32,8 @@
 	return
 
 /obj/item/gun/ballistic/automatic/gyropistol
-	name = "gyrojet pistol"
-	desc = "A prototype pistol designed to fire self propelled rockets."
+	name = "pistolet gyrojet"
+	desc = "Un pistolet expérimental conçu pour tirer des roquettes auto-propulsées."
 	icon_state = "gyropistol"
 	fire_sound = 'sound/weapons/gun/general/grenade_launch.ogg'
 	mag_type = /obj/item/ammo_box/magazine/m75
@@ -44,8 +44,8 @@
 
 /obj/item/gun/ballistic/rocketlauncher
 	name = "\improper PML-9"
-	desc = "A reusable rocket propelled grenade launcher. The words \"NT this way\" and an arrow have been written near the barrel. \
-	A sticker near the cheek rest reads, \"ENSURE AREA BEHIND IS CLEAR BEFORE FIRING\""
+	desc = "Un lance-roquettes réutilisable. Les mots \"NT par ici\" et une flèche ont été écrits près du canon. \
+	Un autocollant près de la crosse indique \"ASSUREZ-VOUS QUE LA ZONE DERRIÈRE EST DÉGAGÉE AVANT DE TIRER\""
 	icon_state = "rocketlauncher"
 	inhand_icon_state = "rocketlauncher"
 	mag_type = /obj/item/ammo_box/magazine/internal/rocketlauncher
@@ -74,8 +74,8 @@
 	pin = /obj/item/firing_pin
 
 /obj/item/gun/ballistic/rocketlauncher/nobackblast
-	name = "flameless PML-11"
-	desc = "A reusable rocket propelled grenade launcher. This one has been fitted with a special coolant loop to avoid embarassing teamkill 'accidents' from backblast."
+	name = "PML-11 sans-flamme"
+	desc = "Un lance-roquettes réutilissable. Il a été modifié avec un refroidisseur spécial pour éviter des morts embarassante à cause du retour de flamme."
 	backblast = FALSE
 
 /obj/item/gun/ballistic/rocketlauncher/afterattack()
@@ -86,8 +86,8 @@
 	return //too difficult to remove the rocket with TK
 
 /obj/item/gun/ballistic/rocketlauncher/suicide_act(mob/living/user)
-	user.visible_message(span_warning("[user] aims [src] at the ground! It looks like [user.p_theyre()] performing a sick rocket jump!"), \
-		span_userdanger("You aim [src] at the ground to perform a bisnasty rocket jump..."))
+	user.visible_message(span_warning("[user] pointe le [src] vers le sol ! Il semble que [user.p_theyre()] a l'attention de faire un saut aidé par roquette !"), \
+		span_userdanger("Vous visez le sol avec le [src] pour faire un saut aidé par roquette..."))
 	if(can_shoot())
 		user.notransform = TRUE
 		playsound(src, 'sound/vehicles/rocketlaunch.ogg', 80, TRUE, 5)
@@ -104,7 +104,7 @@
 		sleep(0.5 SECONDS)
 		shoot_with_empty_chamber(user)
 		sleep(2 SECONDS)
-		user.visible_message(span_warning("[user] looks about the room realizing [user.p_theyre()] still there. [user.p_they(TRUE)] proceed to shove [src] down their throat and choke [user.p_them()]self with it!"), \
-			span_userdanger("You look around after realizing you're still here, then proceed to choke yourself to death with [src]!"))
+		user.visible_message(span_warning("[user] regarde la pièce et se rend compte que [user.p_theyre()] est toujours ici. [user.p_they(TRUE)] commence à enfoncer le canon du [src] dans sa gorge et s'étouffe avec !"), \
+			span_userdanger("Vous regardez autours de vous et vous vous rendez compte que vous êtes toujours là, vous commencez à vous étouffer avec le [src] !"))
 		sleep(2 SECONDS)
 		return OXYLOSS

@@ -1,7 +1,7 @@
 #define TEAM_BACKSTORY_SIZE 4
 
 /datum/round_event_control/fugitives
-	name = "Spawn Fugitives"
+	name = "Arrivée de fugitifs"
 	typepath = /datum/round_event/ghost_role/fugitives
 	max_occurrences = 1
 	min_players = 20
@@ -99,11 +99,11 @@
 
 //security team gets called in after 10 minutes of prep to find the refugees
 /datum/round_event/ghost_role/fugitives/proc/spawn_hunters()
-	var/backstory = pick("space cop", "russian", "bounty hunter")
+	var/backstory = pick("policier de l'espace", "russe", "bounty hunter")
 	var/datum/map_template/shuttle/ship
-	if(backstory == "space cop")
+	if(backstory == "policier de l'espace")
 		ship = new /datum/map_template/shuttle/hunter/space_cop
-	else if (backstory == "russian")
+	else if (backstory == "russe")
 		ship = new /datum/map_template/shuttle/hunter/russian
 	else
 		ship = new /datum/map_template/shuttle/hunter/bounty
@@ -112,9 +112,9 @@
 	var/z = SSmapping.empty_space.z_value
 	var/turf/T = locate(x,y,z)
 	if(!T)
-		CRASH("Fugitive Hunters (Created from fugitive event) found no turf to load in")
+		CRASH("Le fugitif (venant de l'event associé) n'a pas trouvé d'endroit pour se charger.")
 	if(!ship.load(T))
-		CRASH("Loading [backstory] ship failed!")
-	priority_announce("Unidentified ship detected near the station.")
+		CRASH("Le chargement de vaisseau du [backstory] fugitif a échoué !")
+	priority_announce("Vaisseau non-identifié détecté près de la station.")
 
 #undef TEAM_BACKSTORY_SIZE

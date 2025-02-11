@@ -214,12 +214,6 @@
 "# Spawn Positions" = 5
 "# Total Positions" = 5
 
-[TECHPRIEST]
-"# Playtime Requirements" = 0
-"# Required Account Age" = 0
-"# Spawn Positions" = 1
-"# Total Positions" = 1
-
 [VIROLOGIST]
 "# Playtime Requirements" = 60
 "# Required Account Age" = 0

@@ -23,13 +23,13 @@ export const NtosGasAnalyzer = (props, context) => {
             textAlign="center"
             tooltip={
               atmozphereMode === 'click'
-                ? 'Right-click on objects while holding the tablet to scan them. Right-click on the tablet to scan the current location.'
-                : "The app will update it's gas mixture reading automatically."
+                ? 'Clique-droit sur les objets tout en tenant la tablette pour les scanner. Clique-droit sur la tablette pour scanner l\'emplacement actuel.'
+                : "Cette application mettra à jour automatiquement la lecture du mélange gazeux."
             }
             tooltipPosition="bottom">
             {atmozphereMode === 'click'
-              ? 'Scanning tapped objects. Click to switch.'
-              : 'Scanning current location. Click to switch.'}
+              ? 'Scan des objets séléctionner. Cliquer pour changer.'
+              : 'Scan votre position actuelle. Cliquer pour changer.'}
           </Button>
         )}
         <GasAnalyzerContent />

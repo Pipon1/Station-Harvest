@@ -5,8 +5,8 @@
 	)
 
 /datum/traitor_objective/hack_comm_console
-	name = "Hack a communication console to summon an unknown threat to the station"
-	description = "Right click on a communication console to begin the hacking process. Once started, the AI will know that you are hacking a communication console, so be ready to run or have yourself disguised to prevent being caught. This objective will invalidate itself if another traitor completes it first."
+	name = "Hackez une console de communication pour demander la venue d'une menace inconnue pour la station."
+	description = "Faites un clic droit sur une console de communication pour commencer le processus de hacking. Une fois débuté, l'IA saura que vous hackez une console, soyez donc prêt à courir ou à vous déguiser. Cet objectif s'invalidera tout seul si un autre traitre réalise cet objectif avant vous."
 
 	progression_minimum = 60 MINUTES
 	progression_reward = list(30 MINUTES, 40 MINUTES)

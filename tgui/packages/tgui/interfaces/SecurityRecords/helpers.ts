@@ -63,10 +63,10 @@ export const getDefaultPrintDescription = (
 ) => {
   switch (printType) {
     case PRINTOUT.Rapsheet:
-      return `A standard security record for ${name}.`;
+      return `Un casier judiciaire standard au nom de ${name}.`;
     case PRINTOUT.Wanted:
-      return `A poster declaring ${name} to be a wanted criminal, wanted by Nanotrasen. Report any sightings to security immediately.`;
+      return `Un poster déclarant ${name} comme étant un criminel recherché par Nanotrasen. Si vous le voyez veuillez immédiatement prévenir la sécurité.`;
     case PRINTOUT.Missing:
-      return `A poster declaring ${name} to be a missing individual, missed by Nanotrasen. Report any sightings to security immediately.`;
+      return `Un poster déclarant ${name} comment étant disparu et recherché par Nanotrasen. Si vous le voyez veuillez immédiatement prévenir la sécurité.`;
   }
 };

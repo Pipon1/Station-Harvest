@@ -2,12 +2,12 @@
 
 
 /datum/round_event_control/wizard/shuffleloc //Somewhere an AI is crying
-	name = "Change Places!"
+	name = "Changement de place !"
 	weight = 2
 	typepath = /datum/round_event/wizard/shuffleloc
 	max_occurrences = 5
 	earliest_start = 0 MINUTES
-	description = "Shuffles everyone around on the station."
+	description = "Mélange les positions de tout le monde autour de la station."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 7
 
@@ -41,12 +41,12 @@
 //---//
 
 /datum/round_event_control/wizard/shufflenames //Face/off joke
-	name = "Change Faces!"
+	name = "Changement de visage !"
 	weight = 4
 	typepath = /datum/round_event/wizard/shufflenames
 	max_occurrences = 5
 	earliest_start = 0 MINUTES
-	description = "Shuffles the names of everyone around the station."
+	description = "Mélange les visages de tout le monde autour de la station."
 
 /datum/round_event/wizard/shufflenames/start()
 	var/list/mobnames = list()
@@ -76,12 +76,12 @@
 //---//
 
 /datum/round_event_control/wizard/shuffleminds //Basically Mass Ranged Mindswap
-	name = "Change Minds!"
+	name = "Changement d'esprit !"
 	weight = 1
 	typepath = /datum/round_event/wizard/shuffleminds
 	max_occurrences = 3
 	earliest_start = 0 MINUTES
-	description = "Shuffles the minds of everyone around the station, except for the wizard."
+	description = "Mélange les esprits de tout le monde autour de la station, sauf pour les sorciers."
 
 /datum/round_event/wizard/shuffleminds/start()
 	var/list/mobs_to_swap = list()

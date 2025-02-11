@@ -1,11 +1,11 @@
 
 /datum/round_event_control/shuttle_loan
-	name = "Shuttle Loan"
+	name = "Emprunt de navette"
 	typepath = /datum/round_event/shuttle_loan
 	max_occurrences = 3
 	earliest_start = 7 MINUTES
 	category = EVENT_CATEGORY_BUREAUCRATIC
-	description = "If cargo accepts the offer, fills the shuttle with loot and/or enemies."
+	description = "Si le cargo accepte l'offre, la navette sera remplie de loot et/ou d'ennemis."
 	///The types of loan events already run (and to be excluded if the event triggers).
 	admin_setup = list(/datum/event_admin_setup/listed_options/shuttle_loan)
 	var/list/run_situations = list()
@@ -39,11 +39,11 @@
 	situation = new situation()
 
 /datum/round_event/shuttle_loan/announce(fake)
-	priority_announce("Cargo: [situation.announcement_text]", situation.sender)
+	priority_announce("Cargo : [situation.announcement_text]", situation.sender)
 	SSshuttle.shuttle_loan = src
 
 /datum/round_event/shuttle_loan/proc/loan_shuttle()
-	priority_announce(situation.thanks_msg, "Cargo shuttle commandeered by CentCom.")
+	priority_announce(situation.thanks_msg, "Navette cargo réquisitionnée par CentCom.")
 
 	dispatched = TRUE
 	var/datum/bank_account/dep_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
@@ -95,7 +95,7 @@
 		new spawn_type(spawn_turf)
 
 /datum/event_admin_setup/listed_options/shuttle_loan
-	input_text = "Select a loan offer?"
+	input_text = "Sélectionner une offre d'emprunt ?"
 
 /datum/event_admin_setup/listed_options/shuttle_loan/get_list()
 	var/datum/round_event_control/shuttle_loan/loan_event = event_control

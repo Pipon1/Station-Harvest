@@ -6,8 +6,8 @@
 #define MAX_CRIME_NAME_LEN 24
 
 /obj/machinery/computer/records/security
-	name = "security records console"
-	desc = "Used to view and edit personnel's security records."
+	name = "Ordinateur de sécurité"
+	desc = "Utilisé pour voir les casiers judiciaire."
 	icon_screen = "security"
 	icon_keyboard = "security_key"
 	req_one_access = list(ACCESS_SECURITY, ACCESS_HOP)
@@ -21,15 +21,15 @@
 	req_one_access = list(ACCESS_SYNDICATE)
 
 /obj/machinery/computer/records/security/laptop
-	name = "security laptop"
-	desc = "A cheap Nanotrasen security laptop, it functions as a security records console. It's bolted to the table."
+	name = "ordinateur portable de sécurité"
+	desc = "Un ordinateur portable pas cher de Nanotrasen, il fonctionne comme un ordinateur de sécurité. Il est boulonné à la table."
 	icon_state = "laptop"
 	icon_screen = "seclaptop"
 	icon_keyboard = "laptop_key"
 	pass_flags = PASSTABLE
 
 /obj/machinery/computer/records/security/laptop/syndie
-	desc = "A cheap, jailbroken security laptop. It functions as a security records console. It's bolted to the table."
+	desc = "Un ordinateur portable hacké pas cher de Nanotrasen, il fonctionne comme un ordinateur de sécurité. Il est boulonné à la table."
 	req_one_access = list(ACCESS_SYNDICATE)
 
 /obj/machinery/computer/records/security/Initialize(mapload, obj/item/circuitboard/C)
@@ -54,7 +54,7 @@
 					else
 						target.name = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))] [pick(GLOB.last_names)]"
 				if(2)
-					target.gender = pick("Male", "Female", "Other")
+					target.gender = pick("Mâle", "Femelle", "Autre")
 				if(3)
 					target.age = rand(5, 85)
 				if(4)
@@ -185,7 +185,7 @@
 			if(wanted_status == WANTED_ARREST && !length(target.crimes))
 				return FALSE
 
-			investigate_log("[target.name] has been set from [target.wanted_status] to [wanted_status] by [key_name(usr)].", INVESTIGATE_RECORDS)
+			investigate_log("[target.name] a été transféré du statut de [target.wanted_status] au statu de [wanted_status] par [key_name(usr)].", INVESTIGATE_RECORDS)
 			target.wanted_status = wanted_status
 
 			return TRUE
@@ -196,13 +196,13 @@
 /obj/machinery/computer/records/security/proc/add_crime(mob/user, datum/record/crew/target, list/params)
 	var/input_name = trim(params["name"], MAX_CRIME_NAME_LEN)
 	if(!input_name)
-		to_chat(usr, span_warning("You must enter a name for the crime."))
+		to_chat(usr, span_warning("Vous devez entrer le nom du crime."))
 		playsound(src, 'sound/machines/terminal_error.ogg', 75, TRUE)
 		return FALSE
 
 	var/max = CONFIG_GET(number/maxfine)
 	if(params["fine"] > max)
-		to_chat(usr, span_warning("The maximum fine is [max] credits."))
+		to_chat(usr, span_warning("L'amende maximum est de [max] crédits."))
 		playsound(src, 'sound/machines/terminal_error.ogg', 75, TRUE)
 		return FALSE
 
@@ -213,7 +213,7 @@
 	if(params["fine"] == 0)
 		var/datum/crime/new_crime = new(name = input_name, details = input_details, author = usr)
 		target.crimes += new_crime
-		investigate_log("New Crime: <strong>[input_name]</strong> | Added to [target.name] by [key_name(user)]. Their previous status was [target.wanted_status]", INVESTIGATE_RECORDS)
+		investigate_log("Nouveaux crimes : <strong>[input_name]</strong> | Ajouté au profile de [target.name] par [key_name(user)]. Leur status précédent était : [target.wanted_status]", INVESTIGATE_RECORDS)
 		target.wanted_status = WANTED_ARREST
 
 		return TRUE
@@ -221,8 +221,8 @@
 	var/datum/crime/citation/new_citation = new(name = input_name, details = input_details, author = usr, fine = params["fine"])
 
 	target.citations += new_citation
-	new_citation.alert_owner(user, src, target.name, "You have been issued a [params["fine"]]cr citation for [input_name]. Fines are payable at Security.")
-	investigate_log("New Citation: <strong>[input_name]</strong> Fine: [params["fine"]] | Added to [target.name] by [key_name(user)]", INVESTIGATE_RECORDS)
+	new_citation.alert_owner(user, src, target.name, "Vous avez reçu une amende de [params["fine"]]cr cette citation est du à :  [input_name]. Les amendes sont payable à la sécurité.")
+	investigate_log("Nouvelle citation : <strong>[input_name]</strong> Amendes : [params["fine"]] | Ajouter au profile de [target.name] par [key_name(user)]", INVESTIGATE_RECORDS)
 	SSblackbox.ReportCitation(REF(new_citation), user.ckey, user.real_name, target.name, input_name, params["fine"])
 
 	return TRUE
@@ -279,7 +279,7 @@
 		return FALSE
 
 	to_void.valid = FALSE
-	investigate_log("[key_name(user)] has invalidated [target.name]'s crime: [to_void.name]", INVESTIGATE_RECORDS)
+	investigate_log("[key_name(user)] a invalidé le crime de [target.name] : [to_void.name]", INVESTIGATE_RECORDS)
 
 	var/acquitted = TRUE
 	for(var/datum/crime/incident in target.crimes)
@@ -290,7 +290,7 @@
 
 	if(acquitted)
 		target.wanted_status = WANTED_DISCHARGED
-		investigate_log("[key_name(user)] has invalidated [target.name]'s last valid crime. Their status is now [WANTED_DISCHARGED].", INVESTIGATE_RECORDS)
+		investigate_log("[key_name(user)] a invalidé le dernier crime valide de [target.name]. Leur statut est maintenant : [WANTED_DISCHARGED].", INVESTIGATE_RECORDS)
 
 	return TRUE
 
@@ -305,17 +305,17 @@
 /// Handles printing records via UI. Takes the params from UI_act.
 /obj/machinery/computer/records/security/proc/print_record(mob/user, datum/record/crew/target, list/params)
 	if(printing)
-		balloon_alert(usr, "printer busy")
+		balloon_alert(usr, "L'imprimante est déjà en cours d'utilisation.")
 		playsound(src, 'sound/machines/terminal_error.ogg', 100, TRUE)
 		return FALSE
 
 	printing = TRUE
-	balloon_alert(user, "printing")
+	balloon_alert(user, "En cours d'impression...")
 	playsound(src, 'sound/machines/printer.ogg', 100, TRUE)
 
 	var/obj/item/printable
 	var/input_alias = trim(params["alias"], MAX_NAME_LEN) || target.name
-	var/input_description = trim(params["desc"], MAX_BROADCAST_LEN) || "No further details."
+	var/input_description = trim(params["desc"], MAX_BROADCAST_LEN) || "Pas de détailes supplémentaires..."
 	var/input_header = trim(params["head"], 8) || capitalize(params["type"])
 
 	switch(params["type"])
@@ -328,16 +328,16 @@
 		if("wanted")
 			var/list/crimes = target.crimes
 			if(!length(crimes))
-				balloon_alert(user, "no crimes")
+				balloon_alert(user, "aucun crimes")
 				return FALSE
 
-			input_description += "\n\n<b>WANTED FOR:</b>"
+			input_description += "\n\n<b>Recherché pour : </b>"
 			for(var/datum/crime/incident in crimes)
 				if(!incident.valid)
-					input_description += "<b>--REDACTED--</b>"
+					input_description += "<b>--CENSURE--</b>"
 					continue
-				input_description += "\n<bCrime:</b> [incident.name]\n"
-				input_description += "<b>Details:</b> [incident.details]\n"
+				input_description += "\n<bCrime : </b> [incident.name]\n"
+				input_description += "<b>Détails : </b> [incident.details]\n"
 
 			var/obj/item/photo/mugshot = target.get_front_photo()
 			var/obj/item/poster/wanted/wanted_poster = new(null, mugshot.picture.picture_image, input_alias, input_description, input_header)
@@ -347,7 +347,7 @@
 		if("rapsheet")
 			var/list/crimes = target.crimes
 			if(!length(crimes))
-				balloon_alert(user, "no crimes")
+				balloon_alert(user, "aucun crimes")
 				return FALSE
 
 			var/obj/item/paper/rapsheet = target.get_rapsheet(input_alias, input_header, input_description)
@@ -362,8 +362,8 @@
  * Security circuit component
  */
 /obj/item/circuit_component/arrest_console_data
-	display_name = "Security Records Data"
-	desc = "Outputs the security records data, where it can then be filtered with a Select Query component"
+	display_name = "Casier Judiciaire"
+	desc = "Affiche les données des casiers judiciaires, où elles peuvent ensuite être filtrées."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	/// The records retrieved
@@ -390,14 +390,14 @@
 /obj/item/circuit_component/arrest_console_data/get_ui_notices()
 	. = ..()
 	. += create_table_notices(list(
-		"name",
-		"id",
-		"rank",
-		"arrest_status",
-		"gender",
-		"age",
-		"species",
-		"fingerprint",
+		"nom",
+		"identité",
+		"rang",
+		"statut_d'arrestation",
+		"genre",
+		"âge",
+		"espèce",
+		"empreinte digitale",
 	))
 
 /obj/item/circuit_component/arrest_console_data/input_received(datum/port/input/port)
@@ -412,21 +412,21 @@
 	var/list/new_table = list()
 	for(var/datum/record/crew/player_record as anything in GLOB.manifest.general)
 		var/list/entry = list()
-		entry["age"] = player_record.age
-		entry["arrest_status"] = player_record.wanted_status
-		entry["fingerprint"] = player_record.fingerprint
-		entry["gender"] = player_record.gender
+		entry["âge"] = player_record.age
+		entry["statut_d'arrestation"] = player_record.wanted_status
+		entry["empreinte digitale"] = player_record.fingerprint
+		entry["genre"] = player_record.gender
 		entry["name"] = player_record.name
 		entry["rank"] = player_record.rank
-		entry["record"] = REF(player_record)
-		entry["species"] = player_record.species
+		entry["casier judiciaire"] = REF(player_record)
+		entry["espèce"] = player_record.species
 
 		new_table += list(entry)
 
 	records.set_output(new_table)
 /obj/item/circuit_component/arrest_console_arrest
-	display_name = "Security Records Set Status"
-	desc = "Receives a table to use to set people's arrest status. Table should be from the security records data component. If New Status port isn't set, the status will be decided by the options."
+	display_name = "Ajouter des crimes au casier judiciaire"
+	desc = "Reçoit une table pour utiliser pour définir le statut d'arrestation des gens. La table doit être de la composante de données des casiers judiciaires. Si le port du nouveau statut n'est pas défini, le statut sera décidé par les options."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	/// The targets to set the status of.
@@ -490,9 +490,9 @@
 
 
 	if(successful_set > 0)
-		investigate_log("[names_of_entries.Join(", ")] have been set to [status_to_set] by [parent.get_creator()].", INVESTIGATE_RECORDS)
+		investigate_log("[names_of_entries.Join(", ")] a reçu le statut de [status_to_set] par [parent.get_creator()].", INVESTIGATE_RECORDS)
 		if(successful_set > COMP_SECURITY_ARREST_AMOUNT_TO_FLAG)
-			message_admins("[successful_set] security entries have been set to [status_to_set] by [parent.get_creator_admin()]. [ADMIN_COORDJMP(src)]")
+			message_admins("[successful_set] le casier judiciaire à reçu le statut de [status_to_set] par [parent.get_creator_admin()]. [ADMIN_COORDJMP(src)]")
 		for(var/mob/living/carbon/human/human as anything in GLOB.human_list)
 			human.sec_hud_set_security_status()
 

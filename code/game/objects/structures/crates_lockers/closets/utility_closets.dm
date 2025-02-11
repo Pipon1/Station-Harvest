@@ -13,8 +13,8 @@
  * Emergency Closet
  */
 /obj/structure/closet/emcloset
-	name = "emergency closet"
-	desc = "It's a storage unit for emergency breath masks and O2 tanks."
+	name = "casier d'urgence"
+	desc = "Une unité de stockage. A utiliser en cas d'urgence. Contient des masques et des bouteilles d'oxygènes."
 	icon_state = "emergency"
 
 /obj/structure/closet/emcloset/anchored
@@ -60,8 +60,8 @@
  * Fire Closet
  */
 /obj/structure/closet/firecloset
-	name = "fire-safety closet"
-	desc = "It's a storage unit for fire-fighting supplies."
+	name = "casier anti-incendie"
+	desc = "Une unité de stockage pour combattre des incendies."
 	icon_state = "fire"
 
 /obj/structure/closet/firecloset/PopulateContents()
@@ -87,8 +87,8 @@
  * Tool Closet
  */
 /obj/structure/closet/toolcloset
-	name = "tool closet"
-	desc = "It's a storage unit for tools."
+	name = "casier à outil"
+	desc = "Une unité de stockage pour outils."
 	icon_state = "eng"
 	icon_door = "eng_tool"
 
@@ -130,8 +130,8 @@
  * Radiation Closet
  */
 /obj/structure/closet/radiation
-	name = "radiation suit closet"
-	desc = "It's a storage unit for rad-protective suits."
+	name = "casier anti-radiation"
+	desc = "Une unité de stockage pour combinaison anti-radiation."
 	icon_state = "eng"
 	icon_door = "eng_rad"
 
@@ -145,8 +145,8 @@
  * Bombsuit closet
  */
 /obj/structure/closet/bombcloset
-	name = "\improper EOD closet"
-	desc = "It's a storage unit for explosion-protective suits."
+	name = "\improper casier NEDEX"
+	desc = "Une unité de stockage pour combinaison protective contre les explosions."
 	icon_state = "bomb"
 
 /obj/structure/closet/bombcloset/PopulateContents()
@@ -172,7 +172,7 @@
  * Ammunition
  */
 /obj/structure/closet/ammunitionlocker
-	name = "ammunition locker"
+	name = "casier à munition"
 
 /obj/structure/closet/ammunitionlocker/PopulateContents()
 	..()

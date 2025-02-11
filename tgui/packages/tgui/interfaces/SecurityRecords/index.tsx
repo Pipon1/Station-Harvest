@@ -10,7 +10,7 @@ export const SecurityRecords = (props, context) => {
   const { authenticated } = data;
 
   return (
-    <Window title="Security Records" width={750} height={550}>
+    <Window title="Casier judiciaire" width={750} height={550}>
       <Window.Content>
         <Stack fill>{!authenticated ? <RestrictedView /> : <AuthView />}</Stack>
       </Window.Content>
@@ -31,14 +31,14 @@ const RestrictedView = (props, context) => {
         </Stack.Item>
         <Stack.Item align="center" grow>
           <Box color="red" fontSize="18px" bold mt={5}>
-            Nanotrasen SecurityHUB
+            Hub de sécurité de Nanotrasen.
           </Box>
         </Stack.Item>
         <Stack.Item>
           <NoticeBox align="right">
-            You are not logged in.
+            Vous n'êtes pas connecté.
             <Button ml={2} icon="lock-open" onClick={() => act('login')}>
-              Login
+              Connexion
             </Button>
           </NoticeBox>
         </Stack.Item>
@@ -63,14 +63,14 @@ const AuthView = (props, context) => {
           </Stack.Item>
           <Stack.Item>
             <NoticeBox align="right" info>
-              Secure Your Workspace.
+              Sécurisez votre emplacement de travail.
               <Button
                 align="right"
                 icon="lock"
                 color="good"
                 ml={2}
                 onClick={() => act('logout')}>
-                Log Out
+                Se déconnecter
               </Button>
             </NoticeBox>
           </Stack.Item>

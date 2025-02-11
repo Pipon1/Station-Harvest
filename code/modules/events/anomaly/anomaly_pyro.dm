@@ -1,10 +1,10 @@
 /datum/round_event_control/anomaly/anomaly_pyro
-	name = "Anomaly: Pyroclastic"
+	name = "Anomalie : Pyroclastique"
 	typepath = /datum/round_event/anomaly/anomaly_pyro
 
 	max_occurrences = 5
 	weight = 20
-	description = "This anomaly sets things on fire, and creates a pyroclastic slime."
+	description = "Cette anomalie provoque un incendie puis crée un slime pyroclastique."
 	min_wizard_trigger_potency = 1
 	max_wizard_trigger_potency = 4
 
@@ -14,4 +14,4 @@
 	anomaly_path = /obj/effect/anomaly/pyro
 
 /datum/round_event/anomaly/anomaly_pyro/announce(fake)
-	priority_announce("Pyroclastic anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert")
+	priority_announce("Anomalie pyroclastique détectée à [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Alerte anomalie")

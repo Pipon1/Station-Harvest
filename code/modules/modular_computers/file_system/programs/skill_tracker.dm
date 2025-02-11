@@ -1,9 +1,9 @@
 /datum/computer_file/program/skill_tracker
 	filename = "skilltracker"
-	filedesc = "ExperTrak Skill Tracker"
+	filedesc = "SuivPro - Suivit professionnel de compétence"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "generic"
-	extended_desc = "Scan and view your current marketable job skills."
+	extended_desc = "Scannez et surveillez vos compétences professionnelles désirable."
 	size = 2
 	tgui_id = "NtosSkillTracker"
 	program_icon = "medal"

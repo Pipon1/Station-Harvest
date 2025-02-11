@@ -1,12 +1,12 @@
 /datum/round_event_control/anomaly
-	name = "Anomaly: Energetic Flux"
+	name = "Anomalie : flux énergétique"
 	typepath = /datum/round_event/anomaly
 
 	min_players = 1
 	max_occurrences = 0 //This one probably shouldn't occur! It'd work, but it wouldn't be very fun.
 	weight = 15
 	category = EVENT_CATEGORY_ANOMALIES
-	description = "This anomaly shocks and explodes. This is the base type."
+	description = "Cette anomalie fait une secousse puis explose."
 	admin_setup = list(/datum/event_admin_setup/set_location/anomaly)
 
 /datum/round_event/anomaly
@@ -26,7 +26,7 @@
 		impact_area = placer.findValidArea()
 
 /datum/round_event/anomaly/announce(fake)
-	priority_announce("Energetic flux wave detected on [ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name].", "Anomaly Alert")
+	priority_announce("Flux énergétique anormal détecté à [ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name].", "Alerte anomalie")
 
 /datum/round_event/anomaly/start()
 	var/turf/anomaly_turf
@@ -48,7 +48,7 @@
 	return
 
 /datum/event_admin_setup/set_location/anomaly
-	input_text = "Spawn anomaly at your current location?"
+	input_text = "Créer l'anomalie là où vous vous tenez ?"
 
 /datum/event_admin_setup/set_location/anomaly/apply_to_event(datum/round_event/anomaly/event)
 	event.spawn_location = chosen_turf

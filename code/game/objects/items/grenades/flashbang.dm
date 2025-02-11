@@ -1,5 +1,5 @@
 /obj/item/grenade/flashbang
-	name = "flashbang"
+	name = "grenade à saturation sensoriel"
 	icon_state = "flashbang"
 	inhand_icon_state = "flashbang"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
@@ -18,7 +18,7 @@
 	do_sparks(rand(5, 9), FALSE, src)
 	playsound(flashbang_turf, 'sound/weapons/flashbang.ogg', 100, TRUE, 8, 0.9)
 	new /obj/effect/dummy/lighting_obj (flashbang_turf, flashbang_range + 2, 4, COLOR_WHITE, 2)
-	for(var/mob/living/living_mob in get_hearers_in_view(flashbang_range, flashbang_turf))	
+	for(var/mob/living/living_mob in get_hearers_in_view(flashbang_range, flashbang_turf))
 		bang(get_turf(living_mob), living_mob)
 	qdel(src)
 
@@ -45,7 +45,7 @@
 		living_mob.soundbang_act(1, max(200 / max(1, distance), 60), rand(0, 5))
 
 /obj/item/grenade/stingbang
-	name = "stingbang"
+	name = "pique-bang"
 	icon_state = "timeg"
 	inhand_icon_state = "flashbang"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
@@ -56,7 +56,7 @@
 	custom_premium_price = PAYCHECK_COMMAND * 3.5 // mostly gotten through cargo, but throw in one for the sec vendor ;)
 
 /obj/item/grenade/stingbang/mega
-	name = "mega stingbang"
+	name = "mega pique-bang"
 	shrapnel_type = /obj/projectile/bullet/pellet/stingball/mega
 	shrapnel_radius = 12
 
@@ -71,7 +71,7 @@
 		var/obj/item/bodypart/bodypart = user.get_holding_bodypart_of_item(src)
 		if(bodypart)
 			forceMove(get_turf(user))
-			user.visible_message("<b>[span_danger("[src] goes off in [user]'s hand, blowing [user.p_their()] [bodypart.plaintext_zone] to bloody shreds!")]</b>", span_userdanger("[src] goes off in your hand, blowing your [bodypart.plaintext_zone] to bloody shreds!"))
+			user.visible_message("<b>[span_danger("[src] explose dans la main de [user], réduisant le [bodypart.plaintext_zone] de [user.p_their()] en charpie !")]</b>", span_userdanger("[src] explose dans votre main, réduisant votre [bodypart.plaintext_zone] en charpie !"))
 			bodypart.dismember()
 
 	. = ..()
@@ -106,14 +106,14 @@
 		living_mob.Knockdown(200)
 		living_mob.soundbang_act(1, 200, 10, 15)
 		if(living_mob.apply_damages(10, 10))
-			to_chat(living_mob, span_userdanger("The blast from \the [src] bruises and burns you!"))
+			to_chat(living_mob, span_userdanger("L'explosion de [src] vous blesse et vous brûle !"))
 
 	// only checking if they're on top of the tile, cause being one tile over will be its own punishment
 
 // Grenade that releases more shrapnel the more times you use it in hand between priming and detonation (sorta like the 9bang from MW3), for admin goofs
 /obj/item/grenade/primer
-	name = "rotfrag grenade"
-	desc = "A grenade that generates more shrapnel the more you rotate it in your hand after pulling the pin. This one releases shrapnel shards."
+	name = "grenade à fragmentation rotative"
+	desc = "Une grenade qui génère plus de shrapnel plus vous la faites tourner dans votre main après avoir retiré la goupille. Celle-ci libère des éclats de shrapnel."
 	icon_state = "timeg"
 	inhand_icon_state = "flashbang"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
@@ -138,8 +138,8 @@
 	qdel(src)
 
 /obj/item/grenade/primer/stingbang
-	name = "rotsting"
-	desc = "A grenade that generates more shrapnel the more you rotate it in your hand after pulling the pin. This one releases stingballs."
+	name = "grenade pique-bang rotative"
+	desc = "Une grenade qui génère plus de shrapnel plus vous la faites tourner dans votre main après avoir retiré la goupille. Celle-ci libère des éclats de pique-boules."
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	rots_per_mag = 2

@@ -48,8 +48,8 @@
 // ===== IDENTIFICATION CONSOLE =====
 /obj/machinery/modular_computer/console/preset/id
 	console_department = "Identification"
-	name = "identification console"
-	desc = "A stationary computer. This one comes preloaded with identification modification programs."
+	name = "Ordinateur d'identification"
+	desc = "Un ordinateur visé au sol. Il est pre-chargé avec de nombreux logiciel utile."
 	starting_programs = list(
 		/datum/computer_file/program/chatclient,
 		/datum/computer_file/program/card_mod,

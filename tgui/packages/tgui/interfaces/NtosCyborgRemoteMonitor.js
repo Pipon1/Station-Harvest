@@ -36,7 +36,7 @@ export const NtosCyborgRemoteMonitorContent = (props, context) => {
   const storedlog = data.borglog || [];
 
   if (!cyborgs.length) {
-    return <NoticeBox>No cyborg units detected.</NoticeBox>;
+    return <NoticeBox>Aucun cyborg détecté.</NoticeBox>;
   }
 
   return (
@@ -55,7 +55,7 @@ export const NtosCyborgRemoteMonitorContent = (props, context) => {
             lineHeight="23px"
             selected={tab_main === 2}
             onClick={() => setTab_main(2)}>
-            Stored Log File
+            Stocké dans le fichier de log
           </Tabs.Tab>
         </Tabs>
       </Stack.Item>
@@ -63,7 +63,7 @@ export const NtosCyborgRemoteMonitorContent = (props, context) => {
         <>
           {!card && (
             <Stack.Item>
-              <NoticeBox>Certain features require an ID card login.</NoticeBox>
+              <NoticeBox>Certaines app demande une connexion par ID.</NoticeBox>
             </Stack.Item>
           )}
           <Stack.Item grow={1}>
@@ -75,7 +75,7 @@ export const NtosCyborgRemoteMonitorContent = (props, context) => {
                   buttons={
                     <Button
                       icon="terminal"
-                      content="Send Message"
+                      content="Envoyer un mesage"
                       color="blue"
                       disabled={!card}
                       onClick={() =>
@@ -86,7 +86,7 @@ export const NtosCyborgRemoteMonitorContent = (props, context) => {
                     />
                   }>
                   <LabeledList>
-                    <LabeledList.Item label="Status">
+                    <LabeledList.Item label="Statut">
                       <Box
                         color={
                           cyborg.status
@@ -96,15 +96,15 @@ export const NtosCyborgRemoteMonitorContent = (props, context) => {
                               : 'good'
                         }>
                         {cyborg.status
-                          ? 'Not Responding'
+                          ? 'Ne répond pas'
                           : cyborg.locked_down
-                            ? 'Locked Down'
+                            ? 'Vérouillé'
                             : cyborg.shell_discon
-                              ? 'Nominal/Disconnected'
+                              ? 'Nominal/Déconnecté'
                               : 'Nominal'}
                       </Box>
                     </LabeledList.Item>
-                    <LabeledList.Item label="Condition">
+                    <LabeledList.Item label="Etat">
                       <Box
                         color={
                           cyborg.integ <= 25
@@ -114,15 +114,15 @@ export const NtosCyborgRemoteMonitorContent = (props, context) => {
                               : 'good'
                         }>
                         {cyborg.integ === 0
-                          ? 'Hard Fault'
+                          ? 'Dégât critique'
                           : cyborg.integ <= 25
-                            ? 'Functionality Disrupted'
+                            ? 'Fonctionnalité réduite'
                             : cyborg.integ <= 75
-                              ? 'Functionality Impaired'
-                              : 'Operational'}
+                              ? 'Fontionnel avec des dommages mineurs'
+                              : 'Fontionnel'}
                       </Box>
                     </LabeledList.Item>
-                    <LabeledList.Item label="Charge">
+                    <LabeledList.Item label="Recharge">
                       <Box
                         color={
                           cyborg.charge <= 30
@@ -136,10 +136,10 @@ export const NtosCyborgRemoteMonitorContent = (props, context) => {
                           : 'Not Found'}
                       </Box>
                     </LabeledList.Item>
-                    <LabeledList.Item label="Model">
+                    <LabeledList.Item label="Modèle">
                       {cyborg.module}
                     </LabeledList.Item>
-                    <LabeledList.Item label="Upgrades">
+                    <LabeledList.Item label="Améliorations">
                       {cyborg.upgrades}
                     </LabeledList.Item>
                   </LabeledList>
@@ -153,7 +153,7 @@ export const NtosCyborgRemoteMonitorContent = (props, context) => {
         <>
           <Stack.Item>
             <Section>
-              Scan a cyborg to download stored logs.
+              Scanez un cyborg pour voir les logs.
               <ProgressBar value={DL_progress / 100}>
                 {ProgressSwitch(DL_progress)}
               </ProgressBar>

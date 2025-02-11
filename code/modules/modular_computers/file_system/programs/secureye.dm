@@ -2,11 +2,11 @@
 
 /datum/computer_file/program/secureye
 	filename = "secureye"
-	filedesc = "SecurEye"
+	filedesc = "OeilSécuritaire"
 	category = PROGRAM_CATEGORY_MISC
 	ui_header = "borg_mon.gif"
 	program_icon_state = "generic"
-	extended_desc = "This program allows access to standard security camera networks."
+	extended_desc = "Ce programme donne l'accès aux réseaux de caméras de sécurité standard."
 	requires_ntnet = TRUE
 	transfer_access = list(ACCESS_SECURITY)
 	usage_flags = PROGRAM_CONSOLE | PROGRAM_LAPTOP

@@ -3,9 +3,9 @@
 
 /obj/machinery/syndicatebomb
 	icon = 'icons/obj/assemblies/assemblies.dmi'
-	name = "syndicate bomb"
+	name = "bombe du syndicat"
 	icon_state = "syndicate-bomb"
-	desc = "A large and menacing device. Can be bolted down with a wrench."
+	desc = "Une bombe large et menaçante. Peut être fixée avec une clé à molette."
 
 	anchored = FALSE
 	density = FALSE
@@ -114,15 +114,15 @@
 
 /obj/machinery/syndicatebomb/examine(mob/user)
 	. = ..()
-	. += "The patented external shell design is resistant to \"probably all\" forms of external explosive compression, protecting the electronically-trigged bomb core from accidental early detonation."
+	. += "L'extérieur de la bombe est résistant à la compression explosive, protégeant le coeur de la bombe d'une détonation prématurée."
 	if(istype(payload))
-		. += "A small window reveals some information about the payload: [payload.desc]."
+		. += "Une petite fenêtre permet de voir la charge explosive : [payload.desc]."
 	if(examinable_countdown)
-		. += span_notice("A digital display on it reads \"[seconds_remaining()]\".")
+		. += span_notice("Un écran digital affiche \"[seconds_remaining()]\".")
 		if(active)
 			balloon_alert(user, "[seconds_remaining()]")
 	else
-		. += span_notice({"The digital display on it is inactive."})
+		. += span_notice({"L'écran digital est inactif."})
 
 /obj/machinery/syndicatebomb/update_icon_state()
 	icon_state = "[initial(icon_state)][active ? "-active" : "-inactive"][open_panel ? "-wires" : ""]"
@@ -140,20 +140,20 @@
 		return FALSE
 	if(!anchored)
 		if(!isturf(loc) || isspaceturf(loc))
-			to_chat(user, span_notice("The bomb must be placed on solid ground to attach it."))
+			to_chat(user, span_notice("La bombe doit être placée sur un sol solide pour être fixée."))
 		else
-			to_chat(user, span_notice("You firmly wrench the bomb to the floor."))
+			to_chat(user, span_notice("Vous attachez fermement la bombe au sol."))
 			tool.play_tool_sound(src)
 			set_anchored(TRUE)
 			if(active)
-				to_chat(user, span_notice("The bolts lock in place."))
+				to_chat(user, span_notice("Les verrous se vérouillent."))
 	else
 		if(!active)
-			to_chat(user, span_notice("You wrench the bomb from the floor."))
+			to_chat(user, span_notice("Vous dévissez la bombe du sol."))
 			tool.play_tool_sound(src)
 			set_anchored(FALSE)
 		else
-			to_chat(user, span_warning("The bolts are locked down!"))
+			to_chat(user, span_warning("Les verrous sont bloqués !"))
 
 	return TRUE
 
@@ -161,7 +161,7 @@
 	tool.play_tool_sound(src, 50)
 	open_panel = !open_panel
 	update_appearance()
-	to_chat(user, span_notice("You [open_panel ? "open" : "close"] the wire panel."))
+	to_chat(user, span_notice("Vous [open_panel ? "ouvrez" : "fermez"] la trappe d'accès au fils."))
 	return TRUE
 
 /obj/machinery/syndicatebomb/crowbar_act(mob/living/user, obj/item/tool)
@@ -169,15 +169,15 @@
 	if(open_panel && wires.is_all_cut())
 		if(payload)
 			tool.play_tool_sound(src, 25) // sshhh
-			to_chat(user, span_notice("You carefully pry out [payload]."))
+			to_chat(user, span_notice("Vous sortez avec délicatesse [payload]."))
 			payload.forceMove(drop_location())
 			payload = null
 		else
-			to_chat(user, span_warning("There isn't anything in here to remove!"))
+			to_chat(user, span_warning("Il n'y a rien a retirer !"))
 	else if (open_panel)
-		to_chat(user, span_warning("The wires connecting the shell to the explosives are holding it down!"))
+		to_chat(user, span_warning("Les fils connectant la coque aux explosifs les maintiennent en place !"))
 	else
-		to_chat(user, span_warning("The cover is screwed on, it won't pry off!"))
+		to_chat(user, span_warning("La trappe est vissée, elle ne s'ouvrira pas !"))
 
 /obj/machinery/syndicatebomb/welder_act(mob/living/user, obj/item/tool)
 	if(payload || !wires.is_all_cut() || !open_panel)
@@ -186,9 +186,9 @@
 	if(!tool.tool_start_check(user, amount=5))  //uses up 5 fuel
 		return TRUE
 
-	to_chat(user, span_notice("You start to cut [src] apart..."))
+	to_chat(user, span_notice("Vous commencez à trancher [src]..."))
 	if(tool.use_tool(src, user, 20, volume=50, amount=5)) // uses up 5 fuel
-		to_chat(user, span_notice("You cut [src] apart."))
+		to_chat(user, span_notice("Vous tranchez [src]."))
 		new /obj/item/stack/sheet/plasteel(loc, 5)
 		qdel(src)
 	return TRUE
@@ -204,14 +204,14 @@
 			if(!user.transferItemToLoc(I, src))
 				return
 			payload = I
-			to_chat(user, span_notice("You place [payload] into [src]."))
+			to_chat(user, span_notice("Vous placez [payload] dans [src]."))
 		else
-			to_chat(user, span_warning("[payload] is already loaded into [src]! You'll have to remove it first."))
+			to_chat(user, span_warning("[payload] est déja chargé dans [src] ! Vous devez le retirer en premier."))
 	else
 		var/old_integ = atom_integrity
 		. = ..()
 		if((old_integ > atom_integrity) && active && (payload in src))
-			to_chat(user, span_warning("That seems like a really bad idea..."))
+			to_chat(user, span_warning("Cela semble être une très mauvaise idée..."))
 
 /obj/machinery/syndicatebomb/interact(mob/user)
 	wires.interact(user)
@@ -219,7 +219,7 @@
 		if(!active)
 			settings(user)
 		else if(anchored)
-			to_chat(user, span_warning("The bomb is bolted to the floor!"))
+			to_chat(user, span_warning("La bombe est active et fixée au sol !"))
 
 /obj/machinery/syndicatebomb/proc/activate()
 	active = TRUE
@@ -233,25 +233,25 @@
 /obj/machinery/syndicatebomb/proc/settings(mob/user)
 	if(!user.can_perform_action(src, ALLOW_SILICON_REACH) || !user.can_interact_with(src))
 		return
-	var/new_timer = tgui_input_number(user, "Set the timer", "Countdown", timer_set, maximum_timer, minimum_timer)
+	var/new_timer = tgui_input_number(user, "Définir le minuteur", "Décompte", timer_set, maximum_timer, minimum_timer)
 	if(!new_timer || QDELETED(user) || QDELETED(src) || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 	timer_set = new_timer
-	loc.visible_message(span_notice("[icon2html(src, viewers(src))] timer set for [timer_set] seconds."))
-	var/choice = tgui_alert(user, "Would you like to start the countdown now?", "Bomb Timer", list("Yes","No"))
-	if(choice != "Yes")
+	loc.visible_message(span_notice("[icon2html(src, viewers(src))] décompte définit à [timer_set] secondes."))
+	var/choice = tgui_alert(user, "Voulez-vous activer le décompte ?", "Minuteur de la bombe", list("Oui","Non"))
+	if(choice != "Oui")
 		return
 	if(active)
-		to_chat(user, span_warning("The bomb is already active!"))
+		to_chat(user, span_warning("Le minuteur est déjà actif !"))
 		return
-	visible_message(span_danger("[icon2html(src, viewers(loc))] [timer_set] seconds until detonation, please clear the area."))
+	visible_message(span_danger("[icon2html(src, viewers(loc))] [timer_set] secondes avant l'explosion, veuillez évacuer la zone."))
 	activate()
 	add_fingerprint(user)
 	// We don't really concern ourselves with duds or fakes after this
 	if(isnull(payload) || istype(payload, /obj/machinery/syndicatebomb/training))
 		return
 
-	notify_ghosts("\A [src] has been activated at [get_area(src)]!", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Bomb Planted")
+	notify_ghosts("\A [src] a été activé à [get_area(src)]!", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Bomb Planted")
 	user.add_mob_memory(/datum/memory/bomb_planted/syndicate, antagonist = src)
 	log_bomber(user, "has primed a", src, "for detonation (Payload: [payload.name])")
 	payload.adminlog = "The [name] that [key_name(user)] had primed detonated!"
@@ -260,14 +260,14 @@
 ///Bomb Subtypes///
 
 /obj/machinery/syndicatebomb/training
-	name = "training bomb"
+	name = "bombe d'entrainement"
 	icon_state = "training-bomb"
-	desc = "A salvaged syndicate device gutted of its explosives to be used as a training aid for aspiring bomb defusers."
+	desc = "Une bombe du syndicat récupérée et vidée de ses explosifs pour être utilisée comme un outil d'entraînement pour les futurs désamorceurs de bombes."
 	payload = /obj/item/bombcore/training
 
 /obj/machinery/syndicatebomb/emp
-	name = "EMP Bomb"
-	desc = "A modified bomb designed to release a crippling electromagnetic pulse instead of explode"
+	name = "bombe IEM"
+	desc = "Une bombe modifiée pour libérer une impulsion électromagnétique paralysant l'éléctronique."
 	payload = /obj/item/bombcore/emp
 
 /obj/machinery/syndicatebomb/badmin
@@ -283,9 +283,9 @@
 	beepsound = 'sound/items/bikehorn.ogg'
 
 /obj/machinery/syndicatebomb/empty
-	name = "bomb"
+	name = "bombe"
 	icon_state = "base-bomb"
-	desc = "An ominous looking device designed to detonate an explosive payload. Can be bolted down using a wrench."
+	desc = "Une bombe créé pour exploser une charge explosive. Elle peut être vissée avec une clée à molette."
 	payload = null
 	open_panel = TRUE
 	timer_set = 120
@@ -295,16 +295,16 @@
 	wires.cut_all()
 
 /obj/machinery/syndicatebomb/self_destruct
-	name = "self-destruct device"
-	desc = "Do not taunt. Warranty invalid if exposed to high temperature. Not suitable for agents under 3 years of age."
+	name = "bombe auto-destructrice"
+	desc = "Ne pas énerver. Garantie annulée si exposée à des températures élevées. Ne convient pas aux agents de moins de 3 ans."
 	payload = /obj/item/bombcore/syndicate/large
 	can_unanchor = FALSE
 
 ///Bomb Cores///
 
 /obj/item/bombcore
-	name = "bomb payload"
-	desc = "A powerful secondary explosive of syndicate design and unknown composition, it should be stable under normal conditions..."
+	name = "charge explosive"
+	desc = "Une charge explosive secondaire de conception syndicale et de composition inconnue, elle devrait être stable dans des conditions normales..."
 	icon = 'icons/obj/assemblies/assemblies.dmi'
 	icon_state = "bombcore"
 	inhand_icon_state = "eshield"
@@ -359,8 +359,8 @@
 	range_flame = 20
 
 /obj/item/bombcore/training
-	name = "dummy payload"
-	desc = "A Nanotrasen replica of a syndicate payload. It's not intended to explode but to announce that it WOULD have exploded, then rewire itself to allow for more training."
+	name = "Fausse charge explosive"
+	desc = "Une réplique de charge explosive du syndicat conçue par Nanotrasen. Elle n'est pas destinée à exploser, mais à annoncer qu'elle aurait explosé, puis à se réarmer pour permettre plus d'entraînement."
 	var/defusals = 0
 	var/attempts = 0
 
@@ -380,7 +380,7 @@
 	var/obj/machinery/syndicatebomb/holder = loc
 	if(istype(holder))
 		attempts++
-		holder.loc.visible_message(span_danger("[icon2html(holder, viewers(holder))] Alert: Bomb has detonated. Your score is now [defusals] for [attempts]. Resetting wires..."))
+		holder.loc.visible_message(span_danger("[icon2html(holder, viewers(holder))] Alerte : La bombe a explosée. Votre score est maintenant [defusals] pour [attempts] ! Réinisialisation des fils dans 5 secondes..."))
 		reset()
 	else
 		qdel(src)
@@ -390,7 +390,7 @@
 	if(istype(holder))
 		attempts++
 		defusals++
-		holder.loc.visible_message(span_notice("[icon2html(holder, viewers(holder))] Alert: Bomb has been defused. Your score is now [defusals] for [attempts]! Resetting wires in 5 seconds..."))
+		holder.loc.visible_message(span_notice("[icon2html(holder, viewers(holder))] Alerte : La bombe a été désarmée. Votre score est maintenant [defusals] pour [attempts] ! Réinisialisation des fils dans 5 secondes..."))
 		sleep(5 SECONDS) //Just in case someone is trying to remove the bomb core this gives them a little window to crowbar it out
 		if(istype(holder))
 			reset()
@@ -423,14 +423,14 @@
 	..()
 
 /obj/item/bombcore/large
-	name = "large bomb payload"
+	name = "charge explosive XL"
 	range_heavy = 5
 	range_medium = 10
 	range_light = 20
 	range_flame = 20
 
 /obj/item/bombcore/miniature
-	name = "small bomb core"
+	name = "petite charge explosive"
 	w_class = WEIGHT_CLASS_SMALL
 	range_heavy = 1
 	range_medium = 2
@@ -438,8 +438,8 @@
 	range_flame = 2
 
 /obj/item/bombcore/chemical
-	name = "chemical payload"
-	desc = "An explosive payload designed to spread chemicals, dangerous or otherwise, across a large area. Properties of the core may vary with grenade casing type, and must be loaded before use."
+	name = "charge explosive chimique"
+	desc = "Une charge explosive conçue pour répandre des produits chimiques, dangereux ou non, sur une grande surface. Les propriétés de la charge peuvent varier en fonction du type de grenade, et doivent être chargées avant utilisation."
 	icon_state = "chemcore"
 	/// The initial volume of the reagent holder the bombcore has.
 	var/core_holder_volume = 1000
@@ -520,7 +520,7 @@
 			beakers += I
 			to_chat(user, span_notice("You load [src] with [I]."))
 		else
-			to_chat(user, span_warning("[I] won't fit! \The [src] can only hold up to [max_beakers] containers."))
+			to_chat(user, span_warning("[I] ne rentrera pas ! [src] ne peut que contenir que [max_beakers] bécher."))
 			return
 	..()
 
@@ -565,8 +565,8 @@
 		qdel(G)
 
 /obj/item/bombcore/emp
-	name = "EMP payload"
-	desc = "A set of superconducting electromagnetic coils designed to release a powerful pulse to destroy electronics and scramble circuits"
+	name = "charge explosive IEM"
+	desc = "Un groupe de bobines électromagnétiques supraconductrices conçues pour libérer une impulsion puissante pour détruire les électroniques et brouiller les circuits."
 	range_heavy = 15
 	range_medium = 25
 
@@ -582,8 +582,8 @@
 ///Syndicate Detonator (aka the big red button)///
 
 /obj/item/syndicatedetonator
-	name = "big red button"
-	desc = "Your standard issue bomb synchronizing button. Five second safety delay to prevent 'accidents'."
+	name = "gros bouton rouge"
+	desc = "Ce boutton est utilisé pour déclencher les bombes du syndicat. Il y a un délai de sécurité de cinq secondes pour éviter les \"accidents\"."
 	icon = 'icons/obj/assemblies/assemblies.dmi'
 	icon_state = "bigred"
 	inhand_icon_state = "electronic"

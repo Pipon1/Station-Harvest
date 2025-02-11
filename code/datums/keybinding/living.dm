@@ -8,8 +8,8 @@
 /datum/keybinding/living/resist
 	hotkey_keys = list("B")
 	name = "resist"
-	full_name = "Resist"
-	description = "Break free of your current state. Handcuffed? on fire? Resist!"
+	full_name = "Résister"
+	description = "Se défaire de votre situation actuelle. Menotté? En feu? Résistez!"
 	keybind_signal = COMSIG_KB_LIVING_RESIST_DOWN
 
 /datum/keybinding/living/resist/down(client/user)
@@ -23,8 +23,8 @@
 /datum/keybinding/living/look_up
 	hotkey_keys = list("L")
 	name = "look up"
-	full_name = "Look Up"
-	description = "Look up at the next z-level.  Only works if directly below open space."
+	full_name = "Regarder en haut"
+	description = "Regarder à l'étage au dessus. Ne marche que si directement sous un espace ouvert."
 	keybind_signal = COMSIG_KB_LIVING_LOOKUP_DOWN
 
 /datum/keybinding/living/look_up/down(client/user)
@@ -43,8 +43,8 @@
 /datum/keybinding/living/look_down
 	hotkey_keys = list(";")
 	name = "look down"
-	full_name = "Look Down"
-	description = "Look down at the previous z-level.  Only works if directly above open space."
+	full_name = "Regarder en bas"
+	description = "Regarder à l'étage du bas. Ne marche que si directement sur un espace ouvert."
 	keybind_signal = COMSIG_KB_LIVING_LOOKDOWN_DOWN
 
 /datum/keybinding/living/look_down/down(client/user)
@@ -63,8 +63,8 @@
 /datum/keybinding/living/rest
 	hotkey_keys = list("U")
 	name = "rest"
-	full_name = "Rest"
-	description = "Lay down, or get up."
+	full_name = "Se reposer"
+	description = "S'allonger, ou se mettre debout."
 	keybind_signal = COMSIG_KB_LIVING_REST_DOWN
 
 /datum/keybinding/living/rest/down(client/user)
@@ -78,8 +78,8 @@
 /datum/keybinding/living/toggle_combat_mode
 	hotkey_keys = list("F")
 	name = "toggle_combat_mode"
-	full_name = "Toggle Combat Mode"
-	description = "Toggles combat mode. Like Help/Harm but cooler."
+	full_name = "Activer/désactiver le mode combat"
+	description = "Active/désactive le mode combat. Exactement comme l'action Aider/blesser, mais en plus cool."
 	keybind_signal = COMSIG_KB_LIVING_TOGGLE_COMBAT_DOWN
 
 
@@ -93,8 +93,8 @@
 /datum/keybinding/living/enable_combat_mode
 	hotkey_keys = list("4")
 	name = "enable_combat_mode"
-	full_name = "Enable Combat Mode"
-	description = "Enable combat mode."
+	full_name = "Activer le mode combat"
+	description = "Active le mode combat."
 	keybind_signal = COMSIG_KB_LIVING_ENABLE_COMBAT_DOWN
 
 /datum/keybinding/living/enable_combat_mode/down(client/user)
@@ -107,8 +107,8 @@
 /datum/keybinding/living/disable_combat_mode
 	hotkey_keys = list("1")
 	name = "disable_combat_mode"
-	full_name = "Disable Combat Mode"
-	description = "Disable combat mode."
+	full_name = "Désactiver le mode combat"
+	description = "Désactive le mode combat."
 	keybind_signal = COMSIG_KB_LIVING_DISABLE_COMBAT_DOWN
 
 /datum/keybinding/living/disable_combat_mode/down(client/user)

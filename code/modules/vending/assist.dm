@@ -1,6 +1,6 @@
 /obj/machinery/vending/assist
-	name = "\improper Part-Mart"
-	desc = "All the finest of miscellaneous electronics one could ever need! Not responsible for any injuries caused by reckless misuse of parts."
+	name = "\improper Marcho-Morceau"
+	desc = "Tout l'électronique dont vous avez besoin ! Nous déclinons toute responsibilité liée à de mauvaise utilisation."
 	icon_state = "parts"
 	icon_deny = "parts-deny"
 	panel_type = "panel10"
@@ -30,12 +30,12 @@
 	)
 
 	refill_canister = /obj/item/vending_refill/assist
-	product_ads = "Only the finest!;Have some tools.;The most robust equipment.;The finest gear in space!"
+	product_ads = "Les meilleurs morceaux !;Le meilleur de l'électronique.;Le matériel le plus robuste.;Matériaux résistants à l'espace !"
 	default_price = PAYCHECK_CREW * 0.7 //Default of 35.
 	extra_price = PAYCHECK_CREW
 	payment_department = NO_FREEBIES
 	light_mask = "parts-light-mask"
 
 /obj/item/vending_refill/assist
-	machine_name = "Part-Mart"
+	machine_name = "Marcho-Morceau"
 	icon_state = "refill_parts"

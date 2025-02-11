@@ -54,7 +54,7 @@ export const CameraConsole = (props, context) => {
       </div>
       <div className="CameraConsole__right">
         <div className="CameraConsole__toolbar">
-          <b>Camera: </b>
+          <b>Caméra : </b>
           {(activeCamera && activeCamera.name) || '—'}
         </div>
         <div className="CameraConsole__toolbarRight">
@@ -101,7 +101,7 @@ export const CameraConsoleContent = (props, context) => {
           autoFocus
           fluid
           mt={1}
-          placeholder="Search for a camera"
+          placeholder="Rechercher une caméra"
           onInput={(e, value) => setSearchText(value)}
         />
       </Flex.Item>

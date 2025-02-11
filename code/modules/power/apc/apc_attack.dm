@@ -14,7 +14,7 @@
 			if(!electrocute_mob(user, shock_source, src, siemens_coeff = 1, dist_check = TRUE))//People with insulated gloves just attack the APC normally. They're just short of magical anyway
 				return
 			do_sparks(5, TRUE, src)
-			user.visible_message(span_notice("[user.name] shoves [attacking_object] into the internal components of [src], erupting into a cascade of sparks!"))
+			user.visible_message(span_notice("[user.name] enfonce lae [attacking_object] dans les composents interne du [src], causant une fontaine d'étincelles !"))
 			if(shock_source == cell)//If the shock is coming from the cell just fully discharge it, because it's funny
 				cell.use(cell.charge)
 			return
@@ -24,16 +24,16 @@
 
 	if(istype(attacking_object, /obj/item/stock_parts/cell) && opened)
 		if(cell)
-			balloon_alert(user, "cell already installed!")
+			balloon_alert(user, "Il y'a déja une batterie !")
 			return
 		if(machine_stat & MAINT)
-			balloon_alert(user, "no connector for a cell!")
+			balloon_alert(user, "Aucun connecteur sur quoi brancher la batterie !")
 			return
 		if(!user.transferItemToLoc(attacking_object, src))
 			return
 		cell = attacking_object
-		user.visible_message(span_notice("[user.name] inserts the power cell to [src.name]!"))
-		balloon_alert(user, "cell inserted")
+		user.visible_message(span_notice("[user.name] insère la batterie dans [src.name] !"))
+		balloon_alert(user, "Vous avez inséré la batterie")
 		chargecount = 0
 		update_appearance()
 		return
@@ -47,22 +47,22 @@
 		if(!host_turf)
 			CRASH("attackby on APC when it's not on a turf")
 		if(host_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
-			balloon_alert(user, "remove the floor plating!")
+			balloon_alert(user, "Il faut retirer le sol !")
 			return
 		if(terminal)
-			balloon_alert(user, "already wired!")
+			balloon_alert(user, "Il y'a déja du câblage !")
 			return
 		if(!has_electronics)
-			balloon_alert(user, "no board to wire!")
+			balloon_alert(user, "Il n'ya pas de carte mère !")
 			return
 
 		var/obj/item/stack/cable_coil/installing_cable = attacking_object
 		if(installing_cable.get_amount() < 10)
-			balloon_alert(user, "need ten lengths of cable!")
+			balloon_alert(user, "Il faut au moins 10 câbles !")
 			return
 
-		user.visible_message(span_notice("[user.name] adds cables to the APC frame."))
-		balloon_alert(user, "adding cables to the frame...")
+		user.visible_message(span_notice("[user.name] ajoute des câbles à la coque du CEL."))
+		balloon_alert(user, "vous ajoutez des câbles à la coque...")
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 		if(!do_after(user, 20, target = src))
 			return
@@ -76,22 +76,22 @@
 			do_sparks(5, TRUE, src)
 			return
 		installing_cable.use(10)
-		balloon_alert(user, "cables added to the frame")
+		balloon_alert(user, "vous avez ajouté des câbles à la coque")
 		make_terminal()
 		terminal.connect_to_network()
 		return
 
 	if(istype(attacking_object, /obj/item/electronics/apc) && opened)
 		if(has_electronics)
-			balloon_alert(user, "there is already a board!")
+			balloon_alert(user, "il y'a déja une carte mère !")
 			return
 
 		if(machine_stat & BROKEN)
-			balloon_alert(user, "the frame is damaged!")
+			balloon_alert(user, "la coque est endommagée !")
 			return
 
-		user.visible_message(span_notice("[user.name] inserts the power control board into [src]."))
-		balloon_alert(user, "you start to insert the board...")
+		user.visible_message(span_notice("[user.name] insère la carte mère dans le [src]."))
+		balloon_alert(user, "vous commencez à insérer la carte mère...")
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 
 		if(!do_after(user, 10, target = src) || has_electronics)
@@ -99,7 +99,7 @@
 
 		has_electronics = APC_ELECTRONICS_INSTALLED
 		locked = FALSE
-		balloon_alert(user, "board installed")
+		balloon_alert(user, "Vous avez installé la carte mère")
 		qdel(attacking_object)
 		return
 
@@ -107,19 +107,19 @@
 		var/obj/item/electroadaptive_pseudocircuit/pseudocircuit = attacking_object
 		if(!has_electronics)
 			if(machine_stat & BROKEN)
-				balloon_alert(user, "frame is too damaged!")
+				balloon_alert(user, "la coque est trop endommagée !")
 				return
 			if(!pseudocircuit.adapt_circuit(user, 50))
 				return
-			user.visible_message(span_notice("[user] fabricates a circuit and places it into [src]."), \
-			span_notice("You adapt a power control board and click it into place in [src]'s guts."))
+			user.visible_message(span_notice("[user] fabrique un circuit et le place dans le [src]."), \
+			span_notice("Vous modifiez une carte et vous la sécurisé dans les entrailles du [src]."))
 			has_electronics = APC_ELECTRONICS_INSTALLED
 			locked = FALSE
 			return
 
 		if(!cell)
 			if(machine_stat & MAINT)
-				balloon_alert(user, "no board for a cell!")
+				balloon_alert(user, "Aucune carte mère !")
 				return
 			if(!pseudocircuit.adapt_circuit(user, 500))
 				return
@@ -127,34 +127,34 @@
 			bad_cell.forceMove(src)
 			cell = bad_cell
 			chargecount = 0
-			user.visible_message(span_notice("[user] fabricates a weak power cell and places it into [src]."), \
-			span_warning("Your [pseudocircuit.name] whirrs with strain as you create a weak power cell and place it into [src]!"))
+			user.visible_message(span_notice("[user] fabrique une petite batterie et la place dans [src]."), \
+			span_warning("Votre [pseudocircuit.name] fait un petit ronronnement alors que vous créez et placez la petite baterie dans [src] !"))
 			update_appearance()
 			return
 
-		balloon_alert(user, "has both board and cell!")
+		balloon_alert(user, "possède déja une batterie et une carte mère !")
 		return
 
 	if(istype(attacking_object, /obj/item/wallframe/apc) && opened)
 		if(!(machine_stat & BROKEN || opened == APC_COVER_REMOVED || atom_integrity < max_integrity)) // There is nothing to repair
-			balloon_alert(user, "no reason for repairs!")
+			balloon_alert(user, "n'a pas besoin d'être réparé !")
 			return
 		if(!(machine_stat & BROKEN) && opened == APC_COVER_REMOVED) // Cover is the only thing broken, we do not need to remove elctronicks to replace cover
-			user.visible_message(span_notice("[user.name] replaces missing APC's cover."))
-			balloon_alert(user, "replacing APC's cover...")
+			user.visible_message(span_notice("[user.name] remplace le couvercle manquant du CEL."))
+			balloon_alert(user, "vous remplacez le couvercle du CEL...")
 			if(do_after(user, 20, target = src)) // replacing cover is quicker than replacing whole frame
-				balloon_alert(user, "cover replaced")
+				balloon_alert(user, "vous avez remplacez le couvercle")
 				qdel(attacking_object)
 				opened = APC_COVER_OPENED
 				update_appearance()
 			return
 		if(has_electronics)
-			balloon_alert(user, "remove the board inside!")
+			balloon_alert(user, "il faut retirer la carte mère !")
 			return
-		user.visible_message(span_notice("[user.name] replaces the damaged APC frame with a new one."))
-		balloon_alert(user, "replacing damaged frame...")
+		user.visible_message(span_notice("[user.name] remplace la coque endommagée du CEL avec une nouvelle coque."))
+		balloon_alert(user, "vous remplacez la coque...")
 		if(do_after(user, 50, target = src))
-			balloon_alert(user, "replaced frame")
+			balloon_alert(user, "vous avez remplacé la coque")
 			qdel(attacking_object)
 			set_machine_stat(machine_stat & ~BROKEN)
 			atom_integrity = max_integrity
@@ -204,40 +204,40 @@
 		return
 	if(ethereal.combat_mode)
 		if(cell.charge <= (cell.maxcharge / 2)) // ethereals can't drain APCs under half charge, this is so that they are forced to look to alternative power sources if the station is running low
-			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "safeties prevent draining!"), alert_timer_duration)
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "des sécurités vous empêche de drainer le courant !"), alert_timer_duration)
 			return
 		if(stomach.crystal_charge > charge_limit)
-			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "charge is full!"), alert_timer_duration)
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "la charge est au maximum !"), alert_timer_duration)
 			return
 		stomach.drain_time = world.time + APC_DRAIN_TIME
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "draining power"), alert_timer_duration)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "vous drainez le courant"), alert_timer_duration)
 		if(do_after(user, APC_DRAIN_TIME, target = src))
 			if(cell.charge <= (cell.maxcharge / 2) || (stomach.crystal_charge > charge_limit))
 				return
-			balloon_alert(ethereal, "received charge")
+			balloon_alert(ethereal, "vous avez reçu du courant")
 			stomach.adjust_charge(APC_POWER_GAIN)
 			cell.use(APC_POWER_GAIN)
 		return
 
 	if(cell.charge >= cell.maxcharge - APC_POWER_GAIN)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "APC can't receive more power!"), alert_timer_duration)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "Le CEL ne peut pas recevoir plus de courant !"), alert_timer_duration)
 		return
 	if(stomach.crystal_charge < APC_POWER_GAIN)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "charge is too low!"), alert_timer_duration)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "il n'y pas assez de courant !"), alert_timer_duration)
 		return
 	stomach.drain_time = world.time + APC_DRAIN_TIME
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "transfering power"), alert_timer_duration)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "vous transférez du courant"), alert_timer_duration)
 	if(!do_after(user, APC_DRAIN_TIME, target = src))
 		return
 	if((cell.charge >= (cell.maxcharge - APC_POWER_GAIN)) || (stomach.crystal_charge < APC_POWER_GAIN))
-		balloon_alert(ethereal, "can't transfer power!")
+		balloon_alert(ethereal, "vous ne pouvez pas transférer du courant !")
 		return
 	if(istype(stomach))
-		balloon_alert(ethereal, "transfered power")
+		balloon_alert(ethereal, "vous avez transféré du courant")
 		stomach.adjust_charge(-APC_POWER_GAIN)
 		cell.give(APC_POWER_GAIN)
 	else
-		balloon_alert(ethereal, "can't transfer power!")
+		balloon_alert(ethereal, "vous ne pouvez pas transférer du courant !")
 
 // attack with hand - remove cell (if cover open) or interact with the APC
 /obj/machinery/power/apc/attack_hand(mob/user, list/modifiers)
@@ -247,8 +247,8 @@
 
 	if(opened && (!issilicon(user)))
 		if(cell)
-			user.visible_message(span_notice("[user] removes \the [cell] from [src]!"))
-			balloon_alert(user, "cell removed")
+			user.visible_message(span_notice("[user] retire la [cell] de [src] !"))
+			balloon_alert(user, "batterie retirée")
 			user.put_in_hands(cell)
 			cell.update_appearance()
 			cell = null
@@ -288,7 +288,7 @@
 	var/mob/living/silicon/robot/robot = user
 	if(aidisabled || malfhack && istype(malfai) && ((istype(AI) && (malfai != AI && malfai != AI.parent)) || (istype(robot) && (robot in malfai.connected_robots))))
 		if(!loud)
-			balloon_alert(user, "it's disabled!")
+			balloon_alert(user, "il est désactivé !")
 		return FALSE
 	return TRUE
 

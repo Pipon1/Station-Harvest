@@ -1,93 +1,93 @@
 //nutrition
 /datum/mood_event/fat
-	description = "<B>I'm so fat...</B>" //muh fatshaming
+	description = "<B>J'ai trop mangé...</B>" //muh fatshaming. French's edit : C'était pas compliqué de rendre ça moins malaisant...
 	mood_change = -6
 
 /datum/mood_event/wellfed
-	description = "I'm stuffed!"
+	description = "Je suis repu.e !"
 	mood_change = 8
 
 /datum/mood_event/fed
-	description = "I have recently had some food."
+	description = "J'ai mangé récemment."
 	mood_change = 5
 
 /datum/mood_event/hungry
-	description = "I'm getting a bit hungry."
+	description = "Je commence à avoir faim."
 	mood_change = -6
 
 /datum/mood_event/starving
-	description = "I'm starving!"
+	description = "Je meurs de faim !"
 	mood_change = -10
 
 //charge
 /datum/mood_event/supercharged
-	description = "I can't possibly keep all this power inside, I need to release some quick!"
+	description = "Je ne peux pas contenir toute cette énergie, je dois en relacher rapidement !"
 	mood_change = -10
 
 /datum/mood_event/overcharged
-	description = "I feel dangerously overcharged, perhaps I should release some power."
+	description = "Je commence à avoir trop d'énergie, je devrais sans doute en relacher."
 	mood_change = -4
 
 /datum/mood_event/charged
-	description = "I feel the power in my veins!"
+	description = "Je sens l'énergie dans mes veines !"
 	mood_change = 6
 
 /datum/mood_event/lowpower
-	description = "My power is running low, I should go charge up somewhere."
+	description = "Je commence à manquer d'énergie, je devrais aller me recharger."
 	mood_change = -6
 
 /datum/mood_event/decharged
-	description = "I'm in desperate need of some electricity!"
+	description = "Je suis en manque d'énergie !"
 	mood_change = -10
 
 //Disgust
 /datum/mood_event/gross
-	description = "I saw something gross."
+	description = "J'ai vu quelque chose de dégoutant."
 	mood_change = -4
 
 /datum/mood_event/verygross
-	description = "I think I'm going to puke..."
+	description = "Je crois que je vais vomir..."
 	mood_change = -6
 
 /datum/mood_event/disgusted
-	description = "Oh god, that's disgusting..."
+	description = "Bon sang, c'était vraiment répugnant..."
 	mood_change = -8
 
 /datum/mood_event/disgust/bad_smell
-	description = "I can smell something horribly decayed inside this room."
+	description = "Quelque chose ne sent vraiment pas bon par ici."
 	mood_change = -6
 
 /datum/mood_event/disgust/nauseating_stench
-	description = "The stench of rotting carcasses is unbearable!"
+	description = "L'odeur d'une carcasse en décomposition est inssoutenable !"
 	mood_change = -12
 
 //Generic needs events
 /datum/mood_event/favorite_food
-	description = "I really enjoyed eating that."
+	description = "J'ai vraiment apprécié manger ça."
 	mood_change = 5
 	timeout = 4 MINUTES
 
 /datum/mood_event/gross_food
-	description = "I really didn't like that food."
+	description = "Je n'aime pas vraiment manger ça."
 	mood_change = -2
 	timeout = 4 MINUTES
 
 /datum/mood_event/disgusting_food
-	description = "That food was disgusting!"
+	description = "C'était dégoutant !"
 	mood_change = -6
 	timeout = 4 MINUTES
 
 /datum/mood_event/breakfast
-	description = "Nothing like a hearty breakfast to start the shift."
+	description = "Rien de mieux qu'un bon petit déjeuner en début de service."
 	mood_change = 2
 	timeout = 10 MINUTES
 
 /datum/mood_event/nice_shower
-	description = "I have recently had a nice shower."
+	description = "J'ai pris une douche, récemment."
 	mood_change = 4
 	timeout = 5 MINUTES
 
 /datum/mood_event/fresh_laundry
-	description = "There's nothing like the feeling of a freshly laundered jumpsuit."
+	description = "Rien de mieux qu'un uniforme bien propre."
 	mood_change = 2
 	timeout = 10 MINUTES

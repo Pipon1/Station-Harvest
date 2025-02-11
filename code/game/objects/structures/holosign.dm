@@ -2,7 +2,7 @@
 //holographic signs and barriers
 
 /obj/structure/holosign
-	name = "holo sign"
+	name = "affiche holographique"
 	icon = 'icons/effects/effects.dmi'
 	anchored = TRUE
 	max_integrity = 1
@@ -54,14 +54,14 @@
 			playsound(loc, 'sound/weapons/egloves.ogg', 80, TRUE)
 
 /obj/structure/holosign/wetsign
-	name = "wet floor sign"
-	desc = "The words flicker as if they mean nothing."
+	name = "affiche de sol mouillé"
+	desc = "Les mots clignotent comme s'ils ne signifiaient rien."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "holosign"
 
 /obj/structure/holosign/barrier
-	name = "holobarrier"
-	desc = "A short holographic barrier which can only be passed by walking."
+	name = "barrière holographique"
+	desc = "Une barrière holographique courte qui ne peut être franchie qu'en marchant."
 	icon_state = "holosign_sec"
 	pass_flags_self = PASSTABLE | PASSGRILLE | PASSGLASS | LETPASSTHROW
 	density = TRUE
@@ -80,8 +80,8 @@
 			return TRUE
 
 /obj/structure/holosign/barrier/wetsign
-	name = "wet floor holobarrier"
-	desc = "When it says walk it means walk."
+	name = "holobarrièr de sol mouillé"
+	desc = "Quand elle dit de marcher, vous marchez."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "holosign"
 
@@ -99,8 +99,8 @@
 	rad_insulation = RAD_LIGHT_INSULATION
 
 /obj/structure/holosign/barrier/atmos
-	name = "holofirelock"
-	desc = "A holographic barrier resembling a firelock. Though it does not prevent solid objects from passing through, gas is kept out."
+	name = "porte anti-feu holographique"
+	desc = "Une barrière holographique ressemblant à une porte anti-feu. Bien qu'elle n'empêche pas les objets solides de passer, le gaz est maintenu à l'extérieur."
 	icon_state = "holo_firelock"
 	density = FALSE
 	anchored = TRUE
@@ -110,11 +110,11 @@
 	resistance_flags = FIRE_PROOF | FREEZE_PROOF
 
 /obj/structure/holosign/barrier/atmos/sturdy
-	name = "sturdy holofirelock"
+	name = "porte anti-feu holographique solide"
 	max_integrity = 150
 
 /obj/structure/holosign/barrier/atmos/tram
-	name = "tram atmos barrier"
+	name = "barrière de tram atmosphérique"
 	max_integrity = 150
 	icon_state = "holo_tram"
 
@@ -131,8 +131,8 @@
 	return ..()
 
 /obj/structure/holosign/barrier/cyborg
-	name = "Energy Field"
-	desc = "A fragile energy field that blocks movement. Excels at blocking lethal projectiles."
+	name = "champ d'énergie"
+	desc = "Un champ d'énergie fragile qui bloque le mouvement. Excellent pour bloquer les projectiles mortels."
 	density = TRUE
 	max_integrity = 10
 	allow_walk = FALSE
@@ -146,8 +146,8 @@
 	return BULLET_ACT_HIT
 
 /obj/structure/holosign/barrier/medical
-	name = "\improper PENLITE holobarrier"
-	desc = "A holobarrier that uses biometrics to detect human viruses. Denies passing to personnel with easily-detected, malicious viruses. Good for quarantines."
+	name = "\improper barrière holographique LUMISTYLO"
+	desc = "Une barrière holographique qui utilise la biométrie pour détecter les virus humains. Refuse le passage au personnel avec des virus malveillants facilement détectables. Bon pour les quarantaines."
 	icon_state = "holo_medical"
 	alpha = 125 //lazy :)
 	var/force_allaccess = FALSE
@@ -155,7 +155,7 @@
 
 /obj/structure/holosign/barrier/medical/examine(mob/user)
 	. = ..()
-	. += span_notice("The biometric scanners are <b>[force_allaccess ? "off" : "on"]</b>.")
+	. += span_notice("Le statut de scanneur biométrique est : <b>[force_allaccess ? "off" : "on"]</b>.")
 
 /obj/structure/holosign/barrier/medical/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
@@ -188,13 +188,13 @@
 /obj/structure/holosign/barrier/medical/attack_hand(mob/living/user, list/modifiers)
 	if(!user.combat_mode && CanPass(user, get_dir(src, user)))
 		force_allaccess = !force_allaccess
-		to_chat(user, span_warning("You [force_allaccess ? "deactivate" : "activate"] the biometric scanners.")) //warning spans because you can make the station sick!
+		to_chat(user, span_warning("Vous [force_allaccess ? "désactivez" : "activatez"] le scanneur biométrique.")) //warning spans because you can make the station sick!
 	else
 		return ..()
 
 /obj/structure/holosign/barrier/cyborg/hacked
-	name = "Charged Energy Field"
-	desc = "A powerful energy field that blocks movement. Energy arcs off it."
+	name = "champ d'énergie chargé"
+	desc = "Un champ d'énergie puissant qui bloque le mouvement. De l'énergie en jaillit."
 	max_integrity = 20
 	var/shockcd = 0
 
@@ -212,7 +212,7 @@
 	if(!shockcd)
 		if(ismob(user))
 			var/mob/living/M = user
-			M.electrocute_act(15,"Energy Barrier")
+			M.electrocute_act(15,"Barrière d'énergie")
 			shockcd = TRUE
 			addtimer(CALLBACK(src, PROC_REF(cooldown)), 5)
 
@@ -224,6 +224,6 @@
 		return
 
 	var/mob/living/M = AM
-	M.electrocute_act(15,"Energy Barrier")
+	M.electrocute_act(15,"Barrière d'énergie")
 	shockcd = TRUE
 	addtimer(CALLBACK(src, PROC_REF(cooldown)), 5)

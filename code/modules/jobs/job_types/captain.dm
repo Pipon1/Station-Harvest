@@ -1,14 +1,14 @@
 /datum/job/captain
 	title = JOB_CAPTAIN
-	description = "Be responsible for the station, manage your Heads of Staff, \
-		keep the crew alive, be prepared to do anything and everything or die \
-		horribly trying."
+	description = "Soyez en charge de la station, managez les différents Chefs de service \
+		gardez l'équipage en vie, soyez préparé à tout ou mourrez \
+		en essayant."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	department_head = list("CentCom")
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Nanotrasen officials and Space Law"
+	supervisors = "Les représentants de NanoTrasen et la Loi Spatiale"
 	req_admin_notify = 1
 	minimal_player_age = 14
 	exp_requirements = 180

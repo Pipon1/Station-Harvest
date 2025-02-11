@@ -1,10 +1,10 @@
 /datum/round_event_control/grey_tide
-	name = "Grey Tide"
+	name = "Virus informatique"
 	typepath = /datum/round_event/grey_tide
 	max_occurrences = 2
 	min_players = 5
 	category = EVENT_CATEGORY_ENGINEERING
-	description = "Bolts open all doors in one or more departments."
+	description = "Ouvre et baisse les verrous de toutes les portes d'un ou plusieurs départements."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 7
 
@@ -33,7 +33,7 @@
 		grey_tide_areas += pick_n_take(potential_areas)
 
 /datum/round_event/grey_tide/announce(fake)
-	priority_announce("Gr3y.T1d3 virus detected in [station_name()] secure locking encryption subroutines. Severity level of [severity]. Recommend station AI involvement.", "Security Alert")
+	priority_announce("Virus informatique Gr3y.T1d3 détecté dans les sous-programmes de chiffrement sécurisés de [station_name()]. Niveau de sévérité de [severity].", "Alerte sécurité")
 
 /datum/round_event/grey_tide/start()
 	if(!length(grey_tide_areas))

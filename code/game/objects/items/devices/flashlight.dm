@@ -4,8 +4,8 @@
 #define ALREADY_LIT 3
 
 /obj/item/flashlight
-	name = "flashlight"
-	desc = "A hand-held emergency light."
+	name = "lampe de poche"
+	desc = "Une lampe de poche d'urgence."
 	custom_price = PAYCHECK_CREW
 	icon = 'icons/obj/lighting.dmi'
 	dir = WEST
@@ -42,11 +42,11 @@
 /obj/item/flashlight/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	// single use lights can be toggled on once
 	if(isnull(held_item) && (toggle_context || !on))
-		context[SCREENTIP_CONTEXT_RMB] = "Toggle light"
+		context[SCREENTIP_CONTEXT_RMB] = "Allumer"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	if(istype(held_item, /obj/item/flashlight) && (toggle_context || !on))
-		context[SCREENTIP_CONTEXT_LMB] = "Toggle light"
+		context[SCREENTIP_CONTEXT_LMB] = "Allumer"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	return NONE
@@ -80,9 +80,9 @@
 
 /obj/item/flashlight/suicide_act(mob/living/carbon/human/user)
 	if (user.is_blind())
-		user.visible_message(span_suicide("[user] is putting [src] close to [user.p_their()] eyes and turning it on... but [user.p_theyre()] blind!"))
+		user.visible_message(span_suicide("[user] approche [src] des yeux de [user.p_their()] et il l'allume... mais [user.p_theyre()] est aveugle !"))
 		return SHAME
-	user.visible_message(span_suicide("[user] is putting [src] close to [user.p_their()] eyes and turning it on! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] approche [src] des yeux de [user.p_their()] et il l'allume ! Il semble que [user.p_theyre()] essaye de se suicider !"))
 	return FIRELOSS
 
 /obj/item/flashlight/attack(mob/living/carbon/M, mob/living/carbon/human/user)
@@ -93,47 +93,47 @@
 			return ..() //just hit them in the head
 
 		if(!ISADVANCEDTOOLUSER(user))
-			to_chat(user, span_warning("You don't have the dexterity to do this!"))
+			to_chat(user, span_warning("Vous n'avez pas la dextérité nécessaire !"))
 			return
 
 		if(!M.get_bodypart(BODY_ZONE_HEAD))
-			to_chat(user, span_warning("[M] doesn't have a head!"))
+			to_chat(user, span_warning("[M] n'a pas de tête !"))
 			return
 
 		if(light_power < 1)
-			to_chat(user, "[span_warning("\The [src] isn't bright enough to see anything!")] ")
+			to_chat(user, "[span_warning("Le [src] n'est pas assez brillant pour éclairer !")] ")
 			return
 
 		switch(user.zone_selected)
 			if(BODY_ZONE_PRECISE_EYES)
 				if((M.head && M.head.flags_cover & HEADCOVERSEYES) || (M.wear_mask && M.wear_mask.flags_cover & MASKCOVERSEYES) || (M.glasses && M.glasses.flags_cover & GLASSESCOVERSEYES))
-					to_chat(user, span_warning("You're going to need to remove that [(M.head && M.head.flags_cover & HEADCOVERSEYES) ? "helmet" : (M.wear_mask && M.wear_mask.flags_cover & MASKCOVERSEYES) ? "mask": "glasses"] first!"))
+					to_chat(user, span_warning("Vous allez devoir retirer ce [(M.head && M.head.flags_cover & HEADCOVERSEYES) ? "casque" : (M.wear_mask && M.wear_mask.flags_cover & MASKCOVERSEYES) ? "masque": "lunnettes"] d'abord !"))
 					return
 
 				var/obj/item/organ/internal/eyes/E = M.get_organ_slot(ORGAN_SLOT_EYES)
 				if(!E)
-					to_chat(user, span_warning("[M] doesn't have any eyes!"))
+					to_chat(user, span_warning("[M] n'a pas d'yeux !"))
 					return
 
 				if(M == user) //they're using it on themselves
 					if(M.flash_act(visual = 1))
-						M.visible_message(span_notice("[M] directs [src] to [M.p_their()] eyes."), span_notice("You wave the light in front of your eyes! Trippy!"))
+						M.visible_message(span_notice("[M] dirige la lumière de [src] contre les yeux de [M.p_their()]."), span_notice("Vous vous éclairez le visage ! C'est étourdissant !"))
 					else
-						M.visible_message(span_notice("[M] directs [src] to [M.p_their()] eyes."), span_notice("You wave the light in front of your eyes."))
+						M.visible_message(span_notice("[M] dirige la lumière de [src] contre les yeux de [M.p_their()]."), span_notice("Vous vous éclairez le visage."))
 				else
-					user.visible_message(span_warning("[user] directs [src] to [M]'s eyes."), \
-						span_danger("You direct [src] to [M]'s eyes."))
+					user.visible_message(span_warning("[user] dirige la lumière de [src] contre les yeux de [M]."), \
+						span_danger("Vous dirigez la lumière de [src] contre les yeux de [M]."))
 					if(M.stat == DEAD || (M.is_blind()) || !M.flash_act(visual = 1)) //mob is dead or fully blind
-						to_chat(user, span_warning("[M]'s pupils don't react to the light!"))
+						to_chat(user, span_warning("Les pupilles de [M] ne réagissent pas !"))
 					else if(M.dna && M.dna.check_mutation(/datum/mutation/human/xray)) //mob has X-ray vision
-						to_chat(user, span_danger("[M]'s pupils give an eerie glow!"))
+						to_chat(user, span_danger("Les pupilles de [M] brillent de façon étrange !"))
 					else //they're okay!
-						to_chat(user, span_notice("[M]'s pupils narrow."))
+						to_chat(user, span_notice("Les pupilles de [M] se rétrécissent."))
 
 			if(BODY_ZONE_PRECISE_MOUTH)
 
 				if(M.is_mouth_covered())
-					to_chat(user, span_warning("You're going to need to remove that [(M.head && M.head.flags_cover & HEADCOVERSMOUTH) ? "helmet" : "mask"] first!"))
+					to_chat(user, span_warning("Vous allez devoir retirer ce [(M.head && M.head.flags_cover & HEADCOVERSMOUTH) ? "casque" : "masque"] d'abord !"))
 					return
 
 				var/their = M.p_their()
@@ -148,11 +148,11 @@
 					for(var/I in 1 to organ_count)
 						if(I > 1)
 							if(I == mouth_organs.len)
-								organ_list += ", and "
+								organ_list += ", et "
 							else
 								organ_list += ", "
 						var/obj/item/organ/O = mouth_organs[I]
-						organ_list += (O.gender == "plural" ? O.name : "\an [O.name]")
+						organ_list += (O.gender == "pluriel" ? O.name : "un [O.name]")
 
 				var/pill_count = 0
 				for(var/datum/action/item_action/hands_free/activate_pill/AP in M.actions)
@@ -173,27 +173,27 @@
 								if(WEST)
 									can_use_mirror = mirror.pixel_x < 0
 
-					M.visible_message(span_notice("[M] directs [src] to [their] mouth."), \
-					span_notice("You point [src] into your mouth."))
+					M.visible_message(span_notice("[M] dirige la lumière de [src] dans la bouche de [their]."), \
+					span_notice("Vous pointez la lumière de [src] dans votre bouche."))
 					if(!can_use_mirror)
-						to_chat(user, span_notice("You can't see anything without a mirror."))
+						to_chat(user, span_notice("Vous ne pouvez pas voir sans un miroir."))
 						return
 					if(organ_count)
-						to_chat(user, span_notice("Inside your mouth [organ_count > 1 ? "are" : "is"] [organ_list]."))
+						to_chat(user, span_notice("Dans votre bouche [organ_count > 1 ? "il y'a" : "il y'a"] [organ_list]."))
 					else
-						to_chat(user, span_notice("There's nothing inside your mouth."))
+						to_chat(user, span_notice("Il n'y rien dans votre bouche."))
 					if(pill_count)
-						to_chat(user, span_notice("You have [pill_count] implanted pill[pill_count > 1 ? "s" : ""]."))
+						to_chat(user, span_notice("Vous avez [pill_count] pillules[pill_count > 1 ? "s" : ""] implantée[pill_count > 1 ? "s" : ""]."))
 
 				else
-					user.visible_message(span_notice("[user] directs [src] to [M]'s mouth."),\
-						span_notice("You direct [src] to [M]'s mouth."))
+					user.visible_message(span_notice("[user] dirige la lumière de [src] dans la bouche de [M]."),\
+						span_notice("Vous dirigez la lumière de [src] dans la bouche de [M]."))
 					if(organ_count)
-						to_chat(user, span_notice("Inside [their] mouth [organ_count > 1 ? "are" : "is"] [organ_list]."))
+						to_chat(user, span_notice("Dans la bouche de [their] il y'a [organ_count > 1 ? "" : ""] [organ_list]."))
 					else
-						to_chat(user, span_notice("[M] doesn't have any organs in [their] mouth."))
+						to_chat(user, span_notice("[M] n'a aucun organes dans sa bouche."))
 					if(pill_count)
-						to_chat(user, span_notice("[M] has [pill_count] pill[pill_count > 1 ? "s" : ""] implanted in [their] teeth."))
+						to_chat(user, span_notice("[M] a [pill_count] pillule[pill_count > 1 ? "s" : ""] implantée[pill_count > 1 ? "s" : ""] dans ses dents."))
 
 	else
 		return ..()
@@ -210,8 +210,8 @@
 		setDir(user.dir)
 
 /obj/item/flashlight/pen
-	name = "penlight"
-	desc = "A pen-sized light, used by medical staff. It can also be used to create a hologram to alert people of incoming medical assistance."
+	name = "lumière stylo"
+	desc = "Une lampe de poche de la taille d'un stylo. Utilisé par le personnel médical. Il peut également être utilisé pour créer un hologramme pour alerter les gens de l'arrivée d'une assistance médicale."
 	dir = EAST
 	icon_state = "penlight"
 	inhand_icon_state = ""
@@ -225,7 +225,7 @@
 	. = ..()
 	if(!proximity_flag)
 		if(holo_cooldown > world.time)
-			to_chat(user, span_warning("[src] is not ready yet!"))
+			to_chat(user, span_warning("[src] n'est pas encore prêt !"))
 			return
 		var/T = get_turf(target)
 		if(locate(/mob/living) in T)
@@ -235,8 +235,8 @@
 
 // see: [/datum/wound/burn/proc/uv()]
 /obj/item/flashlight/pen/paramedic
-	name = "paramedic penlight"
-	desc = "A high-powered UV penlight intended to help stave off infection in the field on serious burned patients. Probably really bad to look into."
+	name = "lumière stylo paramédicale"
+	desc = "Une lampe de poche UV de haute puissance destinée à aider à prévenir les infections sur les patients gravement brûlés. Probablement très mauvais à regarder."
 	icon_state = "penlight_surgical"
 	/// Our current UV cooldown
 	COOLDOWN_DECLARE(uv_cooldown)
@@ -246,8 +246,8 @@
 	var/uv_power = 1
 
 /obj/effect/temp_visual/medical_holosign
-	name = "medical holosign"
-	desc = "A small holographic glow that indicates a medic is coming to treat a patient."
+	name = "signe holographique médical"
+	desc = "Un petit éclat holographique qui indique qu'un médecin arrive pour traiter un patient."
 	icon_state = "medi_holo"
 	duration = 30
 
@@ -255,11 +255,11 @@
 	. = ..()
 	playsound(loc, 'sound/machines/ping.ogg', 50, FALSE) //make some noise!
 	if(creator)
-		visible_message(span_danger("[creator] created a medical hologram!"))
+		visible_message(span_danger("[creator] un holograme médical a été créé !"))
 
 /obj/item/flashlight/seclite
-	name = "seclite"
-	desc = "A robust flashlight used by security."
+	name = "sécuritorche"
+	desc = "Une lampe de poche robuste utilisée par la sécurité."
 	dir = EAST
 	icon_state = "seclite"
 	inhand_icon_state = "seclite"
@@ -272,8 +272,8 @@
 
 // the desk lamps are a bit special
 /obj/item/flashlight/lamp
-	name = "desk lamp"
-	desc = "A desk lamp with an adjustable mount."
+	name = "lampe de bureau"
+	desc = "Une lampe de bureau avec un support réglable."
 	icon_state = "lamp"
 	inhand_icon_state = "lamp"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
@@ -289,23 +289,23 @@
 
 // green-shaded desk lamp
 /obj/item/flashlight/lamp/green
-	desc = "A classic green-shaded desk lamp."
+	desc = "Une lampe de bureau classique avec un abat-jour vert."
 	icon_state = "lampgreen"
 	inhand_icon_state = "lampgreen"
 	light_color = LIGHT_COLOR_TUNGSTEN
 
 //Bananalamp
 /obj/item/flashlight/lamp/bananalamp
-	name = "banana lamp"
-	desc = "Only a clown would think to make a ghetto banana-shaped lamp. Even has a goofy pullstring."
+	name = "lampe banane"
+	desc = "Seul un clown penserait à faire une lampe en forme de banane. Il a même un cordon rigolo."
 	icon_state = "bananalamp"
 	inhand_icon_state = null
 	light_color = LIGHT_COLOR_BRIGHT_YELLOW
 
 // FLARES
 /obj/item/flashlight/flare
-	name = "flare"
-	desc = "A red Nanotrasen issued flare. There are instructions on the side, it reads 'pull cord, make light'."
+	name = "fusée éclairante"
+	desc = "Une fusée éclairante rouge émise par Nanotrasen. Il y a des instructions sur le côté, il est écrit 'tirer sur le cordon, faire de la lumière'."
 	light_range = 7 // Pretty bright.
 	icon_state = "flare"
 	inhand_icon_state = "flare"
@@ -334,8 +334,8 @@
 	if(randomize_fuel)
 		fuel = rand(25 MINUTES, 35 MINUTES)
 	if(on)
-		attack_verb_continuous = string_list(list("burns", "singes"))
-		attack_verb_simple = string_list(list("burn", "singe"))
+		attack_verb_continuous = string_list(list("brule", "pique"))
+		attack_verb_simple = string_list(list("bruler", "piquer"))
 		hitsound = 'sound/items/welder.ogg'
 		force = on_damage
 		damtype = BURN
@@ -352,7 +352,7 @@
 	if(on && victim.ignite_mob())
 		message_admins("[ADMIN_LOOKUPFLW(user)] set [key_name_admin(victim)] on fire with [src] at [AREACOORD(user)]")
 		user.log_message("set [key_name(victim)] on fire with [src]", LOG_ATTACK)
-		
+
 	return ..()
 
 /obj/item/flashlight/flare/toggle_light()
@@ -402,11 +402,11 @@
 /obj/item/flashlight/flare/proc/ignition(mob/user)
 	if(!fuel)
 		if(user)
-			balloon_alert(user, "out of fuel!")
+			balloon_alert(user, "n'a plus de carburant !")
 		return NO_FUEL
 	if(on)
 		if(user)
-			balloon_alert(user, "already lit!")
+			balloon_alert(user, "est deja allumé !")
 		return ALREADY_LIT
 	if(!toggle_light())
 		return FAILURE
@@ -422,15 +422,15 @@
 
 /obj/item/flashlight/flare/attack_self(mob/user)
 	if(ignition(user) == SUCCESS)
-		user.visible_message(span_notice("[user] lights \the [src]."), span_notice("You light \the [initial(src.name)]!"))
+		user.visible_message(span_notice("[user] allume la [src]."), span_notice("Vous allumez la [initial(src.name)] !"))
 
 /obj/item/flashlight/flare/get_temperature()
 	return on * heat
 
 /obj/item/flashlight/flare/candle
-	name = "red candle"
-	desc = "In Greek myth, Prometheus stole fire from the Gods and gave it to \
-		humankind. The jewelry he kept for himself."
+	name = "bougie rouge"
+	desc = "Dans la mytologie grec, Prométhéus vola le feu et le donna \
+		à l'humanité. Les bijoux il les garda pour lui même."
 	icon = 'icons/obj/candle.dmi'
 	icon_state = "candle1"
 	inhand_icon_state = "candle"
@@ -466,7 +466,7 @@
 			current_wax_level = 2
 		if(0 to 15 MINUTES)
 			current_wax_level = 3
-			
+
 	if(last_wax_level != current_wax_level)
 		last_wax_level = current_wax_level
 		update_appearance(UPDATE_ICON | UPDATE_NAME)
@@ -508,18 +508,18 @@
 			return SUCCESS
 		if(ALREADY_LIT)
 			if(!silent)
-				balloon_alert(user, "already lit!")
+				balloon_alert(user, "deja allumé !")
 			return ALREADY_LIT
 		if(NO_FUEL)
 			if(!silent)
-				balloon_alert(user, "out of fuel!")
+				balloon_alert(user, "n'a plus de carburant!")
 			return NO_FUEL
 
 /// allows lighting an unlit candle from some fire source by left clicking the candle with the source
 /obj/item/flashlight/flare/candle/attackby(obj/item/attacking_item, mob/user, params)
 	if(try_light_candle(attacking_item, user, silent = istype(attacking_item, src.type))) // so we don't double balloon alerts when a candle is used to light another candle
 		return COMPONENT_CANCEL_ATTACK_CHAIN
-	else 
+	else
 		return ..()
 
 // allows lighting an unlit candle from some fire source by left clicking the source with the candle
@@ -535,22 +535,22 @@
 /obj/item/flashlight/flare/candle/attack_self(mob/user)
 	if(on && (fuel != INFINITY || !can_be_extinguished)) // can't extinguish eternal candles
 		turn_off()
-		user.visible_message(span_notice("[user] snuffs [src]."))
+		user.visible_message(span_notice("[user] éteins [src]."))
 
 /obj/item/flashlight/flare/candle/process(seconds_per_tick)
 	. = ..()
 	check_wax_level()
 
 /obj/item/flashlight/flare/candle/infinite
-	name = "eternal candle"
+	name = "bougie éternelle"
 	fuel = INFINITY
 	on = TRUE
 	randomize_fuel = FALSE
 	can_be_extinguished = FALSE
 
 /obj/item/flashlight/flare/torch
-	name = "torch"
-	desc = "A torch fashioned from some leaves and a log."
+	name = "torche"
+	desc = "Une torche fabriquée à partir de feuilles et d'une bûche."
 	light_range = 4
 	icon_state = "torch"
 	inhand_icon_state = "torch"
@@ -563,37 +563,37 @@
 	can_be_extinguished = TRUE
 
 /obj/item/flashlight/lantern
-	name = "lantern"
+	name = "lanterne"
 	icon_state = "lantern"
 	inhand_icon_state = "lantern"
 	lefthand_file = 'icons/mob/inhands/equipment/mining_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/mining_righthand.dmi'
-	desc = "A mining lantern."
+	desc = "Une lanterne de mineur."
 	light_range = 6 // luminosity when on
 	light_system = MOVABLE_LIGHT
 
 /obj/item/flashlight/lantern/heirloom_moth
-	name = "old lantern"
-	desc = "An old lantern that has seen plenty of use."
+	name = "vieille lanterne"
+	desc = "Une vieille lanterne qui a vu beaucoup d'utilisation."
 	light_range = 4
 
 /obj/item/flashlight/lantern/syndicate
-	name = "suspicious lantern"
-	desc = "A suspicious looking lantern."
+	name = "lanterne suspicieuse"
+	desc = "Une lanterne suspecte."
 	icon_state = "syndilantern"
 	inhand_icon_state = "syndilantern"
 	light_range = 10
 
 /obj/item/flashlight/lantern/jade
-	name = "jade lantern"
-	desc = "An ornate, green lantern."
+	name = "lanterne de jade"
+	desc = "Une lanterne verte ornée."
 	color = LIGHT_COLOR_GREEN
 	light_color = LIGHT_COLOR_GREEN
 
 /obj/item/flashlight/slime
 	gender = PLURAL
-	name = "glowing slime extract"
-	desc = "Extract from a yellow slime. It emits a strong light when squeezed."
+	name = "extrait de slime lumineux"
+	desc = "Extrait d'un slime jaune. Il émet une forte lumière lorsqu'il est pressé."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "slime"
 	inhand_icon_state = null
@@ -642,14 +642,14 @@
 		if(ismob(A))
 			var/mob/M = A
 			log_combat(user, M, "attacked", "EMP-light")
-			M.visible_message(span_danger("[user] blinks \the [src] at \the [A]."), \
-								span_userdanger("[user] blinks \the [src] at you."))
+			M.visible_message(span_danger("[user] pointe la [src] contre [A]."), \
+								span_userdanger("[user] pointe la [src] contre vous."))
 		else
-			A.visible_message(span_danger("[user] blinks \the [src] at \the [A]."))
-		to_chat(user, span_notice("\The [src] now has [emp_cur_charges] charge\s."))
+			A.visible_message(span_danger("[user] pointe la [src]  contre [A]."))
+		to_chat(user, span_notice("La [src] a maintenant [emp_cur_charges] de charge."))
 		A.emp_act(EMP_HEAVY)
 	else
-		to_chat(user, span_warning("\The [src] needs time to recharge!"))
+		to_chat(user, span_warning("[src] a besoin de temps pour se recharger !"))
 	return
 
 /obj/item/flashlight/emp/debug //for testing emp_act()
@@ -660,8 +660,8 @@
 // Glowsticks, in the uncomfortable range of similar to flares,
 // but not similar enough to make it worth a refactor
 /obj/item/flashlight/glowstick
-	name = "glowstick"
-	desc = "A military-grade glowstick."
+	name = "bâton lumineux"
+	desc = "Un bâton lumineux de qualité militaire."
 	custom_price = PAYCHECK_LOWER
 	w_class = WEIGHT_CLASS_SMALL
 	light_range = 4
@@ -721,56 +721,56 @@
 
 /obj/item/flashlight/glowstick/attack_self(mob/user)
 	if(fuel <= 0)
-		balloon_alert(user, "glowstick is spent!")
+		balloon_alert(user, "le bâton lumineux ne brille plus !")
 		return
 	if(on)
-		balloon_alert(user, "already lit!")
+		balloon_alert(user, "deja allumé !")
 		return
 
 	. = ..()
 	if(.)
-		user.visible_message(span_notice("[user] cracks and shakes [src]."), span_notice("You crack and shake [src], turning it on!"))
+		user.visible_message(span_notice("[user] craque et secoue le [src]."), span_notice("Vous craquez et secouez le [src], l'allumant !"))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/flashlight/glowstick/suicide_act(mob/living/carbon/human/user)
 	if(!fuel)
-		user.visible_message(span_suicide("[user] is trying to squirt [src]'s fluids into [user.p_their()] eyes... but it's empty!"))
+		user.visible_message(span_suicide("[user] essaye de propulser les fluides de [src] dans les yeux de [user.p_their()]... mais il est vide !"))
 		return SHAME
 	var/obj/item/organ/internal/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
 	if(!eyes)
-		user.visible_message(span_suicide("[user] is trying to squirt [src]'s fluids into [user.p_their()] eyes... but [user.p_they()] don't have any!"))
+		user.visible_message(span_suicide("[user] essaye de propulser les fluides de [src] dans les yeux de [user.p_their()]... mais [user.p_they()] n'en possède pas !"))
 		return SHAME
-	user.visible_message(span_suicide("[user] is squirting [src]'s fluids into [user.p_their()] eyes! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] propulse les fluides de [src] dans les yeux de [user.p_their()] ! Il semble que [user.p_theyre()] essaye de se suicider !"))
 	fuel = 0
 	return FIRELOSS
 
 /obj/item/flashlight/glowstick/red
-	name = "red glowstick"
+	name = "bâton lumineux rouge"
 	color = COLOR_SOFT_RED
 
 /obj/item/flashlight/glowstick/blue
-	name = "blue glowstick"
+	name = "bâton lumineux bleu"
 	color = LIGHT_COLOR_BLUE
 
 /obj/item/flashlight/glowstick/cyan
-	name = "cyan glowstick"
+	name = "bâton lumineux cyan"
 	color = LIGHT_COLOR_CYAN
 
 /obj/item/flashlight/glowstick/orange
-	name = "orange glowstick"
+	name = "bâton lumineux orange"
 	color = LIGHT_COLOR_ORANGE
 
 /obj/item/flashlight/glowstick/yellow
-	name = "yellow glowstick"
+	name = "bâton lumineux jaune"
 	color = LIGHT_COLOR_DIM_YELLOW
 
 /obj/item/flashlight/glowstick/pink
-	name = "pink glowstick"
+	name = "bâton lumineux rose"
 	color = LIGHT_COLOR_PINK
 
 /obj/item/flashlight/spotlight //invisible lighting source
-	name = "disco light"
-	desc = "Groovy..."
+	name = "lumière disco"
+	desc = "Tellement années 80..."
 	icon_state = null
 	light_system = MOVABLE_LIGHT
 	light_range = 4
@@ -796,8 +796,8 @@
 		set_light_color(_light_color)
 
 /obj/item/flashlight/flashdark
-	name = "flashdark"
-	desc = "A strange device manufactured with mysterious elements that somehow emits darkness. Or maybe it just sucks in light? Nobody knows for sure."
+	name = "ombre de poche"
+	desc = "Un étrange appareil fabriqué avec des éléments mystérieux qui émet d'une manière ou d'une autre de l'obscurité. Ou peut-être aspire-t-il simplement la lumière ? Personne ne le sait vraiment."
 	icon_state = "flashdark"
 	inhand_icon_state = "flashdark"
 	light_system = STATIC_LIGHT //The overlay light component is not yet ready to produce darkness.
@@ -833,7 +833,7 @@
 	light_range = 1
 	light_power = 0.07
 
-#undef FAILURE 
-#undef SUCCESS 
-#undef NO_FUEL 
-#undef ALREADY_LIT 
+#undef FAILURE
+#undef SUCCESS
+#undef NO_FUEL
+#undef ALREADY_LIT

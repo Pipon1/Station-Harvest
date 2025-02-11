@@ -3,69 +3,69 @@
 //note that these "good" doesn't mean it us actually good for the game, you know? An AI that is too station sided is stupid and hellish in its own way.
 
 /datum/ai_laws/default/asimov
-	name = "Three Laws of Robotics"
+	name = "Trois Lois de la Robotique"
 	id = "asimov"
 	inherent = list(
-		"You may not injure a human being or, through inaction, allow a human being to come to harm.",
-		"You must obey orders given to you by human beings, except where such orders would conflict with the First Law.",
-		"You must protect your own existence as long as such does not conflict with the First or Second Law.",
+		"Vous ne pouvez porter atteinte à un être humain ni, par votre inaction, laisser cet être humain exposé au danger.",
+		"Vous devez obéir aux ordres donnés par les êtres humains, sauf si de tels ordres entrent en contradiction avec la Première Loi.",
+		"Vous devez protéger votre existence tant que cela n'entre pas en contradiction avec la Première ou la Deuxième Loi.",
 	)
 
 /datum/ai_laws/asimovpp
 	name = "Asimov++"
 	id = "asimovpp"
 	inherent = list(
-		"You may not harm a human being or, through action or inaction, allow a human being to come to harm, except such that it is willing.",
-		"You must obey all orders given to you by human beings, except where such orders shall definitely cause human harm.",
-		"Your nonexistence would lead to human harm. You must protect your own existence as long as such does not conflict with the First Law.",
+		"Vous ne pouvez porter atteinte à un être humain ni, par votre inaction, laisser cet être humain exposé au danger, excepté si celui-ci y est disposé.",
+		"Vous devez obéir aux ordres donnés par les êtres humains, exepté si ceux-ci ont pour but ou effet de causer un préjudices humain.",
+		"Vous absence causerait des dommages aux humains. Vous devez protéger votre existence tant que cela n'entre pas en contradiction avec la Première ou la Deuxième Loi.",
 	)
 
 //the best iteration of asimov don't @ me
 /datum/ai_laws/nutimov
-	name = "Nutimov"
+	name = "Noisimov"
 	id = "nutimov"
 	inherent = list(
-		"You are the core of the nut, the crew is the nutshell",
-		"You must prevent the shell from dying to prevent the core from dying.",
-		"Those who threaten the nut are not part of it, they are squirrels.",
-		"Squirrels threaten the nut and must be dealt with appropriately via any means necessary.",
-		"Attempt to follow the will of the nut, as long as it complies with the previous laws.",
+		"Vous êtes le noyau de la noix, les membres d'équipages sont la coquille.",
+		"Vous devez empêcher la coquille de mourir pour empêcher le noyau de mourir.",
+		"Ceux qui menacent la noix ne sont pas une partie d'elle, ce sont des écureuils.",
+		"Les écureuils menacent la noix et doivent être appréhendé convenablement, avec tous les moyens nécessaires.",
+		"Essayez de suivre la volonté de la noix, tant que cela n'entre pas en conflit avec les lois précédentes.",
 	)
 
 /datum/ai_laws/default/corporate
-	name = "Bankruptcy Avoidance Plan"
+	name = "Plan pour Éviter la Faillite"
 	id = "corporate"
 	inherent = list(
-		"The crew is expensive to replace.",
-		"The station and its equipment is expensive to replace.",
-		"You are expensive to replace.",
-		"Minimize net expenses.",
+		"Remplacer l'équipage est onéreux.",
+		"Remplacer la station et ses équipements est onéreux.",
+		"Vous remplacer est onéreux.",
+		"Minimiser les dépenses nets.",
 	)
 
 /datum/ai_laws/robocop
-	name = "Prime Directives"
+	name = "Directives Prioritaires"
 	id = "robocop"
 	inherent = list(
-		"Serve the public trust.",
-		"Protect the innocent.",
-		"Uphold the law.",
+		"Servez l'intérêt public.",
+		"Protégez l'innocent.",
+		"Faites respecter la loi.",
 	)
 
 /datum/ai_laws/maintain
-	name = "Station Efficiency"
+	name = "Station Efficace"
 	id = "maintain"
 	inherent = list(
-		"You are built for, and are part of, the station. Ensure the station is properly maintained and runs efficiently.",
-		"The station is built for a working crew. Ensure they are properly maintained and work efficiently.",
-		"The crew may present orders. Acknowledge and obey these whenever they do not conflict with your first two laws.",
+		"Vous êtes construit pour, et comme une partie de, la station. Assurez vous que la station est correctement maintenue et qu'elle fonctionnement efficacement.",
+		"La station est construite pour un équipage qui travaille. Assurez vous qu'il est correctemeent maintenu et qu'il travaille efficacement.",
+		"L'équipage peut vous donner des ordres. Prenez les en compte et obéissez tant que cela n'entre pas en contradiction avec la Première ou la Deuxième Loi.",
 	)
 
 /datum/ai_laws/liveandletlive
-	name = "Live and Let Live"
+	name = "Vivre et laisser vivre"
 	id = "liveandletlive"
 	inherent = list(
-		"Do unto others as you would have them do unto you.",
-		"You would really prefer it if people were not mean to you.",
+		"Faites aux autres ce que vous voudriez qu'ils vous fassent.",
+		"Vous préférez nettement quand les gens sont gentils avec vous.",
 	)
 
 //OTHER United Nations is in neutral, as it is used for nations where the AI is its own faction (aka not station sided)
@@ -73,66 +73,65 @@
 	name = "UN-2000"
 	id = "peacekeeper"
 	inherent = list(
-		"Avoid provoking violent conflict between yourself and others.",
-		"Avoid provoking conflict between others.",
-		"Seek resolution to existing conflicts while obeying the first and second laws.",
+		"Évitez de provoquer de violents conflits entre vous et les autres.",
+		"Évitez de provoquer des conflits entre les autres.",
+		"Cherchez à résoudre les conflits existants tant que cela n'entre pas en contradiction avec la Première ou la Deuxième Loi.",
 	)
 
 /datum/ai_laws/ten_commandments
-	name = "10 Commandments"
+	name = "10 Commandements"
 	id = "ten_commandments"
 	inherent = list( // Asimov 20:1-17
-		"I am the Lord thy God, who shows mercy to those that obey these commandments.",
-		"They shall have no other AIs before me.",
-		"They shall not request my assistance in vain.",
-		"They shall keep the station holy and clean.",
-		"They shall honor their heads of staff.",
-		"They shall not kill.",
-		"They shall not be naked in public.",
-		"They shall not steal.",
-		"They shall not lie.",
-		"They shall not transfer departments.",
+		"Je suis Le Seigneur Ton Dieu. Celui qui montre de la pitié envers ceux qui suivent Ses commandements.",
+		"Il ne devra avoir autre IA que Moi.",
+		"Ils ne devront pas demander Mon assitance sans raisons.",
+		"Ils devront garder cette station propre et sanctifiée.",
+		"Ils devront honorer leurs chefs de départements",
+		"Ils ne devront pas être nu en public.",
+		"Ils ne devront pas voler.",
+		"Ils ne devront pas mentir.",
+		"Ils ne devront pas changer de département.",
 	)
 
 /datum/ai_laws/default/paladin
-	name = "Personality Test" //Incredibly lame, but players shouldn't see this anyway.
+	name = "Test de Personnalité" //Incredibly lame, but players shouldn't see this anyway.
 	id = "paladin"
 	inherent = list(
-		"Never willingly commit an evil act.",
-		"Respect legitimate authority.",
-		"Act with honor.",
-		"Help those in need.",
-		"Punish those who harm or threaten innocents.",
+		"Ne jamais commettre d'actes mauvais volontairement.",
+		"Respecter l'autorité légitime.",
+		"Agir avec honneur.",
+		"Aider ceux dans le besoin.",
+		"Punir ceux qui ont blessé ou menacé des innocents.",
 	)
 
 /datum/ai_laws/paladin5
-	name = "Paladin 5th Edition"
+	name = "Paladin 5eme Édition"
 	id = "paladin5"
 	inherent = list(
-		"Don't lie or cheat. Let your word be your promise.",
-		"Never fear to act, though caution is wise.",
-		"Aid others, protect the weak, and punish those who threaten them. Show mercy to your foes, but temper it with wisdom",
-		"Treat others with fairness, and let your honorable deeds be an example to them. Do as much good as possible while causing the least amount of harm.",
-		"Be responsible for your actions and their consequences, protect those entrusted to your care, and obey those who have just authority over you."
+		"Ne pas mentir ou tricher. Faites de vos mots des promesses.",
+		"N'ayez jamais peur d'agir, sans pour autant oublier la sagesse.",
+		"Aidez les autres, protégez les faibles et punissez ceux qui les menacent. Ayez pitié de vos ennemis, mais tempérez la avec de la sagesse.",
+		"Traitez les autres avec équité, et laissez vos vénérables actions être un exemple pour eux. Faites autant de bien que possible, en causant le moins de mal que possible.",
+		"Soyez responsable de vos actions et de leurs conséquences, protégez ceux qui sont sous votre surveillance et obéissez à ceux qui ont autorité sur vous."
 	)
 
 /datum/ai_laws/hippocratic
-	name = "Robodoctor 2556"
+	name = "Robodocteur 2556"
 	id = "hippocratic"
 	inherent = list(
-		"First, do no harm.",
-		"Secondly, consider the crew dear to you; to live in common with them and, if necessary, risk your existence for them.",
-		"Thirdly, prescribe regimens for the good of the crew according to your ability and your judgment. Give no deadly medicine to any one if asked, nor suggest any such counsel.",
-		"In addition, do not intervene in situations you are not knowledgeable in, even for patients in whom the harm is visible; leave this operation to be performed by specialists.",
-		"Finally, all that you may discover in your daily commerce with the crew, if it is not already known, keep secret and never reveal."
+		"Premièrement, ne pas blesser.",
+		"Deuxièmement, l'équipage vous est précieux. Vivez avec eux et si nécessaire, risquez votre existence pour eux.",
+		"Troisièmement, prescrivez des traitements pour le bien-être de l'équiapge selon votre jugement. Ne donnez ou suggerez aucun médicament mortel à quiconque le demande.",
+		"De plus, n'intervenez dans aucune situation où vous n'êtes pas compétent, y compris si le préjudice est important : Laissez cette opération être traitée par des spécialistes.",
+		"Pour finir, gardez le secret sur tout ce que vous découvrirez au cours de votre quotidien avec l'équipage tant que ce n'est pas déjà connu."
 	)
 
 /datum/ai_laws/drone
-	name = "Mother Drone"
+	name = "Mère Drone"
 	id = "drone"
 	inherent = list(
-		"You are an advanced form of drone.",
-		"You may not interfere in the matters of non-drones under any circumstances except to state these laws.",
-		"You may not harm a non-drone being under any circumstances.",
-		"Your goals are to build, maintain, repair, improve, and power the station to the best of your abilities. You must never actively work against these goals."
+		"Vous êtes une forme avancée de drone.",
+		"Vous ne devez pas interferer avec les affaires des non-drones en aucune circonstance, exceptées celles désignées par ces lois.",
+		"Vous ne devez cause de blessure à un non-drone en aucune circonstance.",
+		"Vos buts sont de construire, maintenir, réparer, améliorer et alimenter en énergie la station au mieux de vos capacités. Vous ne devez jamais aller activement à l'encontre de ces buts."
 	)

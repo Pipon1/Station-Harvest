@@ -19,28 +19,34 @@ map birdshot
 	votable
 endmap
 
-#map metastation
+map gardenstation
+	default
+	maxplayers 50
+	votable
+endmap
+
+map metastation
 	minplayers 25
 	#voteweight 0.5
 	votable
 endmap
 
-#map deltastation
+map deltastation
 	minplayers 50
 	votable
 endmap
 
-#map icebox
+map icebox
 	minplayers 25
 	votable
 endmap
 
-#map tramstation
+map tramstation
 	minplayers 35
 	votable
 endmap
 
-#map northstar
+map northstar
 	minplayers 50
 	votable
 endmap
@@ -50,11 +56,4 @@ map runtimestation
 endmap
 
 map multiz_debug
-endmap
-
-map gardenstation
-	default
-	minplayer 15
-	maxplayer 45
-	votable
 endmap

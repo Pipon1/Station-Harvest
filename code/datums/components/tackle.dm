@@ -43,13 +43,13 @@
 	src.min_distance = min_distance
 
 	var/mob/P = parent
-	to_chat(P, span_notice("You are now able to launch tackles! You can do so by activating throw mode, and clicking on your target with an empty hand."))
+	to_chat(P, span_notice("Vous pouvez maintenant lancer des plaquages ! Vous pouvez le faire en activant le mode de lancer, et en cliquant sur votre cible avec une main vide."))
 
 	addtimer(CALLBACK(src, PROC_REF(resetTackle)), base_knockdown, TIMER_STOPPABLE)
 
 /datum/component/tackler/Destroy()
 	var/mob/P = parent
-	to_chat(P, span_notice("You can no longer tackle."))
+	to_chat(P, span_notice("Vous ne pouvez plus faire de plaquage."))
 	return ..()
 
 /datum/component/tackler/RegisterWithParent()
@@ -81,23 +81,23 @@
 		return
 
 	if(HAS_TRAIT(user, TRAIT_HULK))
-		to_chat(user, span_warning("You're too angry to remember how to tackle!"))
+		to_chat(user, span_warning("Vous êtes trop en colère pour vous rappeler comment plaquer !"))
 		return
 
 	if(HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
-		to_chat(user, span_warning("You need free use of your hands to tackle!"))
+		to_chat(user, span_warning("Vous avez besoin de vos mains pour plaquer !"))
 		return
 
 	if(user.body_position == LYING_DOWN)
-		to_chat(user, span_warning("You must be standing to tackle!"))
+		to_chat(user, span_warning("Vous devez être debout pour plaquer !"))
 		return
 
 	if(tackling)
-		to_chat(user, span_warning("You're not ready to tackle!"))
+		to_chat(user, span_warning("Vous n'êtes pas prêt à plaquer !"))
 		return
 
 	if(user.has_movespeed_modifier(/datum/movespeed_modifier/shove)) // can't tackle if you just got shoved
-		to_chat(user, span_warning("You're too off balance to tackle!"))
+		to_chat(user, span_warning("Vous êtes trop déséquilibré pour plaquer !"))
 		return
 
 	user.face_atom(clicked_atom)
@@ -106,11 +106,11 @@
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(checkObstacle))
 	playsound(user, 'sound/weapons/thudswoosh.ogg', 40, TRUE, -1)
 
-	var/leap_word = isfelinid(user) ? "pounce" : "leap" //If cat, "pounce" instead of "leap".
+	var/leap_word = isfelinid(user) ? "tombe" : "saute" //If cat, "pounce" instead of "leap".
 	if(can_see(user, clicked_atom, 7))
-		user.visible_message(span_warning("[user] [leap_word]s at [clicked_atom]!"), span_danger("You [leap_word] at [clicked_atom]!"))
+		user.visible_message(span_warning("[user] [leap_word] sur [clicked_atom] !"), span_danger("vous [leap_word]z sur [clicked_atom] !"))
 	else
-		user.visible_message(span_warning("[user] [leap_word]s!"), span_danger("You [leap_word]!"))
+		user.visible_message(span_warning("[user] [leap_word] !"), span_danger("You [leap_word]z !"))
 
 	if(get_dist(user, clicked_atom) < min_distance)
 		var/tackle_angle = get_angle(user, clicked_atom)
@@ -157,7 +157,7 @@
 	var/mob/living/carbon/target = hit
 	var/mob/living/carbon/human/T = target
 	var/mob/living/carbon/human/S = user
-	var/tackle_word = isfelinid(user) ? "pounce" : "tackle" //If cat, "pounce" instead of "tackle".
+	var/tackle_word = isfelinid(user) ? "tombe" : "plaque" //If cat, "pounce" instead of "tackle".
 
 	var/roll = rollTackle(target)
 	tackling = FALSE

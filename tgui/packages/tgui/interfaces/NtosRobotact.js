@@ -50,7 +50,7 @@ export const NtosRobotactContent = (props, context) => {
             lineHeight="23px"
             selected={tab_main === 1}
             onClick={() => setTab_main(1)}>
-            Status
+            Statut
           </Tabs.Tab>
           <Tabs.Tab
             icon="list"
@@ -67,21 +67,21 @@ export const NtosRobotactContent = (props, context) => {
             <Flex.Item width="30%">
               <Section title="Configuration" fill>
                 <LabeledList>
-                  <LabeledList.Item label="Unit">
+                  <LabeledList.Item label="Unité">
                     {borgName.slice(0, 17)}
                   </LabeledList.Item>
                   <LabeledList.Item label="Type">{borgType}</LabeledList.Item>
-                  <LabeledList.Item label="AI">
+                  <LabeledList.Item label="IA">
                     {masterAI.slice(0, 17)}
                   </LabeledList.Item>
                 </LabeledList>
               </Section>
             </Flex.Item>
             <Flex.Item grow={1} basis="content" ml={1}>
-              <Section title="Status">
-                Charge:
+              <Section title="Statut">
+                Charge :
                 <Button
-                  content="Power Alert"
+                  content="Alerte de charge"
                   disabled={charge}
                   onClick={() => act('alertPower')}
                 />
@@ -94,7 +94,7 @@ export const NtosRobotactContent = (props, context) => {
                   }}>
                   <AnimatedNumber value={charge} />
                 </ProgressBar>
-                Chassis Integrity:
+                Intégrité du chassis :
                 <ProgressBar
                   value={integrity}
                   minValue={0}
@@ -106,7 +106,7 @@ export const NtosRobotactContent = (props, context) => {
                   }}
                 />
               </Section>
-              <Section title="Lamp Power">
+              <Section title="Puissance de la lampe">
                 <Slider
                   value={lampIntensity}
                   step={1}
@@ -119,7 +119,7 @@ export const NtosRobotactContent = (props, context) => {
                     })
                   }
                 />
-                Lamp power usage: {lampIntensity / 2} watts
+                Utilisation de charche de la lampe : {lampIntensity / 2} watts
               </Section>
             </Flex.Item>
             <Flex.Item width="50%" ml={1}>
@@ -137,51 +137,51 @@ export const NtosRobotactContent = (props, context) => {
                     lineHeight="23px"
                     selected={tab_sub === 2}
                     onClick={() => setTab_sub(2)}>
-                    Upgrades
+                    Améliorations
                   </Tabs.Tab>
                   <Tabs.Tab
                     icon=""
                     lineHeight="23px"
                     selected={tab_sub === 3}
                     onClick={() => setTab_sub(3)}>
-                    Diagnostics
+                    Diagnostiques
                   </Tabs.Tab>
                 </Tabs>
               </Section>
               {tab_sub === 1 && (
                 <Section>
                   <LabeledList>
-                    <LabeledList.Item label="Maintenance Cover">
+                    <LabeledList.Item label="Trappe de maintenance">
                       <Button.Confirm
-                        content="Unlock"
+                        content="Dévérouiller"
                         disabled={cover === 'UNLOCKED'}
                         onClick={() => act('coverunlock')}
                       />
                     </LabeledList.Item>
-                    <LabeledList.Item label="Sensor Overlay">
+                    <LabeledList.Item label="Système de senseurs">
                       <Button
                         content={sensors}
                         onClick={() => act('toggleSensors')}
                       />
                     </LabeledList.Item>
                     <LabeledList.Item
-                      label={'Stored Photos (' + printerPictures + ')'}>
+                      label={'Photos sauvegardé (' + printerPictures + ')'}>
                       <Button
-                        content="View"
+                        content="Voir"
                         disabled={!printerPictures}
                         onClick={() => act('viewImage')}
                       />
                       <Button
-                        content="Print"
+                        content="Imprimer"
                         disabled={!printerPictures}
                         onClick={() => act('printImage')}
                       />
                     </LabeledList.Item>
-                    <LabeledList.Item label="Printer Toner">
+                    <LabeledList.Item label="Toner de l'imprimante">
                       <ProgressBar value={printerToner / printerTonerMax} />
                     </LabeledList.Item>
                     {!!thrustersInstalled && (
-                      <LabeledList.Item label="Toggle Thrusters">
+                      <LabeledList.Item label="Allumer les réacteurs">
                         <Button
                           content={thrustersStatus}
                           onClick={() => act('toggleThrusters')}
@@ -189,9 +189,9 @@ export const NtosRobotactContent = (props, context) => {
                       </LabeledList.Item>
                     )}
                     {!!selfDestructAble && (
-                      <LabeledList.Item label="Self Destruct">
+                      <LabeledList.Item label="Auto-déstruction">
                         <Button.Confirm
-                          content="ACTIVATE"
+                          content="ACTIVATER"
                           color="red"
                           onClick={() => act('selfDestruct')}
                         />
@@ -213,7 +213,7 @@ export const NtosRobotactContent = (props, context) => {
                 <Section>
                   <LabeledList>
                     <LabeledList.Item
-                      label="AI Connection"
+                      label="Connexion de l'IA"
                       color={
                         wireAI === 'FAULT'
                           ? 'red'
@@ -224,12 +224,12 @@ export const NtosRobotactContent = (props, context) => {
                       {wireAI}
                     </LabeledList.Item>
                     <LabeledList.Item
-                      label="LawSync"
+                      label="LoiCon"
                       color={wireLaw === 'FAULT' ? 'red' : 'green'}>
                       {wireLaw}
                     </LabeledList.Item>
                     <LabeledList.Item
-                      label="Camera"
+                      label="Caméra"
                       color={
                         wireCamera === 'FAULT'
                           ? 'red'
@@ -240,12 +240,12 @@ export const NtosRobotactContent = (props, context) => {
                       {wireCamera}
                     </LabeledList.Item>
                     <LabeledList.Item
-                      label="Module Controller"
+                      label="Module controlleur"
                       color={wireModule === 'FAULT' ? 'red' : 'green'}>
                       {wireModule}
                     </LabeledList.Item>
                     <LabeledList.Item
-                      label="Motor Controller"
+                      label="Moteur controlleur"
                       color={
                         locomotion === 'FAULT'
                           ? 'red'
@@ -256,7 +256,7 @@ export const NtosRobotactContent = (props, context) => {
                       {locomotion}
                     </LabeledList.Item>
                     <LabeledList.Item
-                      label="Maintenance Cover"
+                      label="Trappe de maintenance"
                       color={cover === 'UNLOCKED' ? 'red' : 'green'}>
                       {cover}
                     </LabeledList.Item>
@@ -267,13 +267,13 @@ export const NtosRobotactContent = (props, context) => {
           </Flex>
           <Flex.Item height={21} mt={1}>
             <Section
-              title="Laws"
+              title="Lois"
               fill
               scrollable
               buttons={
                 <>
                   <Button
-                    content="State Laws"
+                    content="Afficher ses lois"
                     onClick={() => act('lawstate')}
                   />
                   <Button icon="volume-off" onClick={() => act('lawchannel')} />

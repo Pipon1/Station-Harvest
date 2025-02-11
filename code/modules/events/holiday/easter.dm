@@ -1,28 +1,28 @@
 /datum/round_event_control/easter
-	name = "Easter Eggselence"
+	name = "Chasse aux oeufs de Pâques"
 	holidayID = EASTER
 	typepath = /datum/round_event/easter
 	weight = -1
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
 	category = EVENT_CATEGORY_HOLIDAY
-	description = "Hides surprise filled easter eggs in maintenance."
+	description = "Cache des oeufs rempli de surprise dans les maintenances."
 
 /datum/round_event/easter/announce(fake)
-	priority_announce(pick("Hip-hop into Easter!","Find some Bunny's stash!","Today is National 'Hunt a Wabbit' Day.","Be kind, give Chocolate Eggs!"))
+	priority_announce(pick("La chasse aux oeufs est lancée !","Celui qui gagne récupère un chapeau de paille!","Aujourd'hui est le jour interespèce de la chasse aux oeufs.","Soyez sympa avec eux, donnez leur un oeuf !"))
 
 
 /datum/round_event_control/rabbitrelease
-	name = "Release the Rabbits!"
+	name = "Libérez les lapins!"
 	holidayID = EASTER
 	typepath = /datum/round_event/rabbitrelease
 	weight = 5
 	max_occurrences = 10
 	category = EVENT_CATEGORY_HOLIDAY
-	description = "Summons a wave of cute rabbits."
+	description = "Invoque une vague de lapins tout mignons."
 
 /datum/round_event/rabbitrelease/announce(fake)
-	priority_announce("Unidentified furry objects detected coming aboard [station_name()]. Beware of Adorable-ness.", "Fluffy Alert", ANNOUNCER_ALIENS)
+	priority_announce("Objets pelucheux non-identités detectés à bord de [station_name()]. Attention aux crises de mignonitude.", "Alerte pelucheuse", ANNOUNCER_ALIENS)
 
 
 /datum/round_event/rabbitrelease/start()
@@ -36,7 +36,7 @@
 
 //Easter Baskets
 /obj/item/storage/basket/easter
-	name = "Easter Basket"
+	name = "panier à oeufs"
 
 /obj/item/storage/basket/easter/Initialize(mapload)
 	. = ..()
@@ -57,17 +57,17 @@
 
 //Bunny Suit
 /obj/item/clothing/head/costume/bunnyhead
-	name = "Easter Bunny Head"
+	name = "tête de costume de lapin de pâques"
 	icon_state = "bunnyhead"
 	inhand_icon_state = null
-	desc = "Considerably more cute than 'Frank'."
+	desc = "Ces petites oreilles vont vous faire gagner ce concours de mignonitude."
 	slowdown = -0.3
 	clothing_flags = THICKMATERIAL | SNUG_FIT
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 
 /obj/item/clothing/suit/costume/bunnysuit
-	name = "Easter Bunny Suit"
-	desc = "Hop Hop Hop!"
+	name = "costume de lapin de pâques"
+	desc = "Hop Hop Hop !"
 	icon_state = "bunnysuit"
 	icon = 'icons/obj/clothing/suits/costume.dmi'
 	worn_icon = 'icons/mob/clothing/suits/costume.dmi'
@@ -79,15 +79,15 @@
 
 //Bunny bag!
 /obj/item/storage/backpack/satchel/bunnysatchel
-	name = "Easter Bunny Satchel"
-	desc = "Good for your eyes."
+	name = "sacoque de lapin de pâques"
+	desc = "Bon pour vos yeux."
 	icon_state = "satchel_carrot"
 	inhand_icon_state = null
 
 //Egg prizes and egg spawns!
 /obj/item/surprise_egg
-	name = "wrapped egg"
-	desc = "A chocolate egg containing a little something special. Unwrap and enjoy!"
+	name = "oeuf surprise"
+	desc = "Un oeuf en chocolat contenant un petit quelque chose. Déballez le et amusez-vous !"
 	icon_state = "egg"
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
@@ -127,22 +127,22 @@
 
 /obj/item/surprise_egg/attack_self(mob/user)
 	..()
-	to_chat(user, span_notice("You unwrap [src] and find a prize inside!"))
+	to_chat(user, span_notice("Vous déballez l'[src] et trouvez un prix à l'intérieur !"))
 	dispensePrize(get_turf(src))
 	qdel(src)
 
 //Easter Recipes + food
 /obj/item/food/hotcrossbun
-	name = "hot cross bun"
-	desc = "The cross represents the Assistants that died for your sins."
+	name = "petits pains anglais de pâques"
+	desc = "La croix représente les assistants morts pour vos péchés."
 	icon_state = "hotcrossbun"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/sugar = 1)
 	foodtypes = SUGAR | GRAIN | BREAKFAST
-	tastes = list("pastry" = 1, "easter" = 1)
+	tastes = list("de patisserie" = 1, "de sucre" = 1)
 	bite_consumption = 2
 
 /datum/crafting_recipe/food/hotcrossbun
-	name = "Hot Cross Bun"
+	name = "petits pains anglais de pâques"
 	reqs = list(
 		/obj/item/food/breadslice/plain = 1,
 		/datum/reagent/consumable/sugar = 1
@@ -152,7 +152,7 @@
 	category = CAT_BREAD
 
 /datum/crafting_recipe/food/briochecake
-	name = "Brioche cake"
+	name = "brioche"
 	reqs = list(
 		/obj/item/food/cake/plain = 1,
 		/datum/reagent/consumable/sugar = 2
@@ -162,14 +162,14 @@
 
 /obj/item/food/scotchegg
 	name = "scotch egg"
-	desc = "A boiled egg wrapped in a delicious, seasoned meatball."
+	desc = "Un oeuf cuit, enveloppé de viande hachée assaisonnée."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "scotchegg"
 	bite_consumption = 3
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 2)
 
 /datum/crafting_recipe/food/scotchegg
-	name = "Scotch egg"
+	name = "scotch egg"
 	reqs = list(
 		/datum/reagent/consumable/salt = 1,
 		/datum/reagent/consumable/blackpepper = 1,
@@ -180,7 +180,7 @@
 	category = CAT_EGG
 
 /datum/crafting_recipe/food/mammi
-	name = "Mammi"
+	name = "mammi"
 	reqs = list(
 		/obj/item/food/bread/plain = 1,
 		/obj/item/food/chocolatebar = 1,
@@ -190,13 +190,13 @@
 	category = CAT_MISCFOOD
 
 /obj/item/food/chocolatebunny
-	name = "chocolate bunny"
-	desc = "Contains less than 10% real rabbit!"
+	name = "lapin en chocolat"
+	desc = "Contient moins de 10% de lapin !"
 	icon_state = "chocolatebunny"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
 
 /datum/crafting_recipe/food/chocolatebunny
-	name = "Chocolate bunny"
+	name = "lapin en chocolat"
 	reqs = list(
 		/datum/reagent/consumable/sugar = 2,
 		/obj/item/food/chocolatebar = 1

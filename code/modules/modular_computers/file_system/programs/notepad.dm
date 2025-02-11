@@ -1,16 +1,16 @@
 /datum/computer_file/program/notepad
 	filename = "notepad"
-	filedesc = "Notepad"
+	filedesc = "Bloc-Notes"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "generic"
-	extended_desc = "Jot down your work-safe thoughts and what not."
+	extended_desc = "Ecrivez rapidement vos pensées en accord avec NanoTrasen."
 	size = 2
 	tgui_id = "NtosNotepad"
 	program_icon = "book"
 	usage_flags = PROGRAM_TABLET
 
-	var/written_note = "Congratulations on your station upgrading to the new NtOS and Thinktronic based collaboration effort, \
-		bringing you the best in electronics and software since 2467!"
+	var/written_note = "Félécitations pour la mise à jour de votre station vers le nouvel effort de collaboration basé sur NtOS et Thinktronic, \
+		vous apportant le meilleur de l'électronique et des logiciels depuis 2467 !"
 
 /datum/computer_file/program/notepad/ui_act(action, list/params, datum/tgui/ui)
 	switch(action)

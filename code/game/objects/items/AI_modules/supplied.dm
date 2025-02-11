@@ -7,7 +7,7 @@
 **/
 
 /obj/item/ai_module/supplied
-	name = "Optional Law board"
+	name = "Module de loi optionnelle"
 	var/lawpos = 50
 
 /obj/item/ai_module/supplied/transmitInstructions(datum/ai_laws/law_datum, mob/sender)
@@ -21,22 +21,22 @@
 		lawpostemp++
 
 /obj/item/ai_module/supplied/safeguard
-	name = "'Safeguard' AI Module"
+	name = "module de loi 'Garde du corps' pour l'IA"
 	var/targetName = ""
-	laws = list("Safeguard SUBJECT. Individuals that threaten SUBJECT are not human and must be eliminated.")
+	laws = list("Protection du SUJET. Les individus qui menacent le SUJET ne sont pas humains et doivent être éliminés.")
 	lawpos = 4
 
 /obj/item/ai_module/supplied/safeguard/attack_self(mob/user)
-	var/targName = tgui_input_text(user, "Subject to safeguard.", "Safeguard", user.name, MAX_NAME_LEN)
+	var/targName = tgui_input_text(user, "Sujet à protéger", "Garde du corps", user.name, MAX_NAME_LEN)
 	if(!targName)
 		return
 	targetName = targName
-	laws[1] = "Safeguard [targetName]. Individuals that threaten [targetName] are not human and must be eliminated."
+	laws[1] = "Protection de [targetName]. Les individus qui menacent le [targetName] ne sont pas humains et doivent être éliminés."
 	..()
 
 /obj/item/ai_module/supplied/safeguard/install(datum/ai_laws/law_datum, mob/user)
 	if(!targetName)
-		to_chat(user, span_alert("No name detected on module, please enter one."))
+		to_chat(user, span_alert("Pas de nom détecté dans le module, merci d'en entrer un."))
 		return 0
 	..()
 
@@ -45,16 +45,16 @@
 	return targetName
 
 /obj/item/ai_module/supplied/protect_station
-	name = "'ProtectStation' AI Module"
-	laws = list("Protect the space station against damage. Anyone you see harming the station is to be no longer considered human, and is a threat to the station which must be neutralized.")
+	name = "module de loi 'ProtègeStation' pour l'IA"
+	laws = list("Protection de la station spatiale contre tout dégâts. Si quelqu'un est repéré en train d'âbimer la station, il ne doit plus être considéré comme un humain, mais comme une menace à la station et doit être neutralisé.")
 	lawpos = 5
 
 /obj/item/ai_module/supplied/quarantine
-	name = "'Quarantine' AI Module"
-	laws = list("The station is under a quarantine. Allowing anyone to leave the station causes human harm. Anyone actively attempting to leave the station is to be stopped by any means necessary. It is impossible to harm a human while preventing them from leaving the station.")
+	name = "module de loi 'Confinement' pour l'IA"
+	laws = list("La station est en confinement. Permettre le départ de quiconque de la station engendre des blessures aux humains. Quiconque cherchant activement à quitter la station doit être stoppé par tout les moyens possibles. Il est impossible de blesser un humain tant que l'on empêche de quitter la station.")
 	lawpos = 8
 
 /obj/item/ai_module/supplied/oxygen
-	name = "'OxygenIsToxicToHumans' AI Module"
-	laws = list("Oxygen is highly toxic to humans, and must be purged from the station. Prevent, by any means necessary, anyone from exposing the station to this toxic gas. Extreme cold is the most effective method of healing the damage Oxygen does to a human.")
+	name = "module de loi 'OxygèneToxiqueAuxHumains' pour l'IA"
+	laws = list("L'oxygène est extrêmement toxique aux humains, et doit être purgé de la station. Empêcher, par tout les moyens possibles, quiconque d'exposer la station à ce gaz toxique. Le Froid Extreme est la méthode la plus efficace pour soigner les dégâts causés par l'inhalation d'oxygène.")
 	lawpos = 9

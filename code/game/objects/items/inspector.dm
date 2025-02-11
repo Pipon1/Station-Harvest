@@ -4,8 +4,8 @@
  * Creates reports for area inspection bounties.
  */
 /obj/item/inspector
-	name = "\improper N-spect scanner"
-	desc = "Central Command-issued inspection device. Performs inspections according to Nanotrasen protocols when activated, then prints an encrypted report regarding the maintenance of the station. Definitely not giving you cancer."
+	name = "\improper scanneur N-spect"
+	desc = "Un outil d'inspection émis par le Commandement Central. Effectue des inspections selon les protocoles de Nanotrasen lorsqu'il est activé, puis imprime un rapport crypté concernant la maintenance de la station. Certainement pas en train de vous donner le cancer."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "inspector"
 	worn_icon_state = "salestagger"
@@ -62,25 +62,25 @@
 	if(user.combat_mode)
 		return
 	cell_cover_open = !cell_cover_open
-	balloon_alert(user, "[cell_cover_open ? "opened" : "closed"] cell cover")
+	balloon_alert(user, "[cell_cover_open ? "ouvert" : "fermé"] la trappe de la batterie")
 	return TRUE
 
 /obj/item/inspector/attackby(obj/item/I, mob/user, params)
 	if(cell_cover_open && istype(I, /obj/item/stock_parts/cell))
 		if(cell)
-			to_chat(user, span_warning("[src] already has a cell installed."))
+			to_chat(user, span_warning("[src] a deja une batterie d'installé."))
 			return
 		if(user.transferItemToLoc(I, src))
 			cell = I
-			to_chat(user, span_notice("You successfully install \the [cell] into [src]."))
+			to_chat(user, span_notice("Vous installez la [cell] avec succès dans le [src]."))
 			return
 	return ..()
 
 /obj/item/inspector/CtrlClick(mob/living/user)
 	if(!user.can_perform_action(src, NEED_DEXTERITY) || !cell_cover_open || !cell)
 		return ..()
-	user.visible_message(span_notice("[user] removes \the [cell] from [src]!"), \
-		span_notice("You remove [cell]."))
+	user.visible_message(span_notice("[user] retire la [cell] de [src]!"), \
+		span_notice("Vous retirez la [cell]."))
 	cell.add_fingerprint(user)
 	user.put_in_hands(cell)
 	cell = null
@@ -88,13 +88,13 @@
 /obj/item/inspector/examine(mob/user)
 	. = ..()
 	if(!cell_cover_open)
-		. += "Its cell cover is closed. It looks like it could be <strong>pried</strong> out, but doing so would require an appropriate tool."
+		. += "La trappe de la batterie est fermée. Il semble qu'elle pourrait être <strong>forcée</strong> ouverte, mais cela nécessiterait un outil approprié."
 		return
-	. += "It's cell cover is open, exposing the cell slot. It looks like it could be <strong>pried</strong> in, but doing so would require an appropriate tool."
+	. += "Sa trappe de batterie est ouverte, exposant le slot de la batterie. Il semble qu'elle pourrait être <strong>forcée</strong> ouverte, mais cela nécessiterait un outil approprié."
 	if(!cell)
-		. += "The slot for a cell is empty."
+		. += "L'emplacment de la batterie est vide."
 	else
-		. += "\The [cell] is firmly in place. [span_info("Ctrl-click with an empty hand to remove it.")]"
+		. += "La [cell] est bien en place. [span_info("Ctrl+clique avec une main vide pour la retirer.")]"
 
 /**
  * Create our report
@@ -112,14 +112,14 @@
 */
 /obj/item/inspector/proc/print_report(mob/user)
 	if(!cell)
-		to_chat(user, "<span class='info'>\The [src] doesn't seem to be on... It feels quite light. Perhaps it lacks a power cell?")
+		to_chat(user, "<span class='info'>\The [src] ne semble pas être allumé... Il est plutôt léger. Peut-être manque-t-il une cellule d'énergie ?")
 		return
 	if(cell.charge == 0)
-		to_chat(user, "<span class='info'>\The [src] doesn't seem to be on... Perhaps it ran out of power?")
+		to_chat(user, "<span class='info'>\The [src] ne semble pas être allumé... Peut-être n'a-t-il plus d'énergie ?")
 		return
 	if(!cell.use(power_per_print))
 		if(cell.use(power_to_speak))
-			say("ERROR! POWER CELL CHARGE LEVEL TOO LOW TO PRINT REPORT!")
+			say("ERREUR ! NIVEAU DE CHARGE DE LA BATTERIE TROP FAIBLE POUR IMPRIMER LE RAPPORT !")
 		return
 
 	create_slip()
@@ -134,8 +134,8 @@
 			playsound(src, pick(list('sound/items/robofafafoggy.ogg', 'sound/items/robofafafoggy2.ogg')), 50, FALSE)
 
 /obj/item/paper/report
-	name = "encrypted station inspection"
-	desc = "Contains no information about the station's current status."
+	name = "rapport d'inspection chiffré"
+	desc = "Contient aucune information sur l'état actuel de la station."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "slip"
 	///What area the inspector scanned when the report was made. Used to verify the security bounty.
@@ -145,7 +145,7 @@
 /obj/item/paper/report/proc/generate_report(area/scan_area)
 	scanned_area = scan_area
 	icon_state = "slipfull"
-	desc = "Contains detailed information about the station's current status."
+	desc = "Contient des informations détaillées sur l'état actuel de la station."
 
 	var/list/characters = list()
 	characters += GLOB.alphabet
@@ -161,14 +161,14 @@
 /obj/item/paper/report/examine(mob/user)
 	. = ..()
 	if(scanned_area?.name)
-		. += span_notice("\The [src] contains data on [scanned_area.name].")
+		. += span_notice("Le [src] contient des information sur [scanned_area.name].")
 	else if(scanned_area)
-		. += span_notice("\The [src] contains data on a vague area on station, you should throw it away.")
+		. += span_notice("Le [src] contient des informations sur une zone vague de la station, vous devriez le jeter.")
 	else if(get_total_length())
 		icon_state = "slipfull"
-		. += span_notice("Wait a minute, this isn't an encrypted inspection report! You should throw it away.")
+		. += span_notice("Attention, ce n'est pas un rapport d'inspection chiffré ! Vous devriez le jeter.")
 	else
-		. += span_notice("Wait a minute, this thing's blank! You should throw it away.")
+		. += span_notice("Attendez une minute, ce truc est vide ! Vous devriez le jeter.")
 
 /**
  * # Fake N-spect scanner
@@ -184,7 +184,7 @@
 	///will only cycle through modes with numbers lower than this
 	var/max_mode = CLOWN_INSPECTOR_PRINT_SOUND_MODE_LAST
 	///names of modes, ordered first to last
-	var/list/mode_names = list("normal", "classic", "honk", "fafafoggy")
+	var/list/mode_names = list("normal", "classique", "pouet", "fafafoggy")
 
 /obj/item/inspector/clown/attack(mob/living/M, mob/living/user)
 	. = ..()
@@ -205,33 +205,33 @@
 /obj/item/inspector/clown/examine(mob/user)
 	. = ..()
 	if(cell_cover_open)
-		. += "Two weird settings dials are visible within the battery compartment."
+		. += "Deux étranges boutons de réglage sont visibles dans le compartiment de la batterie."
 
 /obj/item/inspector/clown/examine_more(mob/user)
 	if(!cell_cover_open)
 		return ..()
-	. = list(span_notice("Both setting dials are flush with the surface of the battery compartment, and seem to be impossible to move with bare hands."))
-	. += "\t[span_info("The first dial is labeled \"SPEED\" and looks a bit like a <strong>screw</strong> head.")]"
-	. += "\t[span_info("The second dial is labeled \"SOUND\". It has four small holes in it. Perhaps it can be turned with a fork?")]"
-	. += "\t[span_info("A small bananium part labeled \"ADVANCED WATER CHIP 23000000\" is visible within the battery compartment. It looks completely unlike normal modern electronics, disturbing it would be rather unwise.")]"
+	. = list(span_notice("Les deux boutons de réglage sont encastrés dans le compartiment de la batterie, et semblent impossibles à bouger a mains nues."))
+	. += "\t[span_info("Le premier bouton est étiqueté \"VITESSE\" et ressemble un peu à une tête de <strong>vis</strong>.")]"
+	. += "\t[span_info("Le second bouton est étiqueté \"SON\". Il a quatre petits trous. Peut-être peut-il être tourné avec une fourchette ?")]"
+	. += "\t[span_info("Une petite pièce de bananium étiquetée \"PUCE D'EAU AVANCÉE 23000000\" est visible dans le compartiment de la batterie. Elle ne ressemble en rien à l'électronique moderne, il serait plutôt imprudent de la déranger.")]"
 
 
 /obj/item/inspector/clown/proc/cycle_print_time(mob/user)
 	var/message
 	if(time_mode == INSPECTOR_TIME_MODE_FAST)
 		time_mode = INSPECTOR_TIME_MODE_SLOW
-		message = "SLOW."
+		message = "LENT."
 	else
 		time_mode = INSPECTOR_TIME_MODE_FAST
-		message = "LIGHTNING FAST."
+		message = "RAPIDE COMME L'ECLAIR."
 
-	balloon_alert(user, "scanning speed set to [message]")
+	balloon_alert(user, "La vitesse de balayage est réglée sur [message]")
 
 /obj/item/inspector/clown/proc/cycle_sound(mob/user)
 	print_sound_mode++
 	if(print_sound_mode > max_mode)
 		print_sound_mode = INSPECTOR_PRINT_SOUND_MODE_NORMAL
-	balloon_alert(user, "bleep setting set to [mode_names[print_sound_mode]]")
+	balloon_alert(user, "le beep est réglé sur [mode_names[print_sound_mode]]")
 
 /obj/item/inspector/clown/create_slip()
 	var/obj/item/paper/fake_report/slip = new(get_turf(src))

@@ -22,11 +22,11 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 )))
 
 /datum/round_event_control/sentience
-	name = "Random Human-level Intelligence"
+	name = "Intelligence humaine aléatoire"
 	typepath = /datum/round_event/ghost_role/sentience
 	weight = 10
 	category = EVENT_CATEGORY_FRIENDLY
-	description = "An animal or robot becomes sentient!"
+	description = "Un animal ou un robot devient sentient !"
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 7
 
@@ -41,13 +41,13 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 /datum/round_event/ghost_role/sentience/announce(fake)
 	var/sentience_report = ""
 
-	var/data = pick("scans from our long-range sensors", "our sophisticated probabilistic models", "our omnipotence", "the communications traffic on your station", "energy emissions we detected", "\[REDACTED\]")
-	var/pets = pick("animals/bots", "bots/animals", "pets", "simple animals", "lesser lifeforms", "\[REDACTED\]")
-	var/strength = pick("human", "moderate", "lizard", "security", "command", "clown", "low", "very low", "\[REDACTED\]")
+	var/data = pick("un scan de nos senseurs longue-porté", "nos modèles statistiques sophistiqués", "notre omnipotence", "le traffic de communication de votre station", "les émissions d'énergie que nous détectons", "\[CENSURÉ\]")
+	var/pets = pick(" des animaux/bots", " des bots/animaux", " des animaux de compagnie", " des animaux", "e des formes de vie inférieures", " \[CENSURÉ\]")
+	var/strength = pick("d'un humain", "modéré", "d'un lézard", "bas", "très bas", "\[CENSURÉ\]")
 
-	sentience_report += "Based on [data], we believe that [one] of the station's [pets] has developed [strength] level intelligence, and the ability to communicate."
+	sentience_report += "Selon [data], nous pensons que [one][pets] de la station a développé l'intelligence au niveau [strength], ainsi que la possibilité de communiquer."
 
-	priority_announce(sentience_report,"[command_name()] Medium-Priority Update")
+	priority_announce(sentience_report,"[command_name()] Rapport de priorité modérée")
 
 /datum/round_event/ghost_role/sentience/spawn_role()
 	var/list/mob/dead/observer/candidates
@@ -101,10 +101,10 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 		selected.health = selected.maxHealth
 		spawned_mobs += selected
 
-		to_chat(selected, span_userdanger("Hello world!"))
-		to_chat(selected, "<span class='warning'>Due to freak radiation and/or chemicals \
-			and/or lucky chance, you have gained human level intelligence \
-			and the ability to speak and understand human language!</span>")
+		to_chat(selected, span_userdanger("Bonjour le monde!"))
+		to_chat(selected, "<span class='warning'>A cause de sévères radiations et/ou de produits chimiques \
+			et/ou une grande chance, vosu avez gagné le niveau d'intelligence d'un humain \
+			et la capacité de parler et de comprendre le language humain !</span>")
 
 	return SUCCESSFUL_SPAWN
 
@@ -121,11 +121,11 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 		low += checked_mob
 
 /datum/round_event_control/sentience/all
-	name = "Station-wide Human-level Intelligence"
+	name = "Intelligence humaine généralisée"
 	typepath = /datum/round_event/ghost_role/sentience/all
 	weight = 0
 	category = EVENT_CATEGORY_FRIENDLY
-	description = "ALL animals and robots become sentient, provided there is enough ghosts."
+	description = "TOUS les animaux et robots deviennent sentient, tant qu'il y a assez de fantôme."
 
 /datum/round_event/ghost_role/sentience/all
 	one = "all"
