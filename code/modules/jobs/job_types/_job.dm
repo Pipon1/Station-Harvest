@@ -256,7 +256,7 @@
 	return TRUE
 
 /datum/job/proc/radio_help_message(mob/M)
-	to_chat(M, "<b>Prefix your message with :h to speak on your department's radio. To see other prefixes, look closely at your headset.</b>")
+	to_chat(M, "<b>Commencez votre message avec le préfixe :h pour parler dans la radio de votre département. Pour voir les autres préfixes, examinez votre écouteur.</b>")
 
 /datum/outfit/job
 	name = "Standard Gear"
@@ -383,7 +383,7 @@
 
 
 /datum/job/proc/get_captaincy_announcement(mob/living/captain)
-	return "Due to extreme staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
+	return "Le personnel étant en sous-effectif, [captain.real_name] est maintenant promu capitaine sur le pont !"
 
 
 /// Returns an atom where the mob should spawn in.

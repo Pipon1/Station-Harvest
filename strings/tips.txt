@@ -1,8 +1,8 @@
 @You can use the |, + and _ characters to emphasize parts of what you say in-game (e.g. say"my _ass_ |is| +heavy+." will be outputted as "my <u>ass</u> <i>is</i> <b>heavy</b>."). You can also escape these emphasizers by appending backslashes before them (e.g. say"1\+2\+3" will come out as "1+2+3" and not "1\<b>2\</b>3").
-♪ Hey, have you ever tried appending the % character before your messages when speaking in-game? ♫
-A Scientist will pay top dollar for your frogs!
-A thrown glass of water can make a slippery tile, allowing you to slow down your pursuers in a pinch.
-Anything you can light a cigarette with, you can use to cauterize a bleeding wound. Technically, that includes the Supermatter.
+♪ Hé, avez-vous déjà essayé d'ajouter le symbole % avant votre message lorsque vous parlez dans le jeu ? ♫
+Un scientifique paiera cher pour vos grenouilles !
+Jeter un verre d'eau formera une tuile glissante, vous permettant de ralentir vos poursuivants lors d'une course-poursuite.
+Tout ce qui vous permet d'allumer une cigarette vous permet de cautériser une plaie, ce qui inclut le supermatière.
 As a Blobbernaut, you can communicate with overminds and other Blobbernauts via :b.
 As a Blobbernaut, your HUD shows your health and the core health of the overmind that created you.
 As a Botanist, you can combine production trait chemicals just like a Chemist. Hydrogen(grass) + water(peas) + sugar(grapes) equal mannitol!

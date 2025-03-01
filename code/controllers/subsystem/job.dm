@@ -536,18 +536,18 @@ SUBSYSTEM_DEF(job)
 			handle_auto_deadmin_roles(player_client, job.title)
 
 	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.</b></span>")
+		to_chat(player_client, "<span class='infoplain'><b>En tant que [job.title] vous êtes sous les ordres direct du [job.supervisors]. Des cironstances exceptionnelles peuvent changer ceci.</b></span>")
 
 	job.radio_help_message(equipping)
 
 	if(player_client)
 		if(job.req_admin_notify)
-			to_chat(player_client, span_infoplain("<b>You are playing a job that is important for Game Progression. \
-				If you have to disconnect, please notify the admins via adminhelp.</b>"))
+			to_chat(player_client, span_infoplain("<b>Vous jouez un rôle important pour la progression de la partie. \
+				Si vous devez vous déconnectez, merci d'informer les admins via l'adminhelp </b>"))
 		if(CONFIG_GET(number/minimal_access_threshold))
-			to_chat(player_client, span_boldnotice("As this station was initially staffed with a \
-				[CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] \
-				have been added to your ID card."))
+			to_chat(player_client, span_boldnotice("Cette station tourne actuellement \
+				[CONFIG_GET(flag/jobs_have_minimal_access) ? "avec un équipage complet, vos accès sont définis sur ceux nécessaires à votre travail uniquement" : "avec un équipage réduit, des accès supplémentaires peuvent vous avoir"] \
+				étés configurés sur votre carte d'identification."))
 
 	if(ishuman(equipping))
 		var/mob/living/carbon/human/wageslave = equipping
@@ -987,21 +987,21 @@ SUBSYSTEM_DEF(job)
 	)
 
 /obj/item/paper/paperslip/corporate/fluff/spare_id_safe_code
-	name = "Nanotrasen-Approved Spare ID Safe Code"
-	desc = "Proof that you have been approved for Captaincy, with all its glory and all its horror."
+	name = "code du coffre contenant l'identification capitaine de remplacement approuvé par Nanotrasen"
+	desc = "Preuve que vous avez étés approuvé pour être capitaine, avec toute la glorie et l'horreur qui incombe au poste."
 
 /obj/item/paper/paperslip/corporate/fluff/spare_id_safe_code/Initialize(mapload)
 	var/safe_code = SSid_access.spare_id_safe_code
-	default_raw_text = "Captain's Spare ID safe code combination: [safe_code ? safe_code : "\[REDACTED\]"]<br><br>The spare ID can be found in its dedicated safe on the bridge.<br><br>If your job would not ordinarily have Head of Staff access, your ID card has been specially modified to possess it."
+	default_raw_text = "Code du coffre contenant l'identification capitaine de remplacement: [safe_code ? safe_code : "\[REDACTED\]"]<br><br>L'identification capitaine de remplacement peut être trouvé dans son coffre dédié sur le pont.<br><br>Si votre poste n'avais pas d'ordinaire d'accès réservés aux chefs de département, votre carte d'identification a été modifiée pour en avoir désormais."
 	return ..()
 
 /obj/item/paper/paperslip/corporate/fluff/emergency_spare_id_safe_code
-	name = "Emergency Spare ID Safe Code Requisition"
-	desc = "Proof that nobody has been approved for Captaincy. A skeleton key for a skeleton shift."
+	name = "code du coffre contenant l'identification capitaine de remplacement d'urgence"
+	desc = "preuve que personne n'a été approuvé capitaine. Une clé fantôme, pour un équipage fantôme."
 
 /obj/item/paper/paperslip/corporate/fluff/emergency_spare_id_safe_code/Initialize(mapload)
 	var/safe_code = SSid_access.spare_id_safe_code
-	default_raw_text = "Captain's Spare ID safe code combination: [safe_code ? safe_code : "\[REDACTED\]"]<br><br>The spare ID can be found in its dedicated safe on the bridge."
+	default_raw_text = "Code du coffre contenant l'identification capitaine de remplacement: [safe_code ? safe_code : "\[REDACTED\]"]<br><br>L'identification capitaine de remplacement peut être trouvé dans son coffre dédié sur le pont"
 	return ..()
 
 /datum/controller/subsystem/job/proc/promote_to_captain(mob/living/carbon/human/new_captain, acting_captain = FALSE)
@@ -1020,9 +1020,9 @@ SUBSYSTEM_DEF(job)
 	var/where = new_captain.equip_in_one_of_slots(paper, slots, FALSE) || "at your feet"
 
 	if(acting_captain)
-		to_chat(new_captain, span_notice("Due to your position in the chain of command, you have been promoted to Acting Captain. You can find in important note about this [where]."))
+		to_chat(new_captain, span_notice("En vertu de votre position dans la chaîne de commandement, vous avez été promus capitaine. Vous pourrez trouver une note importante à ce propos à cet endroit : [where]."))
 	else
-		to_chat(new_captain, span_notice("You can find the code to obtain your spare ID from the secure safe on the Bridge [where]."))
+		to_chat(new_captain, span_notice("Vous pouvez trouver le code pour obtenir l'identification capitaine de remplacement sur le pont à cet endroit : [where]."))
 		new_captain.add_mob_memory(/datum/memory/key/captains_spare_code, safe_code = SSid_access.spare_id_safe_code)
 
 	// Force-give their ID card bridge access.

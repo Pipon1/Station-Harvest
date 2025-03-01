@@ -1,53 +1,60 @@
 {
     "boomer": [
-	"@pick(expense) isn't really that expensive.",
-	"@pick(kids) these days have it too easy!",
-	"Back in my day...",
-	"Do I look like I know what a @pick(file) is!?",
-	"How do I open a @pick(file) again?",
-	"It's simply a matter of showing up, looking the manager in the eye, giving him a firm handshake and telling him you want the job.",
-	"Listen here Jack, how do I open @pick(file)?",
-	"These damn @pick(kids) need to get a @pick(impossible) for once!",
-	"This generation can't take a joke.",
-	"Unlike you snowflakes, I'm not offended so easily.",
-	"When I was a kid I had to walk to school uphill both ways!",
-	"When I was your age...",
-	"Why are @pick(kids) these days so @pick(sad) all the time?",
-	"You'll never get anywhere in life without a degree."
+	"@pick(expense) c'était moins cher avant...",
+	"@pick(kids) de nos jours c'est plus ce que c'était !",
+	"Moi de mon temps...",
+	"Est ce que j'ai l'air de savoir ce qu'est qu'un fichier @pick(file) !?",
+	"Comment est-ce que j'ouvre un fichier @pick(file) déjà ?",
+	"C'est une question de motivation, il faut traverser la rue, serrer la main du manager, le regarder dans les yeux et lui dire qu'on veut le poste.",
+	"Michel viens voir, comment j'ouvre un @pick(file)?",
+	"Ces bons à rien de jeunes devraient se trouver @pick(impossible) pour changer !",
+	"Cette génération ne sait même plus rire à une blague.",
+	"Contrairement à vous les jeunes, je me vexe pas aussi facilement.",
+	"Quand j'avais votre age, je devais marcher jusqu'à l'école en pente dans les deux sens !",
+	"Quand j'avais votre age...",
+	"Pourquoi est-ce que la jeunesse de nos jours est @pick(sad) tout le temps ?",
+	"Vous n'arriverez à rien dans la vie sans un diplôme.",
+	"Les jeunes je vous jure, toujours sur leurs téléphones.",
+	"Huits jours sur le cul et vous mangerez bien ce qu'il y a dans votre assiette !",
+	"A Noël, nous on avait une orange, et on était content !",
+	"Qu'est ce qu'il dit ?",
+	"C'est vous les jeunes qui nous payez nos retraites, alors au boulot !",
+	"Moi de mon temps, on avait pas toute cette technologie là, on utilisait nos mains nous.",
+	"On dirait qu'il va pleuvoir... Y a plus de saisons!"
     ],
 
 	"expense": [
-	"A car",
-	"A house",
-	"College",
-	"Food",
-	"Healthcare"
+	"Les courses",
+	"Une maison",
+	"L'éducation",
+	"La bouffe",
+	"La santé"
 	],
 
     "kids": [
-	"kids",
-	"millennials",
-	"snowflakes"
+	"Les enfants",
+	"Les jeunes",
+	"La jeunesse"
     ],
 
     "file": [
-	"DMI",
+	"EXE",
 	"JPEG",
-	"JSON",
+	"PNG",
 	"PDF"
     ],
 
     "sad": [
-	"depressed",
-	"sad and depressed",
-	"sad"
+	"déprimée",
+	"triste et déprimée",
+	"triste"
     ],
 
     "impossible": [
-	"house",
-	"job and a house",
-	"job",
-	"life"
+	"une maison",
+	"un travail et une maison",
+	"un travail",
+	"une vie"
     ]
 
 }
