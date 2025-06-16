@@ -1,9 +1,9 @@
 /datum/computer_file/program/card_mod
 	filename = "plexagonidwriter"
-	filedesc = "Plexagon Access Management"
+	filedesc = "Gestion d'accès de Plexagon"
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "id"
-	extended_desc = "Program for programming employee ID cards to access parts of the station."
+	extended_desc = "Programme utiliser pour programmer les cartes d'identité des employés pour accéder à certaines parties de la station."
 	transfer_access = list(ACCESS_COMMAND)
 	requires_ntnet = 0
 	size = 8
@@ -49,7 +49,7 @@
 	if((!target_dept || is_centcom) && (ACCESS_CHANGE_IDS in auth_card.access))
 		minor = FALSE
 		authenticated_card = "[auth_card.name]"
-		authenticated_user = auth_card.registered_name ? auth_card.registered_name : "Unknown"
+		authenticated_user = auth_card.registered_name ? auth_card.registered_name : "Inconnu"
 		job_templates = is_centcom ? SSid_access.centcom_job_templates.Copy() : SSid_access.station_job_templates.Copy()
 		valid_access = is_centcom ? SSid_access.get_region_access_list(list(REGION_CENTCOM)) : SSid_access.get_region_access_list(list(REGION_ALL_STATION))
 		update_static_data(user)
@@ -67,7 +67,7 @@
 	if(length(region_access))
 		minor = TRUE
 		valid_access |= SSid_access.get_region_access_list(region_access)
-		authenticated_card = "[auth_card.name] \[LIMITED ACCESS\]"
+		authenticated_card = "[auth_card.name] \[ACCES LIMITE\]"
 		update_static_data(user)
 		return TRUE
 
@@ -112,12 +112,12 @@
 				return TRUE
 			if(!authenticated_card)
 				return TRUE
-			var/contents = {"<h4>Access Report</h4>
-						<u>Prepared By:</u> [authenticated_user]<br>
-						<u>For:</u> [inserted_auth_card.registered_name ? inserted_auth_card.registered_name : "Unregistered"]<br>
+			var/contents = {"<h4>Rapport d'accès</h4>
+						<u>Préparé par : </u> [authenticated_user]<br>
+						<u>Pour : </u> [inserted_auth_card.registered_name ? inserted_auth_card.registered_name : "Non-enregistré"]<br>
 						<hr>
-						<u>Assignment:</u> [inserted_auth_card.assignment]<br>
-						<u>Access:</u><br>
+						<u>Travail : </u> [inserted_auth_card.assignment]<br>
+						<u>Accès : </u><br>
 						"}
 
 			var/list/known_access_rights = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
@@ -125,12 +125,12 @@
 				if(A in known_access_rights)
 					contents += " [SSid_access.get_access_desc(A)]"
 
-			if(!computer.print_text(contents, "access report - [inserted_auth_card.registered_name ? inserted_auth_card.registered_name : "Unregistered"]"))
-				to_chat(usr, span_notice("Printer is out of paper."))
+			if(!computer.print_text(contents, "rapport d'accès - [inserted_auth_card.registered_name ? inserted_auth_card.registered_name : "Non-enregistré"]"))
+				to_chat(usr, span_notice("L'imprimante n'a plus de papier."))
 				return TRUE
 			else
 				playsound(computer, 'sound/machines/terminal_on.ogg', 50, FALSE)
-				computer.visible_message(span_notice("\The [computer] prints out a paper."))
+				computer.visible_message(span_notice("Le [computer] imprime le papier."))
 			return TRUE
 		if("PRG_eject_id")
 			if(inserted_auth_card)
@@ -146,11 +146,11 @@
 				return TRUE
 			if(minor)
 				if(!(inserted_auth_card.trim?.type in job_templates))
-					to_chat(usr, span_notice("Software error: You do not have the necessary permissions to demote this card."))
+					to_chat(usr, span_notice("Erreur logiciel: Vous n'avez pas les permissions nécessaires pour rétrograder cette carte."))
 					return TRUE
 
 			// Set the new assignment then remove the trim.
-			inserted_auth_card.assignment = is_centcom ? "Fired" : "Demoted"
+			inserted_auth_card.assignment = is_centcom ? "Viré" : "Retrogradé"
 			SSid_access.remove_trim_from_card(inserted_auth_card)
 
 			playsound(computer, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
@@ -179,7 +179,7 @@
 			new_name = reject_bad_name(new_name, allow_numbers = TRUE)
 
 			if(!new_name)
-				to_chat(usr, span_notice("Software error: The ID card rejected the new name as it contains prohibited characters."))
+				to_chat(usr, span_notice("Erreur logiciel: La carte d'identité a rejeté le nouveau nom car il contient des caractères interdits."))
 				return TRUE
 
 			inserted_auth_card.registered_name = new_name
@@ -196,7 +196,7 @@
 
 			var/new_age = params["id_age"]
 			if(!isnum(new_age))
-				stack_trace("[key_name(usr)] ([usr]) attempted to set invalid age \[[new_age]\] to [inserted_auth_card]")
+				stack_trace("[key_name(usr)] ([usr]) a tenté d'enregistrer un âge impossible \[[new_age]\] to [inserted_auth_card]")
 				return TRUE
 
 			inserted_auth_card.registered_age = new_age
@@ -219,7 +219,7 @@
 			var/access_type = params["access_target"]
 			var/try_wildcard = params["access_wildcard"]
 			if(!(access_type in valid_access))
-				stack_trace("[key_name(usr)] ([usr]) attempted to add invalid access \[[access_type]\] to [inserted_auth_card]")
+				stack_trace("[key_name(usr)] ([usr]) a tenté d'ajouter un accès impossible \[[access_type]\] to [inserted_auth_card]")
 				return TRUE
 
 			if(access_type in inserted_auth_card.access)
@@ -228,7 +228,7 @@
 				return TRUE
 
 			if(!inserted_auth_card.add_access(list(access_type), try_wildcard))
-				to_chat(usr, span_notice("ID error: ID card rejected your attempted access modification."))
+				to_chat(usr, span_notice("Erreur d'ID : La carte d'identé a rejeté votre tentative de modification d'accès."))
 				LOG_ID_ACCESS_CHANGE(user, inserted_auth_card, "failed to add [SSid_access.get_access_desc(access_type)][try_wildcard ? " with wildcard [try_wildcard]" : ""]")
 				return TRUE
 
@@ -296,7 +296,7 @@
 	data["has_id"] = !!inserted_id
 	data["id_name"] = inserted_id ? inserted_id.name : "-----"
 	if(inserted_id)
-		data["id_rank"] = inserted_id.assignment ? inserted_id.assignment : "Unassigned"
+		data["id_rank"] = inserted_id.assignment ? inserted_id.assignment : "Non-assigné"
 		data["id_owner"] = inserted_id.registered_name ? inserted_id.registered_name : "-----"
 		data["access_on_card"] = inserted_id.access
 		data["wildcardSlots"] = inserted_id.wildcard_slots

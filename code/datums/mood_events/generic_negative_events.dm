@@ -1,98 +1,98 @@
 /datum/mood_event/handcuffed
-	description = "I guess my antics have finally caught up with me."
+	description = "Ces menottes me gênent."
 	mood_change = -1
 
 /datum/mood_event/broken_vow //Used for when mimes break their vow of silence
-	description = "I have brought shame upon my name, and betrayed my fellow mimes by breaking our sacred vow..."
+	description = "J'ai trainé mon nom dans la honte, et trahis mes chers collègues en brisant notre serment secret..."
 	mood_change = -8
 
 /datum/mood_event/on_fire
-	description = "I'M ON FIRE!!!"
+	description = "JE SUIS EN FEU !!!"
 	mood_change = -12
 
 /datum/mood_event/suffocation
-	description = "CAN'T... BREATHE..."
+	description = "PEUX PAS... RESPIRER..."
 	mood_change = -12
 
 /datum/mood_event/burnt_thumb
-	description = "I shouldn't play with lighters..."
+	description = "Je ne devrais pas jouer avec les briquets..."
 	mood_change = -1
 	timeout = 2 MINUTES
 
 /datum/mood_event/cold
-	description = "It's way too cold in here."
+	description = "Il fait beaucoup trop froid ici."
 	mood_change = -5
 
 /datum/mood_event/hot
-	description = "It's getting hot in here."
+	description = "Il commence à faire très chaud ici."
 	mood_change = -5
 
 /datum/mood_event/creampie
-	description = "I've been creamed. Tastes like pie flavor."
+	description = "Je suis plein.e de crème. Ça sent l'odeur de tarte."
 	mood_change = -2
 	timeout = 3 MINUTES
 
 /datum/mood_event/slipped
-	description = "I slipped. I should be more careful next time..."
+	description = "J'ai glissé chef. Je devrais être plus prudent.e, la prochaine fois..."
 	mood_change = -2
 	timeout = 3 MINUTES
 
 /datum/mood_event/eye_stab
-	description = "I used to be an adventurer like you, until I took a screwdriver to the eye."
+	description = "J'étais un aventurier comme toi, jusqu'à ce que je prenne un tournevis dans l'oeil..."
 	mood_change = -4
 	timeout = 3 MINUTES
 
 /datum/mood_event/delam //SM delamination
-	description = "Those goddamn engineers can't do anything right..."
+	description = "Ces traders d'ingénieurs, incapable de faire leur job correctement..."
 	mood_change = -2
 	timeout = 4 MINUTES
 
 /datum/mood_event/cascade // Big boi delamination
-	description = "The engineers have finally done it, we are all going to die..."
+	description = "Les ingénieurs l'ont finalement fait, on va tous mourir..."
 	mood_change = -8
 	timeout = 5 MINUTES
 
 /datum/mood_event/depression_minimal
-	description = "I feel a bit down."
+	description = "Je me sens déprimé."
 	mood_change = -10
 	timeout = 2 MINUTES
 
 /datum/mood_event/depression_mild
-	description = "I feel sad for no particular reason."
+	description = "Je me sens mal, sans raison particulière."
 	mood_change = -12
 	timeout = 2 MINUTES
 
 /datum/mood_event/depression_moderate
-	description = "I feel miserable."
+	description = "Je me sens misérable."
 	mood_change = -14
 	timeout = 2 MINUTES
 
 /datum/mood_event/depression_severe
-	description = "I've lost all hope."
+	description = "J'ai perdu tout espoir."
 	mood_change = -16
 	timeout = 2 MINUTES
 
 /datum/mood_event/shameful_suicide //suicide_acts that return SHAME, like sord
-	description = "I can't even end it all!"
+	description = "Je peux même pas en finir !"
 	mood_change = -15
 	timeout = 60 SECONDS
 
 /datum/mood_event/dismembered
-	description = "AHH! I WAS USING THAT LIMB!"
+	description = "AHH ! J'UTILISAIS CE MEMBRE !"
 	mood_change = -10
 	timeout = 8 MINUTES
 
 /datum/mood_event/tased
-	description = "There's no \"z\" in \"taser\". It's in the zap."
+	description = "Il n'y a pas de \"z\" dans \"taser\". Mais il y en a dans \"zappé.e\"."
 	mood_change = -3
 	timeout = 2 MINUTES
 
 /datum/mood_event/embedded
-	description = "Pull it out!"
+	description = "Enlevez ça !"
 	mood_change = -7
 
 /datum/mood_event/table
-	description = "Someone threw me on a table!"
+	description = "Quelqu'un m'a jeté sur une table !"
 	mood_change = -2
 	timeout = 2 MINUTES
 
@@ -100,17 +100,17 @@
 	if(isfelinid(owner)) //Holy snowflake batman!
 		var/mob/living/carbon/human/H = owner
 		SEND_SIGNAL(H, COMSIG_ORGAN_WAG_TAIL, TRUE, 3 SECONDS)
-		description = "They want to play on the table!"
+		description = "Iel veut jouer sur la table !"
 		mood_change = 2
 
 /datum/mood_event/table_limbsmash
-	description = "That fucking table, man that hurts..."
+	description = "Cette tradeuse de table, mec ça fait super mal..."
 	mood_change = -3
 	timeout = 3 MINUTES
 
 /datum/mood_event/table_limbsmash/add_effects(obj/item/bodypart/banged_limb)
 	if(banged_limb)
-		description = "My fucking [banged_limb.plaintext_zone], man that hurts..."
+		description = "Ma tradeuse de [banged_limb.plaintext_zone], mec ça fait super mal..."
 
 /datum/mood_event/brain_damage
 	mood_change = -3
@@ -120,77 +120,77 @@
 	description = "Hurr durr... [damage_message]"
 
 /datum/mood_event/hulk //Entire duration of having the hulk mutation
-	description = "HULK SMASH!"
+	description = "HULK TOUKC!"
 	mood_change = -4
 
 /datum/mood_event/epilepsy //Only when the mutation causes a seizure
-	description = "I should have paid attention to the epilepsy warning."
+	description = "J'aurais dû faire attention aux avertissements..."
 	mood_change = -3
 	timeout = 5 MINUTES
 
 /datum/mood_event/nyctophobia
-	description = "It sure is dark around here..."
+	description = "Il fait sombre par là..."
 	mood_change = -3
 
 /datum/mood_event/claustrophobia
-	description = "Why do I feel trapped?!  Let me out!!!"
+	description = "Pourquoi je me sens autant piégé ?! Laissez moi sortir !!!"
 	mood_change = -7
 	timeout = 1 MINUTES
 
 /datum/mood_event/bright_light
-	description = "I hate it in the light...I need to find a darker place..."
+	description = "Je déteste la lumière... J'ai besoin de trouver un endroit plus sombre..."
 	mood_change = -12
 
 /datum/mood_event/family_heirloom_missing
-	description = "I'm missing my family heirloom..."
+	description = "L'objet hérité de ma famille me manque..."
 	mood_change = -4
 
 /datum/mood_event/healsbadman
-	description = "I feel like I'm held together by flimsy string, and could fall apart at any moment!"
+	description = "J'ai l'impression d'être une marionnette à qui on pourait couper les fils à tout moment !"
 	mood_change = -4
 	timeout = 2 MINUTES
 
 /datum/mood_event/jittery
-	description = "I'm nervous and on edge and I can't stand still!!"
+	description = "je suis nerveux, tendu, et je ne peux pas rester immobile !!"
 	mood_change = -2
 
 /datum/mood_event/choke
-	description = "I CAN'T BREATHE!!!"
+	description = "JE NE PEUX PAS RESPIRER !!!"
 	mood_change = -10
 
 /datum/mood_event/vomit
-	description = "I just threw up. Gross."
+	description = "Je viens juste de vomir. Dégueu."
 	mood_change = -2
 	timeout = 2 MINUTES
 
 /datum/mood_event/vomitself
-	description = "I just threw up all over myself. This is disgusting."
+	description = "Je viens de me vomir dessus. C'est dégoutant."
 	mood_change = -4
 	timeout = 3 MINUTES
 
 /datum/mood_event/painful_medicine
-	description = "Medicine may be good for me but right now it stings like hell."
+	description = "Peut-être que les médicaments sont censé être bon pour moi, mais là tout de suite c'est plus douloureux qu'autre chose."
 	mood_change = -5
 	timeout = 60 SECONDS
 
 /datum/mood_event/spooked
-	description = "The rattling of those bones... It still haunts me."
+	description = "Le râle de ces os... Ça me hante encore maintenant."
 	mood_change = -4
 	timeout = 4 MINUTES
 
 /datum/mood_event/loud_gong
-	description = "That loud gong noise really hurt my ears!"
+	description = "Ce bruit de gong était super fort, ça m'a fait super mal aux oreilles !"
 	mood_change = -3
 	timeout = 2 MINUTES
 
 /datum/mood_event/notcreeping
-	description = "The voices are not happy, and they painfully contort my thoughts into getting back on task."
+	description = "Les voix ne sont pas heureuses, et elles tordent mes pensées pour que je me remette au travail."
 	mood_change = -6
 	timeout = 3 SECONDS
 	hidden = TRUE
 
 /datum/mood_event/notcreepingsevere//not hidden since it's so severe
-	description = "THEY NEEEEEEED OBSESSIONNNN!!"
+	description = "J'AI BESOIN DE ELLUI !!"
 	mood_change = -30
 	timeout = 3 SECONDS
 
@@ -202,77 +202,77 @@
 	description = "THEY NEEEEEEED [unhinged]!!"
 
 /datum/mood_event/tower_of_babel
-	description = "My ability to communicate is an incoherent babel..."
+	description = "Ma bouche forme des mots qui ressemblent plutôt à du vacarme..."
 	mood_change = -1
 	timeout = 15 SECONDS
 
 /datum/mood_event/back_pain
-	description = "Bags never sit right on my back, this hurts like hell!"
+	description = "Je ne supporte pas les sacs à dos, ça me fait super mal !"
 	mood_change = -15
 
 /datum/mood_event/sad_empath
-	description = "Someone seems upset..."
+	description = "Quelqu'un n'a pas l'air bien..."
 	mood_change = -1
 	timeout = 60 SECONDS
 
 /datum/mood_event/sad_empath/add_effects(mob/sadtarget)
-	description = "[sadtarget.name] seems upset..."
+	description = "[sadtarget.name] n'a pas l'air bien..."
 
 /datum/mood_event/sacrifice_bad
-	description = "Those darn savages!"
+	description = "Ces traders de sauvages !"
 	mood_change = -5
 	timeout = 2 MINUTES
 
 /datum/mood_event/artbad
-	description = "I've produced better art than that from my ass."
+	description = "Des enfants de maternelles font plus de l'art que moi."
 	mood_change = -2
 	timeout = 2 MINUTES
 
 /datum/mood_event/graverobbing
-	description = "I just desecrated someone's grave... I can't believe I did that..."
+	description = "Je viens juste de profaner la tombe de quelqu'un... J'ai l'impression que la terre sous mes ongles ne partir jamais..."
 	mood_change = -8
 	timeout = 3 MINUTES
 
 /datum/mood_event/deaths_door
-	description = "This is it... I'm really going to die."
+	description = "Voilà, c'est la fin... Je vais vraiment mourir."
 	mood_change = -20
 
 /datum/mood_event/gunpoint
-	description = "This guy is insane! I better be careful..."
+	description = "Iel est fou ! Je devrais être plus prudent.e..."
 	mood_change = -10
 
 /datum/mood_event/tripped
-	description = "I can't believe I fell for the oldest trick in the book!"
+	description = "Je peux pas croire que je suis tombé dans ce vieux piège..."
 	mood_change = -5
 	timeout = 2 MINUTES
 
 /datum/mood_event/untied
-	description = "I hate when my shoes come untied!"
+	description = "Je déteste quand mes chaussures ne sont pas lacées !"
 	mood_change = -3
 	timeout = 60 SECONDS
 
 /datum/mood_event/gates_of_mansus
-	description = "I HAD A GLIMPSE OF THE HORROR BEYOND THIS WORLD. REALITY UNCOILED BEFORE MY EYES!"
+	description = "J'AI EU UN APERÇU D'HORREURS VENUES D'AUTRES MONDES. LA RÉALITÉ S'EST DÉROULÉE DEVANT MES YEUX !"
 	mood_change = -25
 	timeout = 4 MINUTES
 
 /datum/mood_event/high_five_alone
-	description = "I tried getting a high-five with no one around, how embarassing!"
+	description = "J'ai essayé de faire un high-five mais personne ne m'a répondu, c'était vraiment embarassant."
 	mood_change = -2
 	timeout = 60 SECONDS
 
 /datum/mood_event/high_five_full_hand
-	description = "Oh god, I don't even know how to high-five correctly..."
+	description = "Bon sang, je ne sais même pas comment faire un high-five correct..."
 	mood_change = -1
 	timeout = 45 SECONDS
 
 /datum/mood_event/left_hanging
-	description = "But everyone loves high fives! Maybe people just... hate me?"
+	description = "Mais tout le monde aime les high fives ! Peut-être que les gens... me détestent ?"
 	mood_change = -2
 	timeout = 90 SECONDS
 
 /datum/mood_event/too_slow
-	description = "NO! HOW COULD I BE... TOO SLOW???"
+	description = "NON ! COMMENT EST-CE QUE J'AI PU ÊTRE... TROP LENT ???"
 	mood_change = -2 // multiplied by how many people saw it happen, up to 8, so potentially massive. the ULTIMATE prank carries a lot of weight
 	timeout = 2 MINUTES
 
@@ -289,127 +289,127 @@
 
 //These are unused so far but I want to remember them to use them later
 /datum/mood_event/surgery
-	description = "THEY'RE CUTTING ME OPEN!!"
+	description = "IEL EST EN TRAIN DE M'OUVRIR !!"
 	mood_change = -8
 
 /datum/mood_event/bald
-	description = "I need something to cover my head..."
+	description = "J'ai besoin de quelque chose pour couvrir ma tête..."
 	mood_change = -3
 
 /datum/mood_event/bad_touch
-	description = "I don't like when people touch me."
+	description = "Je n'aime pas quand les gens me touchent."
 	mood_change = -3
 	timeout = 4 MINUTES
 
 /datum/mood_event/very_bad_touch
-	description = "I really don't like when people touch me."
+	description = "Je n'aime vraiment pas quand les gens me touchent."
 	mood_change = -5
 	timeout = 4 MINUTES
 
 /datum/mood_event/noogie
-	description = "Ow! This is like space high school all over again..."
+	description = "Aïe ! Ça fait mal..."
 	mood_change = -2
 	timeout = 60 SECONDS
 
 /datum/mood_event/noogie_harsh
-	description = "OW!! That was even worse than a regular noogie!"
+	description = "AÏE !! C'était plus qu'une petit frottement de tête !"
 	mood_change = -4
 	timeout = 60 SECONDS
 
 /datum/mood_event/aquarium_negative
-	description = "All the fish are dead..."
+	description = "Tous les poissons sont morts..."
 	mood_change = -3
 	timeout = 90 SECONDS
 
 /datum/mood_event/tail_lost
-	description = "My tail!! Why?!"
+	description = "Ma queue !! Pourquoi ?!"
 	mood_change = -8
 	timeout = 10 MINUTES
 
 /datum/mood_event/tail_balance_lost
-	description = "I feel off-balance without my tail."
+	description = "J'ai perdu mon équilibre, sans ma queue."
 	mood_change = -2
 
 /datum/mood_event/tail_regained_right
-	description = "My tail is back, but that was traumatic..."
+	description = "J'ai retrouvé ma queue, mais c'était traumatisant..."
 	mood_change = -2
 	timeout = 5 MINUTES
 
 /datum/mood_event/tail_regained_wrong
-	description = "Is this some kind of sick joke?! This is NOT the right tail."
+	description = "Est-ce que c'est une sorte de mauvaise blague ?! Ce n'est PAS la bonne queue."
 	mood_change = -12 // -8 for tail still missing + -4 bonus for being frakenstein's monster
 	timeout = 5 MINUTES
 
 /datum/mood_event/burnt_wings
-	description = "MY PRECIOUS WINGS!!"
+	description = "MES PRÉCIEUSES AILES !!"
 	mood_change = -10
 	timeout = 10 MINUTES
 
 /datum/mood_event/holy_smite //punished
-	description = "I have been punished by my deity!"
+	description = "J'ai été puni.e par ma divinité !"
 	mood_change = -5
 	timeout = 5 MINUTES
 
 /datum/mood_event/banished //when the chaplain is sus! (and gets forcably de-holy'd)
-	description = "I have been excommunicated!"
+	description = "J'ai été excommunié.e !"
 	mood_change = -10
 	timeout = 10 MINUTES
 
 /datum/mood_event/heresy
-	description = "I can hardly breathe with all this HERESY going on!"
+	description = "J'arrive à peine à respirer avant autant d'HÉRÉSIE dans l'air !"
 	mood_change = -5
 	timeout = 5 MINUTES
 
 /datum/mood_event/soda_spill
-	description = "Cool! That's fine, I wanted to wear that soda, not drink it..."
+	description = "Cool ! C'est ok, je voulais des vêtements collants, pas une boisson fraiche..."
 	mood_change = -2
 	timeout = 1 MINUTES
 
 /datum/mood_event/watersprayed
-	description = "I hate being sprayed with water!"
+	description = "Je déteste être aspergé.e d'eau !"
 	mood_change = -1
 	timeout = 30 SECONDS
 
 /datum/mood_event/gamer_withdrawal
-	description = "I wish I was gaming right now..."
+	description = "J'aimerai bien jouer..."
 	mood_change = -5
 
 /datum/mood_event/gamer_lost
-	description = "If I'm not good at video games, can I truly call myself a gamer?"
+	description = "Si je ne suis même pas bon.ne aux jeux vidéos, est-ce que je peux vraiment m'appeler un.e gameu.r.euse ?"
 	mood_change = -10
 	timeout = 10 MINUTES
 
 /datum/mood_event/lost_52_card_pickup
-	description = "This is really embarrassing! I'm ashamed to pick up all these cards off the floor..."
+	description = "C'est vraiment embarassant ! C'est génant, de ramasser toutes ces cartes sur le sol..."
 	mood_change = -3
 	timeout = 3 MINUTES
 
 /datum/mood_event/russian_roulette_lose
-	description = "I gambled my life and lost! I guess this is the end..."
+	description = "J'ai joué avec ma vie et j'ai perdu ! J'imagine que c'est la fin..."
 	mood_change = -20
 	timeout = 10 MINUTES
 
 /datum/mood_event/bad_touch_bear_hug
-	description = "I just got squeezed way too hard."
+	description = "On m'a serré.e beaucoup trop fort."
 	mood_change = -1
 	timeout = 2 MINUTES
 
 /datum/mood_event/rippedtail
-	description = "I ripped their tail right off, what have I done!"
+	description = "J'ai déchiré.e leur queue, bon sang qu'est-ce que j'ai fait ?!"
 	mood_change = -5
 	timeout = 30 SECONDS
 
 /datum/mood_event/sabrage_fail
-	description = "Blast it! That stunt didn't go as planned!"
+	description = "Flute ! C'était censé me rendre plus cool, mais ça ne s'est pas passé comme prévu !"
 	mood_change = -2
 	timeout = 4 MINUTES
 
 /datum/mood_event/body_purist
-	description = "I feel cybernetics attached to me, and I HATE IT!"
+	description = "Mon corps n'est plus entièrement organique et je DÉTESTE ÇA !"
 
 /datum/mood_event/body_purist/add_effects(power)
 	mood_change = power
 
 /datum/mood_event/unsatisfied_nomad
-	description = "I've been here too long! I want to go out and explore space!"
+	description = "Je suis resté.e ici trop longtemps ! Je veux sortir et aller explorer l'espace !"
 	mood_change = -3

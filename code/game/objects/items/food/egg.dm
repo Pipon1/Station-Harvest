@@ -2,12 +2,12 @@
 ////////////////////////////////////////////EGGS////////////////////////////////////////////
 
 /obj/item/food/chocolateegg
-	name = "chocolate egg"
-	desc = "Such, sweet, fattening food."
+	name = "Oeuf en chocolat"
+	desc = "Tellement gras et sucré."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "chocolateegg"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
-	tastes = list("chocolate" = 4, "sweetness" = 1)
+	tastes = list("de chocolat" = 4, "de sucre" = 1)
 	foodtypes = JUNKFOOD | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -16,8 +16,8 @@
 GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/egg
-	name = "egg"
-	desc = "An egg!"
+	name = "Oeuf"
+	desc = "Un oeuf !"
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "egg"
 	inhand_icon_state = "egg"
@@ -47,7 +47,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	AddElement(/datum/element/microwavable, /obj/item/food/boiledegg/rotten)
 
 /obj/item/food/egg/gland
-	desc = "An egg! It looks weird..."
+	desc = "Un oeuf ! Il a l'air bizarre..."
 
 /obj/item/food/egg/gland/Initialize(mapload)
 	. = ..()
@@ -69,10 +69,10 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 			if(0 to 30)
 				new /mob/living/simple_animal/chick(hit_turf)
 				GLOB.chicks_from_eggs++
-				visible_message(span_notice("A chick comes out of the cracked egg!"))
+				visible_message(span_notice("Un poussin est sorti de l'oeuf !"))
 			if(31)
 				var/spawned_chickens = min(4, MAX_CHICKENS - GLOB.chicks_from_eggs) // We don't want to go over the limit
-				visible_message(span_notice("[spawned_chickens] chicks come out of the egg! Jackpot!"))
+				visible_message(span_notice("[spawned_chickens] poussins sont sortis de l'oeuf ! Jackpot !"))
 				for(var/i in 1 to spawned_chickens)
 					new /mob/living/simple_animal/chick(hit_turf)
 					GLOB.chicks_from_eggs++
@@ -86,29 +86,29 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		var/clr = crayon.crayon_color
 
 		if(!(clr in list("blue", "green", "mime", "orange", "purple", "rainbow", "red", "yellow")))
-			to_chat(usr, span_notice("[src] refuses to take on this colour!"))
+			to_chat(usr, span_notice("[src] refuse de se laisser colorer avec cette couleur !"))
 			return
 
-		to_chat(usr, span_notice("You colour [src] with [item]."))
+		to_chat(usr, span_notice("Vous colorez l'[src] avec le [item]."))
 		icon_state = "egg-[clr]"
 
 	else if(istype(item, /obj/item/stamp/clown))
 		var/clowntype = pick("grock", "grimaldi", "rainbow", "chaos", "joker", "sexy", "standard", "bobble",
 			"krusty", "bozo", "pennywise", "ronald", "jacobs", "kelly", "popov", "cluwne")
 		icon_state = "egg-clown-[clowntype]"
-		desc = "An egg that has been decorated with the grotesque, robustable likeness of a clown's face. "
-		to_chat(usr, span_notice("You stamp [src] with [item], creating an artistic and not remotely horrifying likeness of clown makeup."))
+		desc = "Un oeuf a été décoré avec un grotesque visage de clown. "
+		to_chat(usr, span_notice("Vous décorez l'[src] avec le [item] et créez un maquillage artistique (et pas du tout horrifiant) de clown."))
 
 	else if(is_reagent_container(item))
 		var/obj/item/reagent_containers/dunk_test_container = item
 		if (!dunk_test_container.is_drainable() || !dunk_test_container.reagents.has_reagent(/datum/reagent/water))
 			return
 
-		to_chat(user, span_notice("You check if [src] is rotten."))
+		to_chat(user, span_notice("Vous vérifiez que l'[src] n'est pas périmé."))
 		if(istype(src, /obj/item/food/egg/rotten))
-			to_chat(user, span_warning("[src] floats in the [dunk_test_container]!"))
+			to_chat(user, span_warning("L'[src] flotte dans le [dunk_test_container]!"))
 		else
-			to_chat(user, span_notice("[src] sinks into the [dunk_test_container]!"))
+			to_chat(user, span_notice("L'[src] coule dans le [dunk_test_container]!"))
 	else
 		..()
 
@@ -163,8 +163,8 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	inhand_icon_state = "egg-yellow"
 
 /obj/item/food/egg/fertile
-	name = "fertile-looking egg"
-	desc = "An egg! It looks fertilized.\nQuite how you can tell this just by looking at it is a mystery."
+	name = "Oeuf fertilisé"
+	desc = "Un oeuf ! Il a l'air fertilisé.\nLa façon dont vous pouvez le dire juste en le regardant est un mystère."
 	chick_throw_prob = 100
 
 /obj/item/food/egg/fertile/Initialize(mapload, loc)
@@ -181,8 +181,8 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	)
 
 /obj/item/food/friedegg
-	name = "fried egg"
-	desc = "A fried egg. Would go well with a touch of salt and pepper."
+	name = "Oeuf frit"
+	desc = "Un oeuf frit. Se marie bien avec du sel et du poivre."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "friedegg"
 	food_reagents = list(
@@ -191,19 +191,19 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	bite_consumption = 1
-	tastes = list("egg" = 4)
+	tastes = list("d'oeuf" = 4)
 	foodtypes = MEAT | FRIED | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	burns_on_grill = TRUE
 
 /obj/item/food/rawegg
-	name = "raw egg"
-	desc = "Supposedly good for you, if you can stomach it. Better fried."
+	name = "Oeuf cru"
+	desc = "Supposément bon pour vous, si votre estomac peut le supporter. Meilleur frit."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "rawegg"
 	food_reagents = list() //Recieves all reagents from its whole egg counterpart
 	bite_consumption = 1
-	tastes = list("raw egg" = 6, "sliminess" = 1)
+	tastes = list("d'oeuf cru" = 6, "de viscosité" = 1)
 	eatverbs = list("gulp down")
 	foodtypes = MEAT | RAW
 	w_class = WEIGHT_CLASS_SMALL
@@ -212,8 +212,8 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	AddComponent(/datum/component/grillable, /obj/item/food/friedegg, rand(20 SECONDS, 35 SECONDS), TRUE, FALSE)
 
 /obj/item/food/boiledegg
-	name = "boiled egg"
-	desc = "A hard boiled egg."
+	name = "Oeuf dur"
+	desc = "Un oeuf dur."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "egg"
 	inhand_icon_state = "egg"
@@ -221,7 +221,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("egg" = 1)
+	tastes = list("d'oeuf" = 1)
 	foodtypes = MEAT | BREAKFAST
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -229,24 +229,24 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	decomp_type = /obj/item/food/boiledegg/rotten
 
 /obj/item/food/eggsausage
-	name = "egg with sausage"
-	desc = "A good egg with a side of sausages."
+	name = "Oeuf avec une saucisse"
+	desc = "Un bon oeuf accompagné d'une saucisse."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "eggsausage"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 8, /datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/nutriment = 4)
 	foodtypes = MEAT | FRIED | BREAKFAST
-	tastes = list("egg" = 4, "meat" = 4)
+	tastes = list("d'oeuf" = 4, "de viande" = 4)
 	venue_value = FOOD_PRICE_NORMAL
 
 /obj/item/food/boiledegg/rotten
 	food_reagents = list(/datum/reagent/consumable/eggrot = 10)
-	tastes = list("rotten egg" = 1)
+	tastes = list("d'oeuf pourri" = 1)
 	foodtypes = GROSS
 	preserved_food = TRUE
 
 /obj/item/food/omelette //FUCK THIS
-	name = "omelette du fromage"
-	desc = "That's all you can say!"
+	name = "Omelette au fromage"
+	desc = "C'est tout ce que tu sais dire !"
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "omelette"
 	food_reagents = list(
@@ -255,7 +255,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	)
 	bite_consumption = 1
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("egg" = 1, "cheese" = 1)
+	tastes = list("d'oeuf" = 1, "de fromage" = 1)
 	foodtypes = MEAT | BREAKFAST | DAIRY
 	venue_value = FOOD_PRICE_CHEAP
 
@@ -263,11 +263,11 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	if(istype(item, /obj/item/kitchen/fork))
 		var/obj/item/kitchen/fork/fork = item
 		if(fork.forkload)
-			to_chat(user, span_warning("You already have omelette on your fork!"))
+			to_chat(user, span_warning("Vous avez déjà une omellette sur votre fourchette !"))
 		else
 			fork.icon_state = "forkloaded"
-			user.visible_message(span_notice("[user] takes a piece of omelette with [user.p_their()] fork!"), \
-				span_notice("You take a piece of omelette with your fork."))
+			user.visible_message(span_notice("[user] prend un morceau d'omelette avec la fourchette de [user.p_their()] !"), \
+				span_notice("Vous prenez un morceau d'omelette avec votre fourchette."))
 
 			var/datum/reagent/reagent = pick(reagents.reagent_list)
 			reagents.remove_reagent(reagent.type, 1)
@@ -278,8 +278,8 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	..()
 
 /obj/item/food/benedict
-	name = "eggs benedict"
-	desc = "There is only one egg on this, how rude."
+	name = "Oeuf bénédicte"
+	desc = "Il y a seulement un oeuf, quelle déception."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "benedict"
 	food_reagents = list(
@@ -288,13 +288,13 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		/datum/reagent/consumable/nutriment = 3,
 	)
 	w_class = WEIGHT_CLASS_SMALL
-	tastes = list("egg" = 1, "bacon" = 1, "bun" = 1)
+	tastes = list("d'oeuf" = 1, "de bacon" = 1, "de petit pain" = 1)
 	foodtypes = MEAT | BREAKFAST | GRAIN
 	venue_value = FOOD_PRICE_NORMAL
 
 /obj/item/food/eggwrap
-	name = "egg wrap"
-	desc = "The precursor to Pigs in a Blanket."
+	name = "Wrap d'oeuf"
+	desc = "Le précurseur des cochons dans des couvertures." //OUI la traduction littérale est fait exprès
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "eggwrap"
 	food_reagents = list(
@@ -302,13 +302,13 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("egg" = 1)
+	tastes = list("d'oeuf" = 1)
 	foodtypes = MEAT | VEGETABLES
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/food/chawanmushi
-	name = "chawanmushi"
-	desc = "A legendary egg custard that makes friends out of enemies. Probably too hot for a cat to eat."
+	name = "Chawanmushi"
+	desc = "Une crème aux œufs légendaire qui fait des amis des ennemis. Probablement trop chaude pour qu'un chat la mange."
 	icon = 'icons/obj/food/egg.dmi'
 	icon_state = "chawanmushi"
 	food_reagents = list(
@@ -316,5 +316,5 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("custard" = 1)
+	tastes = list("de crème aux oeufs" = 1)
 	foodtypes = MEAT | VEGETABLES

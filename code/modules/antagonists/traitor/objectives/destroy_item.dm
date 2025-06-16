@@ -1,6 +1,6 @@
 /datum/traitor_objective/destroy_item
 	name = "Steal %ITEM% and destroy it"
-	description = "Find %ITEM% and destroy it using any means necessary. We can't allow the crew to have %ITEM% as it conflicts with our interests."
+	description = "Trouvez lae %ITEM% et détruisez lae à tout prix. Nous ne pouvons pas laisser l'équipage posséder un.e %ITEM% car iel rentre en conflit avec nos intêrets."
 
 	var/list/possible_items = list()
 	/// The current target item that we are stealing.
@@ -62,7 +62,7 @@
 /datum/traitor_objective/destroy_item/generate_ui_buttons(mob/user)
 	var/list/buttons = list()
 	if(special_equipment)
-		buttons += add_ui_button("", "Pressing this will summon any extra special equipment you may need for the mission.", "tools", "summon_gear")
+		buttons += add_ui_button("", "Pressez ce buton pour matérialiser de l'équipement dont vous pourriez avoir besoin pour cette opération.", "tools", "summon_gear")
 	return buttons
 
 /datum/traitor_objective/destroy_item/ui_perform_action(mob/living/user, action)
@@ -74,7 +74,7 @@
 			for(var/item in special_equipment)
 				var/obj/item/new_item = new item(user.drop_location())
 				user.put_in_hands(new_item)
-			user.balloon_alert(user, "the equipment materializes in your hand")
+			user.balloon_alert(user, "L'objet se matérialise dans votre main.")
 			special_equipment = null
 
 /datum/traitor_objective/destroy_item/proc/on_item_pickup(datum/source, obj/item/item, slot)

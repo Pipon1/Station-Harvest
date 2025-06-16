@@ -24,15 +24,15 @@
 
 /obj/item/light/suicide_act(mob/living/carbon/user)
 	if (status == LIGHT_BROKEN)
-		user.visible_message(span_suicide("[user] begins to stab [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message(span_suicide("[user] commence à se poignarder avec lae [src] ! Il semble que iel essaie de se suicider !"))
 	else
-		user.visible_message(span_suicide("[user] begins to eat \the [src]! It looks like [user.p_theyre()] not very bright!"))
+		user.visible_message(span_suicide("[user] commencer à manger lae [src] ! Il semble que iel n'est pas la lumière qui brille le plus fort !"))
 		shatter()
 	return BRUTELOSS
 
 /obj/item/light/tube
-	name = "light tube"
-	desc = "A replacement light tube."
+	name = "ampoule tubulaire"
+	desc = "Une ampoule tubulaire de remplacement."
 	icon_state = "ltube"
 	base_state = "ltube"
 	inhand_icon_state = "ltube"
@@ -52,8 +52,8 @@
 	sharpness = SHARP_POINTY
 
 /obj/item/light/bulb
-	name = "light bulb"
-	desc = "A replacement light bulb."
+	name = "ampoule"
+	desc = "Une ampoule de remplacement."
 	icon_state = "lbulb"
 	base_state = "lbulb"
 	inhand_icon_state = "contvapour"
@@ -86,11 +86,11 @@
 	. = ..()
 	switch(status)
 		if(LIGHT_OK)
-			desc = "A replacement [name]."
+			desc = "Une [name] de remplacement."
 		if(LIGHT_BURNED)
-			desc = "A burnt-out [name]."
+			desc = "Une [name] brûlée."
 		if(LIGHT_BROKEN)
-			desc = "A broken [name]."
+			desc = "Une [name] cassée."
 
 /obj/item/light/Initialize(mapload)
 	. = ..()
@@ -122,12 +122,12 @@
 
 /obj/item/light/proc/shatter(target)
 	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		visible_message(span_danger("[src] shatters."),span_hear("You hear a small glass object shatter."))
+		visible_message(span_danger("[src] se brise."),span_hear("Vous entendez une petit morceau de verre se briser."))
 		status = LIGHT_BROKEN
 		force = 5
 		sharpness = SHARP_POINTY
 		playsound(loc, 'sound/effects/glasshit.ogg', 75, TRUE)
 		if(length(reagents.reagent_list))
-			visible_message(span_danger("The contents of [src] splash onto you as you step on it!"),span_hear("You feel the contents of [src] splash onto you as you step on it!."))
+			visible_message(span_danger("Le contentue de la [src] vous éclabousse quand vous marchez dessus !"),span_hear("Vous sentez le contenu de la [src] vous éclaboussez alors que vous marchez dessus !"))
 			reagents.expose(target, TOUCH)
 		update_appearance(UPDATE_DESC | UPDATE_ICON)

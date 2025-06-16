@@ -23,10 +23,10 @@ export const NtosMain = (props, context) => {
     <NtosWindow
       title={
         (PC_device_theme === 'syndicate' && 'Syndix Main Menu') ||
-        'NtOS Main Menu'
+        'Menu principal de l\'NTOS'
       }
-      width={400}
-      height={500}>
+      width={500}
+      height={600}>
       <NtosWindow.Content scrollable>
         {Boolean(
           removable_media.length ||
@@ -64,7 +64,7 @@ export const NtosMain = (props, context) => {
           </Section>
         )}
         <Section
-          title="Details"
+          title="Détails"
           buttons={
             <>
               {!!has_light && (
@@ -82,14 +82,14 @@ export const NtosMain = (props, context) => {
               )}
               <Button
                 icon="eject"
-                content="Eject ID"
+                content="Ejecter l'ID"
                 disabled={!proposed_login.IDName}
                 onClick={() => act('PC_Eject_Disk', { name: 'ID' })}
               />
               {!!show_imprint && (
                 <Button
                   icon="dna"
-                  content="Imprint ID"
+                  content="Enregistrer l'ID"
                   disabled={
                     !proposed_login.IDName ||
                     (proposed_login.IDName === login.IDName &&
@@ -102,7 +102,7 @@ export const NtosMain = (props, context) => {
           }>
           <Table>
             <Table.Row>
-              ID Name:{' '}
+              Identité : {' '}
               {show_imprint
                 ? login.IDName +
                 ' ' +
@@ -110,7 +110,7 @@ export const NtosMain = (props, context) => {
                 : proposed_login.IDName ?? ''}
             </Table.Row>
             <Table.Row>
-              Assignment:{' '}
+              Travail : {' '}
               {show_imprint
                 ? login.IDJob +
                 ' ' +
@@ -120,7 +120,7 @@ export const NtosMain = (props, context) => {
           </Table>
         </Section>
         {!!pai && (
-          <Section title="pAI">
+          <Section title="IAp">
             <Table>
               <Table.Row>
                 <Table.Cell>
@@ -128,7 +128,7 @@ export const NtosMain = (props, context) => {
                     fluid
                     icon="eject"
                     color="transparent"
-                    content="Eject pAI"
+                    content="Ejecter l'IAp"
                     onClick={() =>
                       act('PC_Pai_Interact', {
                         option: 'eject',
@@ -143,7 +143,7 @@ export const NtosMain = (props, context) => {
                     fluid
                     icon="cat"
                     color="transparent"
-                    content="Configure pAI"
+                    content="Configurer l'IAp"
                     onClick={() =>
                       act('PC_Pai_Interact', {
                         option: 'interact',
@@ -170,7 +170,7 @@ const ProgramsTable = (props, context) => {
   );
 
   return (
-    <Section title="Programs">
+    <Section title="Programmes">
       <Table>
         {filtered_programs.map((program) => (
           <Table.Row key={program.name}>

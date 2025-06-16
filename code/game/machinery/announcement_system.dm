@@ -2,24 +2,24 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 /obj/machinery/announcement_system
 	density = TRUE
-	name = "\improper Automated Announcement System"
+	name = "Système d'annonce automatique"
 	desc = "An automated announcement system that handles minor announcements over the radio."
 	icon = 'icons/obj/machines/telecomms.dmi'
 	icon_state = "AAS_On"
 	base_icon_state = "AAS"
 
-	verb_say = "coldly states"
-	verb_ask = "queries"
-	verb_exclaim = "alarms"
+	verb_say = "énonce calmement"
+	verb_ask = "demande"
+	verb_exclaim = "alarme"
 
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.05
 
 	circuit = /obj/item/circuitboard/machine/announcement_system
 
 	var/obj/item/radio/headset/radio
-	var/arrival = "%PERSON has signed up as %RANK"
+	var/arrival = "%PERSON s'est enrôlé.e en tant que %RANK"
 	var/arrivalToggle = 1
-	var/newhead = "%PERSON, %RANK, is the department head."
+	var/newhead = "%PERSON, %RANK, est à la tête du département."
 	var/newheadToggle = 1
 
 	var/greenlight = "Light_Green"
@@ -55,7 +55,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /obj/machinery/announcement_system/screwdriver_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
 	toggle_panel_open()
-	to_chat(user, span_notice("You [panel_open ? "open" : "close"] the maintenance hatch of [src]."))
+	to_chat(user, span_notice("Vous [panel_open ? "ouvrez" : "fermez"] la trap de maintenance de [src]."))
 	update_appearance()
 	return TRUE
 
@@ -66,7 +66,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /obj/machinery/announcement_system/multitool_act(mob/living/user, obj/item/tool)
 	if(!panel_open || !(machine_stat & BROKEN))
 		return FALSE
-	to_chat(user, span_notice("You reset [src]'s firmware."))
+	to_chat(user, span_notice("Vous réinitialisez le logiciel de [src]."))
 	set_machine_stat(machine_stat & ~BROKEN)
 	update_appearance()
 
@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	else if(message_type == "NEWHEAD" && newheadToggle)
 		message = CompileText(newhead, user, rank)
 	else if(message_type == "ARRIVALS_BROKEN")
-		message = "The arrivals shuttle has been damaged. Docking for repairs..."
+		message = "La navette d'arrivée à été endomagée. Arrimage pour réparations..."
 
 	broadcast(message, channels)
 
@@ -95,7 +95,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if (!is_operational)
 		return
 
-	broadcast("Officer [officer.real_name] has been assigned to [department].", list(RADIO_CHANNEL_SECURITY))
+	broadcast("L'officer [officer.real_name] a été assigné au département [department].", list(RADIO_CHANNEL_SECURITY))
 
 /// Sends a message to the appropriate channels.
 /obj/machinery/announcement_system/proc/broadcast(message, list/channels)
@@ -127,7 +127,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!usr.can_perform_action(src, ALLOW_SILICON_REACH))
 		return
 	if(machine_stat & BROKEN)
-		visible_message(span_warning("[src] buzzes."), span_hear("You hear a faint buzz."))
+		visible_message(span_warning("[src] bourdonne."), span_hear("Vous entendez un bourdonnement sourd."))
 		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, TRUE)
 		return
 	switch(action)
@@ -137,14 +137,14 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 				return
 			if(NewMessage)
 				arrival = NewMessage
-				usr.log_message("updated the arrivals announcement to: [NewMessage]", LOG_GAME)
+				usr.log_message("Le message d'arrivée a été mis à jour pour :: [NewMessage]", LOG_GAME)
 		if("NewheadText")
 			var/NewMessage = trim(html_encode(param["newText"]), MAX_MESSAGE_LEN)
 			if(!usr.can_perform_action(src, ALLOW_SILICON_REACH))
 				return
 			if(NewMessage)
 				newhead = NewMessage
-				usr.log_message("updated the head announcement to: [NewMessage]", LOG_GAME)
+				usr.log_message("Le message de nomination d'un chef de département a été mis à jour pour : [NewMessage]", LOG_GAME)
 		if("NewheadToggle")
 			newheadToggle = !newheadToggle
 			update_appearance()
@@ -160,7 +160,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!user.can_perform_action(src, ALLOW_SILICON_REACH))
 		return
 	if(machine_stat & BROKEN)
-		to_chat(user, span_warning("[src]'s firmware appears to be malfunctioning!"))
+		to_chat(user, span_warning("Le logiciel de [src] a l'air de dysfonctionner !"))
 		return
 	interact(user)
 
@@ -168,8 +168,8 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	if(!atom_break()) // if badmins flag this unbreakable or its already broken
 		return
 
-	arrival = pick("#!@%ERR-34%2 CANNOT LOCAT@# JO# F*LE!", "CRITICAL ERROR 99.", "ERR)#: DA#AB@#E NOT F(*ND!")
-	newhead = pick("OV#RL()D: \[UNKNOWN??\] DET*#CT)D!", "ER)#R - B*@ TEXT F*O(ND!", "AAS.exe is not responding. NanoOS is searching for a solution to the problem.")
+	arrival = pick("#!@%ERR-34%2 IMPOSSIBLE DE L@=CALISER LE FICHIE#% DE PROFESSION!", "ERREUR CRITIQUE 99.", "ERR)#R: BASE DE DONN2ES NON TROUVE")
+	newhead = pick("SURCH@ARG#: \[INCONNU??\] DET*#CT2!", "ER)#R - B*@ TEXTE TRO_V%", "AAS.exe ne répond pas. NanoOS recherche une solution au problème.")
 
 /obj/machinery/announcement_system/emp_act(severity)
 	. = ..()

@@ -1,8 +1,8 @@
 //Alium nests. Essentially beds with an unbuckle delay that only aliums can buckle mobs to.
 
 /obj/structure/bed/nest
-	name = "alien nest"
-	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
+	name = "nid d'extraterestre"
+	desc = "C'est un tas dégoutant d'une épaisse résine, formée pour ressembler à un nid."
 	icon = 'icons/obj/smooth_structures/alien/nest.dmi'
 	icon_state = "nest-0"
 	base_icon_state = "nest"
@@ -27,22 +27,22 @@
 				return
 
 			if(M != user)
-				M.visible_message(span_notice("[user.name] pulls [M.name] free from the sticky nest!"),\
-					span_notice("[user.name] pulls you free from the gelatinous resin."),\
-					span_hear("You hear squelching..."))
+				M.visible_message(span_notice("[user.name] libère [M.name] de l'emprise de la résine !"),\
+					span_notice("[user.name] vous libère de l'emprise de la résine."),\
+					span_hear("Vous entendez des bruits humide..."))
 			else
-				M.visible_message(span_warning("[M.name] struggles to break free from the gelatinous resin!"),\
-					span_notice("You struggle to break free from the gelatinous resin... (Stay still for about a minute and a half.)"),\
-					span_hear("You hear squelching..."))
+				M.visible_message(span_warning("[M.name] se débat pour se libérer de la résine !"),\
+					span_notice("Vous vous débatez pour vous libérer de la résine... (Ne bougez pas pour environ 1m30.)"),\
+					span_hear("Vous entendez des bruits humide..."))
 				if(!do_after(M, 100 SECONDS, target = src))
 					if(M?.buckled)
-						to_chat(M, span_warning("You fail to unbuckle yourself!"))
+						to_chat(M, span_warning("Vous n'avez pas réussi à vous libérer !"))
 					return
 				if(!M.buckled)
 					return
-				M.visible_message(span_warning("[M.name] breaks free from the gelatinous resin!"),\
-					span_notice("You break free from the gelatinous resin!"),\
-					span_hear("You hear squelching..."))
+				M.visible_message(span_warning("[M.name] se libère de la résine !"),\
+					span_notice("Vous vous libérez de la résine !"),\
+					span_hear("Vous entendez des bruits humide..."))
 
 
 			unbuckle_mob(M)
@@ -61,9 +61,9 @@
 		unbuckle_all_mobs()
 
 	if(buckle_mob(M))
-		M.visible_message(span_notice("[user.name] secretes a thick vile goo, securing [M.name] into [src]!"),\
-			span_danger("[user.name] drenches you in a foul-smelling resin, trapping you in [src]!"),\
-			span_hear("You hear squelching..."))
+		M.visible_message(span_notice("[user.name] sécrète un liquide épais et horrible, sécurisant [M.name] dans lae [src] !"),\
+			span_danger("[user.name] vous couvre avec de la résine puante, vous coinçant dans lae [src] !"),\
+			span_hear("Vous entendez des bruits humide..."))
 
 /obj/structure/bed/nest/post_buckle_mob(mob/living/M)
 	ADD_TRAIT(M, TRAIT_HANDS_BLOCKED, type)

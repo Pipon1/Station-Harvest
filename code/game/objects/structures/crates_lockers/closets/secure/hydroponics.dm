@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/hydroponics
-	name = "botanist's locker"
+	name = "casier des botanistes"
 	req_access = list(ACCESS_HYDROPONICS)
 	icon_state = "hydro"
 

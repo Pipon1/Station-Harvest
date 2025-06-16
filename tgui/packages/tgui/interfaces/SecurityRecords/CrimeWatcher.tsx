@@ -22,14 +22,14 @@ export const CrimeWatcher = (props, context) => {
           <Tabs.Tab
             onClick={() => setSelectedTab(SECURETAB.Crimes)}
             selected={selectedTab === SECURETAB.Crimes}>
-            Crimes: {crimes.length}
+            Crimes : {crimes.length}
           </Tabs.Tab>
           <Tabs.Tab
             onClick={() => setSelectedTab(SECURETAB.Citations)}
             selected={selectedTab === SECURETAB.Citations}>
-            Citations: {citations.length}
+            Citations : {citations.length}
           </Tabs.Tab>
-          <Tooltip content="Add a new crime or citation" position="bottom">
+          <Tooltip content="Ajoutez un nouveau crime ou une citation" position="bottom">
             <Tabs.Tab
               onClick={() => setSelectedTab(SECURETAB.Add)}
               selected={selectedTab === SECURETAB.Add}>
@@ -108,9 +108,9 @@ const CrimeDisplay = ({ item }: { item: Crime }, context) => {
     <Stack.Item>
       <Collapsible color={collapsibleColor} open={editing} title={displayTitle}>
         <LabeledList>
-          <LabeledList.Item label="Time">{time}</LabeledList.Item>
-          <LabeledList.Item label="Author">{author}</LabeledList.Item>
-          <LabeledList.Item color={!valid ? 'bad' : 'good'} label="Status">
+          <LabeledList.Item label="Temps">{time}</LabeledList.Item>
+          <LabeledList.Item label="Auteur">{author}</LabeledList.Item>
+          <LabeledList.Item color={!valid ? 'bad' : 'good'} label="Statut">
             {!valid ? 'Void' : 'Active'}
           </LabeledList.Item>
           {fine && (
@@ -125,7 +125,7 @@ const CrimeDisplay = ({ item }: { item: Crime }, context) => {
           )}
         </LabeledList>
         <Box color="label" mt={1} mb={1}>
-          Details:
+          Détails :
         </Box>
         <BlockQuote>{details}</BlockQuote>
 
@@ -135,7 +135,7 @@ const CrimeDisplay = ({ item }: { item: Crime }, context) => {
               disabled={!valid || (!higher_access && author !== current_user)}
               icon="pen"
               onClick={() => setEditing(true)}>
-              Edit
+              Editer
             </Button>
             <Button.Confirm
               content="Invalidate"
@@ -163,7 +163,7 @@ const CrimeDisplay = ({ item }: { item: Crime }, context) => {
                   name: value,
                 });
               }}
-              placeholder="Enter a new name"
+              placeholder="Entrez un nouveau crime"
             />
             <Input
               fluid
@@ -178,7 +178,7 @@ const CrimeDisplay = ({ item }: { item: Crime }, context) => {
                   description: value,
                 });
               }}
-              placeholder="Enter a new description"
+              placeholder="Entrez une description"
             />
           </>
         )}
@@ -233,27 +233,27 @@ const CrimeAuthor = (props, context) => {
   return (
     <Stack fill vertical>
       <Stack.Item color="label">
-        Name
+        Nom
         <Input
           fluid
           maxLength={25}
           onChange={(_, value) => setCrimeName(value)}
-          placeholder="Brief overview"
+          placeholder="Un rapide résumé"
         />
       </Stack.Item>
       <Stack.Item color="label">
-        Details
+        Détails
         <TextArea
           fluid
           height={4}
           maxLength={1025}
           multiline
           onChange={(_, value) => setCrimeDetails(value)}
-          placeholder="Type some details..."
+          placeholder="Ecrivez quelques détails..."
         />
       </Stack.Item>
       <Stack.Item color="label">
-        Fine (leave blank to arrest)
+        Amende (Laisser vide pour faire une arrestation)
         <RestrictedInput
           onChange={(_, value) => setCrimeFine(value)}
           fluid
@@ -262,11 +262,11 @@ const CrimeAuthor = (props, context) => {
       </Stack.Item>
       <Stack.Item>
         <Button.Confirm
-          content="Create"
+          content="Créer"
           disabled={!nameMeetsReqs}
           icon="plus"
           onClick={createCrime}
-          tooltip={!nameMeetsReqs ? 'Name must be at least 3 characters.' : ''}
+          tooltip={!nameMeetsReqs ? 'Un nom doit être composé d au moins 3 lettres.' : ''}
         />
       </Stack.Item>
     </Stack>

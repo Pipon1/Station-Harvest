@@ -106,8 +106,8 @@ SECURITY_SCALING_COEFF 8
 
 ## The number of objectives traitors get.
 ## Not including escaping/hijacking.
-TRAITOR_OBJECTIVES_AMOUNT 0
-BROTHER_OBJECTIVES_AMOUNT 0
+TRAITOR_OBJECTIVES_AMOUNT 2
+BROTHER_OBJECTIVES_AMOUNT 2
 
 ## Uncomment to prohibit jobs that start with loyalty
 ## implants from being most antagonists.
@@ -126,7 +126,7 @@ PROTECT_ROLES_FROM_ANTAGONIST
 ALLOW_LATEJOIN_ANTAGONISTS
 
 ## Uncomment to prevent the nuclear operative leader from getting the war declaration item
-DISABLE_WAROPS
+#DISABLE_WAROPS
 
 ## Uncomment to enable dynamic ruleset config file.
 DYNAMIC_CONFIG_ENABLED
@@ -186,7 +186,7 @@ MINIMAL_ACCESS_THRESHOLD 20
 ## This is intended for servers with low populations - where there are not enough
 ## players to fill all roles, so players need to do more than just one job.
 ## This option is ignored if MINIMAL_ACCESS_THRESHOLD is used.
-JOBS_HAVE_MINIMAL_ACCESS
+#JOBS_HAVE_MINIMAL_ACCESS
 
 ## Uncomment to give assistants maint access.
 #ASSISTANTS_HAVE_MAINT_ACCESS
@@ -198,7 +198,7 @@ JOBS_HAVE_MINIMAL_ACCESS
 #EVERYONE_HAS_MAINT_ACCESS
 
 ## Comment this out this to make security officers spawn in departmental security posts
-SEC_START_BRIG
+#SEC_START_BRIG
 
 ## This variable is how you may configure "Scaling Access" for Departmental Security Officers.
 ## Set to 0/commented out for "off", Departmental Security Officers will never get additional room-specific access (beyond general departmental doors).
@@ -342,17 +342,16 @@ ROUNDSTART_RACES human
 ## Races that are strictly worse than humans that could probably be turned on without balance concerns
 ROUNDSTART_RACES felinid
 ROUNDSTART_RACES lizard
-ROUNDSTART_RACES fly
+#ROUNDSTART_RACES fly
 ROUNDSTART_RACES moth
 ROUNDSTART_RACES plasmaman
-ROUNDSTART_RACES shadow
+#ROUNDSTART_RACES shadow
 
 ## Races that are better than humans in some ways, but worse in others
 ROUNDSTART_RACES ethereal
-ROUNDSTART_RACES drone
-ROUNDSTART_RACES jelly
-ROUNDSTART_RACES abductor
-ROUNDSTART_RACES synth
+#ROUNDSTART_RACES jelly
+#ROUNDSTART_RACES abductor
+#ROUNDSTART_RACES synth
 
 ## Including all the various golem subtypes that are better than humans in some ways, but worse in others
 #ROUNDSTART_RACES iron_golem
@@ -421,7 +420,7 @@ OVERFLOW_JOB Assistant
 OVERFLOW_CAP -1
 
 ## Uncomment to bring back old grey suit assistants instead of the now default rainbow colored assistants.
-GREY_ASSISTANTS
+#GREY_ASSISTANTS
 
 ##Limit Spell Choices##
 ## Uncomment to disallow wizards from using certain spells that may be too chaotic/fun for your playerbase
@@ -453,13 +452,13 @@ BOMBCAP 20
 ## a less lootfilled or smaller or less round effecting ruin costs less to
 ## spawn, while the converse is true. Alter this number to affect the amount
 ## of ruins.
-LAVALAND_BUDGET 120
+LAVALAND_BUDGET 60
 
 ## Ice Moon Budget
 ICEMOON_BUDGET 90
 
 ## Space Ruin Budget
-Space_Budget 32
+Space_Budget 16
 
 ## Time in ds from when a player latejoins till the arrival shuttle docks at the station
 ## Must be at least 30. At least 55 recommended to be visually/aurally appropriate

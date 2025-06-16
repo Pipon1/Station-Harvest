@@ -18,7 +18,7 @@ export const NtosJobManagerContent = (props, context) => {
   if (!authed) {
     return (
       <NoticeBox>
-        Current ID does not have access permissions to change job slots.
+        Votre ID actuel n'a pas les permissions pour changer de travail.
       </NoticeBox>
     );
   }
@@ -27,14 +27,14 @@ export const NtosJobManagerContent = (props, context) => {
       {cooldown > 0 && (
         <Dimmer>
           <Box bold textAlign="center" fontSize="20px">
-            On Cooldown: {cooldown}s
+            En cours de rechargement : {cooldown}s
           </Box>
         </Dimmer>
       )}
       <Table>
         <Table.Row header>
-          <Table.Cell>Prioritized</Table.Cell>
-          <Table.Cell>Slots</Table.Cell>
+          <Table.Cell>Prioritiser</Table.Cell>
+          <Table.Cell>Emplacement</Table.Cell>
         </Table.Row>
         {slots.map((slot) => (
           <Table.Row key={slot.title} className="candystripe">
@@ -56,7 +56,7 @@ export const NtosJobManagerContent = (props, context) => {
             </Table.Cell>
             <Table.Cell collapsing>
               <Button
-                content="Open"
+                content="Ouvrir"
                 disabled={!slot.status_open}
                 onClick={() =>
                   act('PRG_open_job', {
@@ -65,7 +65,7 @@ export const NtosJobManagerContent = (props, context) => {
                 }
               />
               <Button
-                content="Close"
+                content="Fermer"
                 disabled={!slot.status_close}
                 onClick={() =>
                   act('PRG_close_job', {

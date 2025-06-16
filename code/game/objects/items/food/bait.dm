@@ -1,6 +1,6 @@
 /obj/item/food/bait
-	name = "this is bait"
-	desc = "you got baited."
+	name = "Ceci est un appât"
+	desc = "Vous avez été attrapé."
 	icon = 'icons/obj/fishing.dmi'
 	/// Quality trait of this bait
 	var/bait_quality = BASIC_QUALITY_BAIT_TRAIT
@@ -12,41 +12,41 @@
 	ADD_TRAIT(src, bait_quality, INNATE_TRAIT)
 
 /obj/item/food/bait/worm
-	name = "worm"
-	desc = "It's a wriggling worm from a can of fishing bait. You're not going to eat it are you ?"
+	name = "Ver"
+	desc = "Un ver qui se trémouse, il vient d'une boîte d'appâts pour la pêche. Vous n'allez pas le manger, n'est-ce pas ?"
 	icon = 'icons/obj/fishing.dmi'
 	icon_state = "worm"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
-	tastes = list("meat" = 1, "worms" = 1)
+	tastes = list("de viande" = 1, "de vers" = 1)
 	foodtypes = GROSS | MEAT | BUGS
 	w_class = WEIGHT_CLASS_TINY
 	bait_quality = BASIC_QUALITY_BAIT_TRAIT
 	rod_overlay_icon_state = "worm_overlay"
 
 /obj/item/food/bait/worm/premium
-	name = "extra slimy worm"
-	desc = "This worm looks very sophisticated."
+	name = "Ver super gluant"
+	desc = "Ce ver a l'air très sophistiqué."
 	bait_quality = GOOD_QUALITY_BAIT_TRAIT
 
 /obj/item/food/bait/natural
-	name = "natural bait"
-	desc = "Fish can't seem to get enough of this!"
+	name = "Appât naturel"
+	desc = "Les poissons n'arrêteront jamais d'en manger !"
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "pill9"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	inhand_icon_state = "pen"
 	food_reagents = list(/datum/reagent/drug/kronkaine = 1)
-	tastes = list("hypocrisy" = 1)
+	tastes = list("d'hypocrisie" = 1)
 	bait_quality = GREAT_QUALITY_BAIT_TRAIT
 
 /obj/item/food/bait/doughball
-	name = "doughball"
-	desc = "Small piece of dough. Simple but effective fishing bait."
+	name = "Boule de pâte"
+	desc = "Un petit morceau de pâte. Simple, mais fait un appât correct."
 	icon = 'icons/obj/fishing.dmi'
 	icon_state = "doughball"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
-	tastes = list("dough" = 1)
+	tastes = list("de pâte" = 1)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_TINY
 	bait_quality = BASIC_QUALITY_BAIT_TRAIT

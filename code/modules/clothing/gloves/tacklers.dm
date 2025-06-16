@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/tackler
-	name = "gripper gloves"
-	desc = "Special gloves that manipulate the blood vessels in the wearer's hands, granting them the ability to launch headfirst into walls."
+	name = "gants attrapeur"
+	desc = "Des gants spéciaux qui manipulent les vaisseaux sanguins des mains du porteur, lui donnant la capacité de se lancer tête la première dans les murs."
 	icon_state = "tackle"
 	inhand_icon_state = null
 	cold_protection = HANDS
@@ -44,8 +44,8 @@
 		QDEL_NULL(tackler)
 
 /obj/item/clothing/gloves/tackler/dolphin
-	name = "dolphin gloves"
-	desc = "Sleek, aerodynamic gripper gloves that are less effective at actually performing takedowns, but more effective at letting the user sail through the hallways and cause accidents."
+	name = "gants dauphin"
+	desc = "Fin, aérodynamique, ces gants attrapeur sont moins efficaces pour effectuer des plaquages, mais plus efficaces pour laisser l'utilisateur glisser dans les couloirs et causer des accidents."
 	icon_state = "tackledolphin"
 	inhand_icon_state = null
 
@@ -57,8 +57,8 @@
 	skill_mod = -2
 
 /obj/item/clothing/gloves/tackler/combat
-	name = "gorilla gloves"
-	desc = "Premium quality combative gloves, heavily reinforced to give the user an edge in close combat tackles, though they are more taxing to use than normal gripper gloves. Fireproof to boot!"
+	name = "gants gorille"
+	desc = "Gants de combat de qualité premium, fortement renforcés pour donner à l'utilisateur un avantage dans les plaquages en combat rapproché, bien qu'ils soient plus taxants à utiliser que des gants attrapeur normaux. Ignifuges en prime !"
 	icon_state = "black"
 	inhand_icon_state = "greyscale_gloves"
 	greyscale_colors = "#2f2e31"
@@ -75,8 +75,8 @@
 	resistance_flags = NONE
 
 /obj/item/clothing/gloves/tackler/combat/insulated
-	name = "guerrilla gloves"
-	desc = "Superior quality combative gloves, good for performing tackle takedowns as well as absorbing electrical shocks."
+	name = "gants guerilla"
+	desc = "Gants de combat de qualité supérieure, bons pour effectuer des plaquages ainsi que pour absorber les chocs électriques."
 	siemens_coefficient = 0
 	armor_type = /datum/armor/combat_insulated
 
@@ -84,8 +84,8 @@
 	bio = 50
 
 /obj/item/clothing/gloves/tackler/rocket
-	name = "rocket gloves"
-	desc = "The ultimate in high risk, high reward, perfect for when you need to stop a criminal from fifty feet away or die trying. Banned in most Spinward gridiron football and rugby leagues."
+	name = "gants roquettes"
+	desc = "L'utltime risque élevé, récompense élevée, parfait pour quand vous avez besoin d'arrêter un criminel à cinquante pieds ou de mourir en essayant. Interdit dans la plupart des ligues de football et de rugby de Spinward."
 	icon_state = "tacklerocket"
 	inhand_icon_state = null
 
@@ -97,8 +97,8 @@
 	skill_mod = 7
 
 /obj/item/clothing/gloves/tackler/offbrand
-	name = "improvised gripper gloves"
-	desc = "Ratty looking fingerless gloves wrapped with sticky tape. Beware anyone wearing these, for they clearly have no shame and nothing to lose."
+	name = "gants attrapeur improvisés"
+	desc = "Des gants sans doigts en lambeaux enveloppés de ruban adhésif. Méfiez-vous de quiconque porte ces gants, car ils n'ont clairement aucune honte et rien à perdre."
 	icon_state = "fingerless"
 	inhand_icon_state = null
 
@@ -108,7 +108,7 @@
 	skill_mod = -1
 
 /obj/item/clothing/gloves/tackler/football
-	name = "football gloves"
-	desc = "Gloves for football players! Teaches them how to tackle like a pro."
+	name = "gants de football"
+	desc = "Des gants pour les joueurs de football ! Apprend à plaquer comme un pro."
 	icon_state = "tackle_gloves"
 	inhand_icon_state = null

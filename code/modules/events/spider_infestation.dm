@@ -1,12 +1,12 @@
 /datum/round_event_control/spider_infestation
-	name = "Spider Infestation"
+	name = "Infestation d'araignée"
 	typepath = /datum/round_event/spider_infestation
 	weight = 10
 	max_occurrences = 1
 	min_players = 20
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_ENTITIES
-	description = "Spawns spider eggs, ready to hatch."
+	description = "Spawn des oeufs d'araignée, prêt à éclore."
 	min_wizard_trigger_potency = 5
 	max_wizard_trigger_potency = 7
 
@@ -18,7 +18,7 @@
 	announce_when = rand(announce_when, announce_when + 50)
 
 /datum/round_event/spider_infestation/announce(fake)
-	priority_announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", ANNOUNCER_ALIENS)
+	priority_announce("Signes de vie non-identifé détectés à bord de [station_name()]. Sécurisez tous les accès extérieurs, incluant les conduits et les ventilations.", "Alerte signe de vie", ANNOUNCER_ALIENS)
 
 /datum/round_event/spider_infestation/start()
 	create_midwife_eggs(spawncount)

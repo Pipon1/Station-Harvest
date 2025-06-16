@@ -2,13 +2,13 @@
 #define TRAM_MALFUNCTION_TIME_LOWER 120
 
 /datum/round_event_control/tram_malfunction
-	name = "Tram Malfunction"
+	name = "Défaillance de tram"
 	typepath = /datum/round_event/tram_malfunction
 	weight = 40
 	max_occurrences = 4
 	earliest_start = 15 MINUTES
 	category = EVENT_CATEGORY_ENGINEERING
-	description = "Tram crossing signals malfunction, tram collision damage is increased."
+	description = "Défaillance des feu de croisement des trams, la probabilité de collision des trams est augmentée."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 3
 
@@ -35,7 +35,7 @@
 	end_when = rand(TRAM_MALFUNCTION_TIME_LOWER, TRAM_MALFUNCTION_TIME_UPPER)
 
 /datum/round_event/tram_malfunction/announce()
-	priority_announce("Our automated control system has lost contact with the tram's on board computer. Please take extra care while we diagnose and resolve the issue. Signals and emergency braking may not be available during this time.", "CentCom Engineering Division")
+	priority_announce("Notre système de controle automatique a perdu contact avec les ordinateurs à bord du tram. Merci de prendre les précautions nécessaire lors de vos déplacements durant la durée de notre intervention. Les signaux et les freins d'urgence peuvent ne plus être disponibles pendant cette période.", "Division d'ingénierie de CentCom")
 
 /datum/round_event/tram_malfunction/start()
 	for(var/obj/machinery/crossing_signal/signal as anything in GLOB.tram_signals)
@@ -64,7 +64,7 @@
 	for(var/obj/structure/industrial_lift/tram as anything in GLOB.lifts)
 		tram.collision_lethality = original_lethality
 
-	priority_announce("We've successfully reset the software on the tram, normal operations are now resuming. Sorry for any inconvienence this may have caused.", "CentCom Engineering Division")
+	priority_announce("Le logiciel du tram a été redémarré avec succès, fonctionnement standard revenu. Nous nous excusons pour tout désagrément.", "Division d'ingénierie de CentCom")
 
 #undef TRAM_MALFUNCTION_TIME_UPPER
 #undef TRAM_MALFUNCTION_TIME_LOWER

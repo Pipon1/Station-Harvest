@@ -76,7 +76,7 @@
 		. += mutable_appearance(initial(icon), "pai_inserted")
 
 /obj/item/modular_computer/pda/attack_ai(mob/user)
-	to_chat(user, span_notice("It doesn't feel right to snoop around like that..."))
+	to_chat(user, span_notice("ça ne semble pas juste de fouiller comme ça..."))
 	return // we don't want ais or cyborgs using a private role tablet
 
 /obj/item/modular_computer/pda/interact(mob/user)
@@ -109,10 +109,10 @@
 		return ..()
 	var/obj/item/computer_disk/virus/clown/installed_cartridge = inserted_disk
 	if(!installed_cartridge.charges)
-		to_chat(user, span_notice("Out of virus charges."))
+		to_chat(user, span_notice("Vous n'avez plus d'exemplaire de ce virus."))
 		return ..()
 
-	to_chat(user, span_notice("You upload the virus to [target]!"))
+	to_chat(user, span_notice("Vous envoyez le virus à [target]!"))
 	var/sig_list = list(COMSIG_ATOM_ATTACK_HAND)
 	if(istype(target,/obj/machinery/door/airlock))
 		sig_list = list(COMSIG_AIRLOCK_OPEN, COMSIG_AIRLOCK_CLOSE)
@@ -129,10 +129,10 @@
 	. = ..()
 
 	if(inserted_item)
-		context[SCREENTIP_CONTEXT_CTRL_LMB] = "Remove [inserted_item]"
+		context[SCREENTIP_CONTEXT_CTRL_LMB] = "Enlever [inserted_item]"
 		. = CONTEXTUAL_SCREENTIP_SET
 	else if(istype(held_item) && is_type_in_list(held_item, contained_item))
-		context[SCREENTIP_CONTEXT_LMB] = "Insert [held_item]"
+		context[SCREENTIP_CONTEXT_LMB] = "Insérer [held_item]"
 		. = CONTEXTUAL_SCREENTIP_SET
 
 	return . || NONE
@@ -143,14 +143,14 @@
 	if(!is_type_in_list(attacking_item, contained_item))
 		return
 	if(attacking_item.w_class >= WEIGHT_CLASS_SMALL) // Anything equal to or larger than small won't work
-		user.balloon_alert(user, "too big!")
+		user.balloon_alert(user, "Trop large !")
 		return
 	if(inserted_item)
-		balloon_alert(user, "no room!")
+		balloon_alert(user, "il n'y a plus de place !")
 		return
 	if(!user.transferItemToLoc(attacking_item, src))
 		return
-	balloon_alert(user, "inserted [attacking_item]")
+	balloon_alert(user, "A inséré [attacking_item]")
 	inserted_item = attacking_item
 	playsound(src, 'sound/machines/pda_button1.ogg', 50, TRUE)
 
@@ -183,7 +183,7 @@
 		return
 
 	if(inserted_item)
-		balloon_alert(user, "removed [inserted_item]")
+		balloon_alert(user, "Enlever [inserted_item]")
 		user.put_in_hands(inserted_item)
 		inserted_item = null
 		update_appearance()
@@ -193,20 +193,20 @@
 	var/turf/current_turf = get_turf(src)
 
 	if(from_message_menu)
-		log_bomber(null, null, target, "'s tablet exploded as [target.p_they()] tried to open their tablet message menu because of a recent tablet bomb.")
+		log_bomber(null, null, target, "La tablette de [target.p_they()] a explosé alors qu'il essayait de lire un message récent. Cause : Un virus.")
 	else
 		log_bomber(bomber, "successfully tablet-bombed", target, "as [target.p_they()] tried to reply to a rigged tablet message [bomber && !is_special_character(bomber) ? "(SENT BY NON-ANTAG)" : ""]")
 
 	if (ismob(loc))
 		var/mob/loc_mob = loc
 		loc_mob.show_message(
-			msg = span_userdanger("Your [src] explodes!"),
+			msg = span_userdanger("Votre [src] explose !"),
 			type = MSG_VISUAL,
-			alt_msg = span_warning("You hear a loud *pop*!"),
+			alt_msg = span_warning("Vous entendez un gros *pop* !"),
 			alt_type = MSG_AUDIBLE,
 		)
 	else
-		visible_message(span_danger("[src] explodes!"), span_warning("You hear a loud *pop*!"))
+		visible_message(span_danger("[src] explose !"), span_warning("Vous entendez un gros *pop* !"))
 
 	target.client?.give_award(/datum/award/achievement/misc/clickbait, target)
 
@@ -253,7 +253,7 @@
  * Resistant to emags, these are given to nukies for disk pinpointer stuff.
  */
 /obj/item/modular_computer/pda/nukeops
-	name = "nuclear pda"
+	name = "pda nucléaire"
 	device_theme = PDA_THEME_SYNDICATE
 	comp_light_luminosity = 6.3 //matching a flashlight
 	light_color = COLOR_RED
@@ -277,7 +277,7 @@
  * PDAs that are built-in to Silicons and should not exist at any point without being inside of one.
  */
 /obj/item/modular_computer/pda/silicon
-	name = "modular interface"
+	name = "interface modulaire"
 	icon_state = "tablet-silicon"
 	base_icon_state = "tablet-silicon"
 	greyscale_config = null

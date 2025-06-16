@@ -1,8 +1,8 @@
 /obj/machinery/vending/cigarette
-	name = "\improper ShadyCigs Deluxe"
-	desc = "If you want to get cancer, might as well do it in style."
-	product_slogans = "Space cigs taste good like a cigarette should.;I'd rather toolbox than switch.;Smoke!;Don't believe the reports - smoke today!"
-	product_ads = "Probably not bad for you!;Don't believe the scientists!;It's good for you!;Don't quit, buy more!;Smoke!;Nicotine heaven.;Best cigarettes since 2150.;Award-winning cigs."
+	name = "\improper Clope-louche de luxe"
+	desc = "Si vous voulez un cancer, il veut mieux le faire avec style."
+	product_slogans = "Fumer une cigarette dans l'espace, avec le goût qu'une cigarette devrait avoir.;Je préfère fumer ma vie qu'éteindre ma clope.;Fumez !;Ne croyez pas les études, fumez des clopes !"
+	product_ads = "Probablement pas dangereux pour la santé !;Ne croyez pas les scientifiques !;C'est bon pour vous !;N'arretez pas, achetez plus !;Fumez !;Un paradis de nicotine.;Meilleures cigarettes depuis 2150.;Cigarettes prisées."
 	icon_state = "cigs"
 	panel_type = "panel5"
 	products = list(
@@ -49,10 +49,10 @@
 	initial_language_holder = /datum/language_holder/syndicate
 
 /obj/machinery/vending/cigarette/beach //Used in the lavaland_biodome_beach.dmm ruin
-	name = "\improper ShadyCigs Ultra"
-	desc = "Now with extra premium products!"
-	product_ads = "Probably not bad for you!;Dope will get you through times of no money better than money will get you through times of no dope!;It's good for you!"
-	product_slogans = "Turn on, tune in, drop out!;Better living through chemistry!;Toke!;Don't forget to keep a smile on your lips and a song in your heart!"
+	name = "\improper Clope-louche Ultra"
+	desc = "Dès maintenant : de nouveaux produits de luxe !"
+	product_ads = "Probablement pas dangereux pour la santé !;La drogue t'aidera à passer les mauvais moments où t'as pas de thune, quand la thune t'aidera pas à passer les moments sans drogue !;C'est bon pour vous !"
+	product_slogans = "Allumer, fumer, recommencez Turn on, tune in, drop out!;Better living through chemistry!;Toke!;Don't forget to keep a smile on your lips and a song in your heart!"
 	products = list(
 		/obj/item/storage/fancy/cigarettes = 5,
 		/obj/item/storage/fancy/cigarettes/cigpack_uplift = 3,
@@ -72,7 +72,7 @@
 	initial_language_holder = /datum/language_holder/beachbum
 
 /obj/item/vending_refill/cigarette
-	machine_name = "ShadyCigs Deluxe"
+	machine_name = "Clope-louche de luxe"
 	icon_state = "refill_smoke"
 
 /obj/machinery/vending/cigarette/pre_throw(obj/item/I)

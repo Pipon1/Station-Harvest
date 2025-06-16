@@ -508,7 +508,7 @@
 	if(assigned_role != new_role)
 		return
 
-	to_chat(incoming_client || src, span_infoplain("<b>You are the [new_role.title].</b>"))
+	to_chat(incoming_client || src, span_infoplain("<b>Vous êtes nommé au poste de [new_role.title].</b>"))
 
 	var/related_policy = get_policy(new_role.title)
 	if(related_policy)

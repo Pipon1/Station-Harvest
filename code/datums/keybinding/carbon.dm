@@ -8,8 +8,8 @@
 /datum/keybinding/carbon/toggle_throw_mode
 	hotkey_keys = list("R", "Southwest") // END
 	name = "toggle_throw_mode"
-	full_name = "Toggle throw mode"
-	description = "Toggle throwing the current item or not."
+	full_name = "Activer le mode 'Jeter'"
+	description = "Activer le mode pour jeter l'objet ou non."
 	category = CATEGORY_CARBON
 	keybind_signal = COMSIG_KB_CARBON_TOGGLETHROWMODE_DOWN
 
@@ -24,8 +24,8 @@
 /datum/keybinding/carbon/hold_throw_mode
 	hotkey_keys = list("Space")
 	name = "hold_throw_mode"
-	full_name = "Hold throw mode"
-	description = "Hold this to turn on throw mode, and release it to turn off throw mode"
+	full_name = "Maintenir pour jeter"
+	description = "Maintenez le bouton pour activer le mode 'Jeter', et lâcher le pour le désactiver"
 	category = CATEGORY_CARBON
 	keybind_signal = COMSIG_KB_CARBON_HOLDTHROWMODE_DOWN
 
@@ -45,8 +45,8 @@
 /datum/keybinding/carbon/give
 	hotkey_keys = list("G")
 	name = "Give_Item"
-	full_name = "Give item"
-	description = "Give the item you're currently holding"
+	full_name = "Doner un objet"
+	description = "Offrez de donner l'objet que vous tenez dans votre main active."
 	keybind_signal = COMSIG_KB_CARBON_GIVEITEM_DOWN
 
 /datum/keybinding/carbon/give/down(client/user)

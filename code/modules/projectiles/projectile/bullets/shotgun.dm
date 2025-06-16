@@ -84,7 +84,7 @@
 /obj/projectile/bullet/pellet/shotgun_rubbershot
 	name = "rubber shot pellet"
 	damage = 3
-	stamina = 11
+	stamina = 30
 	sharpness = NONE
 	embedding = null
 	speed = 1.2

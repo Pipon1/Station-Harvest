@@ -9,7 +9,7 @@
 	w_class = WEIGHT_CLASS_TINY
 
 	/// The number of book charges we have to buy spells
-	var/uses = 10
+	var/uses = 50
 	/// The bonus that you get from going semi-random.
 	var/semi_random_bonus = 2
 	/// The bonus that you get from going full random.

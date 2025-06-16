@@ -1,10 +1,10 @@
 /datum/traitor_objective/demoralise/graffiti
-	name = "Sow doubt among the crew %VIEWS% times using Syndicate graffiti."
-	description = "Use the button below to materialize a seditious spray can, \
-		and use it to draw a 3x3 tag in a place where people will come across it. \
-		Special syndicate sealing agent ensures that it can't be removed for \
-		five minutes following application, and it's slippery too! \
-		People seeing or slipping on your graffiti grants progress towards success."
+	name = "Faites douter l'équipage %VIEWS% fois en créant un graffiti du syndicat."
+	description = "Utilisez le bouton ci-dessous pour matérialiser un spray de peinture malicieux, \
+			et utilisez le pour dessiner un graffiti sur une zone de 3x3. \
+			Une couche protectrice garantira qu'il ne puisse être enlevé \
+			durant les cinq minutes suivants l'utilisation. Attention, c'est glissant ! \
+			Tout membre d'équipage glissant sur ou voyant votre graffiti comptera pour l'accomplissement de votre but."
 
 	progression_minimum = 0 MINUTES
 	progression_maximum = 30 MINUTES
@@ -20,7 +20,7 @@
 /datum/traitor_objective/demoralise/graffiti/generate_ui_buttons(mob/user)
 	var/list/buttons = list()
 	if (!obtained_spray)
-		buttons += add_ui_button("", "Pressing this will materialize a syndicate spraycan in your hand.", "wifi", "summon_gear")
+		buttons += add_ui_button("", "Pressez ce bouton pour matérialiser une bombe de peinture du syndicat.", "wifi", "summon_gear")
 	else
 		buttons += add_ui_button("[demoralised_crew_events] / [demoralised_crew_required] propagandised", "This many crew have been exposed to propaganda, out of a required [demoralised_crew_required].", "wifi", "none")
 	return buttons
@@ -35,8 +35,7 @@
 			obtained_spray = TRUE
 			var/obj/item/traitor_spraycan/spray = new(user.drop_location())
 			user.put_in_hands(spray)
-			spray.balloon_alert(user, "the spraycan materializes in your hand")
-
+			spray.balloon_alert(user, "La bombe de peinture se matérialise dans votre main")
 			RegisterSignal(spray, COMSIG_PARENT_QDELETING, PROC_REF(on_spray_destroyed))
 			RegisterSignal(spray, COMSIG_TRAITOR_GRAFFITI_DRAWN, PROC_REF(on_rune_complete))
 
@@ -89,8 +88,8 @@
 
 // Extending the existing spraycan item was more trouble than it was worth, I don't want or need this to be able to draw arbitrary shapes.
 /obj/item/traitor_spraycan
-	name = "seditious spraycan"
-	desc = "This spraycan deploys a subversive pattern containing subliminal priming agents over a 3x3 area. Contains enough primer for just one final coating."
+	name = "Bombe de peinture malicieuse"
+	desc = "Cette bombe de peinture permet de dessiner un paterne subliminal sur une zone de 3x3. Elle contient juste assez de peinture pour un dessin complet."
 	icon = 'icons/obj/art/crayons.dmi'
 	icon_state = "deathcan"
 	worn_icon_state = "spraycan"
@@ -109,11 +108,10 @@
 /obj/item/traitor_spraycan/afterattack(atom/target, mob/user, proximity, params)
 	. = ..()
 	if (expended)
-		user.balloon_alert(user, "all out of paint...")
+		user.balloon_alert(user, "Il n'y a plus de peinture...")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
-
 	if (drawing_rune)
-		user.balloon_alert(user, "already busy!")
+		user.balloon_alert(user, "Deja occupé !")
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 	. |= AFTERATTACK_PROCESSED_ITEM
@@ -140,7 +138,7 @@
 /obj/item/traitor_spraycan/proc/try_draw_new_rune(mob/living/user, turf/target_turf)
 	for(var/turf/nearby_turf as anything in RANGE_TURFS(1, target_turf))
 		if (!isopenturf(nearby_turf) || is_type_in_typecache(nearby_turf, no_draw_turfs))
-			user.balloon_alert(user, "you need a clear 3x3 area!")
+			user.balloon_alert(user, "Vous avez vesoin d'une zone libre de 3x3.")
 			return
 
 	draw_rune(user, target_turf)
@@ -153,7 +151,7 @@
  * * target_turf - the place the rune's being drawn
  */
 /obj/item/traitor_spraycan/proc/draw_rune(mob/living/user, turf/target_turf)
-	if (!try_draw_step("drawing outline...", user, target_turf))
+	if (!try_draw_step("Vous dessinez l'extérieur...", user, target_turf))
 		return
 	try_complete_rune(user, new /obj/effect/decal/cleanable/traitor_rune(target_turf))
 
@@ -169,7 +167,7 @@
 	drawing_rune = TRUE
 	user.balloon_alert(user, "[start_output]")
 	if (!do_after(user, 3 SECONDS, target))
-		user.balloon_alert(user, "interrupted!")
+		user.balloon_alert(user, "Interrompu !")
 		drawing_rune = FALSE
 		return FALSE
 
@@ -192,28 +190,28 @@
 /obj/item/traitor_spraycan/proc/try_complete_rune(mob/living/user, obj/effect/decal/cleanable/traitor_rune/rune)
 	switch(rune.drawn_stage)
 		if (RUNE_STAGE_OUTLINE)
-			if (!try_draw_step("... finalising design...", user, rune))
+			if (!try_draw_step("...Vous finalisez le design...", user, rune))
 				return
 			if (!rune)
-				user.balloon_alert(user, "graffiti was destroyed!")
+				user.balloon_alert(user, "Le graffiti a été détruit !")
 				return
 			rune.set_stage(RUNE_STAGE_COLOURED)
 			try_complete_rune(user, rune)
 
 		if (RUNE_STAGE_COLOURED)
-			if (!try_draw_step("... applying final coating...", user, rune))
+			if (!try_draw_step("...Vous sprayez la dernière couche...", user, rune))
 				return
 			if (!rune)
-				user.balloon_alert(user, "graffiti was destroyed!")
+				user.balloon_alert(user, "Le graffiti a été détruit !")
 				return
-			user.balloon_alert(user, "finished!")
+			user.balloon_alert(user, "finit !")
 			rune.set_stage(RUNE_STAGE_COMPLETE)
 			expended = TRUE
-			desc = "A suspicious looking spraycan, it's all out of paint."
+			desc = "Une bombe de peinture bien suspicieuse... Elle est vide."
 			SEND_SIGNAL(src, COMSIG_TRAITOR_GRAFFITI_DRAWN, rune)
 
 		if (RUNE_STAGE_COMPLETE, RUNE_STAGE_REMOVABLE)
-			user.balloon_alert(user, "all done!")
+			user.balloon_alert(user, "Totalement finit !")
 
 /// Copying the functionality from normal spraycans, but doesn't need all the optional checks
 /obj/item/traitor_spraycan/suicide_act(mob/living/user)
@@ -230,8 +228,8 @@
 	return OXYLOSS
 
 /obj/effect/decal/cleanable/traitor_rune
-	name = "syndicate graffiti"
-	desc = "It looks like it's going to be... the Syndicate logo?"
+	name = "Graffiti du Syndicat"
+	desc = "Il semblerait que ça va être.... le logo du syndicat ?"
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "traitor_rune_outline"
 	pixel_x = -32
@@ -288,16 +286,16 @@
 	switch(drawn_stage)
 		if (RUNE_STAGE_OUTLINE)
 			icon_state = "traitor_rune_outline"
-			desc = "It looks like it's going to be... the Syndicate logo?"
+			desc = "Il semblerait que ça va être.... le logo du syndicat ?"
 
 		if (RUNE_STAGE_COLOURED, RUNE_STAGE_REMOVABLE)
 			icon_state = "traitor_rune_done"
-			desc = "A large depiction of the Syndicate logo."
+			desc = "Un large dessin réprésentant le logo du syndicat."
 			clean_proof = FALSE
 
 		if (RUNE_STAGE_COMPLETE)
 			icon_state = "traitor_rune_sheen"
-			desc = "A large depiction of the Syndicate logo. It looks slippery."
+			desc = "Un large dessin réprésentant le logo du syndicat. Il semble glissant."
 			var/datum/demoralise_moods/graffiti/mood_category = new()
 			demoraliser = new(src, 7, TRUE, mood_category)
 			clean_proof = TRUE

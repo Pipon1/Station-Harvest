@@ -13,10 +13,10 @@ export const NtosRoboControl = (props, context) => {
   return (
     <NtosWindow width={550} height={550}>
       <NtosWindow.Content scrollable>
-        <Section title="Robot Control Console">
+        <Section title="Ordinateur de controle des robots">
           <LabeledList>
-            <LabeledList.Item label="ID Card">{id_owner}</LabeledList.Item>
-            <LabeledList.Item label="Bots In Range">
+            <LabeledList.Item label="ID">{id_owner}</LabeledList.Item>
+            <LabeledList.Item label="Robots atteignable">
               {data.botcount}
             </LabeledList.Item>
           </LabeledList>
@@ -28,7 +28,7 @@ export const NtosRoboControl = (props, context) => {
               lineHeight="23px"
               selected={tab_main === 1}
               onClick={() => setTab_main(1)}>
-              Bots
+              Robots
             </Tabs.Tab>
             <Tabs.Tab
               icon="hammer"
@@ -43,7 +43,7 @@ export const NtosRoboControl = (props, context) => {
           <Stack.Item>
             <Section>
               <LabeledList>
-                <LabeledList.Item label="Bots in range">
+                <LabeledList.Item label="Robots atteignable">
                   {data.botcount}
                 </LabeledList.Item>
               </LabeledList>
@@ -58,15 +58,15 @@ export const NtosRoboControl = (props, context) => {
             <Section>
               <Button
                 icon="address-card"
-                tooltip="Grant/Remove Drone access to interact with machines and wires that would otherwise be deemed dangerous."
+                tooltip="Donne/Retire l'accès aux drones pour interagir avec les machines et les câbles qui seraient autrement considérés comme dangereux."
                 content={
-                  droneaccess ? 'Grant Drone Access' : 'Revoke Drone Access'
+                  droneaccess ? 'Donne l\'accès au drone' : 'Retire l\'accès au drone'
                 }
                 color={droneaccess ? 'good' : 'bad'}
                 onClick={() => act('changedroneaccess')}
               />
               <Dropdown
-                tooltip="Drone pings"
+                tooltip="Afficher la positions des drones"
                 width="100%"
                 displayText={'Drone pings'}
                 options={dronepingtypes}
@@ -103,7 +103,7 @@ export const RobotInfo = (props, context) => {
           <>
             <Button
               icon="play"
-              tooltip="Go to Destination."
+              tooltip="Aller à la destination."
               onClick={() =>
                 act('go', {
                   robot: mule.mule_ref,
@@ -112,7 +112,7 @@ export const RobotInfo = (props, context) => {
             />
             <Button
               icon="pause"
-              tooltip="Stop Moving."
+              tooltip="Arrêter de bouger."
               onClick={() =>
                 act('stop', {
                   robot: mule.mule_ref,
@@ -121,7 +121,7 @@ export const RobotInfo = (props, context) => {
             />
             <Button
               icon="home"
-              tooltip="Travel Home."
+              tooltip="Revenir au point de départ."
               tooltipPosition="bottom-start"
               onClick={() =>
                 act('home', {
@@ -135,19 +135,19 @@ export const RobotInfo = (props, context) => {
       <Stack>
         <Stack.Item grow={1} basis={0}>
           <LabeledList>
-            <LabeledList.Item label="Model">{robot.model}</LabeledList.Item>
-            <LabeledList.Item label="Location">{robot.locat}</LabeledList.Item>
-            <LabeledList.Item label="Status">{robot.mode}</LabeledList.Item>
+            <LabeledList.Item label="Modèle">{robot.model}</LabeledList.Item>
+            <LabeledList.Item label="Position">{robot.locat}</LabeledList.Item>
+            <LabeledList.Item label="Statut">{robot.mode}</LabeledList.Item>
             {mule && (
               <>
-                <LabeledList.Item label="Loaded Cargo">
+                <LabeledList.Item label="Cargo chargé">
                   {data.load || 'N/A'}
                 </LabeledList.Item>
-                <LabeledList.Item label="Home">{mule.home}</LabeledList.Item>
+                <LabeledList.Item label="Point de départ">{mule.home}</LabeledList.Item>
                 <LabeledList.Item label="Destination">
                   {mule.dest || 'N/A'}
                 </LabeledList.Item>
-                <LabeledList.Item label="Power">
+                <LabeledList.Item label="Charge">
                   <ProgressBar
                     value={mule.power}
                     minValue={0}
@@ -168,7 +168,7 @@ export const RobotInfo = (props, context) => {
             <>
               <Button
                 fluid
-                content="Set Destination"
+                content="Définir la destination"
                 onClick={() =>
                   act('destination', {
                     robot: mule.mule_ref,
@@ -177,7 +177,7 @@ export const RobotInfo = (props, context) => {
               />
               <Button
                 fluid
-                content="Set ID"
+                content="Définir l'ID"
                 onClick={() =>
                   act('setid', {
                     robot: mule.mule_ref,
@@ -186,7 +186,7 @@ export const RobotInfo = (props, context) => {
               />
               <Button
                 fluid
-                content="Set Home"
+                content="Définir le point de départ"
                 onClick={() =>
                   act('sethome', {
                     robot: mule.mule_ref,
@@ -195,7 +195,7 @@ export const RobotInfo = (props, context) => {
               />
               <Button
                 fluid
-                content="Unload Cargo"
+                content="Décharger le cargo"
                 onClick={() =>
                   act('unload', {
                     robot: mule.mule_ref,
@@ -204,7 +204,7 @@ export const RobotInfo = (props, context) => {
               />
               <Button.Checkbox
                 fluid
-                content="Auto Return"
+                content="Retour automatique"
                 checked={mule.autoReturn}
                 onClick={() =>
                   act('autoret', {
@@ -214,7 +214,7 @@ export const RobotInfo = (props, context) => {
               />
               <Button.Checkbox
                 fluid
-                content="Auto Pickup"
+                content="Ramassage automatique"
                 checked={mule.autoPickup}
                 onClick={() =>
                   act('autopick', {
@@ -224,7 +224,7 @@ export const RobotInfo = (props, context) => {
               />
               <Button.Checkbox
                 fluid
-                content="Delivery Report"
+                content="Rapport de livraison"
                 checked={mule.reportDelivery}
                 onClick={() =>
                   act('report', {
@@ -238,7 +238,7 @@ export const RobotInfo = (props, context) => {
             <>
               <Button
                 fluid
-                content="Stop Patrol"
+                content="Arrêter la patrouille"
                 onClick={() =>
                   act('patroloff', {
                     robot: robot.bot_ref,
@@ -247,7 +247,7 @@ export const RobotInfo = (props, context) => {
               />
               <Button
                 fluid
-                content="Start Patrol"
+                content="Commencer la patrouille"
                 onClick={() =>
                   act('patrolon', {
                     robot: robot.bot_ref,
@@ -256,7 +256,7 @@ export const RobotInfo = (props, context) => {
               />
               <Button
                 fluid
-                content="Summon"
+                content="Appeller le robot"
                 onClick={() =>
                   act('summon', {
                     robot: robot.bot_ref,
@@ -265,7 +265,7 @@ export const RobotInfo = (props, context) => {
               />
               <Button
                 fluid
-                content="Eject PAi"
+                content="Ejecter le IAp"
                 onClick={() =>
                   act('ejectpai', {
                     robot: robot.bot_ref,
@@ -294,9 +294,9 @@ export const DroneInfo = (props, context) => {
       <Stack>
         <Stack.Item grow={1} basis={0}>
           <LabeledList>
-            <LabeledList.Item label="Status">
+            <LabeledList.Item label="Statut">
               <Box color={drone.status ? 'bad' : 'good'}>
-                {drone.status ? 'Not Responding' : 'Nominal'}
+                {drone.status ? 'Hors ligne' : 'En ligne'}
               </Box>
             </LabeledList.Item>
           </LabeledList>

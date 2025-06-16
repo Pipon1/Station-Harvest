@@ -8,4 +8,6 @@ Zanros = Host
 Nevistola = Game Admin
 neremsa = Game Admin
 Pipon1 = Game Master
-Shkeil = Game Admin
+lauwmalescoute = Game Admin
+eazon = Game Admin
+Eazeon = Game Admin

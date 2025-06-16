@@ -23,7 +23,7 @@ export const NtosNetDosContent = (props, context) => {
         <NoticeBox>{error}</NoticeBox>
         <Button
           fluid
-          content="Reset"
+          content="Redémarrer"
           textAlign="center"
           onClick={() => act('PRG_reset')}
         />
@@ -83,7 +83,7 @@ export const NtosNetDosContent = (props, context) => {
       <Button
         fluid
         bold
-        content="EXECUTE"
+        content="EXECUTER"
         color="bad"
         textAlign="center"
         disabled={!focus}

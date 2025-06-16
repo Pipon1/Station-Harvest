@@ -1,11 +1,11 @@
 /datum/round_event_control/camera_failure
-	name = "Camera Failure"
+	name = "Défaillance de caméra"
 	typepath = /datum/round_event/camera_failure
 	weight = 100
 	max_occurrences = 20
 	alert_observers = FALSE
 	category = EVENT_CATEGORY_ENGINEERING
-	description = "Turns off a random amount of cameras."
+	description = "Éteint un nombre aléatoire de caméra."
 
 /datum/round_event/camera_failure
 	fakeable = FALSE

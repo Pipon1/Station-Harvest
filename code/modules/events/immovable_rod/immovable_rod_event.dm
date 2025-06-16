@@ -1,12 +1,12 @@
 /// Immovable rod random event.
 /// The rod will spawn at some location outside the station, and travel in a straight line to the opposite side of the station
 /datum/round_event_control/immovable_rod
-	name = "Immovable Rod"
+	name = "Barre inamovible"
 	typepath = /datum/round_event/immovable_rod
 	min_players = 15
 	max_occurrences = 5
 	category = EVENT_CATEGORY_SPACE
-	description = "The station passes through an immovable rod."
+	description = "La station passe à travers une barre inamovile."
 	min_wizard_trigger_potency = 6
 	max_wizard_trigger_potency = 7
 	admin_setup = list(/datum/event_admin_setup/set_location/immovable_rod, /datum/event_admin_setup/question/immovable_rod)
@@ -19,7 +19,7 @@
 	var/force_looping = FALSE
 
 /datum/round_event/immovable_rod/announce(fake)
-	priority_announce("What the fuck was that?!", "General Alert")
+	priority_announce("Bon sang mais qu'est-ce que c'est que ça ?!", "Alerte générale")
 
 /datum/round_event/immovable_rod/start()
 	var/startside = pick(GLOB.cardinals)

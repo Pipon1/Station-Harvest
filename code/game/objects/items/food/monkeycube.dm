@@ -1,10 +1,10 @@
 /obj/item/food/monkeycube
-	name = "monkey cube"
-	desc = "Just add water!"
+	name = "cube de singe"
+	desc = "Ajoutez juste de l'eau !"
 	icon_state = "monkeycube"
 	bite_consumption = 12
 	food_reagents = list(/datum/reagent/monkey_powder = 30)
-	tastes = list("the jungle" = 1, "bananas" = 1)
+	tastes = list("de jungle" = 1, "de banane" = 1)
 	foodtypes = MEAT | SUGAR
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
@@ -17,23 +17,23 @@
 	if(faction)
 		bananas.faction = faction
 	if (!QDELETED(bananas))
-		visible_message(span_notice("[src] expands!"))
+		visible_message(span_notice("[src] s'aggrandit !"))
 		bananas.log_message("spawned via [src], Last attached mob: [key_name(spammer)].", LOG_ATTACK)
 	else if (!spammer) // Visible message in case there are no fingerprints
-		visible_message(span_notice("[src] fails to expand!"))
+		visible_message(span_notice("[src] échoue à s'aggrandir !"))
 	qdel(src)
 
 /obj/item/food/monkeycube/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is putting [src] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] met [src] dans la bouche de [user.p_their()] ! On dirait que [user.p_theyre()] essaye de se suicider !"))
 	var/eating_success = do_after(user, 1 SECONDS, src)
 	if(QDELETED(user)) //qdeletion: the nuclear option of self-harm
 		return SHAME
 	if(!eating_success || QDELETED(src)) //checks if src is gone or if they failed to wait for a second
-		user.visible_message(span_suicide("[user] chickens out!"))
+		user.visible_message(span_suicide("[user] a changé d'avis !"))
 		return SHAME
 	if(HAS_TRAIT(user, TRAIT_NOHUNGER)) //plasmamen don't have saliva/stomach acid
-		user.visible_message(span_suicide("[user] realizes [user.p_their()] body won't activate [src]!")
-		,span_warning("Your body won't activate [src]..."))
+		user.visible_message(span_suicide("[user] réalise que le corps de [user.p_their()] ne va pas activer le [src]!")
+		,span_warning("Votre corps ne va pas activer le [src]..."))
 		return SHAME
 	playsound(user, 'sound/items/eatfood.ogg', rand(10, 50), TRUE)
 	user.temporarilyRemoveItemFromInventory(src) //removes from hands, keeps in M
@@ -44,45 +44,45 @@
 	if(QDELETED(user) || QDELETED(src))
 		return
 	if(src.loc != user) //how the hell did you manage this
-		to_chat(user, span_warning("Something happened to [src]..."))
+		to_chat(user, span_warning("Quelque chose est en train d'arriver à [src]..."))
 		return
 	Expand()
-	user.visible_message(span_danger("[user]'s torso bursts open as a primate emerges!"))
+	user.visible_message(span_danger("Le torse de [user] s'ouvre et un singe en sort !"))
 	user.gib(null, TRUE, null, TRUE)
 
 /obj/item/food/monkeycube/syndicate
 	faction = list(FACTION_NEUTRAL, ROLE_SYNDICATE)
 
 /obj/item/food/monkeycube/gorilla
-	name = "gorilla cube"
-	desc = "A Waffle Co. brand gorilla cube. Now with extra molecules!"
+	name = "cube de gorille"
+	desc = "Presque comme le cube de singe !"
 	bite_consumption = 20
 	food_reagents = list(
 		/datum/reagent/monkey_powder = 30,
 		/datum/reagent/medicine/strange_reagent = 5,
 	)
-	tastes = list("the jungle" = 1, "bananas" = 1, "jimmies" = 1)
+	tastes = list("de jungle" = 1, "de banane" = 1)
 	spawned_mob = /mob/living/simple_animal/hostile/gorilla
 
 /obj/item/food/monkeycube/chicken
-	name = "chicken cube"
-	desc = "A new Nanotrasen classic, the chicken cube. Tastes like everything!"
+	name = "cube de poulet"
+	desc = "Un nouveau classique de Nanotrasen, le cube de poulet. Sans goût !"
 	bite_consumption = 20
 	food_reagents = list(
 		/datum/reagent/consumable/eggyolk = 30,
 		/datum/reagent/medicine/strange_reagent = 1,
 	)
-	tastes = list("chicken" = 1, "the country" = 1, "chicken bouillon" = 1)
+	tastes = list("de poulet" = 1, "du pays" = 1, "de bouillon de poulet" = 1)
 	spawned_mob = /mob/living/simple_animal/chicken
 
 /obj/item/food/monkeycube/bee
-	name = "bee cube"
-	desc = "We were sure it was a good idea. Just add water."
+	name = "cube d'abeille"
+	desc = "On était certain que c'était une bonne idée. Ajoutez juste de l'eau."
 	bite_consumption = 20
 	food_reagents = list(
 		/datum/reagent/consumable/honey = 10,
 		/datum/reagent/toxin = 5,
 		/datum/reagent/medicine/strange_reagent = 1,
 	)
-	tastes = list("buzzing" = 1, "honey" = 1, "regret" = 1)
+	tastes = list("de bzz bzz" = 1, "de miel" = 1, "de regrets" = 1)
 	spawned_mob = /mob/living/simple_animal/hostile/bee

@@ -32,76 +32,75 @@
 
 //No department
 #define JOB_ASSISTANT "Assistant"
-#define JOB_PRISONER "Prisoner"
+#define JOB_PRISONER "Prisonnier"
 //Command
-#define JOB_CAPTAIN "Captain"
-#define JOB_HEAD_OF_PERSONNEL "Head of Personnel"
-#define JOB_HEAD_OF_SECURITY "Head of Security"
-#define JOB_RESEARCH_DIRECTOR "Research Director"
-#define JOB_CHIEF_ENGINEER "Chief Engineer"
-#define JOB_CHIEF_MEDICAL_OFFICER "Chief Medical Officer"
+#define JOB_CAPTAIN "Capitaine"
+#define JOB_HEAD_OF_PERSONNEL "Chef du personnel"
+#define JOB_HEAD_OF_SECURITY "Chef de la sécurité"
+#define JOB_RESEARCH_DIRECTOR "Directeur des recherches"
+#define JOB_CHIEF_ENGINEER "Chef ingénieur"
+#define JOB_CHIEF_MEDICAL_OFFICER "Chef médecin"
 //Silicon
-#define JOB_AI "AI"
+#define JOB_AI "IA"
 #define JOB_CYBORG "Cyborg"
-#define JOB_PERSONAL_AI "Personal AI"
+#define JOB_PERSONAL_AI "IA personnelle"
 //Security
-#define JOB_WARDEN "Warden"
-#define JOB_DETECTIVE "Detective"
-#define JOB_SECURITY_OFFICER "Security Officer"
-#define JOB_SECURITY_OFFICER_MEDICAL "Security Officer (Medical)"
-#define JOB_SECURITY_OFFICER_ENGINEERING "Security Officer (Engineering)"
-#define JOB_SECURITY_OFFICER_SCIENCE "Security Officer (Science)"
-#define JOB_SECURITY_OFFICER_SUPPLY "Security Officer (Cargo)"
+#define JOB_WARDEN "Gardien"
+#define JOB_DETECTIVE "Détective"
+#define JOB_SECURITY_OFFICER "Officier de sécurité"
+#define JOB_SECURITY_OFFICER_MEDICAL "Officier de sécurité (Médical)"
+#define JOB_SECURITY_OFFICER_ENGINEERING "Officier de sécurité (Ingénierie)"
+#define JOB_SECURITY_OFFICER_SCIENCE "Officier de sécurité (Recherche)"
+#define JOB_SECURITY_OFFICER_SUPPLY "Officier de sécurité (Cargo)"
 //Engineering
-#define JOB_STATION_ENGINEER "Station Engineer"
-#define JOB_ATMOSPHERIC_TECHNICIAN "Atmospheric Technician"
+#define JOB_STATION_ENGINEER "Ingénieur technique"
+#define JOB_ATMOSPHERIC_TECHNICIAN "Technicien atmosphérique"
 //Medical
-#define JOB_MEDICAL_DOCTOR "Medical Doctor"
-#define JOB_PARAMEDIC "Paramedic"
-#define JOB_CHEMIST "Chemist"
-#define JOB_VIROLOGIST "Virologist"
+#define JOB_MEDICAL_DOCTOR "Médecin"
+#define JOB_PARAMEDIC "Brancardier"
+#define JOB_CHEMIST "Chimiste"
+#define JOB_VIROLOGIST "Virologue"
 //Science
-#define JOB_SCIENTIST "Scientist"
-#define JOB_ROBOTICIST "Roboticist"
-#define JOB_GENETICIST "Geneticist"
+#define JOB_SCIENTIST "Scientifique"
+#define JOB_ROBOTICIST "Roboticien"
+#define JOB_GENETICIST "Généticien"
 //Supply
-#define JOB_QUARTERMASTER "Quartermaster"
-#define JOB_CARGO_TECHNICIAN "Cargo Technician"
-#define JOB_SHAFT_MINER "Shaft Miner"
+#define JOB_QUARTERMASTER "Contre-maître"
+#define JOB_CARGO_TECHNICIAN "Technicien cargo"
+#define JOB_SHAFT_MINER "Mineur"
 //Service
-#define JOB_BARTENDER "Bartender"
-#define JOB_BOTANIST "Botanist"
-#define JOB_COOK "Cook"
-#define JOB_JANITOR "Janitor"
+#define JOB_BARTENDER "Barman"
+#define JOB_BOTANIST "Botaniste"
+#define JOB_COOK "Chef cuistot"
+#define JOB_JANITOR "Concierge"
 #define JOB_CLOWN "Clown"
 #define JOB_MIME "Mime"
-#define JOB_CURATOR "Curator"
-#define JOB_LAWYER "Lawyer"
-#define JOB_CHAPLAIN "Chaplain"
-#define JOB_TECHPRIEST "Techpriest"
-#define JOB_PSYCHOLOGIST "Psychologist"
+#define JOB_CURATOR "Conservateur"
+#define JOB_LAWYER "Avocat"
+#define JOB_CHAPLAIN "Chapelain"
+#define JOB_PSYCHOLOGIST "Psychiatre"
 //ERTs
-#define JOB_ERT_DEATHSQUAD "Death Commando"
-#define JOB_ERT_COMMANDER "Emergency Response Team Commander"
-#define JOB_ERT_OFFICER "Security Response Officer"
-#define JOB_ERT_ENGINEER "Engineering Response Officer"
-#define JOB_ERT_MEDICAL_DOCTOR "Medical Response Officer"
-#define JOB_ERT_CHAPLAIN "Religious Response Officer"
-#define JOB_ERT_JANITOR "Janitorial Response Officer"
-#define JOB_ERT_CLOWN "Entertainment Response Officer"
+#define JOB_ERT_DEATHSQUAD "Commando de la mort"
+#define JOB_ERT_COMMANDER "Commandant de l'Equipe de Réponse aux Urgences"
+#define JOB_ERT_OFFICER "Officier de sécurité de l'Equipe de Réponse aux Urgences"
+#define JOB_ERT_ENGINEER "Ingénieur de l'Equipe de Réponse aux Urgences"
+#define JOB_ERT_MEDICAL_DOCTOR "Médecin de l'Equipe de Réponse aux Urgences"
+#define JOB_ERT_CHAPLAIN "Prêtre de l'Equipe de Réponse aux Urgences"
+#define JOB_ERT_JANITOR "Concierge de l'Equipe de Réponse aux Urgences"
+#define JOB_ERT_CLOWN "Officier de divertissement de l'Equipe de Réponse aux Urgences"
 //CentCom
-#define JOB_CENTCOM "Central Command"
-#define JOB_CENTCOM_OFFICIAL "CentCom Official"
-#define JOB_CENTCOM_ADMIRAL "Admiral"
-#define JOB_CENTCOM_COMMANDER "CentCom Commander"
-#define JOB_CENTCOM_VIP "VIP Guest"
-#define JOB_CENTCOM_BARTENDER "CentCom Bartender"
-#define JOB_CENTCOM_CUSTODIAN "Custodian"
-#define JOB_CENTCOM_THUNDERDOME_OVERSEER "Thunderdome Overseer"
-#define JOB_CENTCOM_MEDICAL_DOCTOR "Medical Officer"
-#define JOB_CENTCOM_RESEARCH_OFFICER "Research Officer"
-#define JOB_CENTCOM_SPECIAL_OFFICER "Special Ops Officer"
-#define JOB_CENTCOM_PRIVATE_SECURITY "Private Security Force"
+#define JOB_CENTCOM "Haut Commandant"
+#define JOB_CENTCOM_OFFICIAL "Officier de CentCom"
+#define JOB_CENTCOM_ADMIRAL "Amiral"
+#define JOB_CENTCOM_COMMANDER "Commandant de CentCom"
+#define JOB_CENTCOM_VIP "Invité VIP"
+#define JOB_CENTCOM_BARTENDER "Barman de CentCom"
+#define JOB_CENTCOM_CUSTODIAN "Gardien"
+#define JOB_CENTCOM_THUNDERDOME_OVERSEER "Surveillant du Thunderdome"
+#define JOB_CENTCOM_MEDICAL_DOCTOR "Officier médical de CentCom"
+#define JOB_CENTCOM_RESEARCH_OFFICER "Officier de recherche"
+#define JOB_CENTCOM_SPECIAL_OFFICER "Officier des Forces Spéciales"
+#define JOB_CENTCOM_PRIVATE_SECURITY "Force de Sécurité Privé"
 
 
 #define JOB_DISPLAY_ORDER_ASSISTANT 1
@@ -116,30 +115,29 @@
 #define JOB_DISPLAY_ORDER_CURATOR 10
 #define JOB_DISPLAY_ORDER_LAWYER 11
 #define JOB_DISPLAY_ORDER_CHAPLAIN 12
-#define JOB_DISPLAY_ORDER_TECHPRIEST 13
-#define JOB_DISPLAY_ORDER_PSYCHOLOGIST 14
-#define JOB_DISPLAY_ORDER_AI 15
-#define JOB_DISPLAY_ORDER_CYBORG 16
-#define JOB_DISPLAY_ORDER_CHIEF_ENGINEER 17
-#define JOB_DISPLAY_ORDER_STATION_ENGINEER 18
-#define JOB_DISPLAY_ORDER_ATMOSPHERIC_TECHNICIAN 19
-#define JOB_DISPLAY_ORDER_QUARTERMASTER 20
-#define JOB_DISPLAY_ORDER_CARGO_TECHNICIAN 21
-#define JOB_DISPLAY_ORDER_SHAFT_MINER 22
-#define JOB_DISPLAY_ORDER_CHIEF_MEDICAL_OFFICER 23
-#define JOB_DISPLAY_ORDER_MEDICAL_DOCTOR 24
-#define JOB_DISPLAY_ORDER_PARAMEDIC 25
-#define JOB_DISPLAY_ORDER_CHEMIST 26
-#define JOB_DISPLAY_ORDER_VIROLOGIST 27
-#define JOB_DISPLAY_ORDER_RESEARCH_DIRECTOR 28
-#define JOB_DISPLAY_ORDER_SCIENTIST 29
-#define JOB_DISPLAY_ORDER_ROBOTICIST 30
-#define JOB_DISPLAY_ORDER_GENETICIST 31
-#define JOB_DISPLAY_ORDER_HEAD_OF_SECURITY 32
-#define JOB_DISPLAY_ORDER_WARDEN 33
-#define JOB_DISPLAY_ORDER_DETECTIVE 34
-#define JOB_DISPLAY_ORDER_SECURITY_OFFICER 35
-#define JOB_DISPLAY_ORDER_PRISONER 36
+#define JOB_DISPLAY_ORDER_PSYCHOLOGIST 13
+#define JOB_DISPLAY_ORDER_AI 14
+#define JOB_DISPLAY_ORDER_CYBORG 15
+#define JOB_DISPLAY_ORDER_CHIEF_ENGINEER 16
+#define JOB_DISPLAY_ORDER_STATION_ENGINEER 17
+#define JOB_DISPLAY_ORDER_ATMOSPHERIC_TECHNICIAN 18
+#define JOB_DISPLAY_ORDER_QUARTERMASTER 19
+#define JOB_DISPLAY_ORDER_CARGO_TECHNICIAN 20
+#define JOB_DISPLAY_ORDER_SHAFT_MINER 21
+#define JOB_DISPLAY_ORDER_CHIEF_MEDICAL_OFFICER 22
+#define JOB_DISPLAY_ORDER_MEDICAL_DOCTOR 23
+#define JOB_DISPLAY_ORDER_PARAMEDIC 24
+#define JOB_DISPLAY_ORDER_CHEMIST 25
+#define JOB_DISPLAY_ORDER_VIROLOGIST 26
+#define JOB_DISPLAY_ORDER_RESEARCH_DIRECTOR 27
+#define JOB_DISPLAY_ORDER_SCIENTIST 28
+#define JOB_DISPLAY_ORDER_ROBOTICIST 29
+#define JOB_DISPLAY_ORDER_GENETICIST 30
+#define JOB_DISPLAY_ORDER_HEAD_OF_SECURITY 31
+#define JOB_DISPLAY_ORDER_WARDEN 32
+#define JOB_DISPLAY_ORDER_DETECTIVE 33
+#define JOB_DISPLAY_ORDER_SECURITY_OFFICER 34
+#define JOB_DISPLAY_ORDER_PRISONER 35
 
 
 #define DEPARTMENT_UNASSIGNED "No Department"

@@ -3,7 +3,7 @@
 	typepath = /datum/round_event/brain_trauma
 	weight = 25
 	category = EVENT_CATEGORY_HEALTH
-	description = "A crewmember gains a random trauma."
+	description = "Un membre de l'équipage gagne un traumatisme crânien aléatoire."
 	min_wizard_trigger_potency = 2
 	max_wizard_trigger_potency = 6
 

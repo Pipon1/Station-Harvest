@@ -1,10 +1,10 @@
 /datum/round_event_control/anomaly/anomaly_grav
-	name = "Anomaly: Gravitational"
+	name = "Anomalie : gravitationnelle"
 	typepath = /datum/round_event/anomaly/anomaly_grav
 
 	max_occurrences = 5
 	weight = 25
-	description = "This anomaly throws things around."
+	description = "Cette anomalie fait voler les objets autour."
 	min_wizard_trigger_potency = 1
 	max_wizard_trigger_potency = 3
 
@@ -14,12 +14,12 @@
 	anomaly_path = /obj/effect/anomaly/grav
 
 /datum/round_event_control/anomaly/anomaly_grav/high
-	name = "Anomaly: Gravitational (High Intensity)"
+	name = "Anomalie : gravitationnelle (Haute Intensité)"
 	typepath = /datum/round_event/anomaly/anomaly_grav/high
 	weight = 15
 	max_occurrences = 1
 	earliest_start = 20 MINUTES
-	description = "This anomaly has an intense gravitational field, and can disable the gravity generator."
+	description = "Cette anomalie a un champ gravitationnell intense. Elle peut désactiver le générateur de gravité."
 
 /datum/round_event/anomaly/anomaly_grav/high
 	start_when = ANOMALY_START_HARMFUL_TIME
@@ -27,4 +27,4 @@
 	anomaly_path = /obj/effect/anomaly/grav/high
 
 /datum/round_event/anomaly/anomaly_grav/announce(fake)
-	priority_announce("Gravitational anomaly detected on [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Anomaly Alert" , ANNOUNCER_GRANOMALIES)
+	priority_announce("Anomalie gravitationnelle détectée à [ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name].", "Alerte anomalie" , ANNOUNCER_GRANOMALIES)

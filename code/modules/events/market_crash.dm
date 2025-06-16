@@ -4,11 +4,11 @@
  * Done by decreasing the station_target by a high value per crew member, resulting in the station total being much higher than the target, and causing artificial inflation.
  */
 /datum/round_event_control/market_crash
-	name = "Market Crash"
+	name = "Krach boursier"
 	typepath = /datum/round_event/market_crash
 	weight = 10
 	category = EVENT_CATEGORY_BUREAUCRATIC
-	description = "Temporarily increases the prices of vending machines."
+	description = "Augmente temporairement le prix des distributeurs."
 
 /datum/round_event/market_crash
 	var/market_dip = 0
@@ -19,13 +19,13 @@
 	announce_when = 2
 
 /datum/round_event/market_crash/announce(fake)
-	var/list/poss_reasons = list("the alignment of the moon and the sun",\
-		"some risky housing market outcomes",\
-		"The B.E.P.I.S. team's untimely downfall",\
-		"speculative Terragov grants backfiring",\
-		"greatly exaggerated reports of Nanotrasen accountancy personnel committing mass suicide")
+	var/list/poss_reasons = list("de l'alignement entre la lune et le soleil",\
+		"des investissements risqués en immobilier",\
+		"de la chute inévitable de l'équipe B.E.P.I.S.",\
+		"de spéculations concernant l'échec des subvensions du gouvernement",\
+		"de rapports grandement éxagérés concernant un sucide de masse chez les comptables de Nanotrasen")
 	var/reason = pick(poss_reasons)
-	priority_announce("Due to [reason], prices for on-station vendors will be increased for a short period.", "Nanotrasen Accounting Division")
+	priority_announce("À cause [reason], les prix des distributeurs de la station vont augmenter pour une courte période.", "Division de comptabilité de Nanotrasen")
 
 /datum/round_event/market_crash/start()
 	. = ..()
@@ -39,5 +39,5 @@
 	SSeconomy.station_target += market_dip
 	REMOVE_TRAIT(SSeconomy, TRAIT_MARKET_CRASHING, MARKET_CRASH_EVENT_TRAIT)
 	SSeconomy.price_update()
-	priority_announce("Prices for on-station vendors have now stabilized.", "Nanotrasen Accounting Division")
+	priority_announce("Les prix des distributeurs sont maintenant stabilisés.", "Division de comptabilité de Nanotrasen")
 

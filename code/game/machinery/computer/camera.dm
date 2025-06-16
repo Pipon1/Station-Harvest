@@ -1,8 +1,8 @@
 #define DEFAULT_MAP_SIZE 15
 
 /obj/machinery/computer/security
-	name = "security camera console"
-	desc = "Used to access the various cameras on the station."
+	name = "Ordinateur d'accès aux caméras"
+	desc = "Utilisé pour accéder au caméras."
 	icon_screen = "cameras"
 	icon_keyboard = "security_key"
 	circuit = /obj/item/circuitboard/computer/security
@@ -203,42 +203,42 @@
 // SECURITY MONITORS
 
 /obj/machinery/computer/security/wooden_tv
-	name = "security camera monitor"
-	desc = "An old TV hooked into the station's camera network."
+	name = "Moniteur pour caméras"
+	desc = "Une vieille TV branché au réseau de sécurité de la station."
 	icon_state = "television"
 	icon_keyboard = null
 	icon_screen = "detective_tv"
 	pass_flags = PASSTABLE
 
 /obj/machinery/computer/security/mining
-	name = "outpost camera console"
-	desc = "Used to access the various cameras on the outpost."
+	name = "Ordinateur d'accès aux caméras de l'avant poste"
+	desc = "Utilisé pour accéder aux différente caméras de l'avant poste."
 	icon_screen = "mining"
 	icon_keyboard = "mining_key"
 	network = list("mine", "auxbase")
 	circuit = /obj/item/circuitboard/computer/mining
 
 /obj/machinery/computer/security/research
-	name = "research camera console"
-	desc = "Used to access the various cameras in science."
+	name = "Ordinateur d'accès aux caméras de la science"
+	desc = "Utilisé pour accéder aux différente caméras de la science."
 	network = list("rd")
 	circuit = /obj/item/circuitboard/computer/research
 
 /obj/machinery/computer/security/hos
-	name = "\improper Head of Security's camera console"
-	desc = "A custom security console with added access to the labor camp network."
+	name = "\improper Ordinateur d'accès aux caméras du chef de la sécurité"
+	desc = "Un ordinateur fait sur mesure pour le chef de la sécurité. Il peut voir le camp de travail."
 	network = list("ss13", "labor")
 	circuit = null
 
 /obj/machinery/computer/security/labor
-	name = "labor camp monitoring"
-	desc = "Used to access the various cameras on the labor camp."
+	name = "\improper Ordinateur d'accès aux caméras du camp de travail"
+	desc = "Utilisé pour accéder aux différente caméras du camp de travail."
 	network = list("labor")
 	circuit = null
 
 /obj/machinery/computer/security/qm
-	name = "\improper Quartermaster's camera console"
-	desc = "A console with access to the mining, auxiliary base and vault camera networks."
+	name = "\improper Ordinateur d'accès aux caméras du chef du quartier-maître"
+	desc = "Utilisé pour accéder aux différente caméras du cargo."
 	network = list("mine", "auxbase", "vault")
 	circuit = null
 

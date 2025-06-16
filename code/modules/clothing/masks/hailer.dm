@@ -43,8 +43,8 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 ))
 
 /obj/item/clothing/mask/gas/sechailer
-	name = "security gas mask"
-	desc = "A standard issue Security gas mask with integrated 'Compli-o-nator 3000' device. Plays over a dozen pre-recorded compliance phrases designed to get scumbags to stand still whilst you tase them. Do not tamper with the device."
+	name = "masque anti-gas de sécurité"
+	desc = "Un masque anti-gaz de sécurité standard avec un système \"Compli-o-nator 3000\" intégré. Joue plus d'une douzaine de phrases pré-enregistrées de conformité conçues pour faire tenir les salauds en place pendant que vous les tasez. Ne pas manipuler l'appareil."
 	actions_types = list(/datum/action/item_action/halt, /datum/action/item_action/adjust)
 	icon_state = "sechailer"
 	inhand_icon_state = "sechailer"
@@ -68,8 +68,8 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	starting_filter_type = /obj/item/gas_filter/plasmaman
 
 /obj/item/clothing/mask/gas/sechailer/swat
-	name = "\improper SWAT mask"
-	desc = "A close-fitting tactical mask with an especially aggressive Compli-o-nator 3000."
+	name = "\improper masque du SWAT"
+	desc = "Un masque tactique avec un Compli-o-nator 3000 particulièrement agressif."
 	actions_types = list(/datum/action/item_action/halt)
 	icon_state = "swat"
 	inhand_icon_state = "swat"
@@ -80,16 +80,16 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
 
 /obj/item/clothing/mask/gas/sechailer/swat/spacepol
-	name = "spacepol mask"
-	desc = "A close-fitting tactical mask created in cooperation with a certain megacorporation, comes with an especially aggressive Compli-o-nator 3000."
+	name = "masque de police de l'espace"
+	desc = "Un masque tactique étanche créé en coopération avec certaine megacorporation possède un Compli-o-nator 3000 particulièrement agressif."
 	icon_state = "spacepol"
 	inhand_icon_state = "spacepol_mask"
 	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
 	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES | PEPPERPROOF
 
 /obj/item/clothing/mask/gas/sechailer/cyborg
-	name = "security hailer"
-	desc = "A set of recognizable pre-recorded messages for cyborgs to use when apprehending criminals."
+	name = "hurleur de sécurité"
+	desc = "Un set de message enregistré que les cyborgs doivent utiliser en arrêtant des criminels."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "taperecorder_idle"
 	slot_flags = null
@@ -101,17 +101,17 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	if(..())
 		return
 	else if (aggressiveness == AGGR_BROKEN)
-		to_chat(user, span_danger("You adjust the restrictor but nothing happens, probably because it's broken."))
+		to_chat(user, span_danger("Vous ajustez le restricteur mais rien ne se passe, probablement parce qu'il est cassé."))
 		return
-	var/position = aggressiveness == AGGR_GOOD_COP ? "middle" : aggressiveness == AGGR_BAD_COP ? "last" : "first"
-	to_chat(user, span_notice("You set the restrictor to the [position] position."))
+	var/position = aggressiveness == AGGR_GOOD_COP ? "milieu" : aggressiveness == AGGR_BAD_COP ? "dernier" : "premier"
+	to_chat(user, span_notice("Vous changez le mode du Compli-o-nator 3000 : [position]."))
 	aggressiveness = aggressiveness % 3 + 1 // loop AGGR_GOOD_COP -> AGGR_SHIT_COP
 
 /obj/item/clothing/mask/gas/sechailer/wirecutter_act(mob/living/user, obj/item/I)
 	. = TRUE
 	..()
 	if(aggressiveness != AGGR_BROKEN)
-		to_chat(user, span_danger("You broke the restrictor!"))
+		to_chat(user, span_danger("Vous avez cassé le restricteur !"))
 		aggressiveness = AGGR_BROKEN
 
 /obj/item/clothing/mask/gas/sechailer/ui_action_click(mob/user, action)
@@ -125,7 +125,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 /obj/item/clothing/mask/gas/sechailer/emag_act(mob/user)
 	if(safety)
 		safety = FALSE
-		to_chat(user, span_warning("You silently fry [src]'s vocal circuit."))
+		to_chat(user, span_warning("Vous court-circuitez les circuits vocaux de [src]."))
 
 /obj/item/clothing/mask/gas/sechailer/verb/halt()
 	set category = "Object"
@@ -134,7 +134,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	if(!isliving(usr) || !can_use(usr) || !COOLDOWN_FINISHED(src, hailer_cooldown))
 		return
 	if(broken_hailer)
-		to_chat(usr, span_warning("\The [src]'s hailing system is broken."))
+		to_chat(usr, span_warning("Le système hurleur du [src] est cassé."))
 		return
 
 	// handle recent uses for overuse
@@ -146,12 +146,12 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 
 	switch(recent_uses)
 		if(3)
-			to_chat(usr, span_warning("\The [src] is starting to heat up."))
+			to_chat(usr, span_warning("Le [src] commence à chauffer."))
 		if(4)
-			to_chat(usr, span_userdanger("\The [src] is heating up dangerously from overuse!"))
+			to_chat(usr, span_userdanger("Le [src] chauffe dangereusement à cause d'une utilisation excessive !"))
 		if(5) // overload
 			broken_hailer = TRUE
-			to_chat(usr, span_userdanger("\The [src]'s power modulator overloads and breaks."))
+			to_chat(usr, span_userdanger("Le modulateur de puissance du [src] surcharge et casse."))
 			return
 
 	// select phrase to play
@@ -184,8 +184,8 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	overuse_cooldown = FALSE
 
 /obj/item/clothing/mask/whistle
-	name = "police whistle"
-	desc = "A police whistle for when you need to make sure the criminals hear you."
+	name = "sifflet de police"
+	desc = "Un sifflet de police pour être sûr que les criminels vous entendent."
 	icon_state = "whistle"
 	inhand_icon_state = null
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_NECK
@@ -198,15 +198,15 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	if(!COOLDOWN_FINISHED(src, whistle_cooldown))
 		return
 	COOLDOWN_START(src, whistle_cooldown, 10 SECONDS)
-	user.audible_message("<font color='red' size='5'><b>HALT!</b></font>")
+	user.audible_message("<font color='red' size='5'><b>ARRÊTEZ VOUS !</b></font>")
 	playsound(src, 'sound/misc/whistle.ogg', 50, FALSE, 4)
 
 /datum/action/item_action/halt
 	name = "HALT!"
 
 /obj/item/clothing/mask/party_horn
-	name = "party horn"
-	desc = "A paper tube used at parties that makes a noise when blown into."
+	name = "pouet de fête"
+	desc = "Un tube en papier utilisé lors de fêtes qui fait du bruit lorsqu'on souffle dedans."
 	icon_state = "party_horn"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_SMALL

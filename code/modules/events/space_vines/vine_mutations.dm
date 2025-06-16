@@ -52,7 +52,7 @@
 	return
 
 /datum/spacevine_mutation/light
-	name = "Light"
+	name = "luminescence"
 	hue = "#B2EA70"
 	quality = POSITIVE
 	severity = SEVERITY_TRIVIAL
@@ -62,7 +62,7 @@
 		holder.set_light(LIGHT_MUTATION_BRIGHTNESS, 0.3)
 
 /datum/spacevine_mutation/toxicity
-	name = "Toxic"
+	name = "toxicité"
 	hue = "#9B3675"
 	severity = SEVERITY_AVERAGE
 	quality = NEGATIVE
@@ -71,7 +71,7 @@
 	if(issilicon(crosser))
 		return
 	if(prob(TOXICITY_MUTATION_PROB) && istype(crosser) && !isvineimmune(crosser))
-		to_chat(crosser, span_alert("You accidentally touch the vine and feel a strange sensation."))
+		to_chat(crosser, span_alert("Vous touchez la vigne accidentellement et sentez une étrange sensation."))
 		crosser.adjustToxLoss(20)
 
 /datum/spacevine_mutation/toxicity/on_eat(obj/structure/spacevine/holder, mob/living/eater)
@@ -79,7 +79,7 @@
 		eater.adjustToxLoss(20)
 
 /datum/spacevine_mutation/explosive  // JC IT'S A BOMB
-	name = "Explosive"
+	name = "explosive"
 	hue = "#D83A56"
 	quality = NEGATIVE
 	severity = SEVERITY_MAJOR
@@ -96,7 +96,7 @@
 	explosion(holder, light_impact_range = EXPLOSION_MUTATION_IMPACT_RADIUS, adminlog = FALSE)
 
 /datum/spacevine_mutation/fire_proof
-	name = "Fire proof"
+	name = "résistance au feu"
 	hue = "#FF616D"
 	quality = MINOR_NEGATIVE
 	severity = SEVERITY_ABOVE_AVERAGE
@@ -111,7 +111,7 @@
 	return expected_damage
 
 /datum/spacevine_mutation/cold_proof
-	name = "Cold proof"
+	name = "résistance au froid"
 	hue = "#0BD5D9"
 	quality = MINOR_NEGATIVE
 	severity = SEVERITY_AVERAGE
@@ -121,7 +121,7 @@
 	holder.trait_flags |= SPACEVINE_COLD_RESISTANT
 
 /datum/spacevine_mutation/temp_stabilisation
-	name = "Temperature stabilisation"
+	name = "stabilisation de température"
 	hue = "#B09856"
 	quality = POSITIVE
 	severity = SEVERITY_MINOR
@@ -144,7 +144,7 @@
 	holder.air_update_turf(FALSE, FALSE)
 
 /datum/spacevine_mutation/vine_eating
-	name = "Vine eating"
+	name = "mangeuse de vigne"
 	hue = "#F4A442"
 	quality = MINOR_NEGATIVE
 	severity = SEVERITY_MINOR
@@ -155,7 +155,7 @@
 		qdel(prey)
 
 /datum/spacevine_mutation/aggressive_spread  //very OP, but im out of other ideas currently
-	name = "Aggressive spreading"
+	name = "propagation agressive"
 	hue = "#316b2f"
 	severity = SEVERITY_MAJOR
 	quality = NEGATIVE
@@ -181,16 +181,16 @@
 			victim.apply_damage(50, BRUTE, def_zone = limb, wound_bonus = rand(-20,10), sharpness = SHARP_POINTY) //This one gets a bit lower damage because it ignores armor.
 			victim.Stun(1 SECONDS) //Stopped in place for a moment.
 			playsound(living_mob, 'sound/weapons/pierce.ogg', 50, TRUE, -1)
-			living_mob.visible_message(span_danger("[living_mob] is nailed by a sharp thorn!"), \
-			span_userdanger("You are nailed by a sharp thorn!"))
+			living_mob.visible_message(span_danger("[living_mob] se fait agresser par une épine affutée !"), \
+			span_userdanger("Vous vous faites agresser par une épine affutée !"))
 			log_combat(vine, living_mob, "aggressively pierced") //"Aggressively" for easy ctrl+F'ing in the attack logs.
 		else
 			if(prob(80) && !HAS_TRAIT(victim, TRAIT_PIERCEIMMUNE))
 				victim.apply_damage(60, BRUTE, def_zone = limb, blocked = armor, wound_bonus = rand(-20,10), sharpness = SHARP_EDGED)
 				victim.Knockdown(2 SECONDS)
 				playsound(victim, 'sound/weapons/whip.ogg', 50, TRUE, -1)
-				living_mob.visible_message(span_danger("[living_mob] is lacerated by an outburst of vines!"), \
-				span_userdanger("You are lacerated by an outburst of vines!"))
+				living_mob.visible_message(span_danger("[living_mob] est lacéré par un développement soudain de la vigne !"), \
+				span_userdanger("Vous vous faites lacérer par un développement soudain de la vigne !"))
 				log_combat(vine, living_mob, "aggressively lacerated")
 			else
 				victim.apply_damage(60, BRUTE, def_zone = limb, blocked = armor, wound_bonus = rand(-20,10), sharpness = NONE)
@@ -198,18 +198,18 @@
 				var/atom/throw_target = get_edge_target_turf(living_mob, get_dir(vine, get_step_away(living_mob, vine)))
 				victim.throw_at(throw_target, 3, 6)
 				playsound(victim, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
-				living_mob.visible_message(span_danger("[living_mob] is smashed by a large vine!"), \
-				span_userdanger("You are smashed by a large vine!"))
+				living_mob.visible_message(span_danger("[living_mob] se fait percuter par une large vigne !"), \
+				span_userdanger("Vous vous faites percuter par une large vigne !"))
 				log_combat(vine, living_mob, "aggressively smashed")
 	else //Living but not a carbon? Maybe a silicon? Can't be wounded so have a big chunk of simple bruteloss with no special effects. They can be entangled.
 		living_mob.adjustBruteLoss(75)
 		playsound(living_mob, 'sound/weapons/whip.ogg', 50, TRUE, -1)
-		living_mob.visible_message(span_danger("[living_mob] is brutally threshed by [vine]!"), \
-		span_userdanger("You are brutally threshed by [vine]!"))
+		living_mob.visible_message(span_danger("[living_mob] est brutalement frappé par la [vine]!"), \
+		span_userdanger("Vous vous faites brutalement frapper par la [vine]!"))
 		log_combat(vine, living_mob, "aggressively spread into") //You aren't being attacked by the vines. You just happen to stand in their way.
 
 /datum/spacevine_mutation/transparency
-	name = "transparent"
+	name = "transparence"
 	hue = ""
 	quality = POSITIVE
 	severity = SEVERITY_TRIVIAL
@@ -219,7 +219,7 @@
 	holder.alpha = 125
 
 /datum/spacevine_mutation/oxy_eater
-	name = "Oxygen consuming"
+	name = "consommation d'oxygène"
 	hue = "#28B5B5"
 	severity = SEVERITY_AVERAGE
 	quality = NEGATIVE
@@ -234,7 +234,7 @@
 		gas_mix.garbage_collect()
 
 /datum/spacevine_mutation/nitro_eater
-	name = "Nitrogen consuming"
+	name = "consommation de nitrogène"
 	hue = "#FF7B54"
 	severity = SEVERITY_AVERAGE
 	quality = NEGATIVE
@@ -249,7 +249,7 @@
 		gas_mix.garbage_collect()
 
 /datum/spacevine_mutation/carbondioxide_eater
-	name = "CO2 consuming"
+	name = "consommation de CO2"
 	hue = "#798777"
 	severity = SEVERITY_MINOR
 	quality = POSITIVE
@@ -264,7 +264,7 @@
 		gas_mix.garbage_collect()
 
 /datum/spacevine_mutation/plasma_eater
-	name = "Plasma consuming"
+	name = "consommation de plasma"
 	hue = "#9074b6"
 	severity = SEVERITY_AVERAGE
 	quality = POSITIVE
@@ -279,7 +279,7 @@
 		gas_mix.garbage_collect()
 
 /datum/spacevine_mutation/thorns
-	name = "Thorny"
+	name = "apparition d'épines"
 	hue = "#9ECCA4"
 	severity = SEVERITY_AVERAGE
 	quality = NEGATIVE
@@ -311,7 +311,7 @@
 	return expected_damage
 
 /datum/spacevine_mutation/hardened
-	name = "Hardened"
+	name = "endurcissement"
 	hue = "#997700"
 	quality = NEGATIVE
 	severity = SEVERITY_ABOVE_AVERAGE
@@ -327,7 +327,7 @@
 	return expected_damage
 
 /datum/spacevine_mutation/timid
-	name = "Timid"
+	name = "timidité"
 	hue = "#a4a9ac"
 	quality = POSITIVE
 	severity = SEVERITY_MINOR
@@ -340,7 +340,7 @@
 	return ..()
 
 /datum/spacevine_mutation/flowering
-	name = "Flowering"
+	name = "floraison"
 	hue = "#66DE93"
 	quality = NEGATIVE
 	severity = SEVERITY_MAJOR

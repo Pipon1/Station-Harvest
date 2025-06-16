@@ -1,5 +1,5 @@
 /datum/traitor_objective_category/kill_pet
-	name = "Kill Pet"
+	name = "Tuez un animal de compagnie"
 	objectives = list(
 		/datum/traitor_objective/kill_pet/high_risk = 1,
 		list(
@@ -9,8 +9,8 @@
 	)
 
 /datum/traitor_objective/kill_pet
-	name = "Kill the %DEPARTMENT HEAD%'s beloved %PET%"
-	description = "The %DEPARTMENT HEAD% has particularly annoyed us by sending us spam emails and we want their %PET% dead to show them what happens when they cross us. "
+	name = "Tuez %PET%, le compagnon adoré du %DEPARTMENT HEAD%."
+	description = "Lae %DEPARTMENT HEAD% nous a particulièrement emmerdé en nous envoyant des emails spam et nous voulons que la mort de %PET% lui montre ce que nous faisons à ceux qui nous ont trahit. "
 
 	progression_minimum = 0 MINUTES
 	telecrystal_reward = list(1, 2)

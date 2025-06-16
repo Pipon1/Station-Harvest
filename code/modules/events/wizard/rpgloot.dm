@@ -1,10 +1,10 @@
 /datum/round_event_control/wizard/rpgloot //its time to minmax your shit
-	name = "RPG Loot"
+	name = "Butin de RPG"
 	weight = 3
 	typepath = /datum/round_event/wizard/rpgloot
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
-	description = "Every item in the world will have fantastical names."
+	description = "Tous les objets dans le monde auront des noms fantaisistes."
 	min_wizard_trigger_potency = 4
 	max_wizard_trigger_potency = 7
 
@@ -12,8 +12,8 @@
 	GLOB.rpgloot_controller = new /datum/rpgloot_controller
 
 /obj/item/upgradescroll
-	name = "item fortification scroll"
-	desc = "Somehow, this piece of paper can be applied to items to make them \"better\". Apparently there's a risk of losing the item if it's already \"too good\". <i>This all feels so arbitrary...</i>"
+	name = "parchemin de fortification d'objet"
+	desc = "D'une manière ou d'une autre, ce bout de papier peut être appliqué sur des objets pour les rendre \"mieux\". Apparemment il y a un risque de perdre le parchemin si l'objet est déjà \"trop bien\". <i>Ça a l'air très arbitraire...</i>"
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "scroll"
 	worn_icon_state = "scroll"
@@ -34,14 +34,14 @@
 
 	uses -= 1
 	if(!uses)
-		visible_message(span_warning("[src] vanishes, its magic completely consumed from the fortification."))
+		visible_message(span_warning("Le [src] disparait, sa magie complètement consommée par la fortification."))
 		qdel(src)
 
 	return .
 
 /obj/item/upgradescroll/unlimited
-	name = "unlimited foolproof item fortification scroll"
-	desc = "Somehow, this piece of paper can be applied to items to make them \"better\". This scroll is made from the tongues of dead paper wizards, and can be used an unlimited number of times, with no drawbacks."
+	name = "parchemin illimité et infaillible de fortification d'objet "
+	desc = "D'une manière ou d'une autre, ce bout de papier peut être appliqué sur des objets pour les rendre \"mieux\". Ce parchemin est fait à partir des langues de cadavre de sorciers de papier et peut être utilisé un nombre illimité de fois sans aucun désavantage."
 	uses = INFINITY
 	can_backfire = FALSE
 

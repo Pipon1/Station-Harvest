@@ -1,6 +1,6 @@
 /obj/item/clothing/glasses/hud
-	name = "HUD"
-	desc = "A heads-up display that provides important info in (almost) real time."
+	name = "ATH"
+	desc = "Un affichage tête haute qui fournit des informations importantes en (presque) temps réel."
 	flags_1 = null //doesn't protect eyes because it's a monocle, duh
 	var/hud_type = null
 	///Used for topic calls. Just because you have a HUD display doesn't mean you should be able to interact with stuff.
@@ -32,40 +32,40 @@
 	if(obj_flags & EMAGGED || . & EMP_PROTECT_SELF)
 		return
 	obj_flags |= EMAGGED
-	desc = "[desc] The display is flickering slightly."
+	desc = "[desc] l'écran affiche beaucoup de parasite."
 
 /obj/item/clothing/glasses/hud/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
 	to_chat(user, span_warning("PZZTTPFFFT"))
-	desc = "[desc] The display is flickering slightly."
+	desc = "[desc] l'écran affiche beaucoup de parasite."
 
 /obj/item/clothing/glasses/hud/suicide_act(mob/living/user)
 	if(user.is_blind())
 		return SHAME
 	var/mob/living/living_user = user
-	user.visible_message(span_suicide("[user] looks through [src] and looks overwhelmed with the information! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] regarde au travers [src] et semble noyer dans les infos ! Il semble que [user.p_theyre()] essaye de se suicider !"))
 	if(living_user.get_organ_loss(ORGAN_SLOT_BRAIN) >= BRAIN_DAMAGE_SEVERE)
 		var/mob/thing = pick((/mob in view()) - user)
 		if(thing)
-			user.say("VALID MAN IS WANTER, ARREST HE!!")
+			user.say("PERSONNE VALIDE EST VOULU, ARRÊTER LE !!!!")
 			user.pointed(thing)
 		else
-			user.say("WHY IS THERE A BAR ON MY HEAD?!!")
+			user.say("POURQUOI IL Y'A UNE BARRE SUR MA TÊTE ????")
 	return OXYLOSS
 
 /obj/item/clothing/glasses/hud/health
-	name = "health scanner HUD"
-	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their health status."
+	name = "scanneur de santé ATH"
+	desc = "Un affichage tête haute qui scan les humanoïdes dans le champs de vision et donne des données précises sur leur santé."
 	icon_state = "healthhud"
 	hud_type = DATA_HUD_MEDICAL_ADVANCED
 	hud_trait = TRAIT_MEDICAL_HUD
 	glass_colour_type = /datum/client_colour/glass_colour/lightblue
 
 /obj/item/clothing/glasses/hud/health/night
-	name = "night vision health scanner HUD"
-	desc = "An advanced medical heads-up display that allows doctors to find patients in complete darkness."
+	name = "scanneur de santé à vision nocturne ATH"
+	desc = "Un affichage tête haute médical avancé qui permet aux médecins de trouver des patients dans l'obscurité complète."
 	icon_state = "healthhudnight"
 	inhand_icon_state = "glasses"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
@@ -74,35 +74,35 @@
 	glass_colour_type = /datum/client_colour/glass_colour/green
 
 /obj/item/clothing/glasses/hud/health/night/meson
-	name = "night vision meson health scanner HUD"
-	desc = "Truly combat ready."
+	name = "scanneur de santé à vision nocturne meson ATH"
+	desc = "Réellement prêt pour le combat."
 	vision_flags = SEE_TURFS
 
 /obj/item/clothing/glasses/hud/health/night/science
-	name = "night vision medical science scanner HUD"
-	desc = "An clandestine medical science heads-up display that allows operatives to find \
-		dying captains and the perfect poison to finish them off in complete darkness."
+	name = "scanneur de santé à vision nocturne de la science médicale ATH"
+	desc = "Un scanneur médical à vision nocturne clandestin, parfait pour trouver les \
+		capitaines mourant et pour trouver le poison parfait pour les éliminer dans une complète obscurité."
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
 
 /obj/item/clothing/glasses/hud/health/sunglasses
-	name = "medical HUDSunglasses"
-	desc = "Sunglasses with a medical HUD."
+	name = "lunettes de soleil ATH médicales"
+	desc = "Lunettes de soleil avec un ATH médical."
 	icon_state = "sunhudmed"
 	flash_protect = FLASH_PROTECTION_FLASH
 	tint = 1
 	glass_colour_type = /datum/client_colour/glass_colour/blue
 
 /obj/item/clothing/glasses/hud/diagnostic
-	name = "diagnostic HUD"
-	desc = "A heads-up display capable of analyzing the integrity and status of robotics and exosuits."
+	name = "ATH de diagnostic"
+	desc = "Un affichage tête haute capable d'analyser l'intégrité et le statut des robots et des exosquelettes."
 	icon_state = "diagnostichud"
 	hud_type = DATA_HUD_DIAGNOSTIC_BASIC
 	hud_trait = TRAIT_DIAGNOSTIC_HUD
 	glass_colour_type = /datum/client_colour/glass_colour/lightorange
 
 /obj/item/clothing/glasses/hud/diagnostic/night
-	name = "night vision diagnostic HUD"
-	desc = "A robotics diagnostic HUD fitted with a light amplifier."
+	name = "ATH de diagnostic à vision nocturne"
+	desc = "Un ATH de diagnostic capable d'analyser l'intégrité et le statut des robots et des exosquelettes dans l'obscurité."
 	icon_state = "diagnostichudnight"
 	inhand_icon_state = "glasses"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
@@ -111,24 +111,24 @@
 	glass_colour_type = /datum/client_colour/glass_colour/green
 
 /obj/item/clothing/glasses/hud/diagnostic/sunglasses
-	name = "diagnostic sunglasses"
-	desc = "Sunglasses with a diagnostic HUD."
+	name = "lunettes de soleil de diagnostic"
+	desc = "Lunettes de soleil avec un ATH de diagnostic."
 	icon_state = "sunhuddiag"
 	inhand_icon_state = "glasses"
 	flash_protect = FLASH_PROTECTION_FLASH
 	tint = 1
 
 /obj/item/clothing/glasses/hud/security
-	name = "security HUD"
-	desc = "A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records."
+	name = "ATH de sécurité"
+	desc = "Un affichage tête haute qui scanne les humanoïdes dans le champs de vision et donne des données précises sur leur identité et leur dossier de sécurité."
 	icon_state = "securityhud"
 	hud_type = DATA_HUD_SECURITY_ADVANCED
 	hud_trait = TRAIT_SECURITY_HUD
 	glass_colour_type = /datum/client_colour/glass_colour/red
 
 /obj/item/clothing/glasses/hud/security/chameleon
-	name = "chameleon security HUD"
-	desc = "A stolen security HUD integrated with Syndicate chameleon technology. Provides flash protection."
+	name = "ATH de sécurité caméléon"
+	desc = "Un ATH de sécurité volé intégré avec la technologie caméléon de Syndicate. Fournit une protection contre les flashs."
 	flash_protect = FLASH_PROTECTION_FLASH
 
 	// Yes this code is the same as normal chameleon glasses, but we don't
@@ -152,8 +152,8 @@
 
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
-	name = "eyepatch HUD"
-	desc = "The cooler looking cousin of HUDSunglasses."
+	name = "ATH cache-oeil"
+	desc = "Le cousin plus cool des lunettes ATH."
 	icon_state = "hudpatch"
 	base_icon_state = "hudpatch"
 	actions_types = list(/datum/action/item_action/flip)
@@ -164,16 +164,16 @@
 	user.update_worn_glasses()
 
 /obj/item/clothing/glasses/hud/security/sunglasses
-	name = "security HUDSunglasses"
-	desc = "Sunglasses with a security HUD."
+	name = "lunettes de soleil ATH de sécurité"
+	desc = "Des lunettes de soleil avec un ATH de sécurité."
 	icon_state = "sunhudsec"
 	flash_protect = FLASH_PROTECTION_FLASH
 	tint = 1
 	glass_colour_type = /datum/client_colour/glass_colour/darkred
 
 /obj/item/clothing/glasses/hud/security/night
-	name = "night vision security HUD"
-	desc = "An advanced heads-up display that provides ID data and vision in complete darkness."
+	name = "ATH de sécurité à vision nocturne"
+	desc = "Un affichage tête haute avancé qui fournit des données d'identité et de vision dans l'obscurité complète."
 	icon_state = "securityhudnight"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 	// Red with a tint of green
@@ -181,8 +181,8 @@
 	glass_colour_type = /datum/client_colour/glass_colour/green
 
 /obj/item/clothing/glasses/hud/security/sunglasses/gars
-	name = "\improper HUD gar glasses"
-	desc = "GAR glasses with a HUD."
+	name = "\improper lunettes gar ATH"
+	desc = "Lunettes GAR avec un ATH."
 	icon_state = "gar_sec"
 	inhand_icon_state = "gar_black"
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
@@ -195,15 +195,15 @@
 	sharpness = SHARP_EDGED
 
 /obj/item/clothing/glasses/hud/security/sunglasses/gars/giga
-	name = "giga HUD gar glasses"
-	desc = "GIGA GAR glasses with a HUD."
+	name = "lunettes gar ATH giga"
+	desc = "Lunettes GAR GIGA avec un ATH."
 	icon_state = "gigagar_sec"
 	force = 12
 	throwforce = 12
 
 /obj/item/clothing/glasses/hud/toggle
-	name = "Toggle HUD"
-	desc = "A hud with multiple functions."
+	name = "Allume ATH"
+	desc = "Un affichage tête haute avec plusieurs fonctions."
 	actions_types = list(/datum/action/item_action/switch_hud)
 
 /obj/item/clothing/glasses/hud/toggle/attack_self(mob/user)
@@ -232,8 +232,8 @@
 	name = "Switch HUD"
 
 /obj/item/clothing/glasses/hud/toggle/thermal
-	name = "thermal HUD scanner"
-	desc = "Thermal imaging HUD in the shape of glasses."
+	name = "ATH avec vision thermique"
+	desc = "Un affichage tête haute avec vision thermique."
 	icon_state = "thermal"
 	hud_type = DATA_HUD_SECURITY_ADVANCED
 	vision_flags = SEE_MOBS
@@ -265,8 +265,8 @@
 	thermal_overload()
 
 /obj/item/clothing/glasses/hud/spacecop
-	name = "police aviators"
-	desc = "For thinking you look cool while brutalizing protestors and minorities."
+	name = "lunettes de soleil de flic"
+	desc = "Pour penser que vous avez l'air cool tout en brutalisant les manifestants et les minorités."
 	icon_state = "bigsunglasses"
 	flash_protect = FLASH_PROTECTION_FLASH
 	tint = 1
@@ -274,7 +274,7 @@
 
 
 /obj/item/clothing/glasses/hud/spacecop/hidden // for the undercover cop
-	name = "sunglasses"
-	desc = "These sunglasses are special, and let you view potential criminals."
+	name = "lunettes de soleil"
+	desc = "Ces lunettes de soleil sont spéciales, et vous permettent de voir les criminels potentiels."
 	icon_state = "sun"
 	inhand_icon_state = "sunglasses"

@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/freezer
-	icon_state = "freezer"
+	icon_state = "congélateur"
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	door_anim_squish = 0.22
 	door_anim_angle = 123
@@ -41,7 +41,7 @@
 	. = ..()
 
 	if(!opened)
-		balloon_alert(user, "open it first!")
+		balloon_alert(user, "il faut l'ouvrir !")
 		return TRUE
 
 	if(!tool.use_tool(src, user, 40, volume=50))
@@ -54,14 +54,14 @@
 	return TRUE
 
 /obj/structure/closet/secure_closet/freezer/empty
-	name = "freezer"
+	name = "congélateur"
 
 /obj/structure/closet/secure_closet/freezer/empty/open
 	req_access = null
 	locked = FALSE
 
 /obj/structure/closet/secure_closet/freezer/kitchen
-	name = "kitchen cabinet"
+	name = "armoire de cuisine"
 	req_access = list(ACCESS_KITCHEN)
 
 /obj/structure/closet/secure_closet/freezer/kitchen/PopulateContents()
@@ -72,8 +72,8 @@
 	new /obj/item/reagent_containers/condiment/sugar(src)
 
 /obj/structure/closet/secure_closet/freezer/kitchen/maintenance
-	name = "maintenance refrigerator"
-	desc = "This refrigerator looks quite dusty, is there anything edible still inside?"
+	name = "réfrigérateur de maintenance"
+	desc = "Ce réfrigérateur à l'air aussi poussérieux..."
 	req_access = list()
 
 /obj/structure/closet/secure_closet/freezer/kitchen/maintenance/PopulateContents()
@@ -88,7 +88,7 @@
 	req_access = list()
 
 /obj/structure/closet/secure_closet/freezer/meat
-	name = "meat fridge"
+	name = "réfrigérateur à viande"
 	req_access = list(ACCESS_KITCHEN)
 
 /obj/structure/closet/secure_closet/freezer/meat/PopulateContents()
@@ -101,7 +101,7 @@
 	locked = FALSE
 
 /obj/structure/closet/secure_closet/freezer/gulag_fridge
-	name = "refrigerator"
+	name = "réfrigérateur"
 
 /obj/structure/closet/secure_closet/freezer/gulag_fridge/PopulateContents()
 	..()
@@ -109,7 +109,7 @@
 		new /obj/item/reagent_containers/cup/glass/bottle/beer/light(src)
 
 /obj/structure/closet/secure_closet/freezer/fridge
-	name = "refrigerator"
+	name = "réfrigérateur"
 	req_access = list(ACCESS_KITCHEN)
 
 /obj/structure/closet/secure_closet/freezer/fridge/PopulateContents()
@@ -125,8 +125,8 @@
 	locked = FALSE
 
 /obj/structure/closet/secure_closet/freezer/money
-	name = "freezer"
-	desc = "This contains cold hard cash."
+	name = "congélateur"
+	desc = "Contient de l'argent froid."
 	req_access = list(ACCESS_VAULT)
 
 /obj/structure/closet/secure_closet/freezer/money/PopulateContents()
@@ -139,8 +139,8 @@
 		new /obj/item/stack/spacecash/c200(src)
 
 /obj/structure/closet/secure_closet/freezer/cream_pie
-	name = "cream pie closet"
-	desc = "Contains pies filled with cream and/or custard, you sickos."
+	name = "casier pour tarte à la crême"
+	desc = "Contient des tartes remplie de crêmes... Espèce de malade."
 	req_access = list(ACCESS_THEATRE)
 
 /obj/structure/closet/secure_closet/freezer/cream_pie/PopulateContents()

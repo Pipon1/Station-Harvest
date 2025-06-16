@@ -1,7 +1,7 @@
 // Normal strength
 
 /datum/round_event_control/meteor_wave
-	name = "Meteor Wave: Normal"
+	name = "Vague de météores : Normale"
 	typepath = /datum/round_event/meteor_wave
 	weight = 4
 	min_players = 15
@@ -50,54 +50,54 @@
 			kill()
 
 /datum/round_event/meteor_wave/announce(fake)
-	priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", ANNOUNCER_METEORS)
+	priority_announce("Des météores ont été détectés sur une trajectoire de collision avec la station.", "Alerte collision", ANNOUNCER_METEORS)
 
 /datum/round_event/meteor_wave/tick()
 	if(ISMULTIPLE(activeFor, 3))
 		spawn_meteors(5, wave_type) //meteor list types defined in gamemode/meteor/meteors.dm
 
 /datum/round_event_control/meteor_wave/threatening
-	name = "Meteor Wave: Threatening"
+	name = "Vague de météores : Dangereuse"
 	typepath = /datum/round_event/meteor_wave/threatening
 	weight = 5
 	min_players = 20
 	max_occurrences = 3
 	earliest_start = 35 MINUTES
-	description = "A meteor wave with higher chance of big meteors."
+	description = "Une vague de météores avec plus de gros météores."
 
 /datum/round_event/meteor_wave/threatening
 	wave_name = "threatening"
 
 /datum/round_event_control/meteor_wave/catastrophic
-	name = "Meteor Wave: Catastrophic"
+	name = "Vague de météores : Catastrophique"
 	typepath = /datum/round_event/meteor_wave/catastrophic
 	weight = 7
 	min_players = 25
 	max_occurrences = 3
 	earliest_start = 45 MINUTES
-	description = "A meteor wave that might summon a tunguska class meteor."
+	description = "Une vague de météroe qui peut contenir un météore de classe toungouska."
 
 /datum/round_event/meteor_wave/catastrophic
 	wave_name = "catastrophic"
 
 /datum/round_event_control/meteor_wave/meaty
-	name = "Meteor Wave: Meaty"
+	name = "Vague de météores : Viandarde"
 	typepath = /datum/round_event/meteor_wave/meaty
 	weight = 2
 	max_occurrences = 1
-	description = "A meteor wave made of meat."
+	description = "Une vague de météores faites de viande."
 
 /datum/round_event/meteor_wave/meaty
 	wave_name = "meaty"
 
 /datum/round_event/meteor_wave/meaty/announce(fake)
-	priority_announce("Meaty ores have been detected on collision course with the station.", "Oh crap, get the mop.", ANNOUNCER_METEORS)
+	priority_announce("De la viande a été détectée sur une trajectoire de collision avec la station.", "Oh merde, allez chercher la serpillère.", ANNOUNCER_METEORS)
 
 /datum/round_event_control/meteor_wave/dust_storm
-	name = "Major Space Dust"
+	name = "Poussières spatiales : Majeur"
 	typepath = /datum/round_event/meteor_wave/dust_storm
 	weight = 14
-	description = "The station is pelted by sand."
+	description = "La station est bombardée par du sable."
 	earliest_start = 15 MINUTES
 	min_wizard_trigger_potency = 4
 	max_wizard_trigger_potency = 7
@@ -109,24 +109,24 @@
 /datum/round_event/meteor_wave/dust_storm/announce(fake)
 	var/list/reasons = list()
 
-	reasons += "[station_name()] is passing through a debris cloud, expect minor damage \
-		to external fittings and fixtures."
+	reasons += "[station_name()] passe par un nuage de débris. Dommages mineures attendus \
+		aux équipements et installations extérieurs."
 
-	reasons += "Nanotrasen Superweapons Division is testing a new prototype \
-		[pick("field","projection","nova","super-colliding","reactive")] \
-		[pick("cannon","artillery","tank","cruiser","\[REDACTED\]")], \
-		some mild debris is expected."
+	reasons += "La Division des Superarmes de Nanotrasen teste un nouveau prototype de\
+		[pick("canon","artillerie","tank","croiseur","\[SUPPRIMÉ\]")], \
+		[pick("de terrain","à projection","nova","super-percutant","réactif")] \
+		quelques débris épars sont attendus."
 
-	reasons += "A neighbouring station is throwing rocks at you. (Perhaps they've \
-		grown tired of your messages.)"
+	reasons += "Une station voisine est en train de vous envoyer des cailloux dessus. (Peut-être qu'ils ont en marre de \
+		vos messages.)"
 
-	reasons += "[station_name()]'s orbit is passing through a cloud of remnants from an asteroid \
-		mining operation. Minor hull damage is to be expected."
+	reasons += "L'orbite de [station_name()] passe à travers un nuage des reste d'un astéroide de minage. \
+		Dommages mineures à la coque attendus."
 
-	reasons += "A large meteoroid on intercept course with [station_name()] has been demolished. \
-		Residual debris may impact the station exterior."
+	reasons += "Un large météore était sur une trajectoire de collision avec [station_name()], il a été démoli. \
+		Des débris résiduels peuvent heurter l'extérieur de votre station."
 
-	reasons += "[station_name()] has hit a particularly rough patch of space. \
-		Please mind any turbulence or damage from debris."
+	reasons += "[station_name()] a atteint une partie de l'espace particulièrement encombrée. \
+		Veuillez faire attention à toute turbulence ou dommages causés par les débris."
 
-	priority_announce(pick(reasons), "Collision Alert")
+	priority_announce(pick(reasons), "Alerte collision")

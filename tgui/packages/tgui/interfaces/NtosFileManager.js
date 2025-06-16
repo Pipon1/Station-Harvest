@@ -60,9 +60,9 @@ const FileTable = (props) => {
   return (
     <Table>
       <Table.Row header>
-        <Table.Cell>File</Table.Cell>
+        <Table.Cell>Fichier</Table.Cell>
         <Table.Cell collapsing>Type</Table.Cell>
-        <Table.Cell collapsing>Size</Table.Cell>
+        <Table.Cell collapsing>Taille</Table.Cell>
       </Table.Row>
       {files.map((file) => (
         <Table.Row key={file.name} className="candystripe">
@@ -72,7 +72,7 @@ const FileTable = (props) => {
                 fluid
                 content={file.name}
                 currentValue={file.name}
-                tooltip="Rename"
+                tooltip="Renommer"
                 onCommit={(e, value) => onRename(file.name, value)}
               />
             ) : (
@@ -86,7 +86,7 @@ const FileTable = (props) => {
               <Button
                 icon={file.alert_silenced ? 'bell-slash' : 'bell'}
                 color={file.alert_silenced ? 'red' : 'default'}
-                tooltip={file.alert_silenced ? 'Unmute Alerts' : 'Mute Alerts'}
+                tooltip={file.alert_silenced ? 'Alerte sonnore' : 'Alerte muette'}
                 onClick={() => onToggleSilence(file.name)}
               />
             )}
@@ -96,20 +96,20 @@ const FileTable = (props) => {
                   icon="trash"
                   confirmIcon="times"
                   confirmContent=""
-                  tooltip="Delete"
+                  tooltip="Supprimer"
                   onClick={() => onDelete(file.name)}
                 />
                 {!!usbconnected &&
                   (usbmode ? (
                     <Button
                       icon="download"
-                      tooltip="Download"
+                      tooltip="Télécharger"
                       onClick={() => onUpload(file.name)}
                     />
                   ) : (
                     <Button
                       icon="upload"
-                      tooltip="Upload"
+                      tooltip="Charger en ligne"
                       onClick={() => onUpload(file.name)}
                     />
                   ))}

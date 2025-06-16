@@ -1,11 +1,11 @@
 /datum/round_event_control/heart_attack
-	name = "Random Heart Attack"
+	name = "Attaque cardiaque aléatoire"
 	typepath = /datum/round_event/heart_attack
 	weight = 20
 	max_occurrences = 2
 	min_players = 40 // To avoid shafting lowpop
 	category = EVENT_CATEGORY_HEALTH
-	description = "A random crewmember's heart gives out."
+	description = "Un membre de l'équipage au hasard a une attaque cardiaque."
 	min_wizard_trigger_potency = 6
 	max_wizard_trigger_potency = 7
 	admin_setup = list(/datum/event_admin_setup/minimum_candidate_requirement/heart_attack, /datum/event_admin_setup/input_number/heart_attack)
@@ -65,13 +65,13 @@
 /datum/round_event/heart_attack/proc/attack_heart()
 	var/mob/living/carbon/human/winner = pick_weight(victims)
 	if(winner.has_status_effect(/datum/status_effect/exercised)) //Stuff that should "block" a heart attack rather than just deny eligibility for one goes here.
-		winner.visible_message(span_warning("[winner] grunts and clutches their chest for a moment, catching [winner.p_their()] breath."), span_medal("Your chest lurches in pain for a brief moment, which quickly fades. \
-								You feel like you've just avoided a serious health disaster."), span_hear("You hear someone's breathing sharpen for a moment, followed by a sigh of relief."), 4)
+		winner.visible_message(span_warning("[winner] grogne et agrippe son torse en retenant son souffle pendant un moment."), span_medal("Un éclair de douleur vous traverse le torse avant de disparaitre rapidement. \
+								Vous avez l'impression d'avoir évité de peu un sérieux problème de santé."), span_hear("Vous entendez la respiration de quelqu'un devenir plus lourde, suivi d'un soupire de soulagement."), 4)
 		winner.playsound_local(get_turf(winner), 'sound/health/slowbeat.ogg', 40, 0, channel = CHANNEL_HEARTBEAT, use_reverb = FALSE)
 		winner.Stun(3 SECONDS)
 		if(winner.client)
 			winner.client.give_award(/datum/award/achievement/misc/healthy, winner)
-		message_admins("[winner] has just survived a random heart attack!") //time to spawn them a trophy :)
+		message_admins("[winner] vient de survivre à une attaque cardiaque aléatoire !") //time to spawn them a trophy :)
 		victims -= winner
 	else
 		var/datum/disease/heart_disease = new /datum/disease/heart_failure()
@@ -82,7 +82,7 @@
 	return FALSE
 
 /datum/event_admin_setup/minimum_candidate_requirement/heart_attack
-	output_text = "There are no candidates eligible to recieve a heart attack!"
+	output_text = "Il n'y aucun candidat éligible à une attaque cardiaque !"
 
 /datum/event_admin_setup/minimum_candidate_requirement/heart_attack/count_candidates()
 	var/datum/round_event_control/heart_attack/heart_control = event_control
@@ -90,7 +90,7 @@
 	return length(heart_control.heart_attack_candidates)
 
 /datum/event_admin_setup/input_number/heart_attack
-	input_text = "Please select how many people's days you wish to ruin."
+	input_text = "Sélectionnez le nombre de personne à qui vous voulez ruiner la journée."
 	default_value = 0
 	max_value = 90 //Will be overridden
 	min_value = 0

@@ -23,9 +23,8 @@
 	)
 
 /datum/traitor_objective/target_player/assassinate
-	name = "Assassinate %TARGET% the %JOB TITLE%"
-	description = "Simply kill your target to accomplish this objective."
-
+	name = "Assassinez %TARGET% lae %JOB TITLE%"
+	description = "Tuez votre cible pour accomplir cet objectif."
 	abstract_type = /datum/traitor_objective/target_player/assassinate
 
 	progression_minimum = 30 MINUTES
@@ -45,8 +44,8 @@
 	. += NAMEOF(src, maximum_objectives_in_period)
 
 /datum/traitor_objective/target_player/assassinate/calling_card
-	name = "Assassinate %TARGET% the %JOB TITLE%, and plant a calling card"
-	description = "Kill your target and plant a calling card in the pockets of your victim. If your calling card gets destroyed before you are able to plant it, this objective will fail."
+	name = "Assassinez %TARGET% lae %JOB TITLE% et placer la carte de visite"
+	description = "Tuez votre cible et placer la carte de visite dans une de ses poches. Si la carte de visite est détruite avant que vous puissiez la placer, la mission échouera."
 	progression_reward = 2 MINUTES
 	telecrystal_reward = list(1, 2)
 
@@ -59,8 +58,8 @@
 	heads_of_staff = TRUE
 
 /datum/traitor_objective/target_player/assassinate/behead
-	name = "Behead %TARGET%, the %JOB TITLE%"
-	description = "Behead and hold %TARGET%'s head to succeed this objective. If the head gets destroyed before you can do this, you will fail this objective."
+	name = "Décapiter %TARGET% lae %JOB TITLE%"
+	description = "Décapitez et prenez dans vos mains la tête de %TARGET% pour réussir cet objectif. Si la tête est détruite avant que vous puissiez le faire, la mission échouera."
 	progression_reward = 2 MINUTES
 	telecrystal_reward = list(1, 2)
 
@@ -79,7 +78,7 @@
 /datum/traitor_objective/target_player/assassinate/calling_card/generate_ui_buttons(mob/user)
 	var/list/buttons = list()
 	if(!card)
-		buttons += add_ui_button("", "Pressing this will materialize a calling card, which you must plant to succeed.", "paper-plane", "summon_card")
+		buttons += add_ui_button("", "Pressez ce buton pour matérialiser une carte de visite. La carte doit être placer pour réussir.", "paper-plane", "summon_card")
 	return buttons
 
 /datum/traitor_objective/target_player/assassinate/calling_card/ui_perform_action(mob/living/user, action)
@@ -90,7 +89,7 @@
 				return
 			card = new(user.drop_location())
 			user.put_in_hands(card)
-			card.balloon_alert(user, "the card materializes in your hand")
+			card.balloon_alert(user, "La carte se matérialise dans votre main.")
 			RegisterSignal(card, COMSIG_ITEM_EQUIPPED, PROC_REF(on_card_planted))
 			AddComponent(/datum/component/traitor_objective_register, card, \
 				succeed_signals = null, \
@@ -151,7 +150,7 @@
 		fail_objective()
 		return
 	if(taker == handler.owner.current)
-		taker.visible_message(span_notice("[taker] holds [behead_goal] into the air for a moment."), span_boldnotice("You lift [behead_goal] into the air for a moment."))
+		taker.visible_message(span_notice("[taker] prends dans ses mains [behead_goal] et la soulève dans les airs."), span_boldnotice("Vous soulevez [behead_goal] dans les airs pendant un court instant."))
 		succeed_objective()
 
 /datum/traitor_objective/target_player/assassinate/behead/proc/on_target_dismembered(datum/source, obj/item/bodypart/head/lost_head, special)
@@ -255,23 +254,23 @@
 		fail_objective()
 
 /obj/item/paper/calling_card
-	name = "calling card"
+	name = "Carte de visite"
 	icon_state = "syndicate_calling_card"
 	color = "#ff5050"
 	show_written_words = FALSE
 	default_raw_text = {"
-	<b>**Death to Nanotrasen.**</b><br><br>
+	<b>**Mort à Nanotrasen**</b><br><br>
 
-	Only through the inviolable cooperation of corporations known as The Syndicate, can Nanotrasen and its autocratic tyrants be silenced.
-	The outcries of Nanotrasen's employees are squelched by the suffocating iron grip of their leaders. If you read this, and understand
-	why we fight, then you need only to look where Nanotrasen doesn't want you to find us to join our cause. Any number of our companies
-	may be fighting with your interests in mind.<br><br>
+	Seule la coopération absolue des entreprises connues sous le nom du Syndicat peut réduire au silence Nanotrasen et ses tyrans autocratiques.
+	Les cris des employés de Nanotrasen sont étouffés par la main de fer des dirigeants.
+	Si vous lisez ceci et comprenez pourquoi nous luttons, alors il vous suffit de regarder là où Nanotrasen ne veut pas que vous nous trouviez pour rejoindre notre cause.
+	Un certain nombre de nos entreprises se battent dans vos intêrets.<br><br>
 
-	<b>SELF:</b> They fight for the protection and freedom of silicon life all across the galaxy.<br><br>
+	<b>SELF:</b> Ils combattent pour la protection et la liberté de toutes formes de vie artificiel dans la galaxie.<br><br>
 
-	<b>Tiger Cooperative:</b> They fight for religious freedom and their righteous concoctions.<br><br>
+	<b>Coopérative des tigres :</b> Ils combattent pour la liberté religieuse et leurs boissons divine.<br><br>
 
-	<b>Waffle Corporation:</b> They fight for the return of healthy corporate competition, snuffed out by Nanotrasen's monopoly.<br><br>
+	<b>L'entreprise des gaufres :</b> Ils combattent pour le retour d'une compétition saine entre entreprise, et cela depuis que Nanotrasen l'a supprimer à cause de son monopole.<br><br>
 
-	<b>Animal Rights Consortium:</b> They fight for nature and the right for all biological life to exist.
+	<b>Le consortium pour le droit des animaux :</b> Ils combattent pour la nature et pour le droit de toute vie d'exister.
 	"}

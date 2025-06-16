@@ -40,7 +40,7 @@
 
 
 /datum/job/head_of_security/get_captaincy_announcement(mob/living/captain)
-	return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
+	return "Le personnel étant en sous-effectif, [captain.real_name] est maintenant promu capitaine sur le pont !"
 
 
 /datum/outfit/job/hos

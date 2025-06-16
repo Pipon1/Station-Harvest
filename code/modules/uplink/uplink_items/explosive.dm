@@ -25,7 +25,7 @@
 	desc = "Because sometimes quantity is quality. Contains 10 C-4 plastic explosives."
 	item = /obj/item/storage/backpack/duffelbag/syndie/c4
 	progression_minimum = 10 MINUTES
-	cost = 8 //20% discount!
+	cost = 6 //20% discount!
 	cant_discount = TRUE
 
 /datum/uplink_item/explosives/x4bag
@@ -35,7 +35,7 @@
 			For when you want a controlled explosion that leaves a wider, deeper, hole."
 	progression_minimum = 20 MINUTES
 	item = /obj/item/storage/backpack/duffelbag/syndie/x4
-	cost = 4
+	cost = 7
 	cant_discount = TRUE
 
 /datum/uplink_item/explosives/detomatix
@@ -66,7 +66,7 @@
 			opening the box again will trigger the detonation after the timer has elapsed. Comes with free pizza, for you or your target!"
 	progression_minimum = 30 MINUTES
 	item = /obj/item/pizzabox/bomb
-	cost = 6
+	cost = 4
 	surplus = 8
 
 /datum/uplink_item/explosives/syndicate_minibomb
@@ -75,7 +75,7 @@
 			in addition to dealing high amounts of damage to nearby personnel."
 	progression_minimum = 30 MINUTES
 	item = /obj/item/grenade/syndieminibomb
-	cost = 6
+	cost = 5
 	purchasable_from = ~UPLINK_CLOWN_OPS
 
 

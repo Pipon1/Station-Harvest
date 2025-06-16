@@ -2,13 +2,13 @@
 
 /obj/item/food/donkpocket
 	name = "\improper Donk-pocket"
-	desc = "The food of choice for the seasoned traitor."
+	desc = "La nourriture de choix pour tout traitre aguerri."
 	icon_state = "donkpocket"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/protein = 2,
 	)
-	tastes = list("meat" = 2, "dough" = 2, "laziness" = 1)
+	tastes = list("de viande" = 2, "de pâte" = 2, "de paresse" = 1)
 	foodtypes = GRAIN
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
@@ -27,14 +27,14 @@
 	AddElement(/datum/element/microwavable, warm_type)
 
 /obj/item/food/donkpocket/warm
-	name = "warm Donk-pocket"
-	desc = "The heated food of choice for the seasoned traitor."
+	name = "Donk-pocket chaud"
+	desc = "La nourriture chaud de choix pour tout traitre aguerri."
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/medicine/omnizine = 6,
 	)
-	tastes = list("meat" = 2, "dough" = 2, "laziness" = 1)
+	tastes = list("de viande" = 2, "de pâte" = 2, "de paresse" = 1)
 	foodtypes = GRAIN
 
 	// Warmed donk pockets will burn if you leave them in the oven or microwave.
@@ -44,32 +44,32 @@
 
 /obj/item/food/dankpocket
 	name = "\improper Dank-pocket"
-	desc = "The food of choice for the seasoned botanist."
+	desc = "La nourriture de choix pour tout botaniste aguerri."
 	icon_state = "dankpocket"
 	food_reagents = list(
 		/datum/reagent/toxin/lipolicide = 3,
 		/datum/reagent/drug/space_drugs = 3,
 		/datum/reagent/consumable/nutriment = 4,
 	)
-	tastes = list("meat" = 2, "dough" = 2)
+	tastes = list("de viande" = 2, "de pâte" = 2)
 	foodtypes = GRAIN | VEGETABLES
 
 /obj/item/food/donkpocket/spicy
 	name = "\improper Spicy-pocket"
-	desc = "The classic snack food, now with a heat-activated spicy flair."
+	desc = "Le casse-croûte de base, avec une petite odeur épicée."
 	icon_state = "donkpocketspicy"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/capsaicin = 2,
 	)
-	tastes = list("meat" = 2, "dough" = 2, "spice" = 1)
+	tastes = list("de viande" = 2, "de pâte" = 2, "d'épices" = 1)
 	foodtypes = GRAIN
 	warm_type = /obj/item/food/donkpocket/warm/spicy
 
 /obj/item/food/donkpocket/warm/spicy
-	name = "warm Spicy-pocket"
-	desc = "The classic snack food, now maybe a bit too spicy."
+	name = "Spicy-pocket chaud"
+	desc = "Le casse-croûte de base, mais peut-être avec un peu trop d'épices."
 	icon_state = "donkpocketspicy"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -77,25 +77,25 @@
 		/datum/reagent/medicine/omnizine = 2,
 		/datum/reagent/consumable/capsaicin = 5,
 	)
-	tastes = list("meat" = 2, "dough" = 2, "weird spices" = 2)
+	tastes = list("de viandes" = 2, "de pâte" = 2, "d'épices étranges" = 2)
 	foodtypes = GRAIN
 
 /obj/item/food/donkpocket/teriyaki
 	name = "\improper Teriyaki-pocket"
-	desc = "An east-asian take on the classic stationside snack."
+	desc = "Une approche est-asiatique du casse-groûte classique."
 	icon_state = "donkpocketteriyaki"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/soysauce = 2,
 	)
-	tastes = list("meat" = 2, "dough" = 2, "soy sauce" = 2)
+	tastes = list("de viande" = 2, "de pâte" = 2, "de sauce soja" = 2)
 	foodtypes = GRAIN
 	warm_type = /obj/item/food/donkpocket/warm/teriyaki
 
 /obj/item/food/donkpocket/warm/teriyaki
-	name = "warm Teriyaki-pocket"
-	desc = "An east-asian take on the classic stationside snack, now steamy and warm."
+	name = "Teriyaki-pocket chaud"
+	desc = "Une approche est-asiatique du casse-groûte classique, cette fois chaud et avec de la vapeur."
 	icon_state = "donkpocketteriyaki"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -103,25 +103,25 @@
 		/datum/reagent/medicine/omnizine = 2,
 		/datum/reagent/consumable/soysauce = 2,
 	)
-	tastes = list("meat" = 2, "dough" = 2, "soy sauce" = 2)
+	tastes = list("de viande" = 2, "de pâte" = 2, "de sauce soja" = 2)
 	foodtypes = GRAIN
 
 /obj/item/food/donkpocket/pizza
 	name = "\improper Pizza-pocket"
-	desc = "Delicious, cheesy and surprisingly filling."
+	desc = "Délicieux, fondant et qui cale étonnamment bien."
 	icon_state = "donkpocketpizza"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/tomatojuice = 2,
 	)
-	tastes = list("meat" = 2, "dough" = 2, "cheese"= 2)
+	tastes = list("de viande" = 2, "de pâte" = 2, "de fromage"= 2)
 	foodtypes = GRAIN
 	warm_type = /obj/item/food/donkpocket/warm/pizza
 
 /obj/item/food/donkpocket/warm/pizza
-	name = "warm Pizza-pocket"
-	desc = "Delicious, cheesy, and even better when hot."
+	name = "Pizza-pocket chaud"
+	desc = "Délicieux, fondant et encore meilleur chaud."
 	icon_state = "donkpocketpizza"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -129,25 +129,25 @@
 		/datum/reagent/medicine/omnizine = 2,
 		/datum/reagent/consumable/tomatojuice = 2,
 	)
-	tastes = list("meat" = 2, "dough" = 2, "melty cheese"= 2)
+	tastes = list("de viande" = 2, "de pâte" = 2, "de fromage chaud"= 2)
 	foodtypes = GRAIN
 
 /obj/item/food/donkpocket/honk
 	name = "\improper Honk-pocket"
-	desc = "The award-winning donk-pocket that won the hearts of clowns and humans alike."
+	desc = "Le casse-croûte primé ayant déjà gagné le coeur des clowns et des humanoïdes."
 	icon_state = "donkpocketbanana"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/banana = 4,
 	)
-	tastes = list("banana" = 2, "dough" = 2, "children's antibiotics" = 1)
+	tastes = list("de banane" = 2, "de pâte" = 2, "d'antibiotiques pour enfant" = 1)
 	foodtypes = GRAIN
 
 	warm_type = /obj/item/food/donkpocket/warm/honk
 
 /obj/item/food/donkpocket/warm/honk
-	name = "warm Honk-pocket"
-	desc = "The award-winning donk-pocket, now warm and toasty."
+	name = "Honk-pocket chaud"
+	desc = "Le donk-pocket primé, désormais chaud."
 	icon_state = "donkpocketbanana"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
@@ -155,51 +155,51 @@
 		/datum/reagent/consumable/banana = 4,
 		/datum/reagent/consumable/laughter = 6,
 	)
-	tastes = list("banana" = 2, "dough" = 2, "children's antibiotics" = 1)
+	tastes = list("de banane" = 2, "de pâte" = 2, "d'antibiotiques pour enfant" = 1)
 	foodtypes = GRAIN
 
 /obj/item/food/donkpocket/berry
 	name = "\improper Berry-pocket"
-	desc = "A relentlessly sweet donk-pocket first created for use in Operation Dessert Storm."
+	desc = "Un donk-pocket sucré jusqu'à l'écoeurement, à l'origine créé pour l'opération Tempête du Dessert."
 	icon_state = "donkpocketberry"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/berryjuice = 3,
 	)
-	tastes = list("dough" = 2, "jam" = 2)
+	tastes = list("de pâte" = 2, "de confiture" = 2)
 	foodtypes = GRAIN
 
 	warm_type = /obj/item/food/donkpocket/warm/berry
 
 /obj/item/food/donkpocket/warm/berry
-	name = "warm Berry-pocket"
-	desc = "A relentlessly sweet donk-pocket, now warm and delicious."
+	name = "Berry-pocket chaud"
+	desc = "Un donk-pocket sucré jusqu'à l'écoeurement, désormais chaud et délicieux."
 	icon_state = "donkpocketberry"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/medicine/omnizine = 2,
 		/datum/reagent/consumable/berryjuice = 3,
 	)
-	tastes = list("dough" = 2, "warm jam" = 2)
+	tastes = list("de pâte" = 2, "de confiture chaud" = 2)
 	foodtypes = GRAIN
 
 /obj/item/food/donkpocket/gondola
 	name = "\improper Gondola-pocket"
-	desc = "The choice to use real gondola meat in the recipe is controversial, to say the least." //Only a monster would craft this.
+	desc = "Utiliser de la vraie viande de gondola est un choix controversé." //Only a monster would craft this.
 	icon_state = "donkpocketgondola"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/gondola_mutation_toxin = 5,
 	)
-	tastes = list("meat" = 2, "dough" = 2, "inner peace" = 1)
+	tastes = list("de viande" = 2, "de pâte" = 2, "de paix intérieur" = 1)
 	foodtypes = GRAIN
 
 	warm_type = /obj/item/food/donkpocket/warm/gondola
 
 /obj/item/food/donkpocket/warm/gondola
-	name = "warm Gondola-pocket"
-	desc = "The choice to use real gondola meat in the recipe is controversial, to say the least."
+	name = "Gondola-pocket chaud"
+	desc = "Utiliser de la vraie viande de gondola est un choix controversé."
 	icon_state = "donkpocketgondola"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3,
@@ -207,5 +207,5 @@
 		/datum/reagent/medicine/omnizine = 2,
 		/datum/reagent/gondola_mutation_toxin = 10,
 	)
-	tastes = list("meat" = 2, "dough" = 2, "inner peace" = 1)
+	tastes = list("de viande" = 2, "de pâte" = 2, "de paix intérieur" = 1)
 	foodtypes = GRAIN

@@ -1,10 +1,10 @@
 /datum/round_event_control/shuttle_catastrophe
-	name = "Shuttle Catastrophe"
+	name = "Catastrophe de navette"
 	typepath = /datum/round_event/shuttle_catastrophe
 	weight = 10
 	max_occurrences = 1
 	category = EVENT_CATEGORY_BUREAUCRATIC
-	description = "Replaces the emergency shuttle with a random one."
+	description = "Remplace la navette d'urgence par une navette aléatoire."
 	admin_setup = list(/datum/event_admin_setup/warn_admin/shuttle_catastrophe, /datum/event_admin_setup/listed_options/shuttle_catastrophe)
 
 /datum/round_event_control/shuttle_catastrophe/can_spawn_event(players, allow_magic = FALSE)
@@ -24,18 +24,18 @@
 	var/datum/map_template/shuttle/new_shuttle
 
 /datum/round_event/shuttle_catastrophe/announce(fake)
-	var/cause = pick("was attacked by [syndicate_name()] Operatives", "mysteriously teleported away", "had its refuelling crew mutiny",
-		"was found with its engines stolen", "\[REDACTED\]", "flew into the sunset, and melted", "learned something from a very wise cow, and left on its own",
-		"had cloning devices on it", "had its shuttle inspector put the shuttle in reverse instead of park, causing the shuttle to crash into the hangar")
-	var/message = "Your emergency shuttle [cause]. "
+	var/cause = pick("a été attaquée par les agents du [syndicate_name()]", "a mystérieusement été téléportée", "n'a pas pu être ravitaillée car l'équipe en charge a organisé une mutinerie",
+		"a été trouvée sans ses moteurs, qui ont été volés", "\[SUPPRIMÉ\]", "a volé vers le soleil couchant et a fondue", "a appris quelque chose d'une vache très sage, puis est partie de son propre chef",
+		"est en cours d'inspection pour possession d'équipement de clonage illégal", "a été crashée par son pilote, qui a confondu la marche arrière et le frein à main")
+	var/message = "Votre navette d'urgence [cause]. "
 
 	if(SSshuttle.shuttle_insurance)
-		message += "Luckily, your shuttle insurance has covered the costs of repair!"
+		message += "Heureusement, votre assurance a couvert les réparations !"
 		if(SSeconomy.get_dep_account(ACCOUNT_CAR))
-			message += " You have been awarded a bonus from [command_name()] for smart spending."
+			message += " Votre investissement judicieux a été récompensé par le versement d'une prime de la part de [command_name()]."
 	else
-		message += "Your replacement shuttle will be the [new_shuttle.name] until further notice."
-	priority_announce(message, "[command_name()] Spacecraft Engineering")
+		message += "Votre navette de remplacement sera lae [new_shuttle.name] jusqu'à nouvel ordre."
+	priority_announce(message, "Cordialement, Génie Spatial de [command_name()]")
 
 /datum/round_event/shuttle_catastrophe/setup()
 	if(SSshuttle.shuttle_insurance || !isnull(new_shuttle)) //If an admin has overridden it don't re-roll it
@@ -56,18 +56,18 @@
 	SSshuttle.unload_preview()
 	SSshuttle.existing_shuttle = SSshuttle.emergency
 	SSshuttle.action_load(new_shuttle, replace = TRUE)
-	log_shuttle("Shuttle Catastrophe set a new shuttle, [new_shuttle.name].")
+	log_shuttle("L'événement catastrophe de navette a changé la navette d'urgence pour : [new_shuttle.name].")
 
 /datum/event_admin_setup/warn_admin/shuttle_catastrophe
-	warning_text = "This will unload the currently docked emergency shuttle, and ERASE ANYTHING within it. Proceed anyways?"
-	snitch_text = "has forced a shuttle catastrophe while a shuttle was already docked."
+	warning_text = "Cette action va unload la navette d'urgence actuellement stationnée et EFFACER TOUT ce qui est avec. Voulez vous continuer ?"
+	snitch_text = "a forcé l'événement catastrophe de navette alors que la navette d'urgence était déjà stationnée."
 
 /datum/event_admin_setup/warn_admin/shuttle_catastrophe/should_warn()
 	return EMERGENCY_AT_LEAST_DOCKED || istype(SSshuttle.emergency, /obj/docking_port/mobile/emergency/shuttle_build)
 
 /datum/event_admin_setup/listed_options/shuttle_catastrophe
-	input_text = "Select a specific shuttle?"
-	normal_run_option = "Random shuttle"
+	input_text = "Choisir une nouvelle navette d'urgence précise ?"
+	normal_run_option = "Navette d'urgence aléatoire"
 
 /datum/event_admin_setup/listed_options/shuttle_catastrophe/get_list()
 	var/list/valid_shuttle_templates = list()

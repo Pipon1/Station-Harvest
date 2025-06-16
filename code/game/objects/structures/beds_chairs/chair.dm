@@ -1,6 +1,6 @@
 /obj/structure/chair
-	name = "chair"
-	desc = "You sit in this. Either by will or force."
+	name = "chaise"
+	desc = "Vous vous asseyez dessus. De votre propre volonté ou contre votre volonté."
 	icon = 'icons/obj/chairs.dmi'
 	icon_state = "chair"
 	anchored = TRUE
@@ -18,9 +18,9 @@
 
 /obj/structure/chair/examine(mob/user)
 	. = ..()
-	. += span_notice("It's held together by a couple of <b>bolts</b>.")
+	. += span_notice("La [src] tient grace à quelques <b>écrous</b>.")
 	if(!has_buckled_mobs() && can_buckle)
-		. += span_notice("While standing on [src], drag and drop your sprite onto [src] to buckle to it.")
+		. += span_notice("En étant debout sur lae [src], tirer et lacher votre personnage sur lae [src] pour s'y attacher.")
 
 /obj/structure/chair/Initialize(mapload)
 	. = ..()
@@ -78,10 +78,10 @@
 		AddComponent(/datum/component/electrified_buckle, (SHOCK_REQUIREMENT_ITEM | SHOCK_REQUIREMENT_LIVE_CABLE | SHOCK_REQUIREMENT_SIGNAL_RECEIVED_TOGGLE), input_shock_kit, overlays_from_child_procs, FALSE)
 
 	if(HAS_TRAIT(src, TRAIT_ELECTRIFIED_BUCKLE))
-		to_chat(user, span_notice("You connect the shock kit to the [name], electrifying it "))
+		to_chat(user, span_notice("Vous connectez le kit d'éléctrochoque à lae [name], l'éléctrifiant "))
 	else
 		user.put_in_active_hand(input_shock_kit)
-		to_chat(user, "<span class='notice'> You cannot fit the shock kit onto the [name]!")
+		to_chat(user, "<span class='notice'> Vous ne pouvez pas fixer le kit à lae [name] !")
 
 
 /obj/structure/chair/wrench_act_secondary(mob/living/user, obj/item/weapon)
@@ -137,8 +137,8 @@
 
 /obj/structure/chair/wood
 	icon_state = "wooden_chair"
-	name = "wooden chair"
-	desc = "Old is never too old to not be in fashion."
+	name = "chaise en bois"
+	desc = "On est jamais trop vieux pour avoir la classe."
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
 	buildstacktype = /obj/item/stack/sheet/mineral/wood
@@ -153,8 +153,8 @@
 	item_chair = /obj/item/chair/wood/wings
 
 /obj/structure/chair/comfy
-	name = "comfy chair"
-	desc = "It looks comfy."
+	name = "chaise comfortable"
+	desc = "Elle donne l'impression d'être comfortable."
 	icon_state = "comfychair"
 	color = rgb(255, 255, 255)
 	resistance_flags = FLAMMABLE
@@ -219,8 +219,8 @@
 	color = rgb(193, 248, 104)
 
 /obj/structure/chair/comfy/shuttle
-	name = "shuttle seat"
-	desc = "A comfortable, secure seat. It has a more sturdy looking buckling system, for smoother flights."
+	name = "siège de navette"
+	desc = "Un siège comfortable et sûr. Sa ceinture de sécurité semble solide, pour garantir des vols plus agréable."
 	icon_state = "shuttle_chair"
 	buildstacktype = /obj/item/stack/sheet/mineral/titanium
 
@@ -230,11 +230,11 @@
 	. = ..()
 
 /obj/structure/chair/comfy/shuttle/tactical
-	name = "tactical chair"
+	name = "chaise tactique"
 
 /obj/structure/chair/comfy/carp
-	name = "carpskin chair"
-	desc = "A luxurious chair, the many purple scales reflect the light in a most pleasing manner."
+	name = "chaise en peau de carpe"
+	desc = "Une chaise luxieuse. Les nombreuses écailles violette reflètent la lumière de façon très agréable."
 	icon_state = "carp_chair"
 	buildstacktype = /obj/item/stack/sheet/animalhide/carp
 
@@ -256,7 +256,7 @@
 	. = ..()
 
 /obj/structure/chair/office/tactical
-	name = "tactical swivel chair"
+	name = "chaise pivotante tactique"
 
 /obj/structure/chair/office/light
 	icon_state = "officechair_white"
@@ -264,8 +264,8 @@
 //Stool
 
 /obj/structure/chair/stool
-	name = "stool"
-	desc = "Apply butt."
+	name = "tabouret"
+	desc = "Pour poser ses fesses."
 	icon_state = "stool"
 	can_buckle = FALSE
 	buildstackamount = 1
@@ -283,7 +283,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool, 0)
 			return
 		if(!usr.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS))
 			return
-		usr.visible_message(span_notice("[usr] grabs \the [src.name]."), span_notice("You grab \the [src.name]."))
+		usr.visible_message(span_notice("[usr] attrape lae [src.name]."), span_notice("Vous attrapez lae [src.name]."))
 		var/obj/item/C = new item_chair(loc)
 		C.set_custom_materials(custom_materials)
 		TransferComponents(C)
@@ -294,16 +294,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool, 0)
 	return ..()
 
 /obj/structure/chair/stool/bar
-	name = "bar stool"
-	desc = "It has some unsavory stains on it..."
+	name = "tabouret de bar"
+	desc = "Il y'a des tâches dégoutante dessus..."
 	icon_state = "bar"
 	item_chair = /obj/item/chair/stool/bar
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 
 /obj/structure/chair/stool/bamboo
-	name = "bamboo stool"
-	desc = "A makeshift bamboo stool with a rustic look."
+	name = "tabouret en bamboo"
+	desc = "Un tabouret en bamboo fait à la va-vite."
 	icon_state = "bamboo_stool"
 	resistance_flags = FLAMMABLE
 	max_integrity = 60
@@ -312,8 +312,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	item_chair = /obj/item/chair/stool/bamboo
 
 /obj/item/chair
-	name = "chair"
-	desc = "Bar brawl essential."
+	name = "chaise"
+	desc = "Un essentiel des combats de bar."
 	icon = 'icons/obj/chairs.dmi'
 	icon_state = "chair_toppled"
 	inhand_icon_state = "chair"
@@ -331,7 +331,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	var/obj/structure/chair/origin_type = /obj/structure/chair
 
 /obj/item/chair/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins hitting [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] commencer à se frapper avec lae [src] ! Il semble que [user] essaie de se suicider !"))
 	playsound(src,hitsound,50,TRUE)
 	return BRUTELOSS
 
@@ -346,14 +346,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 /obj/item/chair/proc/plant(mob/user)
 	var/turf/T = get_turf(loc)
 	if(isgroundlessturf(T))
-		to_chat(user, span_warning("You need ground to plant this on!"))
+		to_chat(user, span_warning("Vous avez besoin de sol pour planter ça !"))
 		return
 	for(var/obj/A in T)
 		if(istype(A, /obj/structure/chair))
-			to_chat(user, span_warning("There is already a chair here!"))
+			to_chat(user, span_warning("Il y'a déja une chaise ici !"))
 			return
 		if(A.density && !(A.flags_1 & ON_BORDER_1))
-			to_chat(user, span_warning("There is already something here!"))
+			to_chat(user, span_warning("Il y'a déja quelque chose ici !"))
 			return
 
 	user.visible_message(span_notice("[user] rights \the [src.name]."), span_notice("You right \the [name]."))
@@ -381,7 +381,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 
 /obj/item/chair/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(attack_type == UNARMED_ATTACK && prob(hit_reaction_chance))
-		owner.visible_message(span_danger("[owner] fends off [attack_text] with [src]!"))
+		owner.visible_message(span_danger("[owner] se protège de [attack_text] avec lae [src] !"))
 		return TRUE
 	return FALSE
 
@@ -390,7 +390,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	if(!proximity)
 		return
 	if(prob(break_chance))
-		user.visible_message(span_danger("[user] smashes \the [src] to pieces against \the [target]"))
+		user.visible_message(span_danger("[user] fracasse en mille morceau lae [src] contre lae [target]"))
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
 			if(C.health < C.maxHealth*0.5)
@@ -402,20 +402,20 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	origin_type = /obj/structure/chair/greyscale
 
 /obj/item/chair/stool
-	name = "stool"
+	name = "tabouret"
 	icon_state = "stool_toppled"
 	inhand_icon_state = "stool"
 	origin_type = /obj/structure/chair/stool
 	break_chance = 0 //It's too sturdy.
 
 /obj/item/chair/stool/bar
-	name = "bar stool"
+	name = "tabouret de bar"
 	icon_state = "bar_toppled"
 	inhand_icon_state = "stool_bar"
 	origin_type = /obj/structure/chair/stool/bar
 
 /obj/item/chair/stool/bamboo
-	name = "bamboo stool"
+	name = "tabouret en bamboo"
 	icon_state = "bamboo_stool"
 	inhand_icon_state = "stool_bamboo"
 	hitsound = 'sound/weapons/genhit1.ogg'
@@ -426,7 +426,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	return //sturdy enough to ignore a god
 
 /obj/item/chair/wood
-	name = "wooden chair"
+	name = "chaise en bois"
 	icon_state = "wooden_chair_toppled"
 	inhand_icon_state = "woodenchair"
 	resistance_flags = FLAMMABLE
@@ -444,14 +444,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	origin_type = /obj/structure/chair/wood/wings
 
 /obj/structure/chair/old
-	name = "strange chair"
-	desc = "You sit in this. Either by will or force. Looks REALLY uncomfortable."
+	name = "chaise étrange"
+	desc = "Vous vous asseyez dessus. De votre propre volonté ou contre votre volonté. ça a VRAIMENT l'air incomfortable."
 	icon_state = "chairold"
 	item_chair = null
 
 /obj/structure/chair/bronze
-	name = "brass chair"
-	desc = "A spinny chair made of bronze. It has little cogs for wheels!"
+	name = "chair en bronze"
+	desc = "Une chaise qui roule fait de bronze. Elle a des petits rouages à la place de ses roues... Adorable !"
 	anchored = FALSE
 	icon_state = "brass_chair"
 	buildstacktype = /obj/item/stack/sheet/bronze
@@ -480,17 +480,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	if(!user.can_perform_action(src, NEED_DEXTERITY))
 		return
 	if(!(datum_flags & DF_ISPROCESSING))
-		user.visible_message(span_notice("[user] spins [src] around, and the last vestiges of Ratvarian technology keeps it spinning FOREVER."), \
-		span_notice("Automated spinny chairs. The pinnacle of ancient Ratvarian technology."))
+		user.visible_message(span_notice("[user] fait tourner la [src]. Les vestiges des technologies Ratvarienne la font tournée indéfiniment."), \
+		span_notice("Chaise qui tourne automatique. Le sommet de la technologie de l'ancienne Ratvaria."))
 		START_PROCESSING(SSfastprocess, src)
 	else
-		user.visible_message(span_notice("[user] stops [src]'s uncontrollable spinning."), \
-		span_notice("You grab [src] and stop its wild spinning."))
+		user.visible_message(span_notice("[user] arrête la rotation incontrolable de la [src]."), \
+		span_notice("Vous attrapez la [src] et arrêtez sa rotation folle."))
 		STOP_PROCESSING(SSfastprocess, src)
 
 /obj/structure/chair/mime
-	name = "invisible chair"
-	desc = "The mime needs to sit down and shut up."
+	name = "chaise invisible"
+	desc = "Les mimes doivent s'assoir et la fermer."
 	anchored = FALSE
 	icon_state = null
 	buildstacktype = null
@@ -507,8 +507,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 
 /obj/structure/chair/plastic
 	icon_state = "plastic_chair"
-	name = "folding plastic chair"
-	desc = "No matter how much you squirm, it'll still be uncomfortable."
+	name = "chaise pliable en plastique"
+	desc = "Peu import à quel point vous ajuster vos fesses, vous ne serez jamais assis comfortablement."
 	resistance_flags = FLAMMABLE
 	max_integrity = 50
 	custom_materials = list(/datum/material/plastic = 2000)
@@ -527,15 +527,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 
 /obj/structure/chair/plastic/proc/snap_check(mob/living/carbon/Mob)
 	if (Mob.nutrition >= NUTRITION_LEVEL_FAT)
-		to_chat(Mob, span_warning("The chair begins to pop and crack, you're too heavy!"))
+		to_chat(Mob, span_warning("La chaise commence à plier et à craquer ! Vous êtes trop lourd !"))
 		if(do_after(Mob, 6 SECONDS, progress = FALSE))
-			Mob.visible_message(span_notice("The plastic chair snaps under [Mob]'s weight!"))
+			Mob.visible_message(span_notice("La chaise en plastique casse sous le poids de [Mob] !"))
 			new /obj/effect/decal/cleanable/plastic(loc)
 			qdel(src)
 
 /obj/item/chair/plastic
-	name = "folding plastic chair"
-	desc = "Somehow, you can always find one under the wrestling ring."
+	name = "chaise pliable en plastique"
+	desc = "Pour une raison inconnue, vous pourrez toujours en trouvé sous un ring de catch."
 	icon = 'icons/obj/chairs.dmi'
 	icon_state = "folded_chair"
 	inhand_icon_state = "folded_chair"
@@ -549,13 +549,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	origin_type = /obj/structure/chair/plastic
 
 /obj/structure/chair/musical
-	name = "musical chair"
-	desc = "You listen to this. Either by will or by force."
+	name = "chaise musicale"
+	desc = "Vous écoutez des choses dessus. De votre propre volonté ou contre votre volonté."
 	item_chair = /obj/item/chair/musical
 	particles = new /particles/musical_notes
 
 /obj/item/chair/musical
-	name = "musical chair"
-	desc = "Oh, so this is like the fucked up Monopoly rules where there are no rules and you can pick up and place the musical chairs as you please."
+	name = "chaise musicale"
+	desc = "Oh, c'est comme ces règles de baiser de la tête du Monopoly où y'a aucune règles et où tu peux juste prendre et poser des chaises musicales partout où tu veux."
 	particles = new /particles/musical_notes
 	origin_type = /obj/structure/chair/musical

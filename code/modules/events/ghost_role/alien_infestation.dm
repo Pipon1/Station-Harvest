@@ -1,5 +1,5 @@
 /datum/round_event_control/alien_infestation
-	name = "Alien Infestation"
+	name = "Infestation d'alien"
 	typepath = /datum/round_event/ghost_role/alien_infestation
 	weight = 5
 
@@ -7,7 +7,7 @@
 
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_ENTITIES
-	description = "A xenomorph larva spawns on a random vent."
+	description = "Une larve de xénomorphe est apparue dans une grille de ventilation."
 
 /datum/round_event_control/alien_infestation/can_spawn_event(players_amt, allow_magic = FALSE)
 	. = ..()
@@ -41,7 +41,7 @@
 			living_aliens = TRUE
 
 	if(living_aliens || fake)
-		priority_announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", ANNOUNCER_ALIENS)
+		priority_announce("Signe de vie non-identifiée détectée à bord de [station_name()]. Sécurisez tous les accès extérieurs, y compris les conduits et la ventilation.", "Alerte signe de vie", ANNOUNCER_ALIENS)
 
 
 /datum/round_event/ghost_role/alien_infestation/spawn_role()
@@ -59,7 +59,7 @@
 				vents += temp_vent
 
 	if(!vents.len)
-		message_admins("An event attempted to spawn an alien but no suitable vents were found. Shutting down.")
+		message_admins("Un événement a essayé de faire spawn un alien, mais aucune ventilation valide n'a été trouvée. Évenement annulé.")
 		return MAP_ERROR
 
 	var/list/candidates = get_candidates(ROLE_ALIEN, ROLE_ALIEN)

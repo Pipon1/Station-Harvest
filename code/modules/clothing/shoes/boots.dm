@@ -1,6 +1,6 @@
 /obj/item/clothing/shoes/combat //basic syndicate combat boots for nuke ops and mob corpses
-	name = "combat boots"
-	desc = "High speed, low drag combat boots."
+	name = "bottes de combat"
+	desc = "Des bottes de combat à haute vitesse et à faible traînée."
 	icon_state = "jackboots"
 	inhand_icon_state = "jackboots"
 	armor_type = /datum/armor/shoes_combat
@@ -24,8 +24,8 @@
 	create_storage(storage_type = /datum/storage/pockets/shoes)
 
 /obj/item/clothing/shoes/combat/swat //overpowered boots for death squads
-	name = "\improper SWAT boots"
-	desc = "High speed, no drag combat boots."
+	name = "\improper bottes du SWAT"
+	desc = "Des bottes de combat à haute vitesse et à faible traînée."
 	clothing_traits = list(TRAIT_NO_SLIP_WATER)
 	armor_type = /datum/armor/combat_swat
 
@@ -40,8 +40,8 @@
 	acid = 50
 
 /obj/item/clothing/shoes/jackboots
-	name = "jackboots"
-	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	name = "bottes de combat sécurisées"
+	desc = "Des bottes de combat de sécurité standard de Nanotrasen pour les situations de combat ou les situations de combat. Tout le combat, tout le temps."
 	icon_state = "jackboots"
 	inhand_icon_state = "jackboots"
 	strip_delay = 30
@@ -65,8 +65,8 @@
 	icon_state = "jackboots_sec"
 
 /obj/item/clothing/shoes/winterboots
-	name = "winter boots"
-	desc = "Boots lined with 'synthetic' animal fur."
+	name = "bottes d'hiver"
+	desc = "Des bottes doublées de fourrure animale 'synthétique'."
 	icon_state = "winterboots"
 	inhand_icon_state = null
 	armor_type = /datum/armor/shoes_winterboots
@@ -85,16 +85,16 @@
 	create_storage(storage_type = /datum/storage/pockets/shoes)
 
 /obj/item/clothing/shoes/winterboots/ice_boots
-	name = "ice hiking boots"
-	desc = "A pair of winter boots with special grips on the bottom, designed to prevent slipping on frozen surfaces."
+	name = "bottes de randonnée sur glace"
+	desc = "Une paire de bottes d'hiver avec des crampons spéciaux en bas, conçus pour éviter de glisser sur les surfaces gelées."
 	icon_state = "iceboots"
 	inhand_icon_state = null
 	clothing_traits = list(TRAIT_NO_SLIP_ICE, TRAIT_NO_SLIP_SLIDE)
 
 // A pair of ice boots intended for general crew EVA use - see EVA winter coat for comparison.
 /obj/item/clothing/shoes/winterboots/ice_boots/eva
-	name = "\proper Endotherm hiking boots"
-	desc = "A heavy pair of boots with grips applied to the bottom to keep the wearer vertical while walking in freezing conditions."
+	name = "\proper bottes de randonnée Endotherm"
+	desc = "Une paire de bottes de randonnée lourdes avec des crampons appliqués au bas pour garder le porteur vertical en marchant dans des conditions de gel."
 	icon_state = "iceboots_eva"
 	w_class = WEIGHT_CLASS_BULKY
 	slowdown = 0.25
@@ -113,8 +113,8 @@
 	acid = 10
 
 /obj/item/clothing/shoes/workboots
-	name = "work boots"
-	desc = "Nanotrasen-issue Engineering lace-up work boots for the especially blue-collar."
+	name = "bottes de travail"
+	desc = "Bottes de travail à lacets standard de Nanotrasen pour les travailleurs manuels."
 	icon_state = "workboots"
 	inhand_icon_state = "jackboots"
 	armor_type = /datum/armor/shoes_workboots
@@ -132,14 +132,14 @@
 	create_storage(storage_type = /datum/storage/pockets/shoes)
 
 /obj/item/clothing/shoes/workboots/mining
-	name = "mining boots"
-	desc = "Steel-toed mining boots for mining in hazardous environments. Very good at keeping toes uncrushed."
+	name = "bottes de minage"
+	desc = "Bottes de minage à bout d'acier pour le minage dans des environnements dangereux. Très bon pour garder les orteils intacts."
 	icon_state = "explorer"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/shoes/russian
-	name = "russian boots"
-	desc = "Comfy shoes."
+	name = "bottes russes"
+	desc = "Des bottes confortables."
 	icon_state = "rus_shoes"
 	inhand_icon_state = null
 	lace_time = 8 SECONDS
@@ -150,13 +150,13 @@
 	create_storage(storage_type = /datum/storage/pockets/shoes)
 
 /obj/item/clothing/shoes/discoshoes
-	name = "green lizardskin shoes"
-	desc = "They may have lost some of their lustre over the years, but these green lizardskin shoes fit you perfectly."
+	name = "chaussures en peau de lézard vert"
+	desc = "Elles ont peut-être perdu une partie de leur éclat au fil des ans, mais ces chaussures en peau de lézard vert vous vont parfaitement."
 	icon_state = "lizardskin_shoes"
 	inhand_icon_state = null
 
 /obj/item/clothing/shoes/kim
-	name = "aerostatic boots"
-	desc = "A crisp, clean set of boots for working long hours on the beat."
+	name = "bottes aérostatiques"
+	desc = "Une paire de bottes aérostatiques pour les longues heures de travail sur le terrain."
 	icon_state = "aerostatic_boots"
 	inhand_icon_state = null

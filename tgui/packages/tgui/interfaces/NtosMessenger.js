@@ -19,7 +19,7 @@ const NoIDDimmer = (props, context) => {
               </Stack>
             </Stack.Item>
             <Stack.Item fontSize="18px">
-              Please imprint an ID to continue.
+              S'il vous plaît, enregistrez votre ID pour continuer.
             </Stack.Item>
           </Stack>
         </Dimmer>
@@ -65,10 +65,10 @@ const ContactsScreen = (props, context) => {
           <Section fill textAlign="center">
             <Box bold>
               <Icon name="address-card" mr={1} />
-              SpaceMessenger V6.4.8
+              MessagerDelEspace V6.4.8
             </Box>
             <Box italic opacity={0.3}>
-              Bringing you spy-proof communications since 2467.
+              Vous fournit des communications à l'épreuve des espions depuis 2467.
             </Box>
           </Section>
         </Stack>
@@ -77,37 +77,37 @@ const ContactsScreen = (props, context) => {
             <Box>
               <Button
                 icon="bell"
-                content={ringer_status ? 'Ringer: On' : 'Ringer: Off'}
+                content={ringer_status ? 'Sonnerie : On' : 'Sonnerie : Off'}
                 onClick={() => act('PDA_ringer_status')}
               />
               <Button
                 icon="address-card"
                 content={
                   sending_and_receiving
-                    ? 'Send / Receive: On'
-                    : 'Send / Receive: Off'
+                    ? 'Envoyer / Recevoir : On'
+                    : 'Envoyer / Recevoir : Off'
                 }
                 onClick={() => act('PDA_sAndR')}
               />
               <Button
                 icon="bell"
-                content="Set Ringtone"
+                content="Définir la sonnerie"
                 onClick={() => act('PDA_ringSet')}
               />
               <Button
                 icon="comment"
-                content="View Messages"
+                content="Voir les messages"
                 onClick={() => act('PDA_viewMessages')}
               />
               <Button
                 icon="sort"
-                content={`Sort by: ${sortByJob ? 'Job' : 'Name'}`}
+                content={`Trier par : ${sortByJob ? 'Travail' : 'Nom'}`}
                 onClick={() => act('PDA_changeSortStyle')}
               />
               {!!isSilicon && (
                 <Button
                   icon="camera"
-                  content="Attach Photo"
+                  content="Attacher une image"
                   onClick={() => act('PDA_selectPhoto')}
                 />
               )}
@@ -115,7 +115,7 @@ const ContactsScreen = (props, context) => {
                 <Button
                   icon="bug"
                   color="bad"
-                  content={`Attach Virus: ${sending_virus ? 'Yes' : 'No'}`}
+                  content={`Attacher un virus : ${sending_virus ? 'Oui' : 'Non'}`}
                   onClick={() => act('PDA_toggleVirus')}
                 />
               )}
@@ -126,7 +126,7 @@ const ContactsScreen = (props, context) => {
           <Stack vertical mt={1}>
             <Section fill textAlign="center">
               <Icon name="camera" mr={1} />
-              Current Photo
+              Photo actuelle
             </Section>
             <Section align="center">
               <Button onClick={() => act('PDA_clearPhoto')}>
@@ -138,10 +138,10 @@ const ContactsScreen = (props, context) => {
         <Stack vertical mt={1}>
           <Section fill textAlign="center">
             <Icon name="address-card" mr={1} />
-            Detected Messengers
+            Utilisateurs détectés
             <Input
               width="220px"
-              placeholder="Search by name or job..."
+              placeholder="Chercher par nom ou par travail"
               value={searchUser}
               onInput={(e, value) => setSearchUser(value)}
               mx={1}
@@ -152,7 +152,7 @@ const ContactsScreen = (props, context) => {
         <Stack vertical mt={1}>
           <Section fill>
             <Stack vertical>
-              {users.length === 0 && 'No users found'}
+              {users.length === 0 && 'Aucun utilisateur trouvé'}
               {users.map((messenger) => (
                 <Button
                   key={messenger.ref}
@@ -172,7 +172,7 @@ const ContactsScreen = (props, context) => {
               <Button
                 fluid
                 mt={1}
-                content="Send to all..."
+                content="envoyer à tous..."
                 onClick={() => act('PDA_sendEveryone')}
               />
             )}
@@ -194,12 +194,12 @@ const MessageListScreen = (props, context) => {
           <Section fill>
             <Button
               icon="arrow-left"
-              content="Back"
+              content="Retour"
               onClick={() => act('PDA_viewMessages')}
             />
             <Button
               icon="trash"
-              content="Clear Messages"
+              content="supprimer les messages"
               onClick={() => act('PDA_clearMessages')}
             />
           </Section>
@@ -207,7 +207,7 @@ const MessageListScreen = (props, context) => {
             <Stack vertical key={message} mt={1}>
               <Section textAlign="left">
                 <Box italic opacity={0.5} mb={1}>
-                  {message.outgoing ? '(OUTGOING)' : '(INCOMING)'}
+                  {message.outgoing ? '(SORTANT)' : '(ENTRANT)'}
                 </Box>
                 {message.outgoing ? (
                   <Box bold>{message.target_details}</Box>

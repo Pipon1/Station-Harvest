@@ -1,6 +1,6 @@
 /obj/item/clothing/head/helmet
-	name = "helmet"
-	desc = "Standard Security gear. Protects the head from impacts."
+	name = "casque"
+	desc = "Un casque de sécurité standard. Protège la tête des impacts."
 	icon = 'icons/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/mob/clothing/head/helmet.dmi'
 	icon_state = "helmet"
@@ -43,14 +43,14 @@
 		// There's a flashlight in us. Remove it first, or it'll be lost forever!
 		var/obj/item/flashlight/seclite/blocking_us = locate() in src
 		if(blocking_us)
-			to_chat(user, span_warning("[blocking_us] is in the way, remove it first!"))
+			to_chat(user, span_warning("[blocking_us] est deja en place, il faut le retirer !"))
 			return TRUE
 
 		if(!attached_signaler.secured)
-			to_chat(user, span_warning("Secure [attached_signaler] first!"))
+			to_chat(user, span_warning("Sécurisez le [attached_signaler] d'abord !"))
 			return TRUE
 
-		to_chat(user, span_notice("You add [attached_signaler] to [src]."))
+		to_chat(user, span_notice("Vous ajoutez le [attached_signaler] au [src]."))
 
 		qdel(attached_signaler)
 		var/obj/item/bot_assembly/secbot/secbot_frame = new(loc)
@@ -62,8 +62,8 @@
 	return ..()
 
 /obj/item/clothing/head/helmet/alt
-	name = "bulletproof helmet"
-	desc = "A bulletproof combat helmet that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
+	name = "casque pare-balles"
+	desc = "Un casque de combat pare-balles qui excelle dans la protection du porteur contre les armes à projectiles traditionnelles et les explosifs dans une moindre mesure."
 	icon_state = "helmetalt"
 	inhand_icon_state = "helmet"
 	armor_type = /datum/armor/helmet_alt
@@ -84,8 +84,8 @@
 	AddComponent(/datum/component/seclite_attachable, light_icon_state = "flight")
 
 /obj/item/clothing/head/helmet/marine
-	name = "tactical combat helmet"
-	desc = "A tactical black helmet, sealed from outside hazards with a plate of glass and not much else."
+	name = "casque de combat tactique"
+	desc = "Un casque de combat tactique, scellé des dangers extérieurs avec une plaque de verre et pas grand chose d'autre."
 	icon_state = "marine_command"
 	inhand_icon_state = "marine_helmet"
 	armor_type = /datum/armor/helmet_marine
@@ -110,25 +110,25 @@
 	AddComponent(/datum/component/seclite_attachable, starting_light = new /obj/item/flashlight/seclite(src), light_icon_state = "flight")
 
 /obj/item/clothing/head/helmet/marine/security
-	name = "marine heavy helmet"
+	name = "casque lourd de marine"
 	icon_state = "marine_security"
 
 /obj/item/clothing/head/helmet/marine/engineer
-	name = "marine utility helmet"
+	name = "casque de marine polyvalent"
 	icon_state = "marine_engineer"
 
 /obj/item/clothing/head/helmet/marine/medic
-	name = "marine medic helmet"
+	name = "casque de marine médical"
 	icon_state = "marine_medic"
 
 /obj/item/clothing/head/helmet/old
-	name = "degrading helmet"
-	desc = "Standard issue security helmet. Due to degradation the helmet's visor obstructs the users ability to see long distances."
+	name = "casque dégradé"
+	desc = "un casque de sécurité standard. En raison de la dégradation, le casque obstrue la vision du porteur."
 	tint = 2
 
 /obj/item/clothing/head/helmet/blueshirt
-	name = "blue helmet"
-	desc = "A reliable, blue tinted helmet reminding you that you <i>still</i> owe that engineer a beer."
+	name = "casque bleu"
+	desc = "Un casque bleu fiable qui vous rappelle que vous devez <i>toujours</i> une bière à cet ingénieur."
 	icon_state = "blueshift"
 	inhand_icon_state = "blueshift_helmet"
 	custom_premium_price = PAYCHECK_COMMAND
@@ -164,12 +164,12 @@
 	return TRUE
 
 /obj/item/clothing/head/helmet/toggleable/riot
-	name = "riot helmet"
-	desc = "It's a helmet specifically designed to protect against close range attacks."
+	name = "casque anti-émeute"
+	desc = "C'est un casque spécialement conçu pour protéger contre les attaques de mélées."
 	icon_state = "riot"
 	inhand_icon_state = "riot_helmet"
-	toggle_message = "You pull the visor down on"
-	alt_toggle_message = "You push the visor up on"
+	toggle_message = "Vous baissez la visière"
+	alt_toggle_message = "Vous levez la visière"
 	armor_type = /datum/armor/toggleable_riot
 	flags_inv = HIDEEARS|HIDEFACE|HIDESNOUT
 	strip_delay = 80
@@ -188,12 +188,12 @@
 	wound = 15
 
 /obj/item/clothing/head/helmet/toggleable/justice
-	name = "helmet of justice"
+	name = "casque de la justice"
 	desc = "WEEEEOOO. WEEEEEOOO. WEEEEOOOO."
 	icon_state = "justice"
 	inhand_icon_state = "justice_helmet"
-	toggle_message = "You turn off the lights on"
-	alt_toggle_message = "You turn on the lights on"
+	toggle_message = "Vous allumez les lumières"
+	alt_toggle_message = "Vous éteignez les lumières"
 	actions_types = list(/datum/action/item_action/toggle_helmet_light)
 	///Cooldown for toggling the visor.
 	COOLDOWN_DECLARE(visor_toggle_cooldown)
@@ -222,13 +222,13 @@
 		weewooloop.stop()
 
 /obj/item/clothing/head/helmet/toggleable/justice/escape
-	name = "alarm helmet"
-	desc = "WEEEEOOO. WEEEEEOOO. STOP THAT MONKEY. WEEEOOOO."
+	name = "casque d'alarme"
+	desc = "WEEEEOOO. WEEEEEOOO. ARRÊTE CA LE SINGE. WEEEOOOO."
 	icon_state = "justice2"
 
 /obj/item/clothing/head/helmet/swat
-	name = "\improper SWAT helmet"
-	desc = "An extremely robust, space-worthy helmet in a nefarious red and black stripe pattern."
+	name = "\improper casque du SWAT"
+	desc = "Un casque extrêmement robuste, adapté à l'espace, dans un motif de rayures rouge et noir."
 	icon_state = "swatsyndie"
 	inhand_icon_state = "swatsyndie_helmet"
 	armor_type = /datum/armor/helmet_swat
@@ -252,35 +252,9 @@
 	acid = 100
 	wound = 15
 
-/obj/item/clothing/head/helmet/advanced_police
-	name = "Advanced Security Armor Helmet"
-	desc = "An extremely robust helmet."
-	icon_state = "adv_police"
-	inhand_icon_state = "swatsyndie_helmet"
-	armor_type = /datum/armor/helmet_swat
-	cold_protection = HEAD
-	min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
-	heat_protection = HEAD
-	max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
-	clothing_flags = STOPSPRESSUREDAMAGE | PLASMAMAN_HELMET_EXEMPT
-	strip_delay = 120
-	resistance_flags = FIRE_PROOF | ACID_PROOF
-	dog_fashion = null
-
-/datum/armor/helmet_swat
-	melee = 90
-	bullet = 90
-	laser = 20
-	energy = 30
-	bomb = 100
-	bio = 100
-	fire = 100
-	acid = 100
-	wound = 25
-
 /obj/item/clothing/head/helmet/swat/nanotrasen
-	name = "\improper SWAT helmet"
-	desc = "An extremely robust helmet with the Nanotrasen logo emblazoned on the top."
+	name = "\improper casque du SWAT"
+	desc = "Un casque extrêmement robuste, adapté à l'espace, avec le logo de Nanotrasen sur le dessus."
 	icon_state = "swat"
 	inhand_icon_state = "swat_helmet"
 	clothing_flags = PLASMAMAN_HELMET_EXEMPT
@@ -292,8 +266,8 @@
 
 
 /obj/item/clothing/head/helmet/thunderdome
-	name = "\improper Thunderdome helmet"
-	desc = "<i>'Let the battle commence!'</i>"
+	name = "\improper casque du Thunderdome"
+	desc = "<i>'que le combat commence!'</i>"
 	flags_inv = HIDEEARS|HIDEHAIR
 	icon_state = "thunderdome"
 	inhand_icon_state = "thunderdome_helmet"
@@ -325,8 +299,8 @@
 	bullet = 10
 
 /obj/item/clothing/head/helmet/roman
-	name = "\improper Roman helmet"
-	desc = "An ancient helmet made of bronze and leather."
+	name = "\improper casque Romain"
+	desc = "Un ancien casque en bronze et cuir."
 	flags_inv = HIDEEARS|HIDEHAIR
 	flags_cover = HEADCOVERSEYES
 	armor_type = /datum/armor/helmet_roman
@@ -346,20 +320,20 @@
 	wound = 5
 
 /obj/item/clothing/head/helmet/roman/fake
-	desc = "An ancient helmet made of plastic and leather."
+	desc = "Un ancien casque en plastique et cuir."
 	armor_type = /datum/armor/none
 
 /obj/item/clothing/head/helmet/roman/legionnaire
-	name = "\improper Roman legionnaire helmet"
-	desc = "An ancient helmet made of bronze and leather. Has a red crest on top of it."
+	name = "\improper Casque de légionnaire Romain"
+	desc = "Un ancien casque en bronze et cuir. Il a une crête rouge sur le dessus."
 	icon_state = "roman_c"
 
 /obj/item/clothing/head/helmet/roman/legionnaire/fake
-	desc = "An ancient helmet made of plastic and leather. Has a red crest on top of it."
+	desc = "Un ancien casque en plastique et cuir. Il a une crête rouge sur le dessus."
 	armor_type = /datum/armor/none
 
 /obj/item/clothing/head/helmet/gladiator
-	name = "gladiator helmet"
+	name = "casque de gladiateur"
 	desc = "Ave, Imperator, morituri te salutant."
 	icon_state = "gladiator"
 	inhand_icon_state = "gladiator_helmet"
@@ -368,8 +342,8 @@
 	dog_fashion = null
 
 /obj/item/clothing/head/helmet/redtaghelm
-	name = "red laser tag helmet"
-	desc = "They have chosen their own end."
+	name = "casque de lasertag rouge"
+	desc = "Ils ont choisi leur propre fin."
 	icon_state = "redtaghelm"
 	flags_cover = HEADCOVERSEYES
 	inhand_icon_state = "redtag_helmet"
@@ -386,8 +360,8 @@
 	acid = 50
 
 /obj/item/clothing/head/helmet/bluetaghelm
-	name = "blue laser tag helmet"
-	desc = "They'll need more men."
+	name = "casque de lasertag bleu"
+	desc = "Il leur faudra plus d'hommes."
 	icon_state = "bluetaghelm"
 	flags_cover = HEADCOVERSEYES
 	inhand_icon_state = "bluetag_helmet"
@@ -404,8 +378,8 @@
 	acid = 50
 
 /obj/item/clothing/head/helmet/knight
-	name = "medieval helmet"
-	desc = "A classic metal helmet."
+	name = "casque médiéval"
+	desc = "Un casque en métal classique."
 	icon_state = "knight_green"
 	inhand_icon_state = "knight_helmet"
 	armor_type = /datum/armor/helmet_knight
@@ -432,8 +406,8 @@
 	icon_state = "knight_red"
 
 /obj/item/clothing/head/helmet/knight/greyscale
-	name = "knight helmet"
-	desc = "A classic medieval helmet, if you hold it upside down you could see that it's actually a bucket."
+	name = "casque de chevalier"
+	desc = "Un casque médiéval classique, si vous le tenez à l'envers, vous pourriez voir que c'est en fait un seau."
 	icon_state = "knight_greyscale"
 	inhand_icon_state = null
 	armor_type = /datum/armor/knight_greyscale
@@ -450,8 +424,8 @@
 	acid = 40
 
 /obj/item/clothing/head/helmet/skull
-	name = "skull helmet"
-	desc = "An intimidating tribal helmet, it doesn't look very comfortable."
+	name = "casque crâne"
+	desc = "Un casque tribal intimidant, il n'a pas l'air très confortable."
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDESNOUT
 	flags_cover = HEADCOVERSEYES
 	armor_type = /datum/armor/helmet_skull
@@ -469,8 +443,8 @@
 	acid = 50
 
 /obj/item/clothing/head/helmet/durathread
-	name = "durathread helmet"
-	desc = "A helmet made from durathread and leather."
+	name = "casque en Fildurable"
+	desc = "Un casque fait de Fildurable et de cuir."
 	icon_state = "durathread"
 	inhand_icon_state = "durathread_helmet"
 	resistance_flags = FLAMMABLE
@@ -488,8 +462,8 @@
 	wound = 5
 
 /obj/item/clothing/head/helmet/rus_helmet
-	name = "russian helmet"
-	desc = "It can hold a bottle of vodka."
+	name = "casque russe"
+	desc = "Il peut contenir une bouteille de vodka."
 	icon_state = "rus_helmet"
 	inhand_icon_state = "rus_helmet"
 	armor_type = /datum/armor/helmet_rus_helmet
@@ -509,8 +483,8 @@
 	create_storage(storage_type = /datum/storage/pockets/helmet)
 
 /obj/item/clothing/head/helmet/rus_ushanka
-	name = "battle ushanka"
-	desc = "100% bear."
+	name = "ushanka de combat"
+	desc = "100% ours."
 	icon_state = "rus_ushanka"
 	inhand_icon_state = "rus_ushanka"
 	body_parts_covered = HEAD
@@ -530,8 +504,8 @@
 	wound = 5
 
 /obj/item/clothing/head/helmet/elder_atmosian
-	name = "\improper Elder Atmosian Helmet"
-	desc = "A superb helmet made with the toughest and rarest materials available to man."
+	name = "\improper Casque d'Ancien Atmosien"
+	desc = "Ce superbe casque est fait avec les matériaux les plus résistants et les plus rares disponibles à l'homme."
 	icon_state = "h2helmet"
 	inhand_icon_state = "h2_helmet"
 	armor_type = /datum/armor/helmet_elder_atmosian

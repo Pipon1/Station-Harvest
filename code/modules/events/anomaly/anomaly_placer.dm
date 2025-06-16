@@ -9,12 +9,12 @@
 		generateAllowedAreas()
 	var/list/possible_areas = typecache_filter_list(GLOB.areas, allowed_areas)
 	if (!length(possible_areas))
-		CRASH("No valid areas for anomaly found.")
+		CRASH("Pas de zone valide n'a été trouvée pour l'anomalie.")
 
 	var/area/landing_area = pick(possible_areas)
 	var/list/turf_test = get_area_turfs(landing_area)
 	if(!turf_test.len)
-		CRASH("Anomaly : No valid turfs found for [landing_area] - [landing_area.type]")
+		CRASH("Anomalie : Pas d'endroit trouvé pour [landing_area] - [landing_area.type]")
 
 	return landing_area
 
@@ -32,7 +32,7 @@
 		valid_turfs += try_turf
 
 	if (!valid_turfs.len)
-		CRASH("Dimensional anomaly attempted to reach invalid location [target_area].")
+		CRASH("L'anomalie dimensionnellee a essayé d'aller à un endroit invalide : [target_area].")
 
 	return pick(valid_turfs)
 

@@ -11,7 +11,7 @@ import { SecurityRecordsData } from './types';
 /** Views a selected record. */
 export const SecurityRecordView = (props, context) => {
   const foundRecord = getSecurityRecord(context);
-  if (!foundRecord) return <NoticeBox>Nothing selected.</NoticeBox>;
+  if (!foundRecord) return <NoticeBox>Vous n'avez rien de selectionné.</NoticeBox>;
 
   const { data } = useBackend<SecurityRecordsData>(context);
   const { assigned_view } = data;
@@ -37,7 +37,7 @@ export const SecurityRecordView = (props, context) => {
 
 const RecordInfo = (props, context) => {
   const foundRecord = getSecurityRecord(context);
-  if (!foundRecord) return <NoticeBox>Nothing selected.</NoticeBox>;
+  if (!foundRecord) return <NoticeBox>Vous n'avez rien de selectionné.</NoticeBox>;
 
   const { act, data } = useBackend<SecurityRecordsData>(context);
   const { available_statuses } = data;
@@ -71,13 +71,13 @@ const RecordInfo = (props, context) => {
                   height="1.7rem"
                   icon="print"
                   onClick={() => setOpen(true)}
-                  tooltip="Print a rapsheet or poster.">
-                  Print
+                  tooltip="Imprimer un poster ou un casier judiciaire.">
+                  Imprimer
                 </Button>
               </Stack.Item>
               <Stack.Item>
                 <Button.Confirm
-                  content="Delete"
+                  content="Supprimer"
                   icon="trash"
                   onClick={() => act('delete_record', { crew_ref: crew_ref })}
                   tooltip="Delete record data."
@@ -115,7 +115,7 @@ const RecordInfo = (props, context) => {
                   </Button>
                 );
               })}
-              label="Status">
+              label="Statut">
               <Box color={CRIMESTATUS2COLOR[wanted_status]}>
                 {wanted_status}
               </Box>
@@ -126,13 +126,13 @@ const RecordInfo = (props, context) => {
       <Stack.Item grow={2}>
         <Section fill scrollable>
           <LabeledList>
-            <LabeledList.Item label="Name">
+            <LabeledList.Item label="Nom ">
               <EditableText field="name" target_ref={crew_ref} text={name} />
             </LabeledList.Item>
-            <LabeledList.Item label="Job">
+            <LabeledList.Item label="Travail ">
               <EditableText field="rank" target_ref={crew_ref} text={rank} />
             </LabeledList.Item>
-            <LabeledList.Item label="Age">
+            <LabeledList.Item label="Âge ">
               <RestrictedInput
                 minValue={min_age}
                 maxValue={max_age}
@@ -146,21 +146,21 @@ const RecordInfo = (props, context) => {
                 value={age}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Species">
+            <LabeledList.Item label="Espèces ">
               <EditableText
                 field="species"
                 target_ref={crew_ref}
                 text={species}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Gender">
+            <LabeledList.Item label="Genre ">
               <EditableText
                 field="gender"
                 target_ref={crew_ref}
                 text={gender}
               />
             </LabeledList.Item>
-            <LabeledList.Item color="good" label="Fingerprint">
+            <LabeledList.Item color="good" label="Empreintes digitale ">
               <EditableText
                 color="good"
                 field="fingerprint"
@@ -168,7 +168,7 @@ const RecordInfo = (props, context) => {
                 text={fingerprint}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="Note">
+            <LabeledList.Item label="Notes ">
               <EditableText
                 field="security_note"
                 target_ref={crew_ref}

@@ -1,7 +1,7 @@
 /datum/computer_file/program/themeify
 	filename = "themeify"
-	filedesc = "Themeify"
-	extended_desc = "This program allows configuration of your device's theme."
+	filedesc = "Thèmeificateur"
+	extended_desc = "Ce programme permet de configurer le thème de votre appareil."
 	program_icon_state = "generic"
 	undeletable = TRUE
 	size = 0

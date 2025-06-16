@@ -269,8 +269,8 @@
 //Can *you* speak their language?
 
 /obj/structure/flora/tree
-	name = "tree"
-	desc = "A large tree."
+	name = "arbre"
+	desc = "Un arbre."
 	density = TRUE
 	pixel_x = -16
 	layer = FLY_LAYER

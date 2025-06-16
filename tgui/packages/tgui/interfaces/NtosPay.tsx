@@ -33,8 +33,8 @@ export const NtosPayContent = (props, context) => {
   if (!name) {
     return (
       <NoticeBox>
-        You need to insert your ID card into the card slot in order to use this
-        application.
+        Vous devez insérer votre carte d'identité dans la fente
+        pour utiliser cette application.
       </NoticeBox>
     );
   }
@@ -61,10 +61,10 @@ const Introduction = (props, context) => {
   return (
     <Section textAlign="center">
       <Table>
-        <Table.Row>Hi, {name}.</Table.Row>
-        <Table.Row>Your pay token is {owner_token}.</Table.Row>
+        <Table.Row>Bonjour, {name}.</Table.Row>
+        <Table.Row>Votre token de paie est {owner_token}.</Table.Row>
         <Table.Row>
-          Account balance: {money} credit{money === 1 ? '' : 's'}
+          Solde sur le compte : {money} credit{money === 1 ? '' : 's'}
         </Table.Row>
       </Table>
     </Section>
@@ -79,20 +79,20 @@ const TransferSection = (props, context) => {
   return (
     <Stack>
       <Stack.Item>
-        <Section vertical title="Transfer Money">
+        <Section vertical title="Transférer de l'argent">
           <Box>
             <Tooltip
-              content="Enter the pay token of the account you want to transfer credits to."
+              content="Entrer le token du compte sur lequel vous voulez transférer des crédits."
               position="top">
               <Input
-                placeholder="Pay Token"
+                placeholder="Paier le compte"
                 width="190px"
                 onChange={(e, value) => (token = value)}
               />
             </Tooltip>
           </Box>
           <Tooltip
-            content="Enter amount of credits to transfer."
+            content="Entrer la quantité de crédit à transferer."
             position="top">
             <RestrictedInput
               width="83px"
@@ -103,7 +103,7 @@ const TransferSection = (props, context) => {
             />
           </Tooltip>
           <Button
-            content="Send credits"
+            content="Transférer les crédits"
             onClick={() =>
               act('Transaction', {
                 token: token,
@@ -114,15 +114,15 @@ const TransferSection = (props, context) => {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Get Token" width="270px" height="98px">
+        <Section title="Obtenir le token" width="270px" height="98px">
           <Box>
             <Input
-              placeholder="Full name of account."
+              placeholder="Non complet du compte."
               width="190px"
               onChange={(e, value) => (name_to_token = value)}
             />
             <Button
-              content="Get it"
+              content="L'obtenir"
               onClick={() =>
                 act('GetPayToken', {
                   wanted_name: name_to_token,
@@ -144,7 +144,7 @@ const TransactionHistory = (props, context) => {
   const { transaction_list = [] } = data;
 
   return (
-    <Section fill title="Transaction History">
+    <Section fill title="Historique des transactions">
       <Section fill scrollable title={<TableHeaders />}>
         <Table>
           {transaction_list.map((log) => (

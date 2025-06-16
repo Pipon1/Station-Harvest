@@ -1,11 +1,11 @@
 /datum/round_event_control/electrical_storm
-	name = "Electrical Storm"
+	name = "Tempête électrique"
 	typepath = /datum/round_event/electrical_storm
 	earliest_start = 10 MINUTES
 	min_players = 5
 	weight = 20
 	category = EVENT_CATEGORY_ENGINEERING
-	description = "Destroys all lights in a large area."
+	description = "Détruit toutes les lampes dans une large zone."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 4
 
@@ -15,7 +15,7 @@
 	announce_when = 1
 
 /datum/round_event/electrical_storm/announce(fake)
-	priority_announce("An electrical storm has been detected in your area, please repair potential electronic overloads.", "Electrical Storm Alert")
+	priority_announce("Une tempête électrique a été détectée dans votre zone, réparez toute surcharge électronique.", "Alerte tempête électrique")
 
 
 /datum/round_event/electrical_storm/start()

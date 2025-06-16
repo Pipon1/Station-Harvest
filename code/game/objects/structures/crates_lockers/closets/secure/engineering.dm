@@ -1,5 +1,5 @@
 /obj/structure/closet/secure_closet/engineering_chief
-	name = "chief engineer's locker"
+	name = "casier du chef.fe ingénieur.e"
 	req_access = list(ACCESS_CE)
 	icon_state = "ce"
 
@@ -26,7 +26,7 @@
 	new /obj/item/areaeditor/blueprints(src)
 
 /obj/structure/closet/secure_closet/engineering_electrical
-	name = "electrical supplies locker"
+	name = "casier pour matériel éléctronique"
 	req_access = list(ACCESS_ENGINE_EQUIP)
 	icon_state = "eng"
 	icon_door = "eng_elec"
@@ -42,7 +42,7 @@
 	generate_items_inside(items_inside,src)
 
 /obj/structure/closet/secure_closet/engineering_welding
-	name = "welding supplies locker"
+	name = "casier pour matériel de soudage"
 	req_access = list(ACCESS_ENGINE_EQUIP)
 	icon_state = "eng"
 	icon_door = "eng_weld"
@@ -55,7 +55,7 @@
 		new /obj/item/weldingtool(src)
 
 /obj/structure/closet/secure_closet/engineering_personal
-	name = "engineer's locker"
+	name = "casier pour équipement d'ingénieurs"
 	req_access = list(ACCESS_ENGINE_EQUIP)
 	icon_state = "eng_secure"
 
@@ -72,7 +72,7 @@
 
 
 /obj/structure/closet/secure_closet/atmospherics
-	name = "atmospheric technician's locker"
+	name = "casier pour équipement de technicien.ne en atmosphère"
 	req_access = list(ACCESS_ATMOSPHERICS)
 	icon_state = "atmos"
 

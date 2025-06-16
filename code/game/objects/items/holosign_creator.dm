@@ -1,6 +1,6 @@
 /obj/item/holosign_creator
-	name = "holographic sign projector"
-	desc = "A handy-dandy holographic projector that displays a janitorial sign."
+	name = "projecteur de panneau holographique"
+	desc = "Un objet bien pratique qui projette un panneau holographique."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "signmaker"
 	inhand_icon_state = "electronic"
@@ -30,7 +30,7 @@
 	. = ..()
 	if(!signs)
 		return
-	. += span_notice("It is currently maintaining <b>[signs.len]/[max_signs]</b> projections.")
+	. += span_notice("Projette actuellement <b>[signs.len]/[max_signs]</b> projections.")
 
 /obj/item/holosign_creator/afterattack(atom/target, mob/user, proximity_flag)
 	. = ..()
@@ -47,10 +47,10 @@
 	if(target_turf.is_blocked_turf(TRUE)) //can't put holograms on a tile that has dense stuff
 		return .
 	if(holocreator_busy)
-		to_chat(user, span_notice("[src] is busy creating a hologram."))
+		to_chat(user, span_notice("[src] est entrain de créer un hologramme."))
 		return .
 	if(LAZYLEN(signs) >= max_signs)
-		balloon_alert(user, "max capacity!")
+		balloon_alert(user, "capacité maximale atteinte !")
 		return .
 	playsound(loc, 'sound/machines/click.ogg', 20, TRUE)
 	if(creation_time)
@@ -73,7 +73,7 @@
 	if(LAZYLEN(signs))
 		for(var/H in signs)
 			qdel(H)
-		balloon_alert(user, "holograms cleared")
+		balloon_alert(user, "hologrammes supprimés")
 
 /obj/item/holosign_creator/Destroy()
 	. = ..()
@@ -83,47 +83,47 @@
 
 
 /obj/item/holosign_creator/janibarrier
-	name = "custodial holobarrier projector"
-	desc = "A holographic projector that creates hard light wet floor barriers."
+	name = "projecteur de barrière holographique de conciergerie"
+	desc = "Un projecteur holographique qui crée des panneau \"attention sol mouillé\" en lumière dure."
 	holosign_type = /obj/structure/holosign/barrier/wetsign
 	creation_time = 20
 	max_signs = 12
 
 /obj/item/holosign_creator/security
-	name = "security holobarrier projector"
-	desc = "A holographic projector that creates holographic security barriers."
+	name = "projecteur de barrière holographique de sécurité"
+	desc = "Un projecteur holographique qui crée des barrières de sécurité holographiques."
 	icon_state = "signmaker_sec"
 	holosign_type = /obj/structure/holosign/barrier
 	creation_time = 30
 	max_signs = 6
 
 /obj/item/holosign_creator/engineering
-	name = "engineering holobarrier projector"
-	desc = "A holographic projector that creates holographic engineering barriers."
+	name = "projecteur de barrière holographique d'ingénierie"
+	desc = "Un projecteur holographique qui crée des barrières holographiques d'ingénierie."
 	icon_state = "signmaker_engi"
 	holosign_type = /obj/structure/holosign/barrier/engineering
 	creation_time = 30
 	max_signs = 6
 
 /obj/item/holosign_creator/atmos
-	name = "ATMOS holofan projector"
-	desc = "A holographic projector that creates holographic barriers that prevent changes in atmosphere conditions."
+	name = "projecteur de barrière holographique ATMOS"
+	desc = "Un projecteur holographique qui crée des barrières holographiques qui empêchent les changements dans les conditions atmosphériques."
 	icon_state = "signmaker_atmos"
 	holosign_type = /obj/structure/holosign/barrier/atmos
 	creation_time = 0
 	max_signs = 6
 
 /obj/item/holosign_creator/medical
-	name = "\improper PENLITE barrier projector"
-	desc = "A holographic projector that creates PENLITE holobarriers. Useful during quarantines since they halt those with malicious diseases."
+	name = "\improper projecteur de barrière LUMISTYLO"
+	desc = "Un projecteur qui crée des barrières holographiques LUMISTYLO. Utile pendant les quarantaines car elles arrêtent ceux qui ont des maladies malveillantes."
 	icon_state = "signmaker_med"
 	holosign_type = /obj/structure/holosign/barrier/medical
 	creation_time = 30
 	max_signs = 3
 
 /obj/item/holosign_creator/cyborg
-	name = "Energy Barrier Projector"
-	desc = "A holographic projector that creates fragile energy fields."
+	name = "projecteur de barrière d'énergie"
+	desc = "Un projecteur holographique qui crée des barrières d'énergie fragiles."
 	creation_time = 15
 	max_signs = 9
 	holosign_type = /obj/structure/holosign/barrier/cyborg
@@ -134,7 +134,7 @@
 		var/mob/living/silicon/robot/R = user
 
 		if(shock)
-			to_chat(user, span_notice("You clear all active holograms, and reset your projector to normal."))
+			to_chat(user, span_notice("Vous supprimez tous les hologrammes actifs et réinitialisez votre projecteur."))
 			holosign_type = /obj/structure/holosign/barrier/cyborg
 			creation_time = 5
 			for(var/sign in signs)
@@ -142,7 +142,7 @@
 			shock = 0
 			return
 		if(R.emagged && !shock)
-			to_chat(user, span_warning("You clear all active holograms, and overload your energy projector!"))
+			to_chat(user, span_warning("Vous supprimez tous les hologrammes actifs et surchargez votre projecteur d'énergie !"))
 			holosign_type = /obj/structure/holosign/barrier/cyborg/hacked
 			creation_time = 30
 			for(var/sign in signs)
@@ -151,4 +151,4 @@
 			return
 	for(var/sign in signs)
 		qdel(sign)
-	balloon_alert(user, "holograms cleared")
+	balloon_alert(user, "hologrammes supprimés")

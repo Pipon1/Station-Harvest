@@ -1,9 +1,9 @@
 /datum/computer_file/program/signal_commander
 	filename = "signaler"
-	filedesc = "SignalCommander"
+	filedesc = "CommandantSignaux"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "signal"
-	extended_desc = "A small built-in frequency app that sends out signaller signals with the appropriate hardware."
+	extended_desc = "Une application intégrée qui envoie des signaux avec le matériel approprié."
 	size = 2
 	tgui_id = "NtosSignaler"
 	program_icon = "satellite-dish"

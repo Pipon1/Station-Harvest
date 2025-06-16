@@ -105,11 +105,11 @@
 
 	// We sleep HERE, in pre-event setup (because there's no sense doing it in run_event() since the event is already running!) for the given amount of time to make an admin has enough time to cancel an event un-fitting of the present round.
 	if(alert_observers)
-		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name]. (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
+		message_admins("Événement aléatoire déclanché dans [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)] : [name]. (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 		if(!can_spawn_event(players_amt))
-			message_admins("Second pre-condition check for [name] failed, skipping...")
+			message_admins("Deuxième pré-condition check pour [name] échouée, annulation...")
 			return EVENT_INTERRUPTED
 
 	if(!triggering)
@@ -121,11 +121,11 @@
 	..()
 	if(href_list["cancel"])
 		if(!triggering)
-			to_chat(usr, span_admin("You are too late to cancel that event"))
+			to_chat(usr, span_admin("Il est trop tard pour annuler cet événement."))
 			return
 		triggering = FALSE
-		message_admins("[key_name_admin(usr)] cancelled event [name].")
-		log_admin_private("[key_name(usr)] cancelled event [name].")
+		message_admins("[key_name_admin(usr)] a annulé l'événement [name].")
+		log_admin_private("[key_name(usr)] a annulé l'événement [name].")
 		SSblackbox.record_feedback("tally", "event_admin_cancelled", 1, typepath)
 
 /*
@@ -215,7 +215,7 @@ Runs the event
 
 ///Annouces the event name to deadchat, override this if what an event should show to deadchat is different to its event name.
 /datum/round_event/proc/announce_deadchat(random, cause)
-	deadchat_broadcast(" has just been[random ? " randomly" : ""] triggered[cause ? " by [cause]" : ""]!", "<b>[control.name]</b>", message_type=DEADCHAT_ANNOUNCEMENT) //STOP ASSUMING IT'S BADMINS!
+	deadchat_broadcast(" a été [random ? " aléatoirement" : ""] déclanché[cause ? " par [cause]" : ""] !", "<b>[control.name]</b>", message_type=DEADCHAT_ANNOUNCEMENT) //STOP ASSUMING IT'S BADMINS!
 
 //Called when the tick is equal to the start_when variable.
 //Allows you to start before announcing or vice versa.
@@ -230,7 +230,7 @@ Runs the event
 /datum/round_event/proc/announce_to_ghosts(atom/atom_of_interest)
 	if(control.alert_observers)
 		if (atom_of_interest)
-			notify_ghosts("[control.name] has an object of interest: [atom_of_interest]!", source=atom_of_interest, action=NOTIFY_ORBIT, header="Something's Interesting!")
+			notify_ghosts("[control.name] a quelque chose d'intéressant : [atom_of_interest]!", source=atom_of_interest, action=NOTIFY_ORBIT, header="Quelque chose d'intéressant !")
 	return
 
 //Called when the tick is equal to the announce_when variable.

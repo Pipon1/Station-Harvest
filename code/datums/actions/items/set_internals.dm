@@ -1,5 +1,5 @@
 /datum/action/item_action/set_internals
-	name = "Set Internals"
+	name = "Activer le circuit interne"
 	default_button_position = SCRN_OBJ_INSERT_FIRST
 	overlay_icon_state = "ab_goldborder"
 

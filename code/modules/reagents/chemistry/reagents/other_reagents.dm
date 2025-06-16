@@ -170,6 +170,7 @@
 	color = "#AAAAAA77" // rgb: 170, 170, 170, 77 (alpha)
 	taste_description = "water"
 	var/cooling_temperature = 2
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS
 	default_container = /obj/item/reagent_containers/cup/glass/waterbottle
 
@@ -892,6 +893,7 @@
 	name = "Potassium"
 	description = "A soft, low-melting solid that can easily be cut with a knife. Reacts violently with water."
 	reagent_state = SOLID
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	color = "#A0A0A0" // rgb: 160, 160, 160
 	taste_description = "sweetness"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -1742,17 +1744,6 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = null
 	default_container = /obj/effect/decal/cleanable/oil
-
-/datum/reagent/fuel/expose_turf(turf/exposed_turf, reac_volume)//splash the fuel all over the place
-	. = ..()
-	if(!istype(exposed_turf))
-		return
-	if(reac_volume < 3)
-		return
-
-	var/obj/effect/decal/cleanable/oil/bloodsplatter = locate() in exposed_turf //find some blood here
-	if(!bloodsplatter)
-		bloodsplatter = new(exposed_turf)
 
 /datum/reagent/stable_plasma
 	name = "Stable Plasma"

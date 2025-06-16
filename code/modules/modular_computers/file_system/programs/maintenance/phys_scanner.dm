@@ -1,8 +1,8 @@
 /datum/computer_file/program/maintenance/phys_scanner
 	filename = "phys_scanner"
-	filedesc = "Physical Scanner"
+	filedesc = "Scanneur physique"
 	category = PROGRAM_CATEGORY_MISC
-	extended_desc = "This program allows the tablet to scan physical objects and display a data output."
+	extended_desc = "Ce programme permet au tablette de scanner des objets physiques et d'afficher une sortie de données."
 	size = 2
 	usage_flags = PROGRAM_TABLET
 	tgui_id = "NtosPhysScanner"
@@ -16,7 +16,7 @@
 	if(!iscarbon(tapped_atom))
 		return
 	var/mob/living/carbon/carbon = tapped_atom
-	carbon.visible_message(span_notice("[user] analyzes [tapped_atom]'s vitals."))
+	carbon.visible_message(span_notice("[user] analyse les vitaux [tapped_atom]."))
 	last_record = healthscan(user, carbon, 1, tochat = FALSE)
 	var/datum/tgui/active_ui = SStgui.get_open_ui(user, computer)
 	if(active_ui)

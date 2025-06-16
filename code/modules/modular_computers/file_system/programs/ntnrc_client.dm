@@ -6,10 +6,10 @@
 
 /datum/computer_file/program/chatclient
 	filename = "ntnrc_client"
-	filedesc = "Chat Client"
+	filedesc = "Logiciel de chat NTOS"
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "command"
-	extended_desc = "This program allows communication over NTNRC network"
+	extended_desc = "Ce programme permet la communication sur le réseau NTNRC"
 	size = 8
 	requires_ntnet = TRUE
 	ui_header = "ntnrc_idle.gif"
@@ -112,7 +112,7 @@
 				return
 			for(var/datum/ntnet_conversation/anychannel as anything in SSmodular_computers.chat_channels)
 				if(src in anychannel.active_clients)
-					anychannel.add_status_message("[username] is now known as [newname].")
+					anychannel.add_status_message("[username] est maintenant connu en tant que [newname].")
 			username = newname
 			return TRUE
 		if("PRG_savelog")
@@ -124,16 +124,16 @@
 			var/datum/computer_file/data/text/logfile = new()
 			// Now we will generate HTML-compliant file that can actually be viewed/printed.
 			logfile.filename = logname
-			logfile.stored_text = "\[b\]Logfile dump from NTNRC channel [channel.title]\[/b\]\[BR\]"
+			logfile.stored_text = "\[b\]Fichier vider depuis le canal NTNRC [channel.title]\[/b\]\[BR\]"
 			for(var/logstring in channel.messages)
 				logfile.stored_text = "[logfile.stored_text][logstring]\[BR\]"
-			logfile.stored_text = "[logfile.stored_text]\[b\]Logfile dump completed.\[/b\]"
+			logfile.stored_text = "[logfile.stored_text]\[b\]Vidage des logs complété.\[/b\]"
 			logfile.calculate_size()
 			if(!computer || !computer.store_file(logfile))
 				if(!computer)
 					// This program shouldn't even be runnable without computer.
 					CRASH("Var computer is null!")
-				computer.visible_message(span_warning("\The [computer] shows an \"I/O Error - Hard drive may be full. Please free some space and try again. Required space: [logfile.size]GQ\" warning."))
+				computer.visible_message(span_warning("Le [computer] montre un message d'erreur : \"ERREUR I/O - Le disque dur est peut-être plein. Veuillez libérer de l'espace et réessayer. Espace requis : [logfile.size]GQ\" Attention."))
 			return TRUE
 		if("PRG_renamechannel")
 			if(!authed)
@@ -141,7 +141,7 @@
 			var/newname = reject_bad_chattext(params["new_name"], CHANNELNAME_SIZE)
 			if(!newname || !channel)
 				return
-			channel.add_status_message("Channel renamed from [channel.title] to [newname] by operator.")
+			channel.add_status_message("Canal renommé de [channel.title] à [newname] par un opérateur.")
 			channel.title = newname
 			return TRUE
 		if("PRG_deletechannel")

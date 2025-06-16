@@ -1,6 +1,6 @@
 /// Anything above a lattice should go here.
 /turf/open/floor
-	name = "floor"
+	name = "sol"
 	icon = 'icons/turf/floors.dmi'
 	base_icon_state = "floor"
 	baseturfs = /turf/open/floor/plating
@@ -201,10 +201,10 @@
 		broken = FALSE
 		burnt = FALSE
 		if(user && !silent)
-			to_chat(user, span_notice("You remove the broken plating."))
+			to_chat(user, span_notice("Vous retirez la dalle cassée."))
 	else
 		if(user && !silent)
-			to_chat(user, span_notice("You remove the floor tile."))
+			to_chat(user, span_notice("Vous retirez la dalle cassée."))
 		if(make_tile)
 			spawn_tile()
 	return make_plating(force_plating)
@@ -322,12 +322,12 @@
 		if(RCD_AIRLOCK)
 			if(ispath(the_rcd.airlock_type, /obj/machinery/door/window))
 				if(!valid_build_direction(src, user.dir, is_fulltile = FALSE))
-					balloon_alert(user, "there's already a windoor!")
+					balloon_alert(user, "Il y'a déja une porte fenêtre !")
 					return FALSE
 				for(var/obj/machinery/door/door in src)
 					if(istype(door, /obj/machinery/door/window))
 						continue
-					balloon_alert(user, "there's already a door!")
+					balloon_alert(user, "Il y'a déja une porte !")
 					return FALSE
 				var/obj/machinery/door/window/new_window = new the_rcd.airlock_type(src, user.dir, the_rcd.airlock_electronics?.unres_sides)
 				if(the_rcd.airlock_electronics)
@@ -343,7 +343,7 @@
 			for(var/obj/machinery/door/door in src)
 				if(door.sub_door)
 					continue
-				balloon_alert(user, "there's already a door!")
+				balloon_alert(user, "Il y'a déja une porte !")
 				return FALSE
 			var/obj/machinery/door/airlock/new_airlock = new the_rcd.airlock_type(src)
 			new_airlock.electronics = new /obj/item/electronics/airlock(new_airlock)
@@ -371,7 +371,7 @@
 			return TRUE
 		if(RCD_DECONSTRUCT)
 			if(rcd_proof)
-				balloon_alert(user, "it's too thick!")
+				balloon_alert(user, "C'est trop épais !")
 				return FALSE
 			if(!ScrapeAway(flags = CHANGETURF_INHERIT_AIR))
 				return FALSE
@@ -402,8 +402,8 @@
 			if(locate(/obj/structure/floodlight_frame) in src)
 				return FALSE
 			var/obj/structure/floodlight_frame/new_floodlight = new(src)
-			new_floodlight.name = "secured [new_floodlight.name]"
-			new_floodlight.desc = "A bare metal frame that looks like a floodlight. Requires a light tube to complete."
+			new_floodlight.name = "[new_floodlight.name] sécurisé"
+			new_floodlight.desc = "Une monture vide qui ressemble vaguement à une lamp industriel. Il manque une ampoiule tubulaire."
 			new_floodlight.icon_state = "floodlight_c3"
 			new_floodlight.state = FLOODLIGHT_NEEDS_LIGHTS
 			return TRUE
@@ -416,7 +416,7 @@
 	return FALSE
 
 /turf/open/floor/material
-	name = "floor"
+	name = "sol"
 	icon_state = "materialfloor"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 	floor_tile = /obj/item/stack/tile/material

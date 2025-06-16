@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/cup/glass/drinkingglass
-	name = "drinking glass"
-	desc = "Your standard drinking glass."
+	name = "Verre à boire"
+	desc = "Un verre à boire tout ce qu'il y'a de plus standard."
 	icon_state = "glass_empty"
 	base_icon_state = "glass_empty"
 	amount_per_transfer_from_this = 10
@@ -54,8 +54,8 @@
 //  This is on a case-by-case basis, and you can even make a separate sprite for shot glasses if you want. //
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass
-	name = "shot glass"
-	desc = "A shot glass - the universal symbol for bad decisions."
+	name = "Verre à shot"
+	desc = "Un verre à shot - Le symbole universel des mauvaises décisions."
 	icon = 'icons/obj/drinks/shot_glasses.dmi'
 	icon_state = "shotglass"
 	base_icon_state = "shotglass"
@@ -71,16 +71,16 @@
 	if(renamedByPlayer)
 		return
 	. = ..()
-	name = "[length(reagents.reagent_list) ? "filled " : ""]shot glass"
+	name = "[length(reagents.reagent_list) ? "remplie " : ""]verre à shot"
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass/update_desc(updates)
 	if(renamedByPlayer)
 		return
 	. = ..()
 	if(length(reagents.reagent_list))
-		desc = "The challenge is not taking as many as you can, but guessing what it is before you pass out."
+		desc = "Le défis est d'en boire autant que vous pouvez, mais vous devez deviner ce que c'est avant de vous évanouir."
 	else
-		desc = "A shot glass - the universal symbol for bad decisions."
+		desc = "Un verre à shot - Le symbole universel des mauvaises décisions."
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/filled
 	base_container_type = /obj/item/reagent_containers/cup/glass/drinkingglass
@@ -90,11 +90,11 @@
 	update_appearance()
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/filled/soda
-	name = "Soda Water"
+	name = "Eau gazeuse"
 	list_reagents = list(/datum/reagent/consumable/sodawater = 50)
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/filled/cola
-	name = "Space Cola"
+	name = "Cola de l'espace"
 	list_reagents = list(/datum/reagent/consumable/space_cola = 50)
 
 /obj/item/reagent_containers/cup/glass/drinkingglass/filled/nuka_cola

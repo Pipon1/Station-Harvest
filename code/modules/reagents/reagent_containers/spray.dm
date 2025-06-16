@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/spray
-	name = "spray bottle"
-	desc = "A spray bottle, with an unscrewable top."
+	name = "bouteille de pulvérisation"
+	desc = "Une bouteille de pulvérisation, avec un bouchon dévissable."
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "sprayer_large"
 	inhand_icon_state = "cleaner"
@@ -35,19 +35,19 @@
 
 	if((target.is_drainable() && !target.is_refillable()) && (get_dist(src, target) <= 1) && can_fill_from_container)
 		if(!target.reagents.total_volume)
-			to_chat(user, span_warning("[target] is empty."))
+			to_chat(user, span_warning("[target] est vide."))
 			return
 
 		if(reagents.holder_full())
-			to_chat(user, span_warning("[src] is full."))
+			to_chat(user, span_warning("[src] est pleine."))
 			return
 
 		var/trans = target.reagents.trans_to(src, 50, transfered_by = user) //transfer 50u , using the spray's transfer amount would take too long to refill
-		to_chat(user, span_notice("You fill \the [src] with [trans] units of the contents of \the [target]."))
+		to_chat(user, span_notice("Vous remplissez la [src] avec [trans] unité venant de [target]."))
 		return
 
 	if(reagents.total_volume < amount_per_transfer_from_this)
-		to_chat(user, span_warning("Not enough left!"))
+		to_chat(user, span_warning("Il n'en reste pas assez !"))
 		return
 
 	spray(target, user)
@@ -76,8 +76,8 @@
 	var/puff_reagent_string = reagent_puff.reagents.get_reagent_log_string()
 	var/turf/src_turf = get_turf(src)
 
-	log_combat(user, src_turf, "fired a puff of reagents from", src, addition="with a range of \[[range]\], containing [puff_reagent_string].")
-	user.log_message("fired a puff of reagents from \a [src] with a range of \[[range]\] and containing [puff_reagent_string].", LOG_ATTACK)
+	log_combat(user, src_turf, "a tiré des produits chimique depuis", src, addition="avec une portée de \[[range]\], contenant [puff_reagent_string].")
+	user.log_message(" tiré des produits chimique depuis [src] avec une portée de \[[range]\] et contenant [puff_reagent_string].", LOG_ATTACK)
 
 	// do_spray includes a series of step_towards and sleeps. As a result, it will handle deletion of the chempuff.
 	do_spray(target, wait_step, reagent_puff, range, puff_reagent_left, user)
@@ -108,13 +108,13 @@
 		current_range = stream_range
 	else
 		current_range = spray_range
-	to_chat(user, span_notice("You switch the nozzle setting to [stream_mode ? "\"stream\"":"\"spray\""]."))
+	to_chat(user, span_notice("Vous passez l'éjecteur en mode [stream_mode ? "\"long\"":"\"large\""]."))
 
 /obj/item/reagent_containers/spray/attackby(obj/item/I, mob/user, params)
 	var/hotness = I.get_temperature()
 	if(hotness && reagents)
 		reagents.expose_temperature(hotness)
-		to_chat(user, span_notice("You heat [name] with [I]!"))
+		to_chat(user, span_notice("Vous chauffez [name] avec [I] !"))
 
 	//Cooling method
 	if(istype(I, /obj/item/extinguisher))
@@ -122,11 +122,11 @@
 		if(extinguisher.safety)
 			return
 		if (extinguisher.reagents.total_volume < 1)
-			to_chat(user, span_warning("\The [extinguisher] is empty!"))
+			to_chat(user, span_warning("Le [extinguisher] est vide !"))
 			return
 		var/cooling = (0 - reagents.chem_temp) * extinguisher.cooling_power * 2
 		reagents.expose_temperature(cooling)
-		to_chat(user, span_notice("You cool the [name] with the [I]!"))
+		to_chat(user, span_notice("Vous refroidissez [name] avec [I] !"))
 		playsound(loc, 'sound/effects/extinguish.ogg', 75, TRUE, -3)
 		extinguisher.reagents.remove_all(1)
 
@@ -168,8 +168,8 @@
 
 //space cleaner
 /obj/item/reagent_containers/spray/cleaner
-	name = "space cleaner"
-	desc = "BLAM!-brand non-foaming space cleaner!"
+	name = "nettoyant de l'espace"
+	desc = "nettoyant de l'espace de marque BLAM! sans mousse!"
 	icon_state = "cleaner"
 	volume = 100
 	list_reagents = list(/datum/reagent/space_cleaner = 100)
@@ -177,31 +177,31 @@
 	possible_transfer_amounts = list(2,5)
 
 /obj/item/reagent_containers/spray/cleaner/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is putting the nozzle of \the [src] in [user.p_their()] mouth. It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user] met l'éjecteur de [src] dans la bouche de [user.p_their()]. Il semble que essaye [user.p_theyre()] de se suicider !"))
 	if(do_after(user, 3 SECONDS, user))
 		if(reagents.total_volume >= amount_per_transfer_from_this)//if not empty
-			user.visible_message(span_suicide("[user] pulls the trigger!"))
+			user.visible_message(span_suicide("[user] appuye sur la gachette !"))
 			spray(user)
 			return BRUTELOSS
 		else
-			user.visible_message(span_suicide("[user] pulls the trigger...but \the [src] is empty!"))
+			user.visible_message(span_suicide("[user] appuye sur la gachette... mais le [src] est vide !"))
 			return SHAME
 	else
-		user.visible_message(span_suicide("[user] decided life was worth living."))
+		user.visible_message(span_suicide("[user] a décidé que la vie en valait le coup."))
 		return MANUAL_SUICIDE_NONLETHAL
 
 //spray tan
 /obj/item/reagent_containers/spray/spraytan
-	name = "spray tan"
+	name = "bouteille pulvérisante pour bronzage"
 	volume = 50
-	desc = "Gyaro brand spray tan. Do not spray near eyes or other orifices."
+	desc = "bouteille pulvérisante de marque Gyaro. Ne pas utiliser prêt des yeux ou d'autre orifices."
 	list_reagents = list(/datum/reagent/spraytan = 50)
 
 
 //pepperspray
 /obj/item/reagent_containers/spray/pepper
-	name = "pepperspray"
-	desc = "Manufactured by UhangInc, used to blind and down an opponent quickly."
+	name = "spray au poivre"
+	desc = "Fabriqué par UhangInc. Utilisé pour aveugler et mettre à terre un ennemi rapidement."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "pepperspray"
 	inhand_icon_state = "pepperspray"
@@ -227,8 +227,8 @@
 
 //water flower
 /obj/item/reagent_containers/spray/waterflower
-	name = "water flower"
-	desc = "A seemingly innocent sunflower...with a twist."
+	name = "fleur à eau"
+	desc = "Une fleur qui semble innocente... mais y'a un twist."
 	icon = 'icons/obj/hydroponics/harvest.dmi'
 	icon_state = "sunflower"
 	inhand_icon_state = "sunflower"
@@ -243,8 +243,8 @@
 
 ///Subtype used for the lavaland clown ruin.
 /obj/item/reagent_containers/spray/waterflower/superlube
-	name = "clown flower"
-	desc = "A delightly devilish flower... you got a feeling where this is going."
+	name = "fleur de clown"
+	desc = "Une fleur de clown... vous avez un mauvais pressentiment."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "clownflower"
 	volume = 30
@@ -261,8 +261,8 @@
 	can_fill_from_container = FALSE
 
 /obj/item/reagent_containers/spray/waterflower/cyborg/hacked
-	name = "nova flower"
-	desc = "This doesn't look safe at all..."
+	name = "fleur nova"
+	desc = "ça ne semble pas sûr du tout..."
 	list_reagents = list(/datum/reagent/clf3 = 3)
 	volume = 3
 	generate_type = /datum/reagent/clf3
@@ -284,7 +284,7 @@
 	generate_reagents()
 
 /obj/item/reagent_containers/spray/waterflower/cyborg/empty()
-	to_chat(usr, span_warning("You can not empty this!"))
+	to_chat(usr, span_warning("Vous ne pouvez pas vider ça !"))
 	return
 
 /obj/item/reagent_containers/spray/waterflower/cyborg/proc/generate_reagents()
@@ -292,8 +292,8 @@
 
 //chemsprayer
 /obj/item/reagent_containers/spray/chemsprayer
-	name = "chem sprayer"
-	desc = "A utility used to spray large amounts of reagents in a given area."
+	name = "pullvérisateur chimique"
+	desc = "Utilisé pour pulvériser de grandes quantités de produit chimique dans une zone donnée."
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "chemsprayer"
 	inhand_icon_state = "chemsprayer"
@@ -331,8 +331,8 @@
 
 
 /obj/item/reagent_containers/spray/chemsprayer/janitor
-	name = "janitor chem sprayer"
-	desc = "A utility used to spray large amounts of cleaning reagents in a given area. It regenerates space cleaner by itself but it's unable to be fueled by normal means."
+	name = "pulvérisateur chimique du concierge"
+	desc = "Un outil utilisé pour pulvériser de grandes quantités de produits de nettoyage dans une zone donnée. Il régénère le nettoyant de l'espace par lui-même, mais il est incapable d'être alimenté par des moyens normaux."
 	icon_state = "chemsprayer_janitor"
 	inhand_icon_state = "chemsprayer_janitor"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
@@ -361,8 +361,8 @@
 	reagents.add_reagent(generate_type, generate_amount)
 
 /obj/item/reagent_containers/spray/chemsprayer/party
-	name = "party popper"
-	desc = "A small device used for celebrations and annoying the janitor."
+	name = "lance confettis"
+	desc = "Un petit appareil utilisé pour les célébrations et pour embêter le concierge."
 	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "party_popper"
 	inhand_icon_state = "party_popper"
@@ -387,8 +387,8 @@
 
 // Plant-B-Gone
 /obj/item/reagent_containers/spray/plantbgone // -- Skie
-	name = "Plant-B-Gone"
-	desc = "Kills those pesky weeds!"
+	name = "Plant-Dégage"
+	desc = "Tuez ces foutus mauvaises herbes !"
 	icon = 'icons/obj/hydroponics/equipment.dmi'
 	icon_state = "plantbgone"
 	inhand_icon_state = "plantbgone"
@@ -398,8 +398,8 @@
 	list_reagents = list(/datum/reagent/toxin/plantbgone = 100)
 
 /obj/item/reagent_containers/spray/syndicate
-	name = "suspicious spray bottle"
-	desc = "A spray bottle, with a high performance plastic nozzle. The color scheme makes you feel slightly uneasy."
+	name = "bouteille de pulvérisation suspecte"
+	desc = "Une bouteille de pulvérisation, avec une buse en plastique haute performance. Le schéma de couleur vous rend légèrement mal à l'aise."
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "sprayer_sus_8"
 	inhand_icon_state = "sprayer_sus"
@@ -415,7 +415,7 @@
 	icon_state = pick("sprayer_sus_1", "sprayer_sus_2", "sprayer_sus_3", "sprayer_sus_4", "sprayer_sus_5","sprayer_sus_6", "sprayer_sus_7", "sprayer_sus_8")
 
 /obj/item/reagent_containers/spray/medical
-	name = "medical spray bottle"
+	name = "bouteille de pulvérisation médicale"
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "sprayer_med_red"
 	inhand_icon_state = "sprayer_med_red"
@@ -442,7 +442,7 @@
 	M.update_held_items()
 
 /obj/item/reagent_containers/spray/hercuri
-	name = "medical spray (hercuri)"
-	desc = "A medical spray bottle.This one contains hercuri, a medicine used to negate the effects of dangerous high-temperature environments. Careful not to freeze the patient!"
+	name = "bouteille de pulvérisation médicale (hercuri)"
+	desc = "Une bouteille de pulvérisation médicale. Celle-ci contient de l'hercuri, un médicament utilisé pour annuler les effets des environnements à haute température. Faites attention à ne pas geler le patient !"
 	icon_state = "sprayer_large"
 	list_reagents = list(/datum/reagent/medicine/c2/hercuri = 100)

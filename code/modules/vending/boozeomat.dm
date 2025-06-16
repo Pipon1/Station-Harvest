@@ -1,13 +1,13 @@
 /obj/machinery/vending/boozeomat
-	name = "\improper Booze-O-Mat"
-	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
+	name = "\improper Alcool-omate"
+	desc = "Une merveille de technologie, supposément capable de mélanger votre boisson au moment où vous lui demandez."
 	icon_state = "boozeomat"
 	icon_deny = "boozeomat-deny"
 	panel_type = "panel22"
 
 	product_categories = list(
 		list(
-			"name" = "Alcoholic",
+			"name" = "Alcoolisé",
 			"icon" = "wine-bottle",
 			"products" = list(
 				/obj/item/reagent_containers/cup/glass/bottle/curacao = 5,
@@ -35,7 +35,7 @@
 		),
 
 		list(
-			"name" = "Non-Alcoholic",
+			"name" = "Non-Alcoolisé",
 			"icon" = "bottle-water",
 			"products" = list(
 				/obj/item/reagent_containers/cup/glass/ice = 10,
@@ -52,7 +52,7 @@
 		),
 
 		list(
-			"name" = "Glassware",
+			"name" = "Verrerie",
 			"icon" = "wine-glass",
 			"products" = list(
 				/obj/item/reagent_containers/cup/glass/drinkingglass = 30,
@@ -75,8 +75,8 @@
 		/obj/item/reagent_containers/cup/glass/bottle/bitters = 5,
 	)
 
-	product_slogans = "I hope nobody asks me for a bloody cup o' tea...;Alcohol is humanity's friend. Would you abandon a friend?;Quite delighted to serve you!;Is nobody thirsty on this station?"
-	product_ads = "Drink up!;Booze is good for you!;Alcohol is humanity's best friend.;Quite delighted to serve you!;Care for a nice, cold beer?;Nothing cures you like booze!;Have a sip!;Have a drink!;Have a beer!;Beer is good for you!;Only the finest alcohol!;Best quality booze since 2053!;Award-winning wine!;Maximum alcohol!;Man loves beer.;A toast for progress!"
+	product_slogans = "J'espère que personne ne va me demander une trader de tasse de thé...;L'alcool est l'ami de l'humanité. Est-ce que vous abandonneriez un ami ?;Au plaisir de vous servir !;Personne n'a soif, sur cette station ?"
+	product_ads = "À boire !;L'alcool, c'est bon pour vous !;L'alcool est l'ami de l'humanité.;Au plaisir de vous servir !;Envie d'une bonne bière ?;Rien ne peut mieux vous soigner que l'alcool !;Prenez une gorgée !;Prenez un verre !;Prenez une bière!;La bière c'est bon pour vous !;Seulement le meilleur alcool !;Meilleur qualité d'alcool depuis 2058 !;Vin prisé !;Maximum d'alcool !;Ici, on aime la bière.;Un toast au progrès!"
 	req_access = list(ACCESS_BAR)
 	refill_canister = /obj/item/vending_refill/boozeomat
 	default_price = PAYCHECK_CREW * 0.9
@@ -85,7 +85,7 @@
 	light_mask = "boozeomat-light-mask"
 
 /obj/machinery/vending/boozeomat/all_access
-	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one. This model appears to have no access restrictions."
+	desc = "Une merveille de technologie, supposément capable de mélanger votre boisson au moment où vous lui demandez. Ce modèle semble ne pas avoir de restriction."
 	req_access = null
 
 /obj/machinery/vending/boozeomat/syndicate_access
@@ -94,5 +94,5 @@
 	initial_language_holder = /datum/language_holder/syndicate
 
 /obj/item/vending_refill/boozeomat
-	machine_name = "Booze-O-Mat"
+	machine_name = "Alcool-omate"
 	icon_state = "refill_booze"

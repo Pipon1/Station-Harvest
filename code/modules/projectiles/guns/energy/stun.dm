@@ -1,21 +1,21 @@
 /obj/item/gun/energy/taser
-	name = "taser gun"
-	desc = "A low-capacity, energy-based stun gun used by security teams to subdue targets at range."
+	name = "taser"
+	desc = "Une arme à impulsion électrique à faible capacité utilisée par les équipes de sécurité pour neutraliser les cibles à distance."
 	icon_state = "taser"
 	inhand_icon_state = null //so the human update icon uses the icon_state instead.
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode)
 	ammo_x_offset = 3
 
 /obj/item/gun/energy/e_gun/advtaser
-	name = "hybrid taser"
-	desc = "A dual-mode taser designed to fire both short-range high-power electrodes and long-range disabler beams."
+	name = "taser hybride"
+	desc = "Un taser hybride à double mode conçu pour tirer à la fois des électrodes haute puissance à courte portée et des faisceaux paralysant à longue portée."
 	icon_state = "advtaser"
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode, /obj/item/ammo_casing/energy/disabler)
 	ammo_x_offset = 2
 
 /obj/item/gun/energy/e_gun/advtaser/cyborg
-	name = "cyborg taser"
-	desc = "An integrated hybrid taser that draws directly from a cyborg's power cell. The weapon contains a limiter to prevent the cyborg's power cell from overheating."
+	name = "taser de cyborg"
+	desc = "Un taser hybride intégré qui puise directement dans la cellule d'énergie d'un cyborg. L'arme contient un limiteur pour empêcher la cellule d'énergie du cyborg de surchauffer."
 	can_charge = FALSE
 	use_cyborg_cell = TRUE
 
@@ -26,8 +26,8 @@
 	return
 
 /obj/item/gun/energy/disabler
-	name = "disabler"
-	desc = "A self-defense weapon that exhausts organic targets, weakening them until they collapse."
+	name = "paralyseur"
+	desc = "Une arme d'auto-défense qui épuise les cibles organiques, les affaiblissant jusqu'à ce qu'elles s'effondrent."
 	icon_state = "disabler"
 	inhand_icon_state = null
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler)
@@ -41,8 +41,8 @@
 		overlay_y = 10)
 
 /obj/item/gun/energy/disabler/cyborg
-	name = "cyborg disabler"
-	desc = "An integrated disabler that draws from a cyborg's power cell. This weapon contains a limiter to prevent the cyborg's power cell from overheating."
+	name = "paralyseur de cyborg"
+	desc = "Un paralyseur intégré qui puise directement dans la cellule d'énergie d'un cyborg. L'arme contient un limiteur pour empêcher la cellule d'énergie du cyborg de surchauffer."
 	can_charge = FALSE
 	use_cyborg_cell = TRUE
 

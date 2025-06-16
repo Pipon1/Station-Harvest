@@ -80,16 +80,19 @@ GLOBAL_LIST_EMPTY(objects_by_id_tag)
 
 	var/damage = take_damage(total_force, attacking_item.damtype, MELEE, 1)
 
-	var/damage_verb = "hit"
+	var/damage_verb = "frappe"
+	var/damage_verb_vous = "frappez"
 
 	if(attacking_item.demolition_mod > 1 && damage)
 		damage_verb = "pulverise"
+		damage_verb_vous = "pulverisez"
 	if(attacking_item.demolition_mod < 1)
-		damage_verb = "ineffectively pierce"
+		damage_verb = "frappe sans effet"
+		damage_verb_vous = "frappez sans effet"
 
-	user.visible_message(span_danger("[user] [damage_verb][plural_s(damage_verb)] [src] with [attacking_item][damage ? "." : ", without leaving a mark!"]"), \
-		span_danger("You [damage_verb] [src] with [attacking_item][damage ? "." : ", without leaving a mark!"]"), null, COMBAT_MESSAGE_RANGE)
-	log_combat(user, src, "attacked", attacking_item)
+	user.visible_message(span_danger("[user] [damage_verb] [src] avec l'objet [attacking_item][damage ? "." : ", sans laisser une égratignure !"]"), \
+		span_danger("Vous [damage_verb_vous] [src] avec l'objet [attacking_item][damage ? "." : ", sans laisser une égratignure !"]"), null, COMBAT_MESSAGE_RANGE)
+	log_combat(user, src, "est attaqué", attacking_item)
 
 /obj/assume_air(datum/gas_mixture/giver)
 	if(loc)
@@ -270,9 +273,9 @@ GLOBAL_LIST_EMPTY(objects_by_id_tag)
 	if(desc_controls)
 		. += span_notice(desc_controls)
 	if(obj_flags & UNIQUE_RENAME)
-		. += span_notice("Use a pen on it to rename it or change its description.")
+		. += span_notice("Utilisez un stylo pour le renommer ou changer sa description.")
 	if(unique_reskin && (!current_skin || infinite_reskin))
-		. += span_notice("Alt-click it to reskin it.")
+		. += span_notice("Alt-click sur l'objet pour changer son apparence.")
 
 /obj/AltClick(mob/user)
 	. = ..()
@@ -302,7 +305,7 @@ GLOBAL_LIST_EMPTY(objects_by_id_tag)
 		return
 	current_skin = pick
 	icon_state = unique_reskin[pick]
-	to_chat(M, "[src] is now skinned as '[pick].'")
+	to_chat(M, "[src] possède maintenant l'apparence de '[pick].'")
 
 /**
  * Checks if we are allowed to interact with a radial menu for reskins

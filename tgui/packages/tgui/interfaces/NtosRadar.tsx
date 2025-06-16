@@ -74,7 +74,7 @@ const ObjectDisplay = (props, context) => {
           disabled={scanning}
           onClick={() => act('scan')}
         />
-        {!object.length && !scanning && <div>No trackable signals found</div>}
+        {!object.length && !scanning && <div>Aucun signaux traquable détéctés.</div>}
         {!scanning &&
           object.map((object) => (
             <div
@@ -117,7 +117,7 @@ const TargetDisplay = (props, context) => {
         width={42}
         fontSize="30px"
         textAlign="center">
-        Signal Lost
+        Signale perdu
       </NoticeBox>
     );
   }

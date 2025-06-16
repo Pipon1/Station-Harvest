@@ -14,11 +14,11 @@
 #define PROGRAM_STATE_BACKGROUND 1
 #define PROGRAM_STATE_ACTIVE 2
 //Program categories
-#define PROGRAM_CATEGORY_CREW "Crew"
-#define PROGRAM_CATEGORY_ENGI "Engineering"
-#define PROGRAM_CATEGORY_SUPL "Supply"
+#define PROGRAM_CATEGORY_CREW "Equipage"
+#define PROGRAM_CATEGORY_ENGI "Ingénieurie"
+#define PROGRAM_CATEGORY_SUPL "Logistique"
 #define PROGRAM_CATEGORY_SCI "Science"
-#define PROGRAM_CATEGORY_MISC "Other"
+#define PROGRAM_CATEGORY_MISC "Autre"
 
 #define DETOMATIX_RESIST_MINOR 1
 #define DETOMATIX_RESIST_MAJOR 2

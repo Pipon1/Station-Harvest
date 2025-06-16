@@ -1,12 +1,12 @@
 /datum/round_event_control/carp_migration
-	name = "Carp Migration"
+	name = "Migration de carpes"
 	typepath = /datum/round_event/carp_migration
 	weight = 15
 	min_players = 12
 	earliest_start = 10 MINUTES
 	max_occurrences = 6
 	category = EVENT_CATEGORY_ENTITIES
-	description = "Summons a school of space carp."
+	description = "Invoque un banc de carpes de l'espace, qui va essayer de traverser la station en mangeant ce qui se trouve sur son passage."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 3
 	admin_setup = list(/datum/event_admin_setup/carp_migration)
@@ -37,7 +37,7 @@
 	start_when = rand(40, 60)
 
 /datum/round_event/carp_migration/announce(fake)
-	priority_announce("[fluff_signal] have been detected near [station_name()], please stand-by.", "Lifesign Alert")
+	priority_announce("[fluff_signal] a été détecté près de [station_name()], tenez vous prêt.", "Alerte signes de vie")
 
 /datum/round_event/carp_migration/start()
 	// Stores the most recent fish we spawn
@@ -84,10 +84,10 @@
 
 /datum/event_admin_setup/carp_migration/prompt_admins()
 	targets_per_z = list()
-	if (tgui_alert(usr, "Direct carp to your current location? Only applies to your current Z level.", "Carp Direction", list("Yes", "No")) != "Yes")
+	if (tgui_alert(usr, "Dirige les carpes vers votre localisation actuelle ? S'applique uniquement sur votre Z level actuel.", "Destination des carpes", list("Oui", "Non")) != "Oui")
 		return
 	record_admin_location()
-	while (tgui_alert(usr, "Add additional locations? Only applies to your current Z level.", "More Carp Direction", list("Yes", "No")) == "Yes")
+	while (tgui_alert(usr, "Ajouter d'autres localisations ? S'applique uniquement sur votre Z level actuel.", "Plus de destination pour les carpes", list("Oui", "Non")) == "Oui")
 		record_admin_location()
 
 /// Stores the admin's current location corresponding to the z level of that location

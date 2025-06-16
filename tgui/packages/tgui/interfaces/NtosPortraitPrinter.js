@@ -15,14 +15,14 @@ export const NtosPortraitPrinter = (props, context) => {
     got_paintings && 'paintings' + '_' + paintings[listIndex]['md5'];
   const current_portrait_ratio = got_paintings && paintings[listIndex]['ratio'];
   return (
-    <NtosWindow title="Art Galaxy" width={400} height={446}>
+    <NtosWindow title="Art galactique" width={400} height={446}>
       <NtosWindow.Content>
         <Stack vertical fill>
           <Stack.Item>
-            <Section title="Search">
+            <Section title="Chercher">
               <Input
                 fluid
-                placeholder="Search Paintings..."
+                placeholder="Chercher des peintures..."
                 value={search_string}
                 onChange={(e, value) => {
                   act('search', {
@@ -69,7 +69,7 @@ export const NtosPortraitPrinter = (props, context) => {
                   </>
                 ) : (
                   <Stack.Item className="Section__titleText">
-                    No paintings found.
+                    Aucune peinture trouvée.
                   </Stack.Item>
                 )}
               </Stack>
@@ -97,7 +97,7 @@ export const NtosPortraitPrinter = (props, context) => {
                     <Stack.Item grow={3}>
                       <Button
                         icon="check"
-                        content="Print Portrait"
+                        content="Imprimer un portrait"
                         disabled={!got_paintings}
                         onClick={() =>
                           act('select', {
@@ -126,8 +126,8 @@ export const NtosPortraitPrinter = (props, context) => {
             </Stack>
             <Stack.Item mt={1} mb={-1}>
               <NoticeBox info>
-                Printing a canvas costs 10 paper from the printer installed in
-                your machine.
+                Imprimer un portrait coute 10 feuilles de papier de l'imprimante
+                installer dans votre appareil.
               </NoticeBox>
             </Stack.Item>
           </Stack.Item>

@@ -11,17 +11,17 @@
 // Why are you putting cooked spaghetti in your pockets?
 /obj/item/food/spaghetti/make_microwaveable()
 	var/list/display_message = list(
-		span_notice("Something wet falls out of their pocket and hits the ground. Is that... [name]?"),
-		span_warning("Oh shit! All your pocket [name] fell out!"))
+		span_notice("Quelque chose de mouillé tombe de sa poche et touche le sol. Est-ce que c'est... Des [name] ?"),
+		span_warning("Oh, merde ! Tous tes [name] de poche son tombés !"))
 	AddComponent(/datum/component/spill, display_message, 'sound/effects/splat.ogg', /datum/memory/lost_spaghetti)
 
 	return ..()
 
 /obj/item/food/spaghetti/raw
-	name = "spaghetti"
-	desc = "Now that's a nic'e pasta!"
+	name = "spaghettis"
+	desc = "En voilà de bonnes pâtes !"
 	icon_state = "spaghetti"
-	tastes = list("pasta" = 1)
+	tastes = list("de pâte" = 1)
 
 /obj/item/food/spaghetti/make_bakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/spaghetti/boiledspaghetti, rand(15 SECONDS, 20 SECONDS), TRUE, TRUE)
@@ -30,8 +30,8 @@
 	AddElement(/datum/element/microwavable, /obj/item/food/spaghetti/boiledspaghetti)
 
 /obj/item/food/spaghetti/boiledspaghetti
-	name = "boiled spaghetti"
-	desc = "A plain dish of noodles, this needs more ingredients."
+	name = "spaghettis cuites"
+	desc = "Un simple plat de spaghettis, qui nécessite plus d'ingrédients."
 	icon_state = "spaghettiboiled"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
@@ -43,8 +43,8 @@
 	AddComponent(/datum/component/customizable_reagent_holder, null, CUSTOM_INGREDIENT_ICON_SCATTER, max_ingredients = 6)
 
 /obj/item/food/spaghetti/pastatomato
-	name = "spaghetti"
-	desc = "Spaghetti and crushed tomatoes. Just like your abusive father used to make!"
+	name = "spaghettis"
+	desc = "Spaghettis et tomates écrasées. Comme à la maison !"
 	icon_state = "pastatomato"
 	bite_consumption = 4
 	food_reagents = list(
@@ -52,12 +52,12 @@
 		/datum/reagent/consumable/tomatojuice = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("pasta" = 1, "tomato" = 1)
+	tastes = list("de pâte" = 1, "de tomate" = 1)
 	foodtypes = GRAIN | VEGETABLES
 
 /obj/item/food/spaghetti/pastatomato/soulful
-	name = "soul food"
-	desc = "Just how mom used to make it."
+	name = "cuisine de l'âme"
+	desc = "Comme le faisait maman."
 	food_reagents = list(
 		// same as normal pasghetti
 		/datum/reagent/consumable/nutriment = 6,
@@ -68,11 +68,11 @@
 		/datum/reagent/medicine/psicodine = 10,
 		/datum/reagent/medicine/morphine = 5,
 	)
-	tastes = list("nostalgia" = 1, "happiness" = 1)
+	tastes = list("de nostalgie" = 1, "de joie" = 1)
 
 /obj/item/food/spaghetti/copypasta
 	name = "copypasta"
-	desc = "You probably shouldn't try this, you always hear people talking about how bad it is..."
+	desc = "Vous ne devriez probablement pas essayer cela, vous entendez toujours les gens dire que c'est mauvais..."
 	icon_state = "copypasta"
 	bite_consumption = 4
 	food_reagents = list(
@@ -80,48 +80,48 @@
 		/datum/reagent/consumable/tomatojuice = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 8,
 	)
-	tastes = list("pasta" = 1, "tomato" = 1)
+	tastes = list("de pâte" = 1, "de tomate" = 1)
 	foodtypes = GRAIN | VEGETABLES
 
 /obj/item/food/spaghetti/meatballspaghetti
-	name = "spaghetti and meatballs"
-	desc = "Now that's a nic'e meatball!"
+	name = "spaghettis et boulettes de viande"
+	desc = "Voilà une belle boulette de viande !"
 	icon_state = "meatballspaghetti"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/protein = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("pasta" = 1, "meat" = 1)
+	tastes = list("de pâte" = 1, "de viande" = 1)
 	foodtypes = GRAIN | MEAT
 
 /obj/item/food/spaghetti/spesslaw
-	name = "spesslaw"
-	desc = "A lawyers favourite."
+	name = "l'oie de l'espace"
+	desc = "Le plat préféré des avocats."
 	icon_state = "spesslaw"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/protein = 20,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("pasta" = 1, "meat" = 1)
+	tastes = list("de pâte" = 1, "de viande" = 1)
 	foodtypes = GRAIN | MEAT
 
 /obj/item/food/spaghetti/chowmein
 	name = "chow mein"
-	desc = "A nice mix of noodles and fried vegetables."
+	desc = "Un bon mélange de nouilles et de légumes frits."
 	icon_state = "chowmein"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("noodle" = 1, "meat" = 1, "fried vegetables" = 1)
+	tastes = list("de nouille" = 1, "de viande" = 1, "de légumes frits" = 1)
 	foodtypes = GRAIN | MEAT | VEGETABLES
 
 /obj/item/food/spaghetti/beefnoodle
-	name = "beef noodle"
-	desc = "Nutritious, beefy and noodly."
+	name = "nouilles au bœuf"
+	desc = "Nutritif, bovin et nouillesque."
 	icon_state = "beefnoodle"
 	trash_type = /obj/item/reagent_containers/cup/bowl
 	food_reagents = list(
@@ -130,27 +130,27 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/liquidgibs = 3,
 	)
-	tastes = list("noodles" = 1, "meat" = 1)
+	tastes = list("de nouille" = 1, "de viande" = 1)
 	foodtypes = GRAIN | MEAT | VEGETABLES
 
 /obj/item/food/spaghetti/butternoodles
-	name = "butter noodles"
-	desc = "Noodles covered in savory butter. Simple and slippery, but delicious."
+	name = "nouilles au beurre"
+	desc = "Des nouilles recouvertes de beurre salé. Simple et glissant, mais délicieux."
 	icon_state = "butternoodles"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 9,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("noodles" = 1, "butter" = 1)
+	tastes = list("de nouille" = 1, "de beurre" = 1)
 	foodtypes = GRAIN | DAIRY
 
 /obj/item/food/spaghetti/mac_n_cheese
 	name = "mac n' cheese"
-	desc = "Made the proper way with only the finest cheese and breadcrumbs. And yet, it can't scratch the same itch as Ready-Donk."
+	desc = "Fabriqué dans les règles de l'art avec le fromage et la chapelure les plus fins. Voilà encore une horreur américaine."
 	icon_state = "mac_n_cheese"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 9,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("cheese" = 1, "breadcrumbs" = 1, "pasta" = 1)
+	tastes = list("de fromage" = 1, "de chapelure" = 1, "de pâte" = 1)
 	foodtypes = GRAIN | DAIRY

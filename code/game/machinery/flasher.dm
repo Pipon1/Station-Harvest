@@ -1,8 +1,8 @@
 // It is a gizmo that flashes a small area
 
 /obj/machinery/flasher
-	name = "mounted flash"
-	desc = "A wall-mounted flashbulb device."
+	name = "flash fixe"
+	desc = "Un flash fixe monté au mur."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "mflash1"
 	base_icon_state = "mflash"
@@ -65,9 +65,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 	add_fingerprint(user)
 	if (attacking_item.tool_behaviour == TOOL_WIRECUTTER)
 		if (bulb)
-			user.visible_message(span_notice("[user] begins to disconnect [src]'s flashbulb."), span_notice("You begin to disconnect [src]'s flashbulb..."))
+			user.visible_message(span_notice("[user] commence à dévisser l'ampoule du [src]."), span_notice("Vous commencez à dévisser l'ampoule du [src]..."))
 			if(attacking_item.use_tool(src, user, 30, volume=50) && bulb)
-				user.visible_message(span_notice("[user] disconnects [src]'s flashbulb!"), span_notice("You disconnect [src]'s flashbulb."))
+				user.visible_message(span_notice("[user] a dévissé l'ampoule du [src] !"), span_notice("Vous avez dévissé l'ampoule du [src]."))
 				bulb.forceMove(loc)
 				power_change()
 
@@ -75,19 +75,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 		if (!bulb)
 			if(!user.transferItemToLoc(attacking_item, src))
 				return
-			user.visible_message(span_notice("[user] installs [attacking_item] into [src]."), span_notice("You install [attacking_item] into [src]."))
+			user.visible_message(span_notice("[user] installe [attacking_item] dans [src]."), span_notice("Vous installez [attacking_item] dans [src]."))
 			power_change()
 		else
-			to_chat(user, span_warning("A flashbulb is already installed in [src]!"))
+			to_chat(user, span_warning("Une ampoule est deja installé dans [src] !"))
 
 	else if (attacking_item.tool_behaviour == TOOL_WRENCH)
 		if(!bulb)
-			to_chat(user, span_notice("You start unsecuring the flasher frame..."))
+			to_chat(user, span_notice("Vous commencez à dé-installez le flash..."))
 			if(attacking_item.use_tool(src, user, 40, volume=50))
-				to_chat(user, span_notice("You unsecure the flasher frame."))
+				to_chat(user, span_notice("Vous dé-installez le flash."))
 				deconstruct(TRUE)
 		else
-			to_chat(user, span_warning("Remove a flashbulb from [src] first!"))
+			to_chat(user, span_warning("Retirez l'ampoule de [src] d'abord !"))
 	else
 		return ..()
 
@@ -157,8 +157,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 	qdel(src)
 
 /obj/machinery/flasher/portable //Portable version of the flasher. Only flashes when anchored
-	name = "portable flasher"
-	desc = "A portable flashing device. Wrench to activate and deactivate. Cannot detect slow movements."
+	name = "flash mobile"
+	desc = "Un flash portable. Utilisez une clé à molette pour l'activer et le désactiver. Ne détecte pas les mouvements lents."
 	icon_state = "pflash1-p"
 	base_icon_state = "pflash"
 	strength = 8 SECONDS
@@ -190,13 +190,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 		attacking_item.play_tool_sound(src, 100)
 
 		if (!anchored && !isinspace())
-			to_chat(user, span_notice("[src] is now secured."))
+			to_chat(user, span_notice("[src] est maintenant fixé."))
 			add_overlay("[base_icon_state]-s")
 			set_anchored(TRUE)
 			power_change()
 			proximity_monitor.set_range(flash_range)
 		else
-			to_chat(user, span_notice("[src] can now be moved."))
+			to_chat(user, span_notice("[src] peut être maintenant bougé."))
 			cut_overlays()
 			set_anchored(FALSE)
 			power_change()
@@ -206,8 +206,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 		return ..()
 
 /obj/item/wallframe/flasher
-	name = "mounted flash frame"
-	desc = "Used for building wall-mounted flashers."
+	name = "chassis de flash fixe"
+	desc = "Utilisé pour construire des flashs fixe."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "mflash_frame"
 	result_path = /obj/machinery/flasher
@@ -216,7 +216,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/flasher, 26)
 
 /obj/item/wallframe/flasher/examine(mob/user)
 	. = ..()
-	. += span_notice("Its channel ID is '[id]'.")
+	. += span_notice("Son identifiant de cannal est '[id]'.")
 
 /obj/item/wallframe/flasher/after_attach(obj/attached_to)
 	..()

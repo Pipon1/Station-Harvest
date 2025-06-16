@@ -90,7 +90,7 @@ export const NtosNetChat = (props, context) => {
                 <Stack.Item grow>
                   <Button.Input
                     fluid
-                    content="New Channel..."
+                    content="Nouveau canal..."
                     onCommit={(e, value) =>
                       act('PRG_newchannel', {
                         new_channel_name: value,
@@ -168,7 +168,7 @@ export const NtosNetChat = (props, context) => {
                   backgroundColor={this_client && this_client.muted && 'red'}
                   height="22px"
                   placeholder={
-                    (this_client && this_client.muted && 'You are muted!') ||
+                    (this_client && this_client.muted && 'Vous êtes muet !') ||
                     'Message ' + title
                   }
                   fluid
@@ -208,7 +208,7 @@ export const NtosNetChat = (props, context) => {
                                     icon="bullhorn"
                                     tooltip={
                                       (!this_client?.muted && 'Ping') ||
-                                      'You are muted!'
+                                      'Vous êtes muet !'
                                     }
                                     tooltipPosition="left"
                                     onClick={() =>
@@ -230,8 +230,8 @@ export const NtosNetChat = (props, context) => {
                                         (!client.muted && 'green') || 'red'
                                       }
                                       tooltip={
-                                        (!client.muted && 'Mute this User') ||
-                                        'Unmute this User'
+                                        (!client.muted && 'rendre cet utilisateur muet') ||
+                                        'rendre la parole a cet utilisateur'
                                       }
                                       tooltipPosition="left"
                                       onClick={() =>
@@ -256,7 +256,7 @@ export const NtosNetChat = (props, context) => {
                         <>
                           <Button.Input
                             fluid
-                            content="Save log..."
+                            content="Sauvegarder les logs..."
                             defaultValue="new_log"
                             onCommit={(e, value) =>
                               act('PRG_savelog', {
@@ -266,7 +266,7 @@ export const NtosNetChat = (props, context) => {
                           />
                           <Button.Confirm
                             fluid
-                            content="Leave Channel"
+                            content="Quitter le canal"
                             onClick={() => act('PRG_leavechannel')}
                           />
                         </>
@@ -276,13 +276,13 @@ export const NtosNetChat = (props, context) => {
                           <Button.Confirm
                             fluid
                             disabled={strong}
-                            content="Delete Channel"
+                            content="Supprimer le canal"
                             onClick={() => act('PRG_deletechannel')}
                           />
                           <Button.Input
                             fluid
                             disabled={strong}
-                            content="Rename Channel..."
+                            content="Renommer le canal..."
                             onCommit={(e, value) =>
                               act('PRG_renamechannel', {
                                 new_name: value,
@@ -291,7 +291,7 @@ export const NtosNetChat = (props, context) => {
                           />
                           <Button.Input
                             fluid
-                            content="Set Password..."
+                            content="Définir le mot-de-passe..."
                             onCommit={(e, value) =>
                               act('PRG_setpassword', {
                                 new_password: value,

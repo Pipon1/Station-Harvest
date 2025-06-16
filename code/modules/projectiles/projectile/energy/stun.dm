@@ -2,7 +2,7 @@
 	name = "electrode"
 	icon_state = "spark"
 	color = "#FFFF00"
-	paralyze = 10 SECONDS
+	paralyze = 5 SECONDS
 	stutter = 10 SECONDS
 	jitter = 40 SECONDS
 	hitsound = 'sound/weapons/taserhit.ogg'

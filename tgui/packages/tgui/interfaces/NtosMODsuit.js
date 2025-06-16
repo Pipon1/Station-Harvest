@@ -21,8 +21,8 @@ const NtosMODsuitContent = (props, context) => {
   if (!has_suit) {
     return (
       <NoticeBox mt={1} mb={0} danger fontSize="12px">
-        No Modular suit connected, please tap a suit on the application host to
-        sync on
+        Aucune combinaison modulaire connectée.
+        Veuillez en lier une à l'application.
       </NoticeBox>
     );
   } else {

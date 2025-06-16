@@ -11,10 +11,10 @@
  */
 /datum/computer_file/program/portrait_printer
 	filename = "PortraitPrinter"
-	filedesc = "Marlowe Treeby's Art Galaxy"
+	filedesc = "L'art galactique de Marlow Treeby"
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "dummy"
-	extended_desc = "This program connects to a Spinward Sector community art site for viewing and printing art."
+	extended_desc = "Ce programme se connecte à un site d'art communautaire du secteur Spinward pour visualiser et imprimer de l'art."
 	transfer_access = list(ACCESS_LIBRARY)
 	usage_flags = PROGRAM_CONSOLE
 	requires_ntnet = TRUE
@@ -35,7 +35,7 @@
 	var/list/data = list()
 	data["paintings"] = matching_paintings || SSpersistent_paintings.painting_ui_data()
 	data["search_string"] = search_string
-	data["search_mode"] = search_mode == PAINTINGS_FILTER_SEARCH_TITLE ? "Title" : "Author"
+	data["search_mode"] = search_mode == PAINTINGS_FILTER_SEARCH_TITLE ? "Titre" : "Auteur"
 	return data
 
 /datum/computer_file/program/portrait_printer/ui_assets(mob/user)
@@ -65,7 +65,7 @@
 
 /datum/computer_file/program/portrait_printer/proc/print_painting(selected_painting)
 	if(computer.stored_paper < CANVAS_PAPER_COST)
-		to_chat(usr, span_notice("Printing error: Your printer needs at least [CANVAS_PAPER_COST] paper to print a canvas."))
+		to_chat(usr, span_notice("Erreur d'impression: votre imprimante doit avoir en stock au moins [CANVAS_PAPER_COST] feuille de papier pour imprimer."))
 		return
 	computer.stored_paper -= CANVAS_PAPER_COST
 
@@ -90,11 +90,11 @@
 	printed_canvas.generated_icon = art_icon
 	printed_canvas.icon_generated = TRUE
 	printed_canvas.finalized = TRUE
-	printed_canvas.name = "painting - [chosen_portrait.title]"
+	printed_canvas.name = "peinture - [chosen_portrait.title]"
 	///this is a copy of something that is already in the database- it should not be able to be saved.
 	printed_canvas.no_save = TRUE
 	printed_canvas.update_icon()
-	to_chat(usr, span_notice("You have printed [chosen_portrait.title] onto a new canvas."))
+	to_chat(usr, span_notice("vous avez imprimé [chosen_portrait.title] sur une nouvelle feuille."))
 	playsound(computer.physical, 'sound/items/poster_being_created.ogg', 100, TRUE)
 
 #undef CANVAS_PAPER_COST

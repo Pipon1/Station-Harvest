@@ -7,8 +7,8 @@
 	weight = OBJECTIVE_WEIGHT_UNLIKELY
 
 /datum/traitor_objective/target_player/eyesnatching
-	name = "Steal the eyes of %TARGET% the %JOB TITLE%"
-	description = "%TARGET% messed with the wrong people. Steal their eyes to teach them a lesson. You will be provided an experimental eyesnatcher device to aid you in your mission."
+	name = "Volez les yeux de %TARGET% lae %JOB TITLE%"
+	description = "%TARGET% a attiré l'attention de mauvaise personnes. Volez leur yeux pour lui apprendre une leçon, nous vous fournirons un arracheur de yeux experimental pour vous aider dans cette mission."
 
 	progression_minimum = 10 MINUTES
 
@@ -121,7 +121,7 @@
 /datum/traitor_objective/target_player/eyesnatching/generate_ui_buttons(mob/user)
 	var/list/buttons = list()
 	if(!spawned_eyesnatcher)
-		buttons += add_ui_button("", "Pressing this will materialize an eyesnatcher, which can be used on incapacitaded or restrained targets to forcefully remove their eyes.", "syringe", "eyesnatcher")
+		buttons += add_ui_button("", "Appuyez sur ce boutton pour matérialiser un arracheur de yeux. Il peut être utilisé sur quelqu'un d'incapacité ou d'attaché pour leur arracher les yeux de force.", "syringe", "eyesnatcher")
 	return buttons
 
 /datum/traitor_objective/target_player/eyesnatching/ui_perform_action(mob/living/user, action)
@@ -133,11 +133,11 @@
 			spawned_eyesnatcher = TRUE
 			var/obj/item/eyesnatcher/eyesnatcher = new(user.drop_location())
 			user.put_in_hands(eyesnatcher)
-			eyesnatcher.balloon_alert(user, "the snatcher materializes in your hand")
+			eyesnatcher.balloon_alert(user, "L'arracheur se matérialise dans votre main")
 
 /obj/item/eyesnatcher
-	name = "portable eyeball extractor"
-	desc = "An overly complicated device that can pierce target's skull and extract their eyeballs if enough brute force is applied."
+	name = "Extracteur de yeux portable"
+	desc = "Une machine incroyablement compliqué qui perce le crâne de la cible et arraches ses globes occulaires." 
 	icon = 'icons/obj/medical/surgery_tools.dmi'
 	icon_state = "eyesnatcher"
 	base_icon_state = "eyesnatcher"
@@ -167,13 +167,13 @@
 
 	user.do_attack_animation(target, used_item = src)
 	target.visible_message(
-		span_warning("[user] presses [src] against [target]'s skull!"),
-		span_userdanger("[user] presses [src] against your skull!"))
+		span_warning("[user] presse [src] contre le crâne de [target] !"),
+		span_userdanger("[user] presse [src] contre votre crâne !"))
 	if(!do_after(user, 5 SECONDS, target = target, extra_checks = CALLBACK(src, PROC_REF(eyeballs_exist), eyeballies, head, target)))
 		return
 
-	to_chat(target, span_userdanger("You feel something forcing its way into your skull!"))
-	balloon_alert(user, "applying pressure...")
+	to_chat(target, span_userdanger("Vous sentez quelque chose pénetrer votre crâne de force !"))
+	balloon_alert(user, "Vous appliquez de la pression...")
 	if(!do_after(user, 5 SECONDS, target = target, extra_checks = CALLBACK(src, PROC_REF(eyeballs_exist), eyeballies, head, target)))
 		return
 
@@ -181,9 +181,9 @@
 	var/datum/wound/blunt/critical/critical_wound_type = /datum/wound/blunt/critical
 	target.apply_damage(20, BRUTE, BODY_ZONE_HEAD, wound_bonus = rand(initial(severe_wound_type.threshold_minimum), initial(critical_wound_type.threshold_minimum) + 10))
 	target.visible_message(
-		span_danger("[src] pierces through [target]'s skull, horribly mutilating their eyes!"),
-		span_userdanger("Something penetrates your skull, horribly mutilating your eyes! Holy fuck!"),
-		span_hear("You hear a sickening sound of metal piercing flesh!")
+		span_danger("[src] perce le crâne de [target], détruisant ses yeux !"),
+		span_userdanger("Quelque chose pénètre votre crâne, détruisant vos yeux ! Putain de merde !"),
+		span_hear("Vous entendez le son angoissant du métal qui perce la peau...")
 	)
 	eyeballies.apply_organ_damage(eyeballies.maxHealth)
 	target.emote("scream")
@@ -194,13 +194,13 @@
 		return
 
 	if(!target.is_blind())
-		to_chat(target, span_userdanger("You suddenly go blind!"))
+		to_chat(target, span_userdanger("Vous devenez soudainement aveugle !"))
 	if(prob(1))
-		to_chat(target, span_notice("At least you got a new pirate-y look out of it..."))
+		to_chat(target, span_notice("Au moins vous aurez l'air d'un pirate..."))
 		var/obj/item/clothing/glasses/eyepatch/new_patch = new(target.loc)
 		target.equip_to_slot_if_possible(new_patch, ITEM_SLOT_EYES, disable_warning = TRUE)
 
-	to_chat(user, span_notice("You successfully extract [target]'s eyeballs."))
+	to_chat(user, span_notice("Vous avez réussi a arracher les yeux de [target]."))
 	playsound(target, 'sound/surgery/retractor2.ogg', 100, TRUE)
 	playsound(target, 'sound/effects/pop.ogg', 100, TRAIT_MUTE)
 	eyeballies.Remove(target)
@@ -214,7 +214,7 @@
 /obj/item/eyesnatcher/examine(mob/user)
 	. = ..()
 	if(used)
-		. += span_notice("It has been used up.")
+		. += span_notice("Il a déja été utilisé...")
 
 /obj/item/eyesnatcher/proc/eyeballs_exist(obj/item/organ/internal/eyes/eyeballies, obj/item/bodypart/head/head, mob/living/carbon/human/target)
 	if(!eyeballies || QDELETED(eyeballies))

@@ -1,10 +1,10 @@
 /datum/computer_file/program/messenger
 	filename = "nt_messenger"
-	filedesc = "Direct Messenger"
+	filedesc = "Messagerie directe"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "command"
 	program_state = PROGRAM_STATE_BACKGROUND
-	extended_desc = "This program allows old-school communication with other modular devices."
+	extended_desc = "Ce programme permet de s'envoyer des message comme à l'ancienne."
 	size = 0
 	undeletable = TRUE // It comes by default in tablets, can't be downloaded, takes no space and should obviously not be able to be deleted.
 	header_program = TRUE
@@ -54,7 +54,7 @@
 	var/obj/item/photo/pic = attacking_item
 	saved_image = pic.picture
 	ProcessPhoto()
-	user.balloon_alert(user, "photo uploaded")
+	user.balloon_alert(user, "Photo chargée !")
 	return TRUE
 
 /datum/computer_file/program/messenger/proc/ScrubMessengerList()
@@ -107,7 +107,7 @@
 /datum/computer_file/program/messenger/ui_act(action, list/params, datum/tgui/ui)
 	switch(action)
 		if("PDA_ringSet")
-			var/new_ringtone = tgui_input_text(usr, "Enter a new ringtone", "Ringtone", ringtone, MESSENGER_RINGTONE_MAX_LENGTH)
+			var/new_ringtone = tgui_input_text(usr, "Entrer une nouvelle sonnerie", "Ringtone", ringtone, MESSENGER_RINGTONE_MAX_LENGTH)
 			var/mob/living/usr_mob = usr
 			if(!new_ringtone || !in_range(computer, usr_mob) || computer.loc != usr_mob)
 				return
@@ -140,11 +140,11 @@
 
 		if("PDA_sendEveryone")
 			if(!sending_and_receiving)
-				to_chat(usr, span_notice("ERROR: Device has sending disabled."))
+				to_chat(usr, span_notice("ERREUR : L'envoie est désactivé."))
 				return
 
 			if(!spam_mode)
-				to_chat(usr, span_notice("ERROR: Device does not have mass-messaging perms."))
+				to_chat(usr, span_notice("ERREUR : Vous ne pouvez pas envoyer de message de masse."))
 				return
 
 			var/list/targets = list()
@@ -159,7 +159,7 @@
 
 		if("PDA_sendMessage")
 			if(!sending_and_receiving)
-				to_chat(usr, span_notice("ERROR: Device has sending disabled."))
+				to_chat(usr, span_notice("ERREUR : L'envoie est désactivé."))
 				return
 
 			var/obj/item/modular_computer/target = locate(params["ref"])
@@ -167,12 +167,12 @@
 				return // we don't want tommy sending his messages to nullspace
 
 			if(!(target.saved_identification == params["name"] && target.saved_job == params["job"]))
-				to_chat(usr, span_notice("ERROR: User no longer exists."))
+				to_chat(usr, span_notice("ERREUR : L'utilisateur n'existe plus."))
 				return
 
 			for(var/datum/computer_file/program/messenger/app in computer.stored_files)
 				if(!app.sending_and_receiving && !sending_virus)
-					to_chat(usr, span_notice("ERROR: Device has receiving disabled."))
+					to_chat(usr, span_notice("ERREUR: Le recevage est désactivé."))
 					return
 
 				if(sending_virus)
@@ -238,9 +238,9 @@
 /datum/computer_file/program/messenger/proc/msg_input(mob/living/user, target_name, rigged = FALSE)
 	var/input_message
 	if(mime_mode)
-		input_message = emoji_sanitize(tgui_input_text(user, "Enter emojis", "NT Messaging[target_name ? " ([target_name])" : ""]"))
+		input_message = emoji_sanitize(tgui_input_text(user, "Entrer les emojis", "NT Messaging[target_name ? " ([target_name])" : ""]"))
 	else
-		input_message = tgui_input_text(user, "Enter a message", "NT Messaging[target_name ? " ([target_name])" : ""]")
+		input_message = tgui_input_text(user, "Entrer un message", "NT Messaging[target_name ? " ([target_name])" : ""]")
 
 	if (!input_message || !sending_and_receiving)
 		return
@@ -259,7 +259,7 @@
 		return FALSE
 
 	if((last_text && world.time < last_text + 10) || (everyone && last_text_everyone && world.time < last_text_everyone + 2 MINUTES))
-		to_chat(user, span_warning("The subspace transmitter of your tablet is still cooling down!"))
+		to_chat(user, span_warning("Le transmetteur à sous espace doit encore refroidir !"))
 		return FALSE
 
 	var/turf/position = get_turf(computer)
@@ -275,7 +275,7 @@
 
 	var/list/soft_filter_result = CAN_BYPASS_FILTER(user) ? null : is_soft_ic_filtered_for_pdas(message)
 	if (soft_filter_result)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to send it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"Votre message contient : \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Êtes vous sûr de vouloir l'envoyer ?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			return FALSE
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term in PDA messages. Message: \"[html_encode(message)]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term in PDA messages. Message: \"[message]\"")
@@ -293,7 +293,7 @@
 		var/mob/living/carbon/human/old_person = user
 		sent_prob = old_person.age >= 30 ? 25 : sent_prob
 	if (prob(sent_prob))
-		message += " Sent from my PDA"
+		message += " envoyé de mon PDA"
 
 	var/datum/signal/subspace/messaging/tablet_msg/signal = new(computer, list(
 		"name" = fake_name || computer.saved_identification,
@@ -315,7 +315,7 @@
 
 	// If it didn't reach, note that fact
 	if (!signal.data["done"])
-		to_chat(user, span_notice("ERROR: Server isn't responding."))
+		to_chat(user, span_notice("ERREUR :  Le serveur ne répond pas."))
 		if(ringer_status)
 			playsound(src, 'sound/machines/terminal_error.ogg', 15, TRUE)
 		return FALSE
@@ -399,7 +399,7 @@
 
 		if(L.is_literate())
 			var/photo_message = message_data["photo"] ? " (<a href='byond://?src=[REF(signal.logged)];photo=1'>Photo</a>)" : ""
-			to_chat(L, span_infoplain("[icon2html(computer)] <b>PDA message from [hrefstart][signal.data["name"]] ([signal.data["job"]])[hrefend], </b>[inbound_message][photo_message] [reply]"))
+			to_chat(L, span_infoplain("[icon2html(computer)] <b>Message provenant d'un PDA venant de [hrefstart][signal.data["name"]] ([signal.data["job"]])[hrefend], </b>[inbound_message][photo_message] [reply]"))
 
 	if (ringer_status)
 		computer.ring(ringtone)

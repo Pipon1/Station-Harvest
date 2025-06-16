@@ -1,7 +1,7 @@
 #define BATON_BASH_COOLDOWN (3 SECONDS)
 
 /obj/item/shield
-	name = "shield"
+	name = "bouclier"
 	icon = 'icons/obj/weapons/shields.dmi'
 	lefthand_file = 'icons/mob/inhands/equipment/shields_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/shields_righthand.dmi'
@@ -12,8 +12,8 @@
 	throw_speed = 2
 	throw_range = 3
 	w_class = WEIGHT_CLASS_BULKY
-	attack_verb_continuous = list("shoves", "bashes")
-	attack_verb_simple = list("shove", "bash")
+	attack_verb_continuous = list("pousse", "frappe")
+	attack_verb_simple = list("pousser", "frapper")
 	armor_type = /datum/armor/item_shield
 	/// makes beam projectiles pass through the shield
 	var/transparent = FALSE
@@ -34,7 +34,7 @@
 	fire = 80
 	acid = 70
 
-/obj/item/shield/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+/obj/item/shield/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "l'attaque", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(transparent && (hitby.pass_flags & PASSGLASS))
 		return FALSE
 	if(attack_type == THROWN_PROJECTILE_ATTACK)
@@ -50,22 +50,22 @@
 	var/healthpercent = round((atom_integrity/max_integrity) * 100, 1)
 	switch(healthpercent)
 		if(50 to 99)
-			. += span_info("It looks slightly damaged.")
+			. += span_info("Il à l'air légèrement endommagé.")
 		if(25 to 50)
-			. += span_info("It appears heavily damaged.")
+			. += span_info("Il a l'air fortement endommagé.")
 		if(0 to 25)
-			. += span_warning("It's falling apart!")
+			. += span_warning("Il est en train de tomber en morceaux !")
 
 /obj/item/shield/proc/shatter(mob/living/carbon/human/owner)
 	playsound(owner, shield_break_sound, 50)
 	new shield_break_leftover(get_turf(src))
 
-/obj/item/shield/proc/on_shield_block(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", damage = 0, attack_type = MELEE_ATTACK)
+/obj/item/shield/proc/on_shield_block(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "l'attaque", damage = 0, attack_type = MELEE_ATTACK)
 	if(!breakable_by_damage)
 		return TRUE
 	if (atom_integrity <= damage)
 		var/turf/owner_turf = get_turf(owner)
-		owner_turf.visible_message(span_warning("[hitby] destroys [src]!"))
+		owner_turf.visible_message(span_warning("[hitby] détruit le [src] !"))
 		shatter(owner)
 		qdel(src)
 		return FALSE
@@ -73,8 +73,8 @@
 	return TRUE
 
 /obj/item/shield/buckler
-	name = "wooden buckler"
-	desc = "A medieval wooden buckler."
+	name = "petit bouclier en bois"
+	desc = "Un petit bouclier en bois médiéval."
 	icon_state = "buckler"
 	inhand_icon_state = "buckler"
 	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 10)
@@ -84,8 +84,8 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/shield/roman
-	name = "\improper Roman shield"
-	desc = "Bears an inscription on the inside: <i>\"Romanes venio domus\"</i>."
+	name = "\improper bouclier Romain"
+	desc = "Il porte une inscription à l'intérieur : <i>\"Romanes venio domus\"</i>."
 	icon_state = "roman_shield"
 	inhand_icon_state = "roman_shield"
 	custom_materials = list(/datum/material/iron=8500)
@@ -94,14 +94,14 @@
 	shield_break_leftover = /obj/item/stack/sheet/iron
 
 /obj/item/shield/roman/fake
-	desc = "Bears an inscription on the inside: <i>\"Romanes venio domus\"</i>. It appears to be a bit flimsy."
+	desc = "Il porte une inscription à l'intérieur : <i>\"Romanes venio domus\"</i>. Il semble un peu fragile."
 	block_chance = 0
 	armor_type = /datum/armor/none
 	max_integrity = 30
 
 /obj/item/shield/riot
-	name = "riot shield"
-	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
+	name = "bouclier anti-émeute"
+	desc = "Un bouclier efficace pour bloquer les objets contondants qui vise le torse."
 	icon_state = "riot"
 	inhand_icon_state = "riot"
 	custom_materials = list(/datum/material/glass=7500, /datum/material/iron=1000)
@@ -114,24 +114,24 @@
 	if(istype(attackby_item, /obj/item/melee/baton))
 		if(!COOLDOWN_FINISHED(src, baton_bash))
 			return
-		user.visible_message(span_warning("[user] bashes [src] with [attackby_item]!"))
+		user.visible_message(span_warning("[user] frappe [src] avec [attackby_item] !"))
 		playsound(user.loc, 'sound/effects/shieldbash.ogg', 50, TRUE)
 		COOLDOWN_START(src, baton_bash, BATON_BASH_COOLDOWN)
 		return
 	if(istype(attackby_item, /obj/item/stack/sheet/mineral/titanium))
 		if (atom_integrity >= max_integrity)
-			to_chat(user, span_warning("[src] is already in perfect condition."))
+			to_chat(user, span_warning("[src] est deja en condition parfaite."))
 			return
 		var/obj/item/stack/sheet/mineral/titanium/titanium_sheet = attackby_item
 		titanium_sheet.use(1)
 		atom_integrity = max_integrity
-		to_chat(user, span_notice("You repair [src] with [titanium_sheet]."))
+		to_chat(user, span_notice("Vous réparez le [src] avec [titanium_sheet]."))
 		return
 	return ..()
 
 /obj/item/shield/riot/flash
-	name = "strobe shield"
-	desc = "A shield with a built in, high intensity light capable of blinding and disorienting suspects. Takes regular handheld flashes as bulbs."
+	name = "bouclier stroboscopique"
+	desc = "Un bouclier avec une lumière intégrée de haute intensité capable d'éblouir et de désorienter les suspects. Prend des flashs portatifs réguliers comme ampoules."
 	icon_state = "flashshield"
 	inhand_icon_state = "flashshield"
 	var/obj/item/assembly/flash/handheld/embedded_flash = /obj/item/assembly/flash/handheld
@@ -173,7 +173,7 @@
 /obj/item/shield/riot/flash/attack_self(mob/living/carbon/user)
 	flash_away(user)
 
-/obj/item/shield/riot/flash/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+/obj/item/shield/riot/flash/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "l'attaque", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	. = ..()
 	if(.)
 		flash_away(owner)
@@ -194,10 +194,10 @@
 	if(istype(attackby_item, /obj/item/assembly/flash/handheld))
 		var/obj/item/assembly/flash/handheld/flash = attackby_item
 		if(flash.burnt_out)
-			to_chat(user, span_warning("No sense replacing it with a broken bulb!"))
+			to_chat(user, span_warning("ça ne fait pas de sens de la remplacer par une ampoule cassée !"))
 			return
 		else
-			to_chat(user, span_notice("You begin to replace the bulb..."))
+			to_chat(user, span_notice("Vous commencez à remplacer l'ampoule..."))
 			if(do_after(user, 20, target = user))
 				if(QDELETED(flash) || flash.burnt_out)
 					return
@@ -227,11 +227,11 @@
 /obj/item/shield/riot/flash/examine(mob/user)
 	. = ..()
 	if (embedded_flash?.burnt_out)
-		. += span_info("The mounted bulb has burnt out. You can try replacing it with a new <b>flash</b>.")
+		. += span_info("La lampe est grillée. Vous pouvez essayer de la remplacer avec une nouvelle <b>lampe</b>.")
 
 /obj/item/shield/energy
-	name = "energy combat shield"
-	desc = "A shield that reflects almost all energy projectiles, but is useless against physical attacks. It can be retracted, expanded, and stored anywhere."
+	name = "bouclier énergétique"
+	desc = "Un bouclier qui réfléchit presque tous les projectiles d'énergie, mais est inutile contre les attaques physiques. Il peut être rétracté, étendu et stocké n'importe où."
 	icon_state = "eshield"
 	inhand_icon_state = "eshield"
 	w_class = WEIGHT_CLASS_TINY
@@ -263,7 +263,7 @@
 		clumsy_check = !can_clumsy_use)
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
-/obj/item/shield/energy/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+/obj/item/shield/energy/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "l'attaque", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	return FALSE
 
 /obj/item/shield/energy/IsReflect()
@@ -277,13 +277,13 @@
 
 	enabled = active
 
-	balloon_alert(user, "[active ? "activated":"deactivated"]")
+	balloon_alert(user, "[active ? "activé":"desactivé"]")
 	playsound(user ? user : src, active ? 'sound/weapons/saberon.ogg' : 'sound/weapons/saberoff.ogg', 35, TRUE)
 	return COMPONENT_NO_DEFAULT_MESSAGE
 
 /obj/item/shield/riot/tele
-	name = "telescopic shield"
-	desc = "An advanced riot shield made of lightweight materials that collapses for easy storage."
+	name = "bouclier télescopique"
+	desc = "Un bouclier anti-émeute avancé fabriqué à partir de matériaux légers qui se replie pour un rangement facile."
 	icon_state = "teleriot"
 	inhand_icon_state = "teleriot"
 	worn_icon_state = "teleriot"
@@ -305,11 +305,11 @@
 		throw_speed_on = 2, \
 		hitsound_on = hitsound, \
 		w_class_on = WEIGHT_CLASS_BULKY, \
-		attack_verb_continuous_on = list("smacks", "strikes", "cracks", "beats"), \
-		attack_verb_simple_on = list("smack", "strike", "crack", "beat"))
+		attack_verb_continuous_on = list("tappe", "frappe", "craque", "tabasse"), \
+		attack_verb_simple_on = list("tapper", "frapper", "craquer", "tabasser"))
 	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, PROC_REF(on_transform))
 
-/obj/item/shield/riot/tele/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+/obj/item/shield/riot/tele/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "l'attaque", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(extended)
 		return ..()
 	return FALSE
@@ -325,7 +325,7 @@
 	extended = active
 	slot_flags = active ? ITEM_SLOT_BACK : null
 	playsound(user ? user : src, 'sound/weapons/batonextend.ogg', 50, TRUE)
-	balloon_alert(user, "[active ? "extended" : "collapsed"]")
+	balloon_alert(user, "[active ? "étendu" : "rangé"]")
 	return COMPONENT_NO_DEFAULT_MESSAGE
 
 #undef BATON_BASH_COOLDOWN

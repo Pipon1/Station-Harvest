@@ -1,10 +1,10 @@
 /datum/computer_file/program/newscaster
 	filename = "newscasterapp"
-	filedesc = "Newscaster"
+	filedesc = "Nouvelles de la station"
 	transfer_access = list(ACCESS_LIBRARY)
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "bountyboard"
-	extended_desc = "This program allows any user to access the Newscaster network from anywhere."
+	extended_desc = "Ce programme permet à n'importe quel utilisateur d'accéder au réseau de nouvelles de n'importe où."
 	size = 2
 	requires_ntnet = TRUE
 	available_on_ntnet = TRUE

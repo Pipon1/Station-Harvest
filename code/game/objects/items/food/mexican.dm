@@ -1,6 +1,6 @@
 /obj/item/food/tortilla
 	name = "tortilla"
-	desc = "The base for all your burritos."
+	desc = "La base de tous vos burritos."
 	icon = 'icons/obj/food/food_ingredients.dmi'
 	icon_state = "tortilla"
 	food_reagents = list(
@@ -16,7 +16,7 @@
 
 /obj/item/food/burrito
 	name = "burrito"
-	desc = "Tortilla wrapped goodness."
+	desc = "Une tortilla pleine de bonnes choses."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "burrito"
 	food_reagents = list(
@@ -24,14 +24,14 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("torilla" = 2, "beans" = 3)
+	tastes = list("de tortilla" = 2, "de haricot" = 3)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_NORMAL
 
 /obj/item/food/cheesyburrito
-	name = "cheesy burrito"
-	desc = "It's a burrito filled with cheese."
+	name = "burrito au fromage"
+	desc = "Un burrito avec du fromage."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "cheesyburrito"
 	food_reagents = list(
@@ -39,14 +39,14 @@
 		/datum/reagent/consumable/nutriment/protein = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("torilla" = 2, "beans" = 3, "cheese" = 1)
+	tastes = list("de tortilla" = 2, "de haricots" = 3, "de fromage" = 1)
 	foodtypes = GRAIN | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_EXOTIC
 
 /obj/item/food/carneburrito
 	name = "carne asada burrito"
-	desc = "The best burrito for meat lovers."
+	desc = "Le burrito préféré de ceux qui aiment la viande."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "carneburrito"
 	food_reagents = list(
@@ -54,14 +54,14 @@
 		/datum/reagent/consumable/nutriment/protein = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("torilla" = 2, "meat" = 4)
+	tastes = list("de tortilla" = 2, "de viande" = 4)
 	foodtypes = GRAIN | MEAT
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_EXOTIC
 
 /obj/item/food/fuegoburrito
 	name = "fuego plasma burrito"
-	desc = "A super spicy burrito."
+	desc = "Un burrito super épicé"
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "fuegoburrito"
 	food_reagents = list(
@@ -70,28 +70,28 @@
 		/datum/reagent/consumable/capsaicin = 5,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("torilla" = 2, "beans" = 3, "hot peppers" = 1)
+	tastes = list("de tortilla" = 2, "de haricots" = 3, "de piment" = 1)
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_LEGENDARY
 
 /obj/item/food/nachos
 	name = "nachos"
-	desc = "Chips from Space Mexico."
+	desc = "Des chips du Néo-Mexique."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "nachos"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("nachos" = 1)
+	tastes = list("de nachos" = 1)
 	foodtypes = GRAIN | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
 
 /obj/item/food/cheesynachos
-	name = "cheesy nachos"
-	desc = "The delicious combination of nachos and melting cheese."
+	name = "nachos au fromage"
+	desc = "Une délicieuse combinaison de nachos et de fromage fondu."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "cheesynachos"
 	food_reagents = list(
@@ -99,14 +99,14 @@
 		/datum/reagent/consumable/nutriment/protein = 1,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("nachos" = 2, "cheese" = 1)
+	tastes = list("de nachos" = 2, "de fromage" = 1)
 	foodtypes = GRAIN | FRIED | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_EXOTIC
 
 /obj/item/food/cubannachos
-	name = "Cuban nachos"
-	desc = "That's some dangerously spicy nachos."
+	name = "nachos cubain"
+	desc = "Des nachos dangereusement épicés."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "cubannachos"
 	food_reagents = list(
@@ -114,13 +114,13 @@
 		/datum/reagent/consumable/capsaicin = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("nachos" = 2, "hot pepper" = 1)
+	tastes = list("de nachos" = 2, "de piment" = 1)
 	foodtypes = VEGETABLES | FRIED | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/taco
-	name = "classic taco"
-	desc = "A traditional taco with meat, cheese, and lettuce."
+	name = "taco classique"
+	desc = "Un taco traditionnel, avec de la viande, du fromage et de la salade."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "taco"
 	food_reagents = list(
@@ -128,34 +128,34 @@
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("taco" = 4, "meat" = 2, "cheese" = 2, "lettuce" = 1)
+	tastes = list("de taco" = 4, "de viande" = 2, "de fromage" = 2, "de salade" = 1)
 	foodtypes = MEAT | DAIRY | GRAIN | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_NORMAL
 
 /obj/item/food/taco/plain
-	name = "plain taco"
-	desc = "A traditional taco with meat and cheese, minus the rabbit food."
+	name = "taco simple"
+	desc = "Un taco traditionnel avec de la viande et du fromage, mais sans crudités."
 	icon_state = "taco_plain"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
-	tastes = list("taco" = 4, "meat" = 2, "cheese" = 2)
+	tastes = list("de taco" = 4, "de viande" = 2, "de fromage" = 2)
 	foodtypes = MEAT | DAIRY | GRAIN
 	venue_value = FOOD_PRICE_CHEAP
 
 /obj/item/food/taco/fish
-	name = "fish taco"
-	desc = "A taco with fish, cheese, and cabbage."
+	name = "taco au poisson"
+	desc = "Un taco avec du poisson, du fromage et du chou."
 	icon_state = "fishtaco"
-	tastes = list("taco" = 4, "fish" = 2, "cheese" = 2, "cabbage" = 1)
+	tastes = list("de taco" = 4, "de poisson" = 2, "de fromage" = 2, "de chou" = 1)
 	foodtypes = SEAFOOD | DAIRY | GRAIN | VEGETABLES
 
 /obj/item/food/enchiladas
 	name = "enchiladas"
-	desc = "Viva La Mexico!"
+	desc = "¡ Viva La Mexico !"
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "enchiladas"
 	bite_consumption = 4
@@ -165,13 +165,13 @@
 		/datum/reagent/consumable/capsaicin = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("hot peppers" = 1, "meat" = 3, "cheese" = 1, "sour cream" = 1)
+	tastes = list("de piment" = 1, "de viande" = 3, "de fromage" = 1, "de crème sure" = 1)
 	foodtypes = MEAT | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/stuffedlegion
-	name = "stuffed legion"
-	desc = "The former skull of a damned human, filled with goliath meat. It has a decorative lava pool made of ketchup and hotsauce."
+	name = "legion farcie"
+	desc = "L'ex-crane d'un humain damné, farci de viande de goliath. Accompagné de sa fondaine de lave décorative, faite avec du ketchup et de la sauce piquante."
 	icon_state = "stuffed_legion"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
@@ -179,14 +179,14 @@
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 		/datum/reagent/consumable/capsaicin = 2,
 	)
-	tastes = list("death" = 2, "rock" = 1, "meat" = 1, "hot peppers" = 1)
+	tastes = list("de la mort" = 2, "de cailloux" = 1, "de viande" = 1, "de piment" = 1)
 	foodtypes = MEAT
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_LEGENDARY
 
 /obj/item/food/chipsandsalsa
-	name = "chips and salsa"
-	desc = "Some tortilla chips with a cup of zesty salsa. Highly addictive!"
+	name = "chips et sauce"
+	desc = "Des chips de tortilla avec une coupelle de sauce piquante. Extrêmement addictif !"
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "chipsandsalsa"
 	food_reagents = list(
@@ -194,13 +194,13 @@
 		/datum/reagent/consumable/capsaicin = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
-	tastes = list("peppers" = 1, "salsa" = 3, "tortilla chips" = 1, "onion" = 1)
+	tastes = list("de poivre" = 1, "de sauce" = 3, "de chips de tortilla" = 1, "d'oignon" = 1)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/classic_chimichanga
-	name = "classic chimichanga"
-	desc = "A deep-fried burrito packed with a generous amount of meat and cheese."
+	name = "chimichanga classique"
+	desc = "Un burrito fri, généreusement farci de viande et de fromage."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "classic_chimichanga"
 	food_reagents = list(
@@ -208,30 +208,30 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 		/datum/reagent/consumable/nutriment/protein = 6,
 	)
-	tastes = list("deep-fried tortilla" = 1, "meat" = 3, "cheese" = 1, "onions" = 1)
+	tastes = list("de tortilla frie" = 1, "de viande" = 3, "de fromage" = 1, "d'oignon" = 1)
 	foodtypes = MEAT | GRAIN | VEGETABLES | DAIRY | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/vegetarian_chimichanga
-	name = "vegetarian chimichanga"
-	desc = "A deep-fried burrito packed with a generous amount of baked vegetables, for the non-meat eaters."
+	name = "chimichanga végétarien"
+	desc = "Un burrito frit, généreusement farci de légumes rôtis, pour les végétariens."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "vegetarian_chimichanga"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 8,
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 	)
-	tastes = list("deep-fried tortilla" = 1, "cabbage" = 3, "onions" = 1, "peppers" = 1)
+	tastes = list("de tortilla frie" = 1, "de chou" = 3, "d'oignon" = 1, "de poivre" = 1)
 	foodtypes = GRAIN | VEGETABLES | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/hard_taco_shell
-	name = "hard taco shell"
-	desc = "A hard taco shell, just waiting to be stuffed with ingredients. Use an ingredient on it to start making custom tacos!"
+	name = "coquille de taco"
+	desc = "Une coquille de taco, qui n'attend que d'être remplie d'ingrédients. Utilisez un ingrédient dessus pour commencer à faire des tacos personnalisés !"
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "hard_taco_shell"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	tastes = list("hard corn tortilla" = 1)
+	tastes = list("de croquille de taco" = 1)
 	foodtypes = GRAIN | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	burns_on_grill = TRUE
@@ -242,15 +242,15 @@
 
 // empty taco shell for custom tacos
 /obj/item/food/hard_taco_shell/empty
-	name = "hard-shell taco"
+	name = "coquille de taco"
 	foodtypes = NONE
 	tastes = list()
 	icon_state = "hard_taco_shell"
-	desc = "A customized hard-shell taco."
+	desc = "Une coquille de taco vide."
 
 /obj/item/food/classic_hard_shell_taco
-	name = "classic hard-shell taco"
-	desc = "A classically-made hard-shell taco, the most satisfying crunch in the galaxy."
+	name = "taco à coque dure classique"
+	desc = "Un taco dur classique, la bouchée la plus satisfaisante de la galaxie."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "classic_hard_shell_taco"
 	food_reagents = list(
@@ -258,13 +258,13 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/nutriment/protein = 6,
 	)
-	tastes = list("crunchy taco shell" = 1, "cabbage" = 3, "tomatoes" = 1, "ground meat" = 1, "cheese" = 1)
+	tastes = list("de taco croustillant" = 1, "de chou" = 3, "de tomate" = 1, "de viande hachée" = 1, "de fromage" = 1)
 	foodtypes = GRAIN | VEGETABLES | MEAT | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/plain_hard_shell_taco
-	name = "plain hard-shell taco"
-	desc = "A hard-shell taco with just meat, for the picky eaters and children in us all."
+	name = "taco à coque dure simple"
+	desc = "Un taco dur avec de la viande, pour les enfants et les difficiles parmi nous."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "plain_hard_shell_taco"
 	food_reagents = list(
@@ -272,13 +272,13 @@
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 		/datum/reagent/consumable/nutriment/protein = 6,
 	)
-	tastes = list("crunchy taco shell" = 1, "ground meat" = 1)
+	tastes = list("de taco croustillant" = 1, "de viande hachée" = 1)
 	foodtypes = GRAIN | MEAT
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/refried_beans
-	name = "refried beans"
-	desc = "A steaming bowl of delicious refried beans, a common staple in Mexican cuisine."
+	name = "haricots frits"
+	desc = "Un bol fumant de délicieux haricots frits, un élément essentiel de la cuisine Mexicaine."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "refried_beans"
 	food_reagents = list(
@@ -286,19 +286,19 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 		/datum/reagent/consumable/nutriment/protein = 4,
 	)
-	tastes = list("mashed beans" = 1, "onion" = 3,)
+	tastes = list("d'haricots écrasés" = 1, "d'oignon" = 3,)
 	foodtypes = VEGETABLES | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/spanish_rice
-	name = "spanish rice"
-	desc = "A bowl of delicious spanish rice, cooked in a tomato sauce which gives it the orange color."
+	name = "riz à la tomate"
+	desc = "Une délicieux bol de riz à la tomate. Sa couleur orange vient de la sauce tomate."
 	icon = 'icons/obj/food/mexican.dmi'
 	icon_state = "spanish_rice"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
-	tastes = list("zesty rice" = 1, "tomato sauce" = 3,)
+	tastes = list("de riz piquant" = 1, "de sauce tomate" = 3,)
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL

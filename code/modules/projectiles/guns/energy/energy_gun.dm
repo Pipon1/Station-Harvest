@@ -1,6 +1,6 @@
 /obj/item/gun/energy/e_gun
-	name = "energy gun"
-	desc = "A basic hybrid energy gun with two settings: disable and kill."
+	name = "fusil à énergie"
+	desc = "Un fusil à énergie hybride avec deux réglages : paralyser et tuer."
 	icon_state = "energy"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = null //so the human update icon uses the icon_state instead.
@@ -17,8 +17,8 @@
 		overlay_y = 10)
 
 /obj/item/gun/energy/e_gun/mini
-	name = "miniature energy gun"
-	desc = "A small, pistol-sized energy gun with a built-in flashlight. It has two settings: disable and kill."
+	name = "petit fusil à énergie"
+	desc = "un petit fusil à énergie, il a environ la taille d'un pistolet et il a une lampe de poche intégré. Il possède deux réglages : paralyser et tuer."
 	icon_state = "mini"
 	inhand_icon_state = "gun"
 	w_class = WEIGHT_CLASS_SMALL
@@ -38,22 +38,22 @@
 		overlay_y = 13)
 
 /obj/item/gun/energy/e_gun/stun
-	name = "tactical energy gun"
-	desc = "Military issue energy gun, is able to fire stun rounds."
+	name = "fusil à énergie tactique"
+	desc = "Un fusil à énergie militaire, capable de tirer des balles paralysantes."
 	icon_state = "energytac"
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/spec, /obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser)
 
 /obj/item/gun/energy/e_gun/old
-	name = "prototype energy gun"
-	desc = "NT-P:01 Prototype Energy Gun. Early stage development of a unique laser rifle that has multifaceted energy lens allowing the gun to alter the form of projectile it fires on command."
+	name = "prototype de fusil à énergie"
+	desc = "Le prototype NT-P:01 est un fusil à énergie unique en son genre, il est capable de modifier la forme du projectile qu'il tire."
 	icon_state = "protolaser"
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/laser, /obj/item/ammo_casing/energy/electrode/old)
 
 /obj/item/gun/energy/e_gun/mini/practice_phaser
-	name = "practice phaser"
-	desc = "A modified version of the basic phaser gun, this one fires less concentrated energy bolts designed for target practice."
+	name = "phaseur d'entraînement"
+	desc = "Une version modifiée du phaseur de base, celui-ci tire des rayons d'énergie moins concentrés conçus pour l'entraînement."
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser/practice)
 	icon_state = "decloner"
 	//You have no icons for energy types, you're a decloner
@@ -61,8 +61,8 @@
 	gun_flags = NOT_A_REAL_GUN
 
 /obj/item/gun/energy/e_gun/hos
-	name = "\improper X-01 MultiPhase Energy Gun"
-	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
+	name = "\improper Fusil à énergie X-01 MultiPhase"
+	desc = "Une réplique moderne et coûteuse d'un antique fusil à énergie. Ce fusil possède plusieurs modes de tir uniques, mais il ne peut pas se recharger sans l'aide d'une source extérieur."
 	cell_type = /obj/item/stock_parts/cell/hos_gun
 	icon_state = "hoslaser"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -73,8 +73,8 @@
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 
 /obj/item/gun/energy/e_gun/dragnet
-	name = "\improper DRAGnet"
-	desc = "The \"Dynamic Rapid-Apprehension of the Guilty\" net is a revolution in law enforcement technology."
+	name = "\improper RALENTITfilet"
+	desc = "Un filet énergétique qui ralentit les cibles ou téléporte les cibles."
 	icon_state = "dragnet"
 	inhand_icon_state = "dragnet"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
@@ -88,13 +88,13 @@
 	return
 
 /obj/item/gun/energy/e_gun/dragnet/snare
-	name = "Energy Snare Launcher"
-	desc = "Fires an energy snare that slows the target down."
+	name = "Lanceur de bolas énergétiques"
+	desc = "Lance un bola énergétique qui ralentit la cible."
 	ammo_type = list(/obj/item/ammo_casing/energy/trap)
 
 /obj/item/gun/energy/e_gun/turret
-	name = "hybrid turret gun"
-	desc = "A heavy hybrid energy cannon with two settings: Stun and kill."
+	name = "tourelle hybride"
+	desc = "Un canon hybride lourd avec deux réglages : paralyser et tuer."
 	icon_state = "turretlaser"
 	inhand_icon_state = "turretlaser"
 	slot_flags = null
@@ -108,8 +108,8 @@
 	return
 
 /obj/item/gun/energy/e_gun/nuclear
-	name = "advanced energy gun"
-	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell."
+	name = "fusil à énergie avancé"
+	desc = "Un fusil à énergie avec un réacteur nucléaire miniaturisé expérimental qui charge automatiquement la cellule d'énergie interne."
 	icon_state = "nucgun"
 	inhand_icon_state = "nucgun"
 	charge_delay = 10
@@ -138,12 +138,12 @@
 			if(0 to 200)
 				fail_tick += (2*(fail_chance))
 				M.adjustFireLoss(3)
-				to_chat(M, span_userdanger("Your [name] feels warmer."))
+				to_chat(M, span_userdanger("Votre [name] semble plus chaud."))
 			if(201 to INFINITY)
 				SSobj.processing.Remove(src)
 				M.adjustFireLoss(10)
 				reactor_overloaded = TRUE
-				to_chat(M, span_userdanger("Your [name]'s reactor overloads!"))
+				to_chat(M, span_userdanger("Le réacteur de votre [name] est surchargé !"))
 
 /obj/item/gun/energy/e_gun/nuclear/emp_act(severity)
 	. = ..()

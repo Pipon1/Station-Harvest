@@ -1,8 +1,8 @@
 /datum/computer_file/program/scipaper_program
 	filename = "ntfrontier"
-	filedesc = "NT Frontier"
+	filedesc = "Science sans frontières"
 	category = PROGRAM_CATEGORY_SCI
-	extended_desc = "Scientific paper publication and navigation software."
+	extended_desc = "Logiciel de publication et de navigation de documents scientifiques."
 	requires_ntnet = TRUE
 	size = 12
 	program_icon_state = "research"
@@ -218,7 +218,7 @@
 			var/datum/techweb_node/node = SSresearch.techweb_node_by_id(params["purchased_boost"])
 			if(partner && node)
 				if(partner.purchase_boost(linked_techweb, node))
-					computer.say("Purchase succesful.")
+					computer.say("Acheté avec succès.")
 					playsound(computer, 'sound/machines/ping.ogg', 25)
 					return TRUE
 			playsound(computer, 'sound/machines/terminal_error.ogg', 25)

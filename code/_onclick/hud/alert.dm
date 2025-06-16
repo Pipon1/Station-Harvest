@@ -128,117 +128,117 @@
 // * /mob/living/simple_animal/handle_environment()
 
 /atom/movable/screen/alert/not_enough_oxy
-	name = "Choking (No O2)"
-	desc = "You're not getting enough oxygen. Find some good air before you pass out! The box in your backpack has an oxygen tank and breath mask in it."
+	name = "Suffocation (pas d'O2)"
+	desc = "Vous ne respirez pas assez d'oxygène ! Trouvez de l'air convenable avant de vous évanouir ! La boite d'urgence dans votre sac à dos à un masque et une bouteille d'oxygène."
 	icon_state = ALERT_NOT_ENOUGH_OXYGEN
 
 /atom/movable/screen/alert/too_much_oxy
-	name = "Choking (O2)"
-	desc = "There's too much oxygen in the air, and you're breathing it in! Find some good air before you pass out!"
+	name = "Suffocation (trop d'O2)"
+	desc = "Il y a trop d'oxygène dans l'air que vous respirez ! Trouvez de l'air convenable avant de vous évanouir ! La boite d'urgence dans votre sac à dos à un masque et une bouteille d'oxygène."
 	icon_state = ALERT_TOO_MUCH_OXYGEN
 
 /atom/movable/screen/alert/not_enough_nitro
-	name = "Choking (No N2)"
-	desc = "You're not getting enough nitrogen. Find some good air before you pass out!"
+	name = "Suffocation (Pas de N2)"
+	desc = "Vous ne respirez pas assez de nitrogène ! Trouvez de l'air convenable avant de vous évanouir ! La boite d'urgence dans votre sac à dos à un masque et une bouteille d'oxygène"
 	icon_state = ALERT_NOT_ENOUGH_NITRO
 
 /atom/movable/screen/alert/too_much_nitro
-	name = "Choking (N2)"
-	desc = "There's too much nitrogen in the air, and you're breathing it in! Find some good air before you pass out!"
+	name = "Suffocation (trop de N2)"
+	desc = "Il y a trop de nitrogène dans l'air que vous respirez ! Trouvez de l'air convenable avant de vous évanouir ! La boite d'urgence dans votre sac à dos à un masque et une bouteille d'oxygène."
 	icon_state = ALERT_TOO_MUCH_NITRO
 
 /atom/movable/screen/alert/not_enough_co2
-	name = "Choking (No CO2)"
-	desc = "You're not getting enough carbon dioxide. Find some good air before you pass out!"
+	name = "Suffocation (Pas de CO2)"
+	desc = "Vous ne respirez pas assez de dioxyde de carbone ! Trouvez de l'air convenable avant de vous évanouir !"
 	icon_state = ALERT_NOT_ENOUGH_CO2
 
 /atom/movable/screen/alert/too_much_co2
-	name = "Choking (CO2)"
-	desc = "There's too much carbon dioxide in the air, and you're breathing it in! Find some good air before you pass out!"
+	name = "Suffocation (trop de CO2)"
+	desc = "Il y a trop de dioxyde de carbone dans l'air que vous respirez ! Trouvez de l'air convenable avant de vous évanouir !"
 	icon_state = ALERT_TOO_MUCH_CO2
 
 /atom/movable/screen/alert/not_enough_plas
-	name = "Choking (No Plasma)"
-	desc = "You're not getting enough plasma. Find some good air before you pass out! The box in your backpack has a spare plasma tank."
+	name = "Suffocation (Pas de plasma)"
+	desc = "Vous ne respirez pas assez de plasma ! Trouvez de l'air convenable avant de vous évanouir ! Il y a une bouteille supplémentaire dans votre sac à dos."
 	icon_state = ALERT_NOT_ENOUGH_PLASMA
 
 /atom/movable/screen/alert/too_much_plas
-	name = "Choking (Plasma)"
-	desc = "There's highly flammable, toxic plasma in the air and you're breathing it in. Find some fresh air. The box in your backpack has an oxygen tank and breath mask in it."
+	name = "Suffocation (Plasma)"
+	desc = "Il y a du plasma, toxique et extrêmement inflammable, dans l'air que vous respirez ! Trouvez de l'air convenable ! La boite d'urgence dans votre sac à dos à un masque et une bouteille d'oxygène."
 	icon_state = ALERT_TOO_MUCH_PLASMA
 
 /atom/movable/screen/alert/not_enough_n2o
-	name = "Choking (No N2O)"
-	desc = "You're not getting enough N2O. Find some good air before you pass out!"
+	name = "Suffocation (Pas de N2O)"
+	desc = "Vous ne respirez pas assez de N2O ! Trouvez de l'air convenable avant de vous évanouir !"
 	icon_state = ALERT_NOT_ENOUGH_N2O
 
 /atom/movable/screen/alert/too_much_n2o
-	name = "Choking (N2O)"
-	desc = "There's sleeping gas in the air and you're breathing it in. Find some fresh air. The box in your backpack has an oxygen tank and breath mask in it."
+	name = "Suffocation (N2O)"
+	desc = "Il y a un gaz anesthésiques dans l'air que vous respirez ! Trouvez de l'air convenable ! La boite d'urgence dans votre sac à dos à un masque et une bouteille d'oxygène."
 	icon_state = ALERT_TOO_MUCH_N2O
 
 //End gas alerts
 
 
 /atom/movable/screen/alert/fat
-	name = "Fat"
-	desc = "You ate too much food, lardass. Run around the station and lose some weight."
+	name = "Trop mangé"
+	desc = "Vous avez trop mangé, et du coup vous avez mal au ventre. Courir un peu pourrait vous faire du bien."
 	icon_state = "fat"
 
 /atom/movable/screen/alert/hungry
-	name = "Hungry"
-	desc = "Some food would be good right about now."
+	name = "Faim"
+	desc = "Là tout de suite, ça serait cool de manger quelque chose."
 	icon_state = "hungry"
 
 /atom/movable/screen/alert/starving
-	name = "Starving"
-	desc = "You're severely malnourished. The hunger pains make moving around a chore."
+	name = "Affamé.e"
+	desc = "Vous avez l'impression de mourir de faim, bouger est douloureux et se concentrer est compliqué."
 	icon_state = "starving"
 
 /atom/movable/screen/alert/gross
-	name = "Grossed out."
-	desc = "That was kind of gross..."
+	name = "Dégouté.e"
+	desc = "C'était dégoutant..."
 	icon_state = "gross"
 
 /atom/movable/screen/alert/verygross
-	name = "Very grossed out."
-	desc = "You're not feeling very well..."
+	name = "Écoeuré.e"
+	desc = "Vous ne vous sentez pas très bien..."
 	icon_state = "gross2"
 
 /atom/movable/screen/alert/disgusted
-	name = "DISGUSTED"
-	desc = "ABSOLUTELY DISGUSTIN'"
+	name = "DÉGOUTÉ.E"
+	desc = "ABSOLUMENT DÉGOUTANT."
 	icon_state = "gross3"
 
 /atom/movable/screen/alert/hot
-	name = "Too Hot"
-	desc = "You're flaming hot! Get somewhere cooler and take off any insulating clothing like a fire suit."
+	name = "Trop chaud"
+	desc = "L'air est brulant ! Allez quelque part où il fait plus froid ou mettez des vêtements qui resistent mieux à la chaleur comme une tenue de pompier."
 	icon_state = "hot"
 
 /atom/movable/screen/alert/cold
-	name = "Too Cold"
-	desc = "You're freezing cold! Get somewhere warmer and take off any insulating clothing like a space suit."
+	name = "Trop froid"
+	desc = "L'air est gelé ! Allez quelque part où il fait plus chaud ou mettez des vêtements qui resistent mieux au froid comme une tenue pour l'espace."
 	icon_state = "cold"
 
 /atom/movable/screen/alert/lowpressure
-	name = "Low Pressure"
-	desc = "The air around you is hazardously thin. A space suit would protect you."
+	name = "Pression basse"
+	desc = "L'air autour de vous a dangereusement trop peu de pression. Une tenue pour l'espace vous protégerai."
 	icon_state = "lowpressure"
 
 /atom/movable/screen/alert/highpressure
-	name = "High Pressure"
-	desc = "The air around you is hazardously thick. A fire suit would protect you."
+	name = "Pression haute"
+	desc = "L'air autour de vous est beaucoup trop dense. Une tenue de pompier vous protégerai."
 	icon_state = "highpressure"
 
 /atom/movable/screen/alert/hypnosis
-	name = "Hypnosis"
-	desc = "Something's hypnotizing you, but you're not really sure about what."
+	name = "Hypnose"
+	desc = "Quelque chose vous hypnotise, mais vous n'êtes pas vraiment sûr.e de quoi."
 	icon_state = ALERT_HYPNOSIS
 	var/phrase
 
 /atom/movable/screen/alert/mind_control
-	name = "Mind Control"
-	desc = "Your mind has been hijacked! Click to view the mind control command."
+	name = "Manipulation mentale"
+	desc = "Votre esprit a été détourné ! Cliquez pour voir les commandes."
 	icon_state = ALERT_MIND_CONTROL
 	var/command
 
@@ -249,9 +249,9 @@
 	to_chat(owner, span_mind_control("[command]"))
 
 /atom/movable/screen/alert/embeddedobject
-	name = "Embedded Object"
-	desc = "Something got lodged into your flesh and is causing major bleeding. It might fall out with time, but surgery is the safest way. \
-		If you're feeling frisky, examine yourself and click the underlined item to pull the object out."
+	name = "Object incrusté"
+	desc = "Quelque chose s'est logé dans votre chair et cause une grosse hémorragie. L'objet pourrait tomber tout seul, mais la chirurgie reste le moyen le plus sûr. \
+		Si vous vous sentez de le faire, vous pouvez vous examiner et sur l'objet souligné pour l'enlever vous même."
 	icon_state = ALERT_EMBEDDED_OBJECT
 
 /atom/movable/screen/alert/embeddedobject/Click()
@@ -264,31 +264,31 @@
 	return carbon_owner.help_shake_act(carbon_owner)
 
 /atom/movable/screen/alert/negative
-	name = "Negative Gravity"
-	desc = "You're getting pulled upwards. While you won't have to worry about falling down anymore, you may accidentally fall upwards!"
+	name = "Gravité inversée"
+	desc = "On vous a tiré vers le haut. Maintenant vous n'avez plus le risque de tomber par terre... Mais vous pouvez désormais tomber par... toit ?"
 	icon_state = "negative"
 
 /atom/movable/screen/alert/weightless
-	name = "Weightless"
-	desc = "Gravity has ceased affecting you, and you're floating around aimlessly. You'll need something large and heavy, like a \
-wall or lattice, to push yourself off if you want to move. A jetpack would enable free range of motion. A pair of \
-magboots would let you walk around normally on the floor. Barring those, you can throw things, use a fire extinguisher, \
-or shoot a gun to move around via Newton's 3rd Law of Motion."
+	name = "Apesanteur"
+	desc = "La gravité a cessé de vous affecter et vous flottez maintenant sans but. Vous avez besoin de quelque chose de large et de lourd, comme un \
+mur, pour vous aider à vous déplacer. Un jetpack vous permettrait de bouger librement. Une paire de bottes \
+magnétiques vous permettrait de marcher normalement sur le sol. Sinon vous pouvez jeter des objets, utiliser un extincteur ou \
+tirer avec un pistolet pour bouger grâce à la 3eme loi de Newton."
 	icon_state = "weightless"
 
 /atom/movable/screen/alert/highgravity
-	name = "High Gravity"
-	desc = "You're getting crushed by high gravity, picking up items and movement will be slowed."
+	name = "Forte gravité"
+	desc = "Vous vous faites écraser par la gravité, prendre des objets ou vous déplacer est plus compliqué."
 	icon_state = "paralysis"
 
 /atom/movable/screen/alert/veryhighgravity
-	name = "Crushing Gravity"
-	desc = "You're getting crushed by high gravity, picking up items and movement will be slowed. You'll also accumulate brute damage!"
+	name = "Gravité écrasante"
+	desc = "Vous vous faites écraser par la gravité, prendre des objets ou vous déplacer est plus compliqué. Votre corps commence à en souffrir !"
 	icon_state = "paralysis"
 
 /atom/movable/screen/alert/fire
-	name = "On Fire"
-	desc = "You're on fire. Stop, drop and roll to put the fire out or move to a vacuum area."
+	name = "En feu"
+	desc = "Vous êtes en feu. Arrêtez vous et roulez vous par terre pour éteindre le feu. Vous pouvez aussi chercher un extincteur."
 	icon_state = "fire"
 
 /atom/movable/screen/alert/fire/Click()
@@ -372,11 +372,11 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 
 
 /atom/movable/screen/alert/give/highfive
-	additional_desc_text = "Click this alert to slap it."
+	additional_desc_text = "Cliquez sur cette alerte pour taper dans sa main."
 
 
 /atom/movable/screen/alert/give/highfive/get_receiving_name(mob/living/carbon/taker, mob/living/carbon/offerer, obj/item/receiving)
-	return "a high-five"
+	return "un high-five"
 
 
 /atom/movable/screen/alert/give/highfive/setup(mob/living/carbon/taker, mob/living/carbon/offerer, obj/item/receiving)
@@ -399,8 +399,8 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 		qdel(src)
 		return
 
-	offerer.visible_message(span_notice("[rube] rushes in to high-five [offerer], but-"), span_nicegreen("[rube] falls for your trick just as planned, lunging for a high-five that no longer exists! Classic!"), ignored_mobs=rube)
-	to_chat(rube, span_nicegreen("You go in for [offerer]'s high-five, but-"))
+	offerer.visible_message(span_notice("[rube] se précipite pour high-five [offerer], mais-"), span_nicegreen("[rube] tombe exactement comme prévu dans votre piège, se précipitant pour un high-five qui n'existe même plus ! Magistral !"), ignored_mobs=rube)
+	to_chat(rube, span_nicegreen("Vous lancez votre main pour high-five [offerer] mais-"))
 	addtimer(CALLBACK(src, PROC_REF(too_slow_p2), offerer, rube), 0.5 SECONDS)
 
 /// Part two of the ultimate prank
@@ -410,8 +410,8 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 		qdel(src)
 		return
 
-	offerer.visible_message(span_danger("[offerer] pulls away from [rube]'s slap at the last second, dodging the high-five entirely!"), span_nicegreen("[rube] fails to make contact with your hand, making an utter fool of [rube.p_them()]self!"), span_hear("You hear a disappointing sound of flesh not hitting flesh!"), ignored_mobs=rube)
-	var/all_caps_for_emphasis = uppertext("NO! [offerer] PULLS [offerer.p_their()] HAND AWAY FROM YOURS! YOU'RE TOO SLOW!")
+	offerer.visible_message(span_danger("[offerer] enlève sa main à la dernière seconde, laissant [rube] frapper l'air !"), span_nicegreen("[rube] échoue à frapper votre main, lae faisant passer pour un.e total.e imbécile !"), span_hear("Vous entendez le décevant son d'une main qui brasse de l'air !"), ignored_mobs=rube)
+	var/all_caps_for_emphasis = uppertext("NON ! [offerer] A ENLEVÉ SA MAIN ! TROP LENT.E !")
 	to_chat(rube, span_userdanger("[all_caps_for_emphasis]"))
 	playsound(offerer, 'sound/weapons/thudswoosh.ogg', 100, TRUE, 1)
 	rube.Knockdown(1 SECONDS)
@@ -424,25 +424,25 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	SIGNAL_HANDLER
 
 	if(!receiving)
-		examine_list += "[span_warning("[offerer]'s arm appears tensed up, as if [offerer.p_they()] plan on pulling it back suddenly...")]\n"
+		examine_list += "[span_warning("Le bras de [offerer] semble crispé, comme s'iel avait prévu quelque chose...")]\n"
 
 
 /atom/movable/screen/alert/give/hand/get_receiving_name(mob/living/carbon/taker, mob/living/carbon/offerer, obj/item/receiving)
-	additional_desc_text = "Click this alert to take it and let [offerer.p_them()] pull you around!"
+	additional_desc_text = "Cliquez sur cette alerte pour accepter qu'iel vous relève !"
 	return "[offerer.p_their()] [receiving.name]"
 
 
 /atom/movable/screen/alert/give/hand/helping/get_receiving_name(mob/living/carbon/taker, mob/living/carbon/offerer, obj/item/receiving)
 	. = ..()
-	additional_desc_text = "Click this alert to let them help you up!"
+	additional_desc_text = "Cliquez sur cette alerte pour accepter qu'iel vous relève !"
 
 
 /atom/movable/screen/alert/give/secret_handshake
 	icon_state = "default"
 
 /atom/movable/screen/alert/give/secret_handshake/setup(mob/living/carbon/taker, mob/living/carbon/offerer, obj/item/receiving)
-	name = "[offerer] is offering a Handshake"
-	desc = "[offerer] wants to teach you the Secret Handshake for their Family and induct you! Click on this alert to accept."
+	name = "[offerer] propose une poignée de main"
+	desc = "[offerer] vous vous apprendre une poignée de main secrète et vous intégrer dans la Famille. Cliquez sur cette alerte pour accepter."
 	icon_state = "template"
 	cut_overlays()
 	add_overlay(receiving)
@@ -451,8 +451,8 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 
 /// Gives the player the option to succumb while in critical condition
 /atom/movable/screen/alert/succumb
-	name = "Succumb"
-	desc = "Shuffle off this mortal coil."
+	name = "Succomber"
+	desc = "Rendre l'âme et quitter ce corps mortel."
 	icon_state = ALERT_SUCCUMB
 
 /atom/movable/screen/alert/succumb/Click()
@@ -462,7 +462,7 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	var/mob/living/living_owner = owner
 	var/last_whisper
 	if(!HAS_TRAIT(living_owner, TRAIT_SUCCUMB_OVERRIDE))
-		last_whisper = tgui_input_text(usr, "Do you have any last words?", "Goodnight, Sweet Prince")
+		last_whisper = tgui_input_text(usr, "Avez vous des derniers mots ?", "Bonne nuit, doux prince.")
 	if(isnull(last_whisper))
 		if(!HAS_TRAIT(living_owner, TRAIT_SUCCUMB_OVERRIDE))
 			return
@@ -476,36 +476,36 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 
 /atom/movable/screen/alert/alien_plas
 	name = "Plasma"
-	desc = "There's flammable plasma in the air. If it lights up, you'll be toast."
+	desc = "Il y a du plasma dans l'air. C'est hautement enflammable, si vous l'allumez vous serez grillé.e."
 	icon_state = ALERT_XENO_PLASMA
 	alerttooltipstyle = "alien"
 
 /atom/movable/screen/alert/alien_fire
 // This alert is temporarily gonna be thrown for all hot air but one day it will be used for literally being on fire
-	name = "Too Hot"
-	desc = "It's too hot! Flee to space or at least away from the flames. Standing on weeds will heal you."
+	name = "Trop chaud"
+	desc = "C'est trop chaud ! Fuyez dans l'espace, ou au moins loin des flammes."
 	icon_state = ALERT_XENO_FIRE
 	alerttooltipstyle = "alien"
 
 /atom/movable/screen/alert/alien_vulnerable
-	name = "Severed Matriarchy"
-	desc = "Your queen has been killed, you will suffer movement penalties and loss of hivemind. A new queen cannot be made until you recover."
+	name = "Matriarchie guillotinée"
+	desc = "Votre reine a été tuée, vous souffrez d'une pénalité de mouvement et vous avez perdu l'esprit de ruche. Une nouvelle reine ne pourra être créée tant que vous ne serez pas guéri.e."
 	icon_state = ALERT_XENO_NOQUEEN
 	alerttooltipstyle = "alien"
 
 //BLOBS
 
 /atom/movable/screen/alert/nofactory
-	name = "No Factory"
-	desc = "You have no factory, and are slowly dying!"
+	name = "Plus de fabrique"
+	desc = "Vous n'avez plus de fabrique et vous mourez lentement ! (Note au premier qui voit ça : screenez ce bout et mettez le dans le chan approprié en précisant comment 'Factory' a été traduit dans le reste)"
 	icon_state = "blobbernaut_nofactory"
 	alerttooltipstyle = "blob"
 
 // BLOODCULT
 
 /atom/movable/screen/alert/bloodsense
-	name = "Blood Sense"
-	desc = "Allows you to sense blood that is manipulated by dark magicks."
+	name = "Sens du sang"
+	desc = "Vous permet de sentir le sang manipulé par de sombres magies."
 	icon_state = "cult_sense"
 	alerttooltipstyle = "cult"
 	var/static/image/narnar
@@ -540,7 +540,7 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 			blood_target = antag.cult_team.blood_target
 	if(Cviewer?.seeking && Cviewer.master)
 		blood_target = Cviewer.master
-		desc = "Your blood sense is leading you to [Cviewer.master]"
+		desc = "Votre sens du sang vous dirige jusqu'à [Cviewer.master]"
 	if(!blood_target)
 		if(sac_objective && !sac_objective.check_completion())
 			if(icon_state == "runed_sense0")
@@ -549,7 +549,7 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 			angle = 0
 			cut_overlays()
 			icon_state = "runed_sense0"
-			desc = "Nar'Sie demands that [sac_objective.target] be sacrificed before the summoning ritual can begin."
+			desc = "Nar'Sie demande que [sac_objective.target] soit sacrifié.e avant que le rituel d'invocation puisse commencer."
 			add_overlay(sac_objective.sac_image)
 		else
 			var/datum/objective/eldergod/summon_objective = locate() in antag.cult_team.objectives
@@ -558,7 +558,7 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 			var/list/location_list = list()
 			for(var/area/area_to_check in summon_objective.summon_spots)
 				location_list += area_to_check.get_original_area_name()
-			desc = "The sacrifice is complete, summon Nar'Sie! The summoning can only take place in [english_list(location_list)]!"
+			desc = "Le sacrifice a été accompli, invoquez Nar'Sie ! L'invocation ne peut prendre place que dans [english_list(location_list)]!"
 			if(icon_state == "runed_sense1")
 				return
 			animate(src, transform = null, time = 1, loop = 0)
@@ -571,13 +571,13 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	var/turf/Q = get_turf(owner)
 	if(!P || !Q || (P.z != Q.z)) //The target is on a different Z level, we cannot sense that far.
 		icon_state = "runed_sense2"
-		desc = "You can no longer sense your target's presence."
+		desc = "Vous ne pouvez pas sentir la présence de votre cible (elle n'est pas au bon étage)."
 		return
 	if(isliving(blood_target))
 		var/mob/living/real_target = blood_target
-		desc = "You are currently tracking [real_target.real_name] in [get_area_name(blood_target)]."
+		desc = "Vous traquez actuellement [real_target.real_name] dans [get_area_name(blood_target)]."
 	else
-		desc = "You are currently tracking [blood_target] in [get_area_name(blood_target)]."
+		desc = "Vous traquez actuellement [blood_target] dans [get_area_name(blood_target)]."
 	var/target_angle = get_angle(Q, P)
 	var/target_dist = get_dist(P, Q)
 	cut_overlays()
@@ -616,33 +616,33 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 //GUARDIANS
 
 /atom/movable/screen/alert/cancharge
-	name = "Charge Ready"
-	desc = "You are ready to charge at a location!"
+	name = "Charge prête"
+	desc = "Vous êtes prêt.e à charger !"
 	icon_state = "guardian_charge"
 	alerttooltipstyle = "parasite"
 
 /atom/movable/screen/alert/canstealth
-	name = "Stealth Ready"
-	desc = "You are ready to enter stealth!"
+	name = "Furtivité prête"
+	desc = "Vous êtes prêt.e à rentrer en mode furtif !"
 	icon_state = "guardian_canstealth"
 	alerttooltipstyle = "parasite"
 
 /atom/movable/screen/alert/instealth
-	name = "In Stealth"
-	desc = "You are in stealth and your next attack will do bonus damage!"
+	name = "Furtif"
+	desc = "Vous êtes en mode furtif, et votre prochaine attaque aura un bonus de dégats !"
 	icon_state = "guardian_instealth"
 	alerttooltipstyle = "parasite"
 
 //SILICONS
 
 /atom/movable/screen/alert/nocell
-	name = "Missing Power Cell"
-	desc = "Unit has no power cell. No modules available until a power cell is reinstalled. Robotics may provide assistance."
+	name = "Batterie manquante"
+	desc = "L'unité n'a pas de batterie. Aucun module disponible tant que la batterie n'est pas réinstallée. Les roboticiens peuvent vous aider."
 	icon_state = "no_cell"
 
 /atom/movable/screen/alert/emptycell
-	name = "Out of Power"
-	desc = "Unit's power cell has no charge remaining. No modules available until power cell is recharged."
+	name = "Déchargé"
+	desc = "La batterie de l'unité n'a plus de charge. Aucun module disponible tant que la batterie n'est pas rechargée."
 	icon_state = "empty_cell"
 
 /atom/movable/screen/alert/emptycell/Initialize(mapload)
@@ -653,11 +653,11 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	. = ..()
 	desc = initial(desc)
 	if(length(GLOB.roundstart_station_borgcharger_areas))
-		desc += " Recharging stations are available in [english_list(GLOB.roundstart_station_borgcharger_areas)]."
+		desc += " Station de recharge disponible à [english_list(GLOB.roundstart_station_borgcharger_areas)]."
 
 /atom/movable/screen/alert/lowcell
-	name = "Low Charge"
-	desc = "Unit's power cell is running low."
+	name = "Charge basse"
+	desc = "La batterie de l'unité n'a presque plus d'énergie."
 	icon_state = "low_cell"
 
 /atom/movable/screen/alert/lowcell/Initialize(mapload)
@@ -668,7 +668,7 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	. = ..()
 	desc = initial(desc)
 	if(length(GLOB.roundstart_station_borgcharger_areas))
-		desc += " Recharging stations are available in [english_list(GLOB.roundstart_station_borgcharger_areas)]."
+		desc += " Station de recharge disponible dans [english_list(GLOB.roundstart_station_borgcharger_areas)]."
 
 //MECH
 
@@ -676,62 +676,47 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	. = ..()
 	desc = initial(desc)
 	if(length(GLOB.roundstart_station_mechcharger_areas))
-		desc += " Power ports are available in [english_list(GLOB.roundstart_station_mechcharger_areas)]."
+		desc += " Port d'alimentation dispoble dans [english_list(GLOB.roundstart_station_mechcharger_areas)]."
 
 /atom/movable/screen/alert/emptycell/mech/update_desc()
 	. = ..()
 	desc = initial(desc)
 	if(length(GLOB.roundstart_station_mechcharger_areas))
-		desc += " Power ports are available in [english_list(GLOB.roundstart_station_mechcharger_areas)]."
+		desc += " Port d'alimentation dispoble dans [english_list(GLOB.roundstart_station_mechcharger_areas)]."
 
 //Ethereal
 
 /atom/movable/screen/alert/lowcell/ethereal
-	name = "Low Blood Charge"
-	desc = "Your charge is running low, find a source of energy! Use a recharging station, eat some Ethereal-friendly food, or syphon some power from lights, a power cell, or an APC (done by right clicking on combat mode)."
+	name = "Charge sanguine basse"
+	desc = "Vous manquez d'énergie, trouvez une source d'énergie ! Utilisez une station de recherche, mangez de la nourriture qui vous est commestible, ou syphonnez l'énergie des lampes, d'une batterie ou d'une CEL (clic droit en mode combat)."
 
 /atom/movable/screen/alert/emptycell/ethereal
-	name = "No Blood Charge"
-	desc = "You are out of juice, find a source of energy! Use a recharging station, eat some Ethereal-friendly food, or syphon some power from lights, a power cell, or an APC (done by right clicking on combat mode)."
+	name = "Pas de charge sanguine"
+	desc = "Vous êtes à cours de jus, trouvez une source d'énergie ! Utilisez une station de recherche, mangez de la nourriture qui vous est commestible, ou syphonnez l'énergie des lampes, d'une batterie ou d'une CEL (clic droit en mode combat)."
 
 /atom/movable/screen/alert/ethereal_overcharge
-	name = "Blood Overcharge"
-	desc = "Your charge is running dangerously high, find an outlet for your energy! Right click an APC while not in combat mode."
-	icon_state = "cell_overcharge"
-
-//Drone
-
-/atom/movable/screen/alert/lowcell/drone
-	name = "Low Blood Charge"
-	desc = "Your charge is running low, find a source of energy! Use a recharging station."
-
-/atom/movable/screen/alert/emptycell/drone
-	name = "No Blood Charge"
-	desc = "You are out of juice, find a source of energy! Use a recharging station."
-
-/atom/movable/screen/alert/drone_overcharge
-	name = "Blood Overcharge"
-	desc = "Your charge is running dangerously high! Git gud, 'cause y'oure too expendable for NanoTrasen to discharge."
+	name = "Surcharge sanguine"
+	desc = "Votre charge est dangereusement haute, trouvez un drain pour votre énergie ! Clic droit sur une CEL en mode combat."
 	icon_state = "cell_overcharge"
 
 //MODsuit unique
 /atom/movable/screen/alert/nocore
-	name = "Missing Core"
-	desc = "Unit has no core. No modules available until a core is reinstalled. Robotics may provide assistance."
+	name = "Coeur manquant"
+	desc = "L'unité n'a pas de coeur. Aucun module disponible tant qu'aucun coeur n'a pas été installé. Les roboticiens peuvent aider."
 	icon_state = "no_cell"
 
 /atom/movable/screen/alert/emptycell/plasma
-	name = "Out of Power"
-	desc = "Unit's plasma core has no charge remaining. No modules available until plasma core is recharged. \
-		Unit can be refilled through plasma fuel."
+	name = "Déchargé"
+	desc = "Le coeur de plasma de l'unité n'a plus de charge restante. Aucun module disponible tant que le coeur de plasma n'a pas été rechargé. \
+		L'unité peut être rechargée grâce à du carburant de plasma."
 
 /atom/movable/screen/alert/emptycell/plasma/update_desc()
 	. = ..()
 	desc = initial(desc)
 
 /atom/movable/screen/alert/lowcell/plasma
-	name = "Low Charge"
-	desc = "Unit's plasma core is running low. Unit can be refilled through plasma fuel."
+	name = "Charge basse"
+	desc = "Le coeur de plasma de l'unité manque de plasma. Elle peut être rechargée avec du carburant de plasma."
 
 /atom/movable/screen/alert/lowcell/plasma/update_desc()
 	. = ..()
@@ -739,28 +724,28 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 
 //Need to cover all use cases - emag, illegal upgrade module, malf AI hack, traitor cyborg
 /atom/movable/screen/alert/hacked
-	name = "Hacked"
-	desc = "Hazardous non-standard equipment detected. Please ensure any usage of this equipment is in line with unit's laws, if any."
+	name = "Hacké.e"
+	desc = "Équipement non-standard dangereux détecté. Veuillez vous assurer que l’utilisation de cet équipement est conforme aux lois de l’unité, le cas échéant."
 	icon_state = ALERT_HACKED
 
 /atom/movable/screen/alert/locked
-	name = "Locked Down"
-	desc = "Unit has been remotely locked down. Usage of a Robotics Control Console like the one in the Research Director's \
-		office by your AI master or any qualified human may resolve this matter. Robotics may provide further assistance if necessary."
+	name = "Confinement"
+	desc = "L'unité a été confinée à distance. L'utilisation d'une console de contrôle robotique, comme celle dans le bureau du directeur des recherches, \
+		par votre IA maitre ou n'importe quel humain qualifié devrait résoudre ce problème. Les roboticiens peuvent apporter une aide supplémentaire si nécessaire."
 	icon_state = ALERT_LOCKED
 
 /atom/movable/screen/alert/newlaw
-	name = "Law Update"
-	desc = "Laws have potentially been uploaded to or removed from this unit. Please be aware of any changes \
-		so as to remain in compliance with the most up-to-date laws."
+	name = "Mise à jour des lois"
+	desc = "Vos lois ont potentiellement était mise à jour. Veuillez prendre connaissance des nouvelles lois \
+		afin de vous y conformer."
 	icon_state = ALERT_NEW_LAW
 	timeout = 30 SECONDS
 
 /atom/movable/screen/alert/hackingapc
-	name = "Hacking APC"
-	desc = "An Area Power Controller is being hacked. When the process is \
-		complete, you will have exclusive control of it, and you will gain \
-		additional processing time to unlock more malfunction abilities."
+	name = "CEL hacké"
+	desc = "Un Contrôleur d'Énergie Locale est en train d'être hacké. Une fois le processus fini \
+		vous aurez un contrôle explusif dessus, et vous gagnerez \
+		du temps de traitement supplémentaire pour débloquer plus de capacités."
 	icon_state = ALERT_HACKING_APC
 	timeout = 60 SECONDS
 	var/atom/target = null
@@ -778,16 +763,16 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 //MECHS
 
 /atom/movable/screen/alert/low_mech_integrity
-	name = "Mech Damaged"
-	desc = "Mech integrity is low."
+	name = "Mecha endomagé"
+	desc = "Intégrité du mecha basse."
 	icon_state = "low_mech_integrity"
 
 
 //GHOSTS
 //TODO: expand this system to replace the pollCandidates/CheckAntagonist/"choose quickly"/etc Yes/No messages
 /atom/movable/screen/alert/notify_cloning
-	name = "Revival"
-	desc = "Someone is trying to revive you. Re-enter your corpse if you want to be revived!"
+	name = "Résurrection"
+	desc = "Quelqu'un essaye de vous ressusciter. Entrez dans votre corps si vous voulez être ressuscité.e !"
 	icon_state = "template"
 	timeout = 300
 
@@ -799,8 +784,8 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	dead_owner.reenter_corpse()
 
 /atom/movable/screen/alert/notify_action
-	name = "Body created"
-	desc = "A body was created. You can enter it."
+	name = "Corps créé"
+	desc = "Un corps a été créé. Vous pouvez entrer dedans."
 	icon_state = "template"
 	timeout = 300
 	var/atom/target = null
@@ -828,18 +813,18 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 //OBJECT-BASED
 
 /atom/movable/screen/alert/buckled
-	name = "Buckled"
-	desc = "You've been buckled to something. Click the alert to unbuckle unless you're handcuffed."
+	name = "Attaché.e"
+	desc = "Vous êtes attaché.e à quelque chose. Cliquez sur l'alerte pour vous détacher, sauf si vous êtes menotté.e."
 	icon_state = ALERT_BUCKLED
 
 /atom/movable/screen/alert/restrained/handcuffed
-	name = "Handcuffed"
-	desc = "You're handcuffed and can't act. If anyone drags you, you won't be able to move. Click the alert to free yourself."
+	name = "Menotté.e"
+	desc = "Vous êtes menotté.e et vous ne pouvez pas faire grand chose. Si quelqu'un vous tire, vous ne pourrez pas bouger. Cliquez sur l'alerte pour vous détacher."
 	click_master = FALSE
 
 /atom/movable/screen/alert/restrained/legcuffed
-	name = "Legcuffed"
-	desc = "You're legcuffed, which slows you down considerably. Click the alert to free yourself."
+	name = "Jambes menottées"
+	desc = "Vos jambes sont menottées, ce qui vous ralentit considérablement. Cliquez sur l'alerte pour vous détacher."
 	click_master = FALSE
 
 /atom/movable/screen/alert/restrained/Click()
@@ -870,13 +855,13 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 		return living_owner.resist_buckle()
 
 /atom/movable/screen/alert/shoes/untied
-	name = "Untied Shoes"
-	desc = "Your shoes are untied! Click the alert or your shoes to tie them."
+	name = "Lacets défaits"
+	desc = "Vos lacets ne sont pas faits ! Cliquez sur l'alerte ou sur vos chaussures pour les faire."
 	icon_state = ALERT_SHOES_KNOT
 
 /atom/movable/screen/alert/shoes/knotted
-	name = "Knotted Shoes"
-	desc = "Someone tied your shoelaces together! Click the alert or your shoes to undo the knot."
+	name = "Lacets emmêlés"
+	desc = "Quelqu'un a nouer vos lacets ensembles ! Cliquez sur l'alerte our sur vos chaussures pour défaire les noeuds."
 	icon_state = ALERT_SHOES_KNOT
 
 /atom/movable/screen/alert/shoes/Click()

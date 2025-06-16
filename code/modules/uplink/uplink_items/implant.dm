@@ -12,7 +12,7 @@
 	desc = "An implant injected into the body and later activated at the user's will. It will attempt to free the \
 			user from common restraints such as handcuffs."
 	item = /obj/item/storage/box/syndie_kit/imp_freedom
-	cost = 5
+	cost = 3
 
 /datum/uplink_item/implants/radio
 	name = "Internal Syndicate Radio Implant"
@@ -35,7 +35,7 @@
 	desc = "An implant injected into the body, and later activated at the user's will. It will open a small bluespace \
 			pocket capable of storing two regular-sized items."
 	item = /obj/item/storage/box/syndie_kit/imp_storage
-	cost = 8
+	cost = 6
 
 /datum/uplink_item/implants/uplink
 	name = "Uplink Implant"

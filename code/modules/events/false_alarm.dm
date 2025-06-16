@@ -1,10 +1,10 @@
 /datum/round_event_control/falsealarm
-	name = "False Alarm"
+	name = "Fausse alarme"
 	typepath = /datum/round_event/falsealarm
 	weight = 20
 	max_occurrences = 5
 	category = EVENT_CATEGORY_BUREAUCRATIC
-	description = "Fakes an event announcement."
+	description = "Annonce un faux événement."
 	admin_setup = list(/datum/event_admin_setup/listed_options/false_alarm)
 
 /datum/round_event_control/falsealarm/can_spawn_event(players_amt, allow_magic = FALSE)
@@ -54,7 +54,7 @@
 		. += E
 
 /datum/event_admin_setup/listed_options/false_alarm
-	normal_run_option = "Random Fake Event"
+	normal_run_option = "Faux événement aléatoire"
 
 /datum/event_admin_setup/listed_options/false_alarm/get_list()
 	var/list/possible_types = list()

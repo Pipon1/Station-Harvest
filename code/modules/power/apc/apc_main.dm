@@ -6,8 +6,8 @@
 // three different channels (lighting/equipment/environ) - may each be set to on, off, or auto
 
 /obj/machinery/power/apc
-	name = "area power controller"
-	desc = "A control terminal for the area's electrical systems."
+	name = "contrôleur d'énergie local"
+	desc = "Un terminal servant à contrôler les systèmes électriques d'une zone."
 
 	icon_state = "apc0"
 	use_power = NO_POWER_USE
@@ -172,7 +172,7 @@
 	if(!req_access)
 		req_access = list(ACCESS_ENGINE_EQUIP)
 	if(auto_name)
-		name = "\improper [get_area_name(area, TRUE)] APC"
+		name = "\improper [get_area_name(area, TRUE)] CEL"
 
 	//Initialize its electronics
 	wires = new /datum/wires/apc(src)
@@ -239,7 +239,7 @@
 /obj/machinery/power/apc/update_name(updates)
 	. = ..()
 	if(auto_name)
-		name = "\improper [get_area_name(area, TRUE)] APC"
+		name = "\improper [get_area_name(area, TRUE)] CEL"
 
 /obj/machinery/power/apc/proc/disconnect_from_area()
 	if(isnull(area))
@@ -267,22 +267,22 @@
 		return
 	if(opened)
 		if(has_electronics && terminal)
-			. += "The cover is [opened == APC_COVER_REMOVED?"removed":"open"] and the power cell is [ cell ? "installed" : "missing"]."
+			. += "Le couvercle est [opened == APC_COVER_REMOVED?"retiré":"ouvert"] et la batterie est [cell ? "installée" : "manquante"]."
 		else
-			. += {"It's [ !terminal ? "not" : "" ] wired up.\n
-			The electronics are[!has_electronics?"n't":""] installed."}
+			. += {"Il [ !terminal ? "n'est pas" : "est" ] branché.\n
+			La carte mère [!has_electronics?"est":"n'est pas"] installée."}
 	else
 		if(machine_stat & MAINT)
-			. += "The cover is closed. Something is wrong with it. It doesn't work."
+			. += "Le couvercle est fermé. Quelque chose est cassé. Il ne fonctionne pas."
 		else if(malfhack)
-			. += "The cover is broken. It may be hard to force it open."
+			. += "Le couvercle est chauffé. Il semble dur de le forcer."
 		else
-			. += "The cover is closed."
+			. += "Le couvercle est fermé."
 
-	. += span_notice("Right-click the APC to [ locked ? "unlock" : "lock"] the interface.")
+	. += span_notice("Clique-droit sur le CEL pour [ locked ? "dévérouiller" : "vérouiller"] l'interface.")
 
 	if(issilicon(user))
-		. += span_notice("Ctrl-Click the APC to switch the breaker [ operating ? "off" : "on"].")
+		. += span_notice("Ctrl+clique sur le CEL pour passer le disjoncteur en mode : [ operating ? "off" : "on"].")
 
 /obj/machinery/power/apc/deconstruct(disassembled = TRUE)
 	if(flags_1 & NODECONSTRUCT_1)
@@ -292,7 +292,7 @@
 	if(opened != APC_COVER_REMOVED)
 		opened = APC_COVER_REMOVED
 		coverlocked = FALSE
-		visible_message(span_warning("The APC cover is knocked down!"))
+		visible_message(span_warning("Le couvercle du CEL est arraché !"))
 		update_appearance()
 
 /obj/machinery/power/apc/ui_interact(mob/user, datum/tgui/ui)
@@ -321,7 +321,7 @@
 
 		"powerChannels" = list(
 			list(
-				"title" = "Equipment",
+				"title" = "Equipements",
 				"powerLoad" = display_power(lastused_equip),
 				"status" = equipment,
 				"topicParams" = list(
@@ -331,7 +331,7 @@
 				)
 			),
 			list(
-				"title" = "Lighting",
+				"title" = "Eclairage",
 				"powerLoad" = display_power(lastused_light),
 				"status" = lighting,
 				"topicParams" = list(
@@ -360,8 +360,8 @@
 	remote_control_user = remote_user
 	ui_interact(remote_user)
 	remote_user.log_message("remotely accessed [src].", LOG_GAME)
-	say("Remote access detected.[locked ? " Interface unlocked." : ""]")
-	to_chat(remote_control_user, span_danger("[icon2html(src, remote_control_user)] Connected to [src]."))
+	say("Accès à distance détecté. [locked ? " L'interface est vérouillé." : ""]")
+	to_chat(remote_control_user, span_danger("[icon2html(src, remote_control_user)] est connecté à [src]."))
 	if(locked)
 		playsound(src, 'sound/machines/terminal_on.ogg', 25, FALSE)
 		locked = FALSE
@@ -373,8 +373,8 @@
 	if(isnull(remote_control_user))
 		return
 	locked = TRUE
-	say("Remote access canceled. Interface locked.")
-	to_chat(remote_control_user, span_danger("[icon2html(src, remote_control_user)] Disconnected from [src]."))
+	say("Accès à distance annulé. L'interface a été vérouillé.")
+	to_chat(remote_control_user, span_danger("[icon2html(src, remote_control_user)] est deconnecté de [src]."))
 	playsound(src, 'sound/machines/terminal_off.ogg', 25, FALSE)
 	playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
 	update_appearance()
@@ -394,7 +394,7 @@
 		if("lock")
 			if(usr.has_unlimited_silicon_privilege)
 				if((obj_flags & EMAGGED) || (machine_stat & (BROKEN|MAINT)) || remote_control_user)
-					to_chat(usr, span_warning("The APC does not respond to the command!"))
+					to_chat(usr, span_warning("Le CEL ne répond pas à vos commandes !"))
 				else
 					locked = !locked
 					update_appearance()
@@ -704,6 +704,6 @@
 
 /*Power module, used for APC construction*/
 /obj/item/electronics/apc
-	name = "power control module"
+	name = "unité de contrôle éléctrique"
 	icon_state = "power_mod"
-	desc = "Heavy-duty switching circuits for power control."
+	desc = "Un tableau de disjoncteur pour le contrôle éléctrique."

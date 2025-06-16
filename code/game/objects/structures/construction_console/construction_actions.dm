@@ -1,5 +1,5 @@
 /datum/action/innate/camera_off/base_construction
-	name = "Log out"
+	name = "Se déconnecter"
 
 ///Generic construction action for base [construction consoles][/obj/machinery/computer/camera_advanced/base_construction].
 /datum/action/innate/construction
@@ -32,15 +32,15 @@
 	if (!area_constraint)
 		return TRUE
 	if(!istype(build_area, area_constraint))
-		to_chat(owner, span_warning("You can only build within [area_constraint]!"))
+		to_chat(owner, span_warning("Vous ne pouvez construire que dans la zone [area_constraint] !"))
 		return FALSE
 	if(only_station_z && !is_station_level(build_target.z))
-		to_chat(owner, span_warning("[area_constraint] has launched and can no longer be modified."))
+		to_chat(owner, span_warning("[area_constraint] a été lancé et ne peut être modifié !"))
 		return FALSE
 	return TRUE
 
 /datum/action/innate/construction/build
-	name = "Build"
+	name = "Construire"
 	button_icon_state = "build"
 
 /datum/action/innate/construction/build/Activate()
@@ -60,7 +60,7 @@
 	playsound(target_turf, 'sound/items/deconstruct.ogg', 60, TRUE)
 
 /datum/action/innate/construction/configure_mode
-	name = "Configure RCD"
+	name = "Configurer le RCD"
 	button_icon = 'icons/obj/tools.dmi'
 	button_icon_state = "rcd"
 
@@ -73,7 +73,7 @@
 
 ///Generic action used with base construction consoles to build anything that can't be built with an RCD
 /datum/action/innate/construction/place_structure
-	name = "Place Generic Structure"
+	name = "Placer une structure générique"
 	var/obj/structure_path
 	var/structure_name
 	var/place_sound
@@ -83,17 +83,17 @@
 		return
 	var/turf/place_turf = get_turf(remote_eye)
 	if(!base_console.structures[structure_name])
-		to_chat(owner, span_warning("[base_console] is out of [structure_name]!"))
+		to_chat(owner, span_warning("[base_console] est en dehors de [structure_name] !"))
 		return
 	if(!check_spot())
 		return
 	//Can't place inside a closed turf
 	if(place_turf.density)
-		to_chat(owner, span_warning("[structure_name] may only be placed on a floor."))
+		to_chat(owner, span_warning("[structure_name] ne peut être placé que sur le sol."))
 		return
 	//Can't place two dense objects inside eachother
 	if(initial(structure_path.density) && place_turf.is_blocked_turf())
-		to_chat(owner, span_warning("Location is obstructed by something. Please clear the location and try again."))
+		to_chat(owner, span_warning("L'emplacement est bloqué par quelque chose. Merci de vider cet emplacement et de réessayer."))
 		return
 	var/obj/placed_structure = new structure_path(place_turf)
 	base_console.structures[structure_name]--
@@ -106,17 +106,17 @@
 	return
 
 /datum/action/innate/construction/place_structure/fan
-	name = "Place Tiny Fan"
+	name = "Placer un petit ventilateur"
 	button_icon_state = "build_fan"
 	structure_name = "fans"
 	structure_path = /obj/structure/fans/tiny
 	place_sound = 'sound/machines/click.ogg'
 
 /datum/action/innate/construction/place_structure/fan/after_place(obj/placed_structure, remaining)
-	to_chat(owner, span_notice("Tiny fan placed. [remaining] fans remaining."))
+	to_chat(owner, span_notice("Petit ventilateur placé. Il reste [remaining] ventilateurs."))
 
 /datum/action/innate/construction/place_structure/turret
-	name = "Install Plasma Anti-Wildlife Turret"
+	name = "Installer une tourelle plasma anti-faune"
 	button_icon_state = "build_turret"
 	structure_name = "turrets"
 	structure_path = /obj/machinery/porta_turret/aux_base
@@ -125,8 +125,8 @@
 /datum/action/innate/construction/place_structure/turret/after_place(obj/placed_structure, remaining)
 	var/obj/machinery/computer/auxiliary_base/turret_controller = locate() in get_area(placed_structure)
 	if(!turret_controller)
-		to_chat(owner, span_notice("<b>Warning:</b> Aux base controller not found. Turrets might not work properly."))
+		to_chat(owner, span_notice("<b>Attention :</b> contrôlleur de base auxillaire non trouvé. Les tourelles risquent de ne pas marcher correctement."))
 		return
 
 	LAZYADD(turret_controller.turrets, WEAKREF(placed_structure))
-	to_chat(owner, span_notice("You've constructed an additional turret. [remaining] turrets remaining."))
+	to_chat(owner, span_notice("Vous avez construit une tourelle additionnelle. Il reste [remaining] tourelles."))

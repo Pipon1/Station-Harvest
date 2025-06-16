@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/shotgun
-	name = "shotgun"
-	desc = "A traditional shotgun with wood furniture and a four-shell capacity underneath."
+	name = "fusil à pompe"
+	desc = "Un fusil à pompe avec des pièces en bois et une capacité de quatre cartouches."
 	icon_state = "shotgun"
 	worn_icon_state = null
 	lefthand_file = 'icons/mob/inhands/weapons/64x_guns_left.dmi'
@@ -39,13 +39,13 @@
 // RIOT SHOTGUN //
 
 /obj/item/gun/ballistic/shotgun/riot //for spawn in the armory
-	name = "riot shotgun"
-	desc = "A sturdy shotgun with a longer magazine and a fixed tactical stock designed for non-lethal riot control."
+	name = "fusil à pompe anti-émeute"
+	desc = "Un fusil à pompe robuste avec un chargeur plus long et une crosse tactique fixe conçue pour le contrôle des émeutes non létales."
 	icon_state = "riotshotgun"
 	inhand_icon_state = "shotgun"
 	fire_delay = 8
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/riot
-	sawn_desc = "Come with me if you want to live."
+	sawn_desc = "Viens avec moi si tu veux vivre."
 	can_be_sawn_off = TRUE
 
 // Automatic Shotguns//
@@ -55,8 +55,8 @@
 	rack()
 
 /obj/item/gun/ballistic/shotgun/automatic/combat
-	name = "combat shotgun"
-	desc = "A semi automatic shotgun with tactical furniture and a six-shell capacity underneath."
+	name = "fusil à pompe de combat"
+	desc = "Un fusil à pompe semi-automatique avec des pièces tactiques et une capacité de six cartouches."
 	icon_state = "cshotgun"
 	inhand_icon_state = "shotgun_combat"
 	fire_delay = 5
@@ -66,8 +66,8 @@
 //Dual Feed Shotgun
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube
-	name = "cycler shotgun"
-	desc = "An advanced shotgun with two separate magazine tubes, allowing you to quickly toggle between ammo types."
+	name = "fusil à pompe à deux chargeurs"
+	desc = "Un fusil à pompe avancé avec deux tubes chargeurs séparés, vous permettant de basculer rapidement entre les types de munitions."
 	icon_state = "cycler"
 	inhand_icon_state = "bulldog"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
@@ -86,13 +86,13 @@
 	var/obj/item/ammo_box/magazine/internal/shot/alternate_magazine
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/bounty
-	name = "bounty cycler shotgun"
-	desc = "An advanced shotgun with two separate magazine tubes. This one shows signs of bounty hunting customization, meaning it likely has a dual rubber shot/fire slug load."
+	name = "fusil à pompe à deux chargeurs de chasseur de primes"
+	desc = "Un fusil à pompe avancé avec deux tubes chargeurs séparés. Celui-ci montre des signes de personnalisation de chasseur de primes, ce qui signifie qu'il a probablement une double charge de balles en caoutchouc et de balles slug."
 	alt_mag_type = /obj/item/ammo_box/magazine/internal/shot/tube/fire
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to pump it.")
+	. += span_notice("Alt-clique pour pomper.")
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/Initialize(mapload)
 	. = ..()
@@ -116,9 +116,9 @@
 	alternate_magazine = current_mag
 	toggled = !toggled
 	if(toggled)
-		balloon_alert(user, "switched to tube B")
+		balloon_alert(user, "est passé sur le tube B")
 	else
-		balloon_alert(user, "switched to tube A")
+		balloon_alert(user, "est passé sur le tube A")
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/AltClick(mob/living/user)
 	if(!user.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS))
@@ -128,8 +128,8 @@
 // Bulldog shotgun //
 
 /obj/item/gun/ballistic/shotgun/bulldog
-	name = "\improper Bulldog Shotgun"
-	desc = "A semi-auto, mag-fed shotgun for combat in narrow corridors, nicknamed 'Bulldog' by boarding parties. Compatible only with specialized 8-round drum magazines. Can have a secondary magazine attached to quickly swap between ammo types, or just to keep shooting."
+	name = "\improper fusil à pompe Bulldog"
+	desc = "Un fusil à pompe semi-automatique et à chargeur pour le combat dans les couloirs étroits, surnommé 'Bulldog' par les équipes d'abordage. Compatible uniquement avec des chargeurs tambour spécialisés de 8 cartouches. Peut avoir un chargeur secondaire attaché pour basculer rapidement entre les types de munitions, ou simplement pour continuer à tirer."
 	icon_state = "bulldog"
 	inhand_icon_state = "bulldog"
 	worn_icon_state = "cshotgun"
@@ -173,13 +173,13 @@
 	. = ..()
 	if(secondary_magazine)
 		var/secondary_ammo_count = secondary_magazine.ammo_count()
-		. += "There is a secondary magazine."
-		. += "It has [secondary_ammo_count] round\s remaining."
-		. += "Shoot with right-click to swap to the secondary magazine after firing."
-		. += "If the magazine is empty, [src] will automatically swap to the secondary magazine."
-	. += "You can load a secondary magazine by right-clicking [src] with the magazine you want to load."
-	. += "You can remove a secondary magazine by alt-right-clicking [src]."
-	. += "Right-click to swap the magazine to the secondary position, and vice versa."
+		. += "Il y'a un chgargeur secondaire."
+		. += "Il reste [secondary_ammo_count] cartouche."
+		. += "Appuyez sur clic droit pour basculer sur le chargeur secondaire après avoir tiré."
+		. += "Si le chargeur est vide, [src] basculera automatiquement sur le chargeur secondaire."
+	. += "Vous pouvez placer un chargeur secondaire en cliquant droit sur [src] avec le chargeur que vous voulez charger."
+	. += "Vous pouvez retirer un chargeur secondaire en faisant un alt-right-clique sur [src]."
+	. += "Clique-droit pour basculer le chargeur dans la position secondaire, et vice versa."
 
 /obj/item/gun/ballistic/shotgun/bulldog/update_overlays()
 	. = ..()
@@ -213,16 +213,16 @@
 
 /obj/item/gun/ballistic/shotgun/bulldog/attackby_secondary(obj/item/weapon, mob/user, params)
 	if(!istype(weapon, secondary_magazine_type))
-		balloon_alert(user, "[weapon.name] doesn't fit!")
+		balloon_alert(user, "[weapon.name] ne fait pas la bonne taille !")
 		return SECONDARY_ATTACK_CALL_NORMAL
 	if(!user.transferItemToLoc(weapon, src))
-		to_chat(user, span_warning("You cannot seem to get [src] out of your hands!"))
+		to_chat(user, span_warning("Il semble que vous ne pouvez pas lâcher [src] !"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	var/obj/item/ammo_box/magazine/old_mag = secondary_magazine
 	secondary_magazine = weapon
 	if(old_mag)
 		user.put_in_hands(old_mag)
-	balloon_alert(user, "secondary [magazine_wording] loaded")
+	balloon_alert(user, "[magazine_wording] secondaire chargé.")
 	playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
 	update_appearance()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -251,8 +251,8 @@
 /////////////////////////////
 
 /obj/item/gun/ballistic/shotgun/doublebarrel
-	name = "double-barreled shotgun"
-	desc = "A true classic."
+	name = "fusil à pompe à double canon"
+	desc = "Un véritable classique."
 	icon_state = "dshotgun"
 	inhand_icon_state = "shotgun_db"
 	w_class = WEIGHT_CLASS_BULKY
@@ -261,7 +261,7 @@
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/dual
-	sawn_desc = "Omar's coming!"
+	sawn_desc = "Omar arrive !"
 	obj_flags = UNIQUE_RENAME
 	rack_sound_volume = 0
 	unique_reskin = list("Default" = "dshotgun",
@@ -287,14 +287,14 @@
 		weapon_weight = WEAPON_MEDIUM
 
 /obj/item/gun/ballistic/shotgun/doublebarrel/slugs
-	name = "hunting shotgun"
-	desc = "A hunting shotgun used by the wealthy to hunt \"game\"."
-	sawn_desc = "A sawn-off hunting shotgun. In its new state, it's remarkably less effective at hunting... anything."
+	name = "fusil à pompe de chasse"
+	desc = "Un fusil à pompe de chasse utilisé par les riches pour chasser le \"gibier\"."
+	sawn_desc = "Un fusil à pompe de chasse scié. Dans son nouvel état, il est remarquablement moins efficace pour chasser... quoi que ce soit."
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/dual/slugs
 
 /obj/item/gun/ballistic/shotgun/hook
-	name = "hook modified sawn-off shotgun"
-	desc = "Range isn't an issue when you can bring your victim to you."
+	name = "fusil à pompe scié modifié avec un crochet"
+	desc = "Un fusil à pompe scié modifié avec un crochet. La portée n'est pas un problème lorsque vous pouvez amener votre victime à vous."
 	icon_state = "hookshotgun"
 	inhand_icon_state = "hookshotgun"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
@@ -307,8 +307,8 @@
 	flags_1 = CONDUCT_1
 	force = 18 //it has a hook on it
 	sharpness = SHARP_POINTY //it does in fact, have a hook on it
-	attack_verb_continuous = list("slashes", "hooks", "stabs")
-	attack_verb_simple = list("slash", "hook", "stab")
+	attack_verb_continuous = list("tranche", "attrape", "palnte")
+	attack_verb_simple = list("trancher", "attraper", "planter")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	//our hook gun!
 	var/obj/item/gun/magic/hook/bounty/hook
@@ -323,7 +323,7 @@
 
 /obj/item/gun/ballistic/shotgun/hook/examine(mob/user)
 	. = ..()
-	. += span_notice("Right-click to shoot the hook.")
+	. += span_notice("Clique-droit pour tirer le crochet.")
 
 /obj/item/gun/ballistic/shotgun/hook/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
 	hook.afterattack(target, user, proximity_flag, click_parameters)

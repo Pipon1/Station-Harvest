@@ -1,10 +1,10 @@
 /datum/round_event_control/anomaly/anomaly_bluespace
-	name = "Anomaly: Bluespace"
+	name = "Anomalie : Bluespace"
 	typepath = /datum/round_event/anomaly/anomaly_bluespace
 
 	max_occurrences = 1
 	weight = 15
-	description = "This anomaly randomly teleports all items and mobs in a large area."
+	description = "Cette anomalie téléporte tous les objets et êtres vivants d'une large zone à un autre endroit."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 2
 
@@ -14,4 +14,4 @@
 	anomaly_path = /obj/effect/anomaly/bluespace
 
 /datum/round_event/anomaly/anomaly_bluespace/announce(fake)
-	priority_announce("Bluespace instability detected on [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name].", "Anomaly Alert")
+	priority_announce("Instabilité Bluespace détectée [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name].", "Alerte anomalie")

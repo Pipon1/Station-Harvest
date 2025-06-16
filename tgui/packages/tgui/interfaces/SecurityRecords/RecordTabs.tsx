@@ -13,8 +13,8 @@ export const SecurityRecordTabs = (props, context) => {
   const { higher_access, records = [], station_z } = data;
 
   const errorMessage = !records.length
-    ? 'No records found.'
-    : 'No match. Refine your search.';
+    ? 'Aucun casiers trouvé.'
+    : 'Aucun résultats, rafinez votre recherche.';
 
   const [search, setSearch] = useLocalState(context, 'search', '');
 
@@ -51,17 +51,17 @@ export const SecurityRecordTabs = (props, context) => {
             <Button
               disabled
               icon="plus"
-              tooltip="Add new records by inserting a 1 by 1 meter photo into the terminal. You do not need this screen open.">
-              Create
+              tooltip="Ajoutez un nouveau casier en insérant une photo de 1 mètre par 1 mètre dans le terminal. Vous n'avez pas besoin de cette fenêtre ouverte..">
+              Créer
             </Button>
           </Stack.Item>
           <Stack.Item>
             <Button.Confirm
-              content="Purge"
+              content="Purger"
               disabled={!higher_access || !station_z}
               icon="trash"
               onClick={() => act('purge_records')}
-              tooltip="Wipe criminal record data."
+              tooltip="Supprimez un casier judiciaire."
             />
           </Stack.Item>
         </Stack>

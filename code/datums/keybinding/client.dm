@@ -6,8 +6,8 @@
 /datum/keybinding/client/admin_help
 	hotkey_keys = list("F1")
 	name = "admin_help"
-	full_name = "Admin Help"
-	description = "Ask an admin for help."
+	full_name = "Demande d'aide d'un admin"
+	description = "Demander de l'aide à un administrateur."
 	keybind_signal = COMSIG_KB_CLIENT_GETHELP_DOWN
 
 /datum/keybinding/client/admin_help/down(client/user)
@@ -21,8 +21,8 @@
 /datum/keybinding/client/screenshot
 	hotkey_keys = list("F2")
 	name = "screenshot"
-	full_name = "Screenshot"
-	description = "Take a screenshot."
+	full_name = "Capture d'écran"
+	description = "Prendre une capture d'écran."
 	keybind_signal = COMSIG_KB_CLIENT_SCREENSHOT_DOWN
 
 /datum/keybinding/client/screenshot/down(client/user)
@@ -35,8 +35,8 @@
 /datum/keybinding/client/minimal_hud
 	hotkey_keys = list("F12")
 	name = "minimal_hud"
-	full_name = "Minimal HUD"
-	description = "Hide most HUD features"
+	full_name = "Interface Utilisateur minimum"
+	description = "Cacher la plupart de l'interface."
 	keybind_signal = COMSIG_KB_CLIENT_MINIMALHUD_DOWN
 
 /datum/keybinding/client/minimal_hud/down(client/user)

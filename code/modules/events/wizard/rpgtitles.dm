@@ -1,10 +1,10 @@
 /datum/round_event_control/wizard/rpgtitles //its time to adventure on boys
-	name = "RPG Titles"
+	name = "Titre de RPG"
 	weight = 3
 	typepath = /datum/round_event/wizard/rpgtitles
 	max_occurrences = 1
 	earliest_start = 0 MINUTES
-	description = "Everyone gains an RPG title hovering below them."
+	description = "Tout le monde gagne un titre de RPG qui s'affiche en dessous d'eux."
 	min_wizard_trigger_potency = 4
 	max_wizard_trigger_potency = 7
 
@@ -49,18 +49,19 @@ GLOBAL_DATUM(rpgtitle_controller, /datum/rpgtitle_controller)
 	//list of lists involving strings related to a biotype flag, their position in the list equal to the position they were defined as bitflags.
 	//the first list entry is an adjective, the second is a noun. if null, we don't want to describe this biotype, and so even if the mob
 	//has that biotype, the null is skipped
+	//French's edit : J'ai inversé les adjectifs et les noms pour que ça soit dans le bon ordre en français ! J'ai pas trouvé l'endroit où ça s'assemble pour inverser là bas, mais j'imagine que ça va marcher quand même...
 	var/list/biotype_titles = list(
 		null, //organic is too common to be a descriptor
 		null, //mineral is only used with carbons
-		list("Mechanical", "Robot"),
-		list("Reanimated", "Undead"),
-		list("Bipedal", "Humanoid"),
-		list("Insectile", "Bug"),
-		list("Beastly", "Beast"),
-		list("Monstrous", "Megafauna"),
-		list("Reptilian", "Lizard"),
-		list("Paranormal", "Spirit"),
-		list("Flowering", "Plant"),
+		list("Robot", "Méchanique"),
+		list("Mort-Vivant", "Réanimé"),
+		list("Humanoïde", "Bipède"),
+		list("Insecte", "Insectoïde"),
+		list("Bête", "Bestiale"),
+		list("Méga-faune", "Monstreux"),
+		list("Lézard", "Reptilien"),
+		list("Esprit", "Paranormal"),
+		list("Plante", "En-Fleur"),
 	)
 
 	var/maptext_title = ""
@@ -76,7 +77,7 @@ GLOBAL_DATUM(rpgtitle_controller, /datum/rpgtitle_controller)
 				if(biotype_titles[biotype_flag_position+1]) //if there is a fitting verbage for this biotype...
 					applicable_biotypes += list(biotype_titles[biotype_flag_position+1])//...add it to the list of applicable biotypes
 		if(!applicable_biotypes.len) //there will never be an adjective anomaly because anomaly is only added when there are no choices
-			applicable_biotypes += list(null, "Anomaly")
+			applicable_biotypes += list(null, "Anomalie")
 
 		//shuffle it to allow for some cool combinations of adjectives and nouns
 		applicable_biotypes = shuffle(applicable_biotypes)
@@ -98,8 +99,8 @@ GLOBAL_DATUM(rpgtitle_controller, /datum/rpgtitle_controller)
 	var/obj/item/card/id/card = new_crewmember.get_idcard()
 	if(!card)//since this is called on current crew, some may not have IDs. shame on them for missing out!
 		return
-	card.name = "adventuring license"
-	card.desc = "A written license from the adventuring guild. You're good to go!"
+	card.name = "licence d'aventurier"
+	card.desc = "Une licence écrite certifiée par la guilde des aventuriers. Vous pouvez y aller !"
 	card.icon_state = "card_rpg"
 	card.assignment = job.rpg_title
 	if(istype(card, /obj/item/card/id/advanced))

@@ -5,21 +5,21 @@
 **/
 
 /obj/item/ai_module/remove
-	name = "\improper 'Remove Law' AI module"
-	desc = "An AI Module for removing single laws."
+	name = "\improper module de suppression de loi pour l'IA '"
+	desc = "Un module pour enlever individuellement des lois a l'IA."
 	bypass_law_amt_check = TRUE
 	var/lawpos = 1
 
 /obj/item/ai_module/remove/attack_self(mob/user)
-	lawpos = tgui_input_number(user, "Law to delete", "Law Removal", lawpos, 50)
+	lawpos = tgui_input_number(user, "Loi a supprimer", "Suppression de la loi", lawpos, 50)
 	if(!lawpos || QDELETED(user) || QDELETED(src) || !usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
-	to_chat(user, span_notice("Law [lawpos] selected."))
+	to_chat(user, span_notice("La Loi [lawpos] sélectionné."))
 	..()
 
 /obj/item/ai_module/remove/install(datum/ai_laws/law_datum, mob/user)
 	if(lawpos > law_datum.get_law_amount(list(LAW_INHERENT, LAW_SUPPLIED)))
-		to_chat(user, span_warning("There is no law [lawpos] to delete!"))
+		to_chat(user, span_warning("Il n'y a pas de loi [lawpos] à supprimer"))
 		return
 	..()
 
@@ -31,9 +31,9 @@
 		law_datum.remove_law(lawpos)
 
 /obj/item/ai_module/reset
-	name = "\improper 'Reset' AI module"
+	name = "\improper module de réinitialisation pour IA"
 	var/targetName = "name"
-	desc = "An AI Module for removing all non-core laws."
+	desc = "Un module pour enlever toutes les lois qui ne sont pas dans le noyau de l'IA"
 	bypass_law_amt_check = TRUE
 
 /obj/item/ai_module/reset/handle_unique_ai()
@@ -51,8 +51,8 @@
 		law_datum.clear_hacked_laws()
 
 /obj/item/ai_module/reset/purge
-	name = "'Purge' AI Module"
-	desc = "An AI Module for purging all programmed laws."
+	name = "module de purge pour l'IA"
+	desc = "Un module pour purger toutes les lois de l'IA"
 
 /obj/item/ai_module/reset/purge/transmitInstructions(datum/ai_laws/law_datum, mob/sender, overflow)
 	..()

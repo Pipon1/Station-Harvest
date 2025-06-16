@@ -121,7 +121,7 @@
 	if(ishuman(usr) && !allow_chunky)
 		var/mob/living/carbon/human/human_user = usr
 		if(human_user.check_chunky_fingers())
-			balloon_alert(human_user, "fingers are too big!")
+			balloon_alert(human_user, "vos doigts sont trop gros !")
 			return TRUE
 
 	switch(action)
@@ -154,7 +154,7 @@
 				return
 
 			killed_program.kill_program(forced = TRUE)
-			to_chat(usr, span_notice("Program [killed_program.filename].[killed_program.filetype] with PID [rand(100,999)] has been killed."))
+			to_chat(usr, span_notice("Le programme [killed_program.filename].[killed_program.filetype] associé au PID [rand(100,999)] a été tué."))
 			return TRUE
 
 		if("PC_runprogram")
@@ -169,11 +169,11 @@
 			var/mob/user = usr
 			var/new_color
 			while(!new_color)
-				new_color = input(user, "Choose a new color for [src]'s flashlight.", "Light Color",light_color) as color|null
+				new_color = input(user, "Choisisez une nouvelle couleur pour la lampe de poche de [src].", "Light Color",light_color) as color|null
 				if(!new_color)
 					return
 				if(is_color_dark(new_color, 50) ) //Colors too dark are rejected
-					to_chat(user, span_warning("That color is too dark! Choose a lighter one."))
+					to_chat(user, span_warning("Cette couleur est trop sombre ! Choisissez-en une plus claire."))
 					new_color = null
 			set_flashlight_color(new_color)
 			return TRUE
@@ -215,7 +215,7 @@
 			switch(params["option"])
 				if("eject")
 					usr.put_in_hands(inserted_pai)
-					to_chat(usr, span_notice("You remove [inserted_pai] from the [name]."))
+					to_chat(usr, span_notice("Vous enlevez [inserted_pai] de votre [name]."))
 					inserted_pai = null
 					update_appearance(UPDATE_ICON)
 				if("interact")

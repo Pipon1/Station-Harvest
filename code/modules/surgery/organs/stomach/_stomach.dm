@@ -1,5 +1,5 @@
 //The contant in the rate of reagent transfer on life ticks
-#define STOMACH_METABOLISM_CONSTANT 0.25
+#define STOMACH_METABOLISM_CONSTANT 0.30
 
 /obj/item/organ/internal/stomach
 	name = "stomach"
@@ -28,7 +28,7 @@
 	var/disgust_metabolism = 1
 
 	///The rate that the stomach will transfer reagents to the body
-	var/metabolism_efficiency = 0.05 // the lowest we should go is 0.025
+	var/metabolism_efficiency = 0.30 // the lowest we should go is 0.025
 
 	var/operated = FALSE //whether the stomach's been repaired with surgery and can be fixed again or not
 
@@ -71,7 +71,7 @@
 			amount_max = max(amount_max - amount_food, 0)
 
 		// Transfer the amount of reagents based on volume with a min amount of 1u
-		var/amount = min((round(metabolism_efficiency * amount_max, 0.05) + rate_min) * seconds_per_tick, amount_max)
+		var/amount = min((round(metabolism_efficiency * amount_max, 0.30) + rate_min) * seconds_per_tick, amount_max)
 
 		if(amount <= 0)
 			continue
@@ -286,7 +286,7 @@
 	organ_flags = ORGAN_SYNTHETIC
 	maxHealth = STANDARD_ORGAN_THRESHOLD * 0.5
 	var/emp_vulnerability = 80 //Chance of permanent effects if emp-ed.
-	metabolism_efficiency = 0.035 // not as good at digestion
+	metabolism_efficiency = 0.25 // not as good at digestion
 
 /obj/item/organ/internal/stomach/cybernetic/tier2
 	name = "cybernetic stomach"
@@ -295,7 +295,7 @@
 	maxHealth = 1.5 * STANDARD_ORGAN_THRESHOLD
 	disgust_metabolism = 2
 	emp_vulnerability = 40
-	metabolism_efficiency = 0.07
+	metabolism_efficiency = 0.35
 
 /obj/item/organ/internal/stomach/cybernetic/tier3
 	name = "upgraded cybernetic stomach"
@@ -304,7 +304,7 @@
 	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
 	disgust_metabolism = 3
 	emp_vulnerability = 20
-	metabolism_efficiency = 0.1
+	metabolism_efficiency = 0.4
 
 /obj/item/organ/internal/stomach/cybernetic/emp_act(severity)
 	. = ..()

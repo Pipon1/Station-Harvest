@@ -1,10 +1,10 @@
 /datum/round_event_control/operative
-	name = "Lone Operative"
+	name = "Agent solitaire"
 	typepath = /datum/round_event/ghost_role/operative
 	weight = 0 //its weight is relative to how much stationary and neglected the nuke disk is. See nuclearbomb.dm. Shouldn't be dynamic hijackable.
 	max_occurrences = 1
 	category = EVENT_CATEGORY_INVASION
-	description = "A single nuclear operative assaults the station."
+	description = "Un agent solitaire qui a pour but de faire exploser la bombe nucléaire de la station."
 
 /datum/round_event/ghost_role/operative
 	minimum_required = 1
@@ -32,7 +32,7 @@
 	Mind.transfer_to(operative)
 	Mind.add_antag_datum(/datum/antagonist/nukeop/lone)
 
-	message_admins("[ADMIN_LOOKUPFLW(operative)] has been made into lone operative by an event.")
-	operative.log_message("was spawned as a lone operative by an event.", LOG_GAME)
+	message_admins("[ADMIN_LOOKUPFLW(operative)] a été mis en tant qu'agent solitaire par un événement.")
+	operative.log_message("a été mis en tant qu'agent solitaire par un événement.", LOG_GAME)
 	spawned_mobs += operative
 	return SUCCESSFUL_SPAWN

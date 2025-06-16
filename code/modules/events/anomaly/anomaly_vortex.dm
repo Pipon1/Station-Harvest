@@ -1,11 +1,11 @@
 /datum/round_event_control/anomaly/anomaly_vortex
-	name = "Anomaly: Vortex"
+	name = "Anomalie : vortex"
 	typepath = /datum/round_event/anomaly/anomaly_vortex
 
 	min_players = 20
 	max_occurrences = 2
 	weight = 10
-	description = "This anomaly sucks in and detonates items."
+	description = "Cette anomalie aspire et explose les objets."
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 7
 
@@ -15,4 +15,4 @@
 	anomaly_path = /obj/effect/anomaly/bhole
 
 /datum/round_event/anomaly/anomaly_vortex/announce(fake)
-	priority_announce("Localized high-intensity vortex anomaly detected on [ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name]", "Anomaly Alert")
+	priority_announce("Vortex anormal de haute intensité détectée à [ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name]", "Alerte anomalie")

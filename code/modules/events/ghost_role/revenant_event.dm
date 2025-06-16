@@ -1,7 +1,7 @@
 #define REVENANT_SPAWN_THRESHOLD 20
 
 /datum/round_event_control/revenant
-	name = "Spawn Revenant" // Did you mean 'griefghost'?
+	name = "Spawn de revenant" // Did you mean 'griefghost'?
 	typepath = /datum/round_event/ghost_role/revenant
 	weight = 7
 	max_occurrences = 1
@@ -27,7 +27,7 @@
 		for(var/mob/M in GLOB.dead_mob_list)
 			deadMobs++
 		if(deadMobs < REVENANT_SPAWN_THRESHOLD)
-			message_admins("Event attempted to spawn a revenant, but there were only [deadMobs]/[REVENANT_SPAWN_THRESHOLD] dead mobs.")
+			message_admins("Un événement a essayé de faire spawn un revenant, mais il n'y avait que [deadMobs]/[REVENANT_SPAWN_THRESHOLD] personnes mortes.")
 			return WAITING_FOR_SOMETHING
 
 	var/list/candidates = get_candidates(ROLE_REVENANT, ROLE_REVENANT)
@@ -56,8 +56,8 @@
 
 	var/mob/living/simple_animal/revenant/revvie = new(pick(spawn_locs))
 	revvie.key = selected.key
-	message_admins("[ADMIN_LOOKUPFLW(revvie)] has been made into a revenant by an event.")
-	revvie.log_message("was spawned as a revenant by an event.", LOG_GAME)
+	message_admins("[ADMIN_LOOKUPFLW(revvie)] a été mis en tant que revenant par un événement.")
+	revvie.log_message("a été mis en tant que revenant par un événement.", LOG_GAME)
 	spawned_mobs += revvie
 	return SUCCESSFUL_SPAWN
 

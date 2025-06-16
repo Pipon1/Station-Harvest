@@ -4,9 +4,9 @@
  * Allows us to place a turf on a plating.
  */
 /obj/item/stack/tile
-	name = "broken tile"
-	singular_name = "broken tile"
-	desc = "A broken tile. This should not exist."
+	name = "dalles brisées"
+	singular_name = "dalle brisée"
+	desc = "Une dalle brisée. Cela ne devrait pas exister."
 	lefthand_file = 'icons/mob/inhands/items/tiles_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/tiles_righthand.dmi'
 	icon = 'icons/obj/tiles.dmi'
@@ -45,23 +45,23 @@
 /obj/item/stack/tile/examine(mob/user)
 	. = ..()
 	if(tile_reskin_types || tile_rotate_dirs)
-		. += span_notice("Use while in your hand to change what type of [src] you want.")
+		. += span_notice("Utilisez-ceci en main pour changer le type de [src] que vous voulez.")
 	if(throwforce && !is_cyborg) //do not want to divide by zero or show the message to borgs who can't throw
 		var/verb
 		switch(CEILING(MAX_LIVING_HEALTH / throwforce, 1)) //throws to crit a human
 			if(1 to 3)
-				verb = "superb"
+				verb = "superbe arme de jet"
 			if(4 to 6)
-				verb = "great"
+				verb = "arme de jet correcte"
 			if(7 to 9)
-				verb = "good"
+				verb = "bonne arme de jet"
 			if(10 to 12)
-				verb = "fairly decent"
+				verb = "arme de jet plutôt décente"
 			if(13 to 15)
-				verb = "mediocre"
+				verb = "arme de jet médiocre"
 		if(!verb)
 			return
-		. += span_notice("Those could work as a [verb] throwing weapon.")
+		. += span_notice("[src] peut être utilisé comme une [verb].")
 
 /**
  * Place our tile on a plating, or replace it.
@@ -87,9 +87,9 @@
 
 	// If we and the target tile share the same initial baseturf and they consent, replace em.
 	if(!target_plating.allow_replacement || initial(target_plating.baseturfs) != initial(placed_turf_path.baseturfs))
-		to_chat(user, span_notice("You cannot place this tile here directly!"))
+		to_chat(user, span_notice("Vous ne pouvez pas placer cette dalle ici !"))
 		return
-	to_chat(user, span_notice("You begin replacing the floor with the tile..."))
+	to_chat(user, span_notice("Vous commencez à remplacer le sol avec la dalle..."))
 	if(!istype(target_plating))
 		return
 	if(!use(1))
@@ -102,9 +102,9 @@
 
 //Grass
 /obj/item/stack/tile/grass
-	name = "grass tile"
-	singular_name = "grass floor tile"
-	desc = "A patch of grass like they use on space golf courses."
+	name = "dalles en herbe"
+	singular_name = "dalle en herbe"
+	desc = "Un morceau de gazon comme on en trouve sur les terrains de golf spatiaux."
 	icon_state = "tile_grass"
 	inhand_icon_state = "tile-grass"
 	turf_type = /turf/open/floor/grass
@@ -113,9 +113,9 @@
 
 //Fairygrass
 /obj/item/stack/tile/fairygrass
-	name = "fairygrass tile"
-	singular_name = "fairygrass floor tile"
-	desc = "A patch of odd, glowing blue grass."
+	name = "dalles en herbe féerique"
+	singular_name = "dalle en herbe féerique"
+	desc = "Un morceau de gazon bleu étrange."
 	icon_state = "tile_fairygrass"
 	turf_type = /turf/open/floor/grass/fairy
 	resistance_flags = FLAMMABLE
@@ -123,9 +123,9 @@
 
 //Wood
 /obj/item/stack/tile/wood
-	name = "wood floor tile"
-	singular_name = "wood floor tile"
-	desc = "An easy to fit wood floor tile. Use while in your hand to change what pattern you want."
+	name = "dalles en bois"
+	singular_name = "dalle en bois"
+	desc = "Une dalle de sol en bois facile à poser. Utilisez-la en main pour changer le motif."
 	icon_state = "tile-wood"
 	inhand_icon_state = "tile-wood"
 	turf_type = /turf/open/floor/wood
@@ -139,31 +139,31 @@
 	)
 
 /obj/item/stack/tile/wood/parquet
-	name = "parquet wood floor tile"
-	singular_name = "parquet wood floor tile"
+	name = "dalles en parquet"
+	singular_name = "dalle en parquet"
 	icon_state = "tile-wood_parquet"
 	turf_type = /turf/open/floor/wood/parquet
 	merge_type = /obj/item/stack/tile/wood/parquet
 
 /obj/item/stack/tile/wood/large
-	name = "large wood floor tile"
-	singular_name = "large wood floor tile"
+	name = "grande dalles en bois"
+	singular_name = "grande dalle en bois"
 	icon_state = "tile-wood_large"
 	turf_type = /turf/open/floor/wood/large
 	merge_type = /obj/item/stack/tile/wood/large
 
 /obj/item/stack/tile/wood/tile
-	name = "tiled wood floor tile"
-	singular_name = "tiled wood floor tile"
+	name = "dalles en bois carrelées"
+	singular_name = "dalle en bois carrelée"
 	icon_state = "tile-wood_tile"
 	turf_type = /turf/open/floor/wood/tile
 	merge_type = /obj/item/stack/tile/wood/tile
 
 //Bamboo
 /obj/item/stack/tile/bamboo
-	name = "bamboo mat pieces"
-	singular_name = "bamboo mat piece"
-	desc = "A piece of a bamboo mat with a decorative trim."
+	name = "morceaux de tapis en bambou"
+	singular_name = "morceau de tapis en bambou"
+	desc = "Un morceau de tapis en bambou avec une bordure décorative."
 	icon_state = "tile_bamboo"
 	inhand_icon_state = "tile-bamboo"
 	turf_type = /turf/open/floor/bamboo
@@ -177,32 +177,32 @@
 	)
 
 /obj/item/stack/tile/bamboo/tatami
-	name = "Tatami with green rim"
-	singular_name = "green tatami floor tile"
+	name = "Tatamis avec une bordure verte"
+	singular_name = "Tanami avec une bordure verte"
 	icon_state = "tile_tatami_green"
 	turf_type = /turf/open/floor/bamboo/tatami
 	merge_type = /obj/item/stack/tile/bamboo/tatami
 	tile_rotate_dirs = list(NORTH, EAST, SOUTH, WEST)
 
 /obj/item/stack/tile/bamboo/tatami/purple
-	name = "Tatami with purple rim"
-	singular_name = "purple tatami floor tile"
+	name = "Tatamis avec une bordure violette"
+	singular_name = "Tatami avec une bordure violette"
 	icon_state = "tile_tatami_purple"
 	turf_type = /turf/open/floor/bamboo/tatami/purple
 	merge_type = /obj/item/stack/tile/bamboo/tatami/purple
 
 /obj/item/stack/tile/bamboo/tatami/black
-	name = "Tatami with black rim"
-	singular_name = "black tatami floor tile"
+	name = "Tatamis avec une bordure noire"
+	singular_name = "Tatami avec une bordure noire"
 	icon_state = "tile_tatami_black"
 	turf_type = /turf/open/floor/bamboo/tatami/black
 	merge_type = /obj/item/stack/tile/bamboo/tatami/black
 
 //Basalt
 /obj/item/stack/tile/basalt
-	name = "basalt tile"
-	singular_name = "basalt floor tile"
-	desc = "Artificially made ashy soil themed on a hostile environment."
+	name = "dalles en basalte"
+	singular_name = "dalle en basalte"
+	desc = "Un sol artificiellement fait pour ressembler à un environnement hostile."
 	icon_state = "tile_basalt"
 	inhand_icon_state = "tile-basalt"
 	turf_type = /turf/open/floor/fakebasalt
@@ -210,9 +210,9 @@
 
 //Carpets
 /obj/item/stack/tile/carpet
-	name = "carpet"
-	singular_name = "carpet tile"
-	desc = "A piece of carpet. It is the same size as a floor tile."
+	name = "tapis"
+	singular_name = "tapis"
+	desc = "Un morceau de tapis. Il est de la même taille qu'une dalle."
 	icon_state = "tile-carpet"
 	inhand_icon_state = "tile-carpet"
 	turf_type = /turf/open/floor/carpet
@@ -226,24 +226,24 @@
 	)
 
 /obj/item/stack/tile/carpet/symbol
-	name = "symbol carpet"
-	singular_name = "symbol carpet tile"
+	name = "tapis avec un symbole"
+	singular_name = "tapis avec des symboles"
 	icon_state = "tile-carpet-symbol"
-	desc = "A piece of carpet. This one has a symbol on it."
+	desc = "Un morceau de tapis. Celui-ci a un symbole dessus."
 	turf_type = /turf/open/floor/carpet/lone
 	merge_type = /obj/item/stack/tile/carpet/symbol
 	tile_rotate_dirs = list(SOUTH, NORTH, EAST, WEST, SOUTHEAST)
 
 /obj/item/stack/tile/carpet/star
-	name = "star carpet"
-	singular_name = "star carpet tile"
+	name = "tapis étoilé"
+	singular_name = "tapis étoilé"
 	icon_state = "tile-carpet-star"
-	desc = "A piece of carpet. This one has a star on it."
+	desc = "Un morceau de tapis. Celui-ci a une étoile dessus."
 	turf_type = /turf/open/floor/carpet/lone/star
 	merge_type = /obj/item/stack/tile/carpet/star
 
 /obj/item/stack/tile/carpet/black
-	name = "black carpet"
+	name = "tapis noir"
 	icon_state = "tile-carpet-black"
 	inhand_icon_state = "tile-carpet-black"
 	turf_type = /turf/open/floor/carpet/black
@@ -251,7 +251,7 @@
 	merge_type = /obj/item/stack/tile/carpet/black
 
 /obj/item/stack/tile/carpet/blue
-	name = "blue carpet"
+	name = "tapis bleu"
 	icon_state = "tile-carpet-blue"
 	inhand_icon_state = "tile-carpet-blue"
 	turf_type = /turf/open/floor/carpet/blue
@@ -259,7 +259,7 @@
 	merge_type = /obj/item/stack/tile/carpet/blue
 
 /obj/item/stack/tile/carpet/cyan
-	name = "cyan carpet"
+	name = "tapis cyan"
 	icon_state = "tile-carpet-cyan"
 	inhand_icon_state = "tile-carpet-cyan"
 	turf_type = /turf/open/floor/carpet/cyan
@@ -267,7 +267,7 @@
 	merge_type = /obj/item/stack/tile/carpet/cyan
 
 /obj/item/stack/tile/carpet/green
-	name = "green carpet"
+	name = "tapis vert"
 	icon_state = "tile-carpet-green"
 	inhand_icon_state = "tile-carpet-green"
 	turf_type = /turf/open/floor/carpet/green
@@ -275,7 +275,7 @@
 	merge_type = /obj/item/stack/tile/carpet/green
 
 /obj/item/stack/tile/carpet/orange
-	name = "orange carpet"
+	name = "tapis orange"
 	icon_state = "tile-carpet-orange"
 	inhand_icon_state = "tile-carpet-orange"
 	turf_type = /turf/open/floor/carpet/orange
@@ -283,7 +283,7 @@
 	merge_type = /obj/item/stack/tile/carpet/orange
 
 /obj/item/stack/tile/carpet/purple
-	name = "purple carpet"
+	name = "tapis violet"
 	icon_state = "tile-carpet-purple"
 	inhand_icon_state = "tile-carpet-purple"
 	turf_type = /turf/open/floor/carpet/purple
@@ -291,7 +291,7 @@
 	merge_type = /obj/item/stack/tile/carpet/purple
 
 /obj/item/stack/tile/carpet/red
-	name = "red carpet"
+	name = "tapis rouge"
 	icon_state = "tile-carpet-red"
 	inhand_icon_state = "tile-carpet-red"
 	turf_type = /turf/open/floor/carpet/red
@@ -299,7 +299,7 @@
 	merge_type = /obj/item/stack/tile/carpet/red
 
 /obj/item/stack/tile/carpet/royalblack
-	name = "royal black carpet"
+	name = "tapis royal noir"
 	icon_state = "tile-carpet-royalblack"
 	inhand_icon_state = "tile-carpet-royalblack"
 	turf_type = /turf/open/floor/carpet/royalblack
@@ -307,7 +307,7 @@
 	merge_type = /obj/item/stack/tile/carpet/royalblack
 
 /obj/item/stack/tile/carpet/royalblue
-	name = "royal blue carpet"
+	name = "tapis royal bleu"
 	icon_state = "tile-carpet-royalblue"
 	inhand_icon_state = "tile-carpet-royalblue"
 	turf_type = /turf/open/floor/carpet/royalblue
@@ -315,21 +315,21 @@
 	merge_type = /obj/item/stack/tile/carpet/royalblue
 
 /obj/item/stack/tile/carpet/executive
-	name = "executive carpet"
+	name = "tapis d'actionnaire"
 	icon_state = "tile_carpet_executive"
 	inhand_icon_state = "tile-carpet-royalblue"
 	turf_type = /turf/open/floor/carpet/executive
 	merge_type = /obj/item/stack/tile/carpet/executive
 
 /obj/item/stack/tile/carpet/stellar
-	name = "stellar carpet"
+	name = "tapis stellaire"
 	icon_state = "tile_carpet_stellar"
 	inhand_icon_state = "tile-carpet-royalblue"
 	turf_type = /turf/open/floor/carpet/stellar
 	merge_type = /obj/item/stack/tile/carpet/stellar
 
 /obj/item/stack/tile/carpet/donk
-	name = "\improper Donk Co. promotional carpet"
+	name = "\improper tapis promotionnel de marque Donk Co."
 	icon_state = "tile_carpet_donk"
 	inhand_icon_state = "tile-carpet-orange"
 	turf_type = /turf/open/floor/carpet/donk
@@ -375,9 +375,9 @@
 	amount = 30
 
 /obj/item/stack/tile/carpet/neon
-	name = "neon carpet"
-	singular_name = "neon carpet tile"
-	desc = "A piece of rubbery mat inset with a phosphorescent pattern."
+	name = "tapis néon"
+	singular_name = "tapis néon"
+	desc = "Un morceau de tapis en caoutchouc incrusté d'un motif phosphorescent."
 	inhand_icon_state = "tile-neon"
 	turf_type = /turf/open/floor/carpet/neon
 	merge_type = /obj/item/stack/tile/carpet/neon
@@ -412,8 +412,8 @@
 	. += emissive_appearance(icon_file, neon_inhand_icon_state, src, alpha = emissive_alpha)
 
 /obj/item/stack/tile/carpet/neon/simple
-	name = "simple neon carpet"
-	singular_name = "simple neon carpet tile"
+	name = "tapis néon simple"
+	singular_name = "tapis néon simple"
 	icon_state = "tile_carpet_neon_simple"
 	neon_icon_state = "tile_carpet_neon_simple_light"
 	neon_inhand_icon_state = "tile-neon-glow"
@@ -435,8 +435,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/white
-	name = "simple white neon carpet"
-	singular_name = "simple white neon carpet tile"
+	name = "tapis néon blanc simple"
+	singular_name = "tapis néon blanc simple"
 	turf_type = /turf/open/floor/carpet/neon/simple/white
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/white
 	neon_color = COLOR_WHITE
@@ -456,8 +456,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/black
-	name = "simple black neon carpet"
-	singular_name = "simple black neon carpet tile"
+	name = "tapis néon noir simple"
+	singular_name = "tapis néon noir simple"
 	neon_icon_state = "tile_carpet_neon_simple_glow"
 	turf_type = /turf/open/floor/carpet/neon/simple/black
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/black
@@ -478,8 +478,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/red
-	name = "simple red neon carpet"
-	singular_name = "simple red neon carpet tile"
+	name = "tapis néon rouge simple"
+	singular_name = "tapis néon rouge simple"
 	turf_type = /turf/open/floor/carpet/neon/simple/red
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/red
 	neon_color = COLOR_RED
@@ -499,8 +499,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/orange
-	name = "simple orange neon carpet"
-	singular_name = "simple orange neon carpet tile"
+	name = "tapis néon orange simple"
+	singular_name = "tapis néon orange simple"
 	turf_type = /turf/open/floor/carpet/neon/simple/orange
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/orange
 	neon_color = COLOR_ORANGE
@@ -520,8 +520,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/yellow
-	name = "simple yellow neon carpet"
-	singular_name = "simple yellow neon carpet tile"
+	name = "tapis néon jaune simple"
+	singular_name = "tapis néon jaune simple"
 	turf_type = /turf/open/floor/carpet/neon/simple/yellow
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/yellow
 	neon_color = COLOR_YELLOW
@@ -541,8 +541,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/lime
-	name = "simple lime neon carpet"
-	singular_name = "simple lime neon carpet tile"
+	name = "tapis néon jaune-citron simple"
+	singular_name = "tapis néon jaune-citron simple"
 	turf_type = /turf/open/floor/carpet/neon/simple/lime
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/lime
 	neon_color = COLOR_LIME
@@ -562,8 +562,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/green
-	name = "simple green neon carpet"
-	singular_name = "simple green neon carpet tile"
+	name = "tapis néon vert simple"
+	singular_name = "tapis néon vert simple"
 	turf_type = /turf/open/floor/carpet/neon/simple/green
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/green
 	neon_color = COLOR_GREEN
@@ -583,8 +583,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/teal
-	name = "simple teal neon carpet"
-	singular_name = "simple teal neon carpet tile"
+	name = "tapis néon sarcelle simple"
+	singular_name = "tapis néon sarcelle simple"
 	turf_type = /turf/open/floor/carpet/neon/simple/teal
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/teal
 	neon_color = COLOR_TEAL
@@ -604,8 +604,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/cyan
-	name = "simple cyan neon carpet"
-	singular_name = "simple cyan neon carpet tile"
+	name = "tapis néon cyan simple"
+	singular_name = "tapis néon cyan simple"
 	turf_type = /turf/open/floor/carpet/neon/simple/cyan
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/cyan
 	neon_color = COLOR_CYAN
@@ -625,8 +625,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/blue
-	name = "simple blue neon carpet"
-	singular_name = "simple blue neon carpet tile"
+	name = "tapis néon bleu simple"
+	singular_name = "tapis néon bleu simple"
 	turf_type = /turf/open/floor/carpet/neon/simple/blue
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/blue
 	neon_color = COLOR_BLUE
@@ -646,8 +646,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/purple
-	name = "simple purple neon carpet"
-	singular_name = "simple purple neon carpet tile"
+	name = "tapis néon violet simple"
+	singular_name = "tapis néon violet simple"
 	turf_type = /turf/open/floor/carpet/neon/simple/purple
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/purple
 	neon_color = COLOR_PURPLE
@@ -667,8 +667,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/violet
-	name = "simple violet neon carpet"
-	singular_name = "simple violet neon carpet tile"
+	name = "tapis néon violet simple"
+	singular_name = "tapis néon violet simple"
 	turf_type = /turf/open/floor/carpet/neon/simple/violet
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/violet
 	neon_color = COLOR_VIOLET
@@ -688,8 +688,8 @@
 	)
 
 /obj/item/stack/tile/carpet/neon/simple/pink
-	name = "simple pink neon carpet"
-	singular_name = "simple pink neon carpet tile"
+	name = "tapis néon rose simple"
+	singular_name = "tapis néon rose simple"
 	turf_type = /turf/open/floor/carpet/neon/simple/pink
 	merge_type = /obj/item/stack/tile/carpet/neon/simple/pink
 	neon_color = COLOR_LIGHT_PINK
@@ -970,9 +970,9 @@
 	amount = 60
 
 /obj/item/stack/tile/fakespace
-	name = "astral carpet"
-	singular_name = "astral carpet tile"
-	desc = "A piece of carpet with a convincing star pattern."
+	name = "tapis astraux"
+	singular_name = "tapis astral"
+	desc = "Un morceau de tapis avec un motif d'étoiles convaincant."
 	icon_state = "tile_space"
 	inhand_icon_state = "tile-space"
 	turf_type = /turf/open/floor/fakespace
@@ -983,9 +983,9 @@
 	amount = 30
 
 /obj/item/stack/tile/fakepit
-	name = "fake pits"
-	singular_name = "fake pit"
-	desc = "A piece of carpet with a forced perspective illusion of a pit. No way this could fool anyone!"
+	name = "faux trous"
+	singular_name = "faux trous"
+	desc = "Un morceau de tapis avec une illusion de perspective forcée d'un trou. Impossible de tromper qui que ce soit !"
 	icon_state = "tile_pit"
 	inhand_icon_state = "tile-basalt"
 	turf_type = /turf/open/floor/fakepit
@@ -996,9 +996,9 @@
 	amount = 30
 
 /obj/item/stack/tile/fakeice
-	name = "fake ice"
-	singular_name = "fake ice tile"
-	desc = "A piece of tile with a convincing ice pattern."
+	name = "fausse glace"
+	singular_name = "fausse glace"
+	desc = "Un morceau de tapis avec un motif de glace convaincant."
 	icon_state = "tile_ice"
 	inhand_icon_state = "tile-diamond"
 	turf_type = /turf/open/floor/fakeice
@@ -1010,9 +1010,9 @@
 
 //High-traction
 /obj/item/stack/tile/noslip
-	name = "high-traction floor tile"
-	singular_name = "high-traction floor tile"
-	desc = "A high-traction floor tile. It feels rubbery in your hand."
+	name = "dalles antidérapantes"
+	singular_name = "dalle antidérapante"
+	desc = "Une dalle antidérapante. Elle est caoutchouteuse au toucher."
 	icon_state = "tile_noslip"
 	inhand_icon_state = "tile-noslip"
 	turf_type = /turf/open/floor/noslip
@@ -1023,18 +1023,18 @@
 
 //Circuit
 /obj/item/stack/tile/circuit
-	name = "blue circuit tile"
-	singular_name = "blue circuit tile"
-	desc = "A blue circuit tile."
+	name = "dalles à circuits bleus"
+	singular_name = "dalle à circuit bleu"
+	desc = "Une dalle à circuit bleu."
 	icon_state = "tile_bcircuit"
 	inhand_icon_state = "tile-bcircuit"
 	turf_type = /turf/open/floor/circuit
 	merge_type = /obj/item/stack/tile/circuit
 
 /obj/item/stack/tile/circuit/green
-	name = "green circuit tile"
-	singular_name = "green circuit tile"
-	desc = "A green circuit tile."
+	name = "dalles à circuits verts"
+	singular_name = "dalle à circuit vert"
+	desc = "Une dalle à circuit vert."
 	icon_state = "tile_gcircuit"
 	inhand_icon_state = "tile-gcircuit"
 	turf_type = /turf/open/floor/circuit/green
@@ -1045,9 +1045,9 @@
 	merge_type = /obj/item/stack/tile/circuit/green/anim
 
 /obj/item/stack/tile/circuit/red
-	name = "red circuit tile"
-	singular_name = "red circuit tile"
-	desc = "A red circuit tile."
+	name = "dalles à circuits rouges"
+	singular_name = "dalle à circuit rouge"
+	desc = "Une dalle à circuit rouge."
 	icon_state = "tile_rcircuit"
 	inhand_icon_state = "tile-rcircuit"
 	turf_type = /turf/open/floor/circuit/red
@@ -1059,9 +1059,9 @@
 
 //Pod floor
 /obj/item/stack/tile/pod
-	name = "pod floor tile"
-	singular_name = "pod floor tile"
-	desc = "A grooved floor tile."
+	name = "dalles de nacelle de sauvetage"
+	singular_name = "dalle de nacelle de sauvetage"
+	desc = "Une dalle rainurée."
 	icon_state = "tile_pod"
 	inhand_icon_state = "tile-pod"
 	turf_type = /turf/open/floor/pod
@@ -1073,34 +1073,34 @@
 		)
 
 /obj/item/stack/tile/pod/light
-	name = "light pod floor tile"
-	singular_name = "light pod floor tile"
-	desc = "A lightly colored grooved floor tile."
+	name = "dalles de nacelle de sauvetage claires"
+	singular_name = "dalle de nacelle de sauvetage claire"
+	desc = "Une dalle rainurée claire."
 	icon_state = "tile_podlight"
 	turf_type = /turf/open/floor/pod/light
 	merge_type = /obj/item/stack/tile/pod/light
 
 /obj/item/stack/tile/pod/dark
-	name = "dark pod floor tile"
-	singular_name = "dark pod floor tile"
-	desc = "A darkly colored grooved floor tile."
+	name = "dalles de nacelle de sauvetage sombres"
+	singular_name = "dalle de nacelle de sauvetage sombre"
+	desc = "Une dalle rainurée sombre."
 	icon_state = "tile_poddark"
 	turf_type = /turf/open/floor/pod/dark
 	merge_type = /obj/item/stack/tile/pod/dark
 
 /obj/item/stack/tile/plastic
-	name = "plastic tile"
-	singular_name = "plastic floor tile"
-	desc = "A tile of cheap, flimsy plastic flooring."
+	name = "dalles en plastique"
+	singular_name = "dalle en plastique"
+	desc = "Une dalle en plastique bon marché et fragile."
 	icon_state = "tile_plastic"
 	mats_per_unit = list(/datum/material/plastic=500)
 	turf_type = /turf/open/floor/plastic
 	merge_type = /obj/item/stack/tile/plastic
 
 /obj/item/stack/tile/material
-	name = "floor tile"
-	singular_name = "floor tile"
-	desc = "The ground you walk on."
+	name = "dalles"
+	singular_name = "dalle"
+	desc = "Le sol sur lequel vous marchez."
 	throwforce = 10
 	icon_state = "material_tile"
 	turf_type = /turf/open/floor/material
@@ -1113,9 +1113,9 @@
 	floor?.set_custom_materials(mats_per_unit)
 
 /obj/item/stack/tile/eighties
-	name = "retro tile"
-	singular_name = "retro floor tile"
-	desc = "A stack of floor tiles that remind you of an age of funk. Use in your hand to pick between a black or red pattern."
+	name = "dalles rétro"
+	singular_name = "dalle rétro"
+	desc = "Un tas de dalles qui vous rappellent une époque funky. Utilisez-les dans votre main pour choisir entre un motif noir ou rouge."
 	icon_state = "tile_eighties"
 	turf_type = /turf/open/floor/eighties
 	merge_type = /obj/item/stack/tile/eighties
@@ -1128,17 +1128,17 @@
 	amount = 15
 
 /obj/item/stack/tile/eighties/red
-	name = "red retro tile"
-	singular_name = "red retro floor tile"
-	desc = "A stack of REDICAL floor tiles! Use in your hand to pick between a black or red pattern!" //i am so sorry
+	name = "dalles rétro rouges"
+	singular_name = "dalle rétro rouge"
+	desc = "Un tas de dalles ROUGE-ALORS ! Utilisez-les dans votre main pour choisir entre un motif noir ou rouge." //i am so sorry
 	icon_state = "tile_eightiesred"
 	turf_type = /turf/open/floor/eighties/red
 	merge_type = /obj/item/stack/tile/eighties/red
 
 /obj/item/stack/tile/bronze
-	name = "bronze tile"
-	singular_name = "bronze floor tile"
-	desc = "A clangy tile made of high-quality bronze. Clockwork construction techniques allow the clanging to be minimized."
+	name = "dalles en bronze"
+	singular_name = "dalle en bronze"
+	desc = "Une dalle en bronze de haute qualité. Les techniques de construction horlogère permettent de minimiser le bruit de claquement."
 	icon_state = "tile_brass"
 	turf_type = /turf/open/floor/bronze
 	mats_per_unit = list(/datum/material/bronze=500)
@@ -1150,23 +1150,23 @@
 		)
 
 /obj/item/stack/tile/bronze/flat
-	name = "flat bronze tile"
-	singular_name = "flat bronze floor tile"
+	name = "dalles en bronze plates"
+	singular_name = "dalle en bronze plate"
 	icon_state = "tile_reebe"
 	turf_type = /turf/open/floor/bronze/flat
 	merge_type = /obj/item/stack/tile/bronze/flat
 
 /obj/item/stack/tile/bronze/filled
-	name = "filled bronze tile"
-	singular_name = "filled bronze floor tile"
+	name = "dalles en bronze remplies"
+	singular_name = "dalle en bronze remplie"
 	icon_state = "tile_brass_filled"
 	turf_type = /turf/open/floor/bronze/filled
 	merge_type = /obj/item/stack/tile/bronze/filled
 
 /obj/item/stack/tile/cult
-	name = "engraved tile"
-	singular_name = "engraved floor tile"
-	desc = "A strange tile made from runed metal. Doesn't seem to actually have any paranormal powers."
+	name = "dalles gravées"
+	singular_name = "dalle gravée"
+	desc = "Une dalle étrange faite de métal runique. Elle ne semble pas avoir de pouvoirs paranormaux."
 	icon_state = "tile_cult"
 	turf_type = /turf/open/floor/cult
 	mats_per_unit = list(/datum/material/runedmetal=500)
@@ -1202,9 +1202,9 @@
 
 //Catwalk Tiles
 /obj/item/stack/tile/catwalk_tile //This is our base type, sprited to look maintenance-styled
-	name = "catwalk plating"
-	singular_name = "catwalk plating tile"
-	desc = "Flooring that shows its contents underneath. Engineers love it!"
+	name = "échaufaudages"
+	singular_name = "échaufaudage"
+	desc = "Une dalle qui montre son contenu en dessous. Les ingénieurs l'adorent !"
 	icon_state = "maint_catwalk"
 	inhand_icon_state = "tile-catwalk"
 	mats_per_unit = list(/datum/material/iron=100)
@@ -1224,46 +1224,46 @@
 	amount = 60
 
 /obj/item/stack/tile/catwalk_tile/iron
-	name = "iron catwalk floor"
-	singular_name = "iron catwalk floor tile"
+	name = "échaufaudages en fer"
+	singular_name = "échaufaudage en fer"
 	icon_state = "iron_catwalk"
 	turf_type = /turf/open/floor/catwalk_floor/iron
 
 /obj/item/stack/tile/catwalk_tile/iron_white
-	name = "white catwalk floor"
-	singular_name = "white catwalk floor tile"
+	name = "échaufaudages blancs"
+	singular_name = "échaufaudage blanc"
 	icon_state = "whiteiron_catwalk"
 	turf_type = /turf/open/floor/catwalk_floor/iron_white
 
 /obj/item/stack/tile/catwalk_tile/iron_dark
-	name = "dark catwalk floor"
-	singular_name = "dark catwalk floor tile"
+	name = "échaufaudages sombres"
+	singular_name = "échaufaudage sombre"
 	icon_state = "darkiron_catwalk"
 	turf_type = /turf/open/floor/catwalk_floor/iron_dark
 
 /obj/item/stack/tile/catwalk_tile/flat_white
-	name = "flat white catwalk floor"
-	singular_name = "flat white catwalk floor tile"
+	name = "échaufaudages blanc plat"
+	singular_name = "échaufaudage blanc plat"
 	icon_state = "flatwhite_catwalk"
 	turf_type = /turf/open/floor/catwalk_floor/flat_white
 
 /obj/item/stack/tile/catwalk_tile/titanium
-	name = "titanium catwalk floor"
-	singular_name = "titanium catwalk floor tile"
+	name = "échaufaudages en titane"
+	singular_name = "échaufaudage en titane"
 	icon_state = "titanium_catwalk"
 	turf_type = /turf/open/floor/catwalk_floor/titanium
 
 /obj/item/stack/tile/catwalk_tile/iron_smooth //this is the greenish one
-	name = "smooth iron catwalk floor"
-	singular_name = "smooth iron catwalk floor tile"
+	name = "échaufaudages en fer lisse"
+	singular_name = "échaufaudage en fer lisse"
 	icon_state = "smoothiron_catwalk"
 	turf_type = /turf/open/floor/catwalk_floor/iron_smooth
 
 // Glass floors
 /obj/item/stack/tile/glass
-	name = "glass floor"
-	singular_name = "glass floor tile"
-	desc = "Glass window floors, to let you see... Whatever that is down there."
+	name = "dalles en verre"
+	singular_name = "dalle en verre"
+	desc = "Un sol en verre, pour voir... Ce qui se trouve en dessous."
 	icon_state = "tile_glass"
 	turf_type = /turf/open/floor/glass
 	inhand_icon_state = "tile-glass"
@@ -1275,9 +1275,9 @@
 	amount = 60
 
 /obj/item/stack/tile/rglass
-	name = "reinforced glass floor"
-	singular_name = "reinforced glass floor tile"
-	desc = "Reinforced glass window floors. These bad boys are 50% stronger than their predecessors!"
+	name = "dalles en verre renforcé"
+	singular_name = "dalle en verre renforcé"
+	desc = "Une dalle en verre renforcé. Ces mauvais garçons sont 50% plus solides que leurs prédécesseurs !"
 	icon_state = "tile_rglass"
 	inhand_icon_state = "tile-rglass"
 	turf_type = /turf/open/floor/glass/reinforced
@@ -1289,18 +1289,18 @@
 	amount = 60
 
 /obj/item/stack/tile/glass/plasma
-	name = "plasma glass floor"
-	singular_name = "plasma glass floor tile"
-	desc = "Plasma glass window floors, for when... Whatever is down there is too scary for normal glass."
+	name = "dalles en verre plasma"
+	singular_name = "dalle en verre plasma"
+	desc = "Une dalle en verre plasma pour quand ce qui se trouve en dessous est trop dangereux pour du verre normal."
 	icon_state = "tile_pglass"
 	turf_type = /turf/open/floor/glass/plasma
 	merge_type = /obj/item/stack/tile/glass/plasma
 	mats_per_unit = list(/datum/material/alloy/plasmaglass = MINERAL_MATERIAL_AMOUNT * 0.25)
 
 /obj/item/stack/tile/rglass/plasma
-	name = "reinforced plasma glass floor"
-	singular_name = "reinforced plasma glass floor tile"
-	desc = "Reinforced plasma glass window floors, because whatever's downstairs should really stay down there."
+	name = "dalles en verre plasma renforcés"
+	singular_name = "dalls en verre plasma renforcé"
+	desc = "Une dalle en verre plasma renforcé, parce que quoi qu'il se trouve en bas... devrait vraiment y rester."
 	icon_state = "tile_rpglass"
 	turf_type = /turf/open/floor/glass/reinforced/plasma
 	merge_type = /obj/item/stack/tile/rglass/plasma

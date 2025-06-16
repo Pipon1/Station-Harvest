@@ -204,8 +204,8 @@
 ///A program that tracks crew members via suit sensors
 /datum/computer_file/program/radar/lifeline
 	filename = "lifeline"
-	filedesc = "Lifeline"
-	extended_desc = "This program allows for tracking of crew members via their suit sensors."
+	filedesc = "Ligne-de-vie"
+	extended_desc = "Ce programme permet de suivre les membres de l'équipage via leurs capteurs de combinaison."
 	requires_ntnet = TRUE
 	transfer_access = list(ACCESS_MEDICAL)
 	available_on_ntnet = TRUE
@@ -223,7 +223,7 @@
 		var/mob/living/carbon/human/humanoid = i
 		if(!trackable(humanoid))
 			continue
-		var/crewmember_name = "Unknown"
+		var/crewmember_name = "Inconnu"
 		if(humanoid.wear_id)
 			var/obj/item/card/id/ID = humanoid.wear_id.GetID()
 			if(ID?.registered_name)
@@ -247,8 +247,8 @@
 ///Tracks all janitor equipment
 /datum/computer_file/program/radar/custodial_locator
 	filename = "custodiallocator"
-	filedesc = "Custodial Locator"
-	extended_desc = "This program allows for tracking of custodial equipment."
+	filedesc = "Detect-O-Conciergerie"
+	extended_desc = "Ce programme permet de suivre l'équipement de conciergerie."
 	requires_ntnet = TRUE
 	transfer_access = list(ACCESS_JANITOR)
 	available_on_ntnet = TRUE
@@ -271,15 +271,15 @@
 
 		if(istype(custodial_tools, /obj/item/mop))
 			var/obj/item/mop/wet_mop = custodial_tools
-			tool_name = "[wet_mop.reagents.total_volume ? "Wet" : "Dry"] [wet_mop.name]"
+			tool_name = "[wet_mop.reagents.total_volume ? "Mouillé" : "Sec"] [wet_mop.name]"
 
 		if(istype(custodial_tools, /obj/structure/mop_bucket/janitorialcart))
 			var/obj/structure/mop_bucket/janitorialcart/janicart = custodial_tools
-			tool_name = "[janicart.name] - Water level: [janicart.reagents.total_volume] / [janicart.reagents.maximum_volume]"
+			tool_name = "[janicart.name] - Niveau d'eau : [janicart.reagents.total_volume] / [janicart.reagents.maximum_volume]"
 
 		if(istype(custodial_tools, /mob/living/simple_animal/bot/cleanbot))
 			var/mob/living/simple_animal/bot/cleanbot/cleanbots = custodial_tools
-			tool_name = "[cleanbots.name] - [cleanbots.bot_mode_flags & BOT_MODE_ON ? "Online" : "Offline"]"
+			tool_name = "[cleanbots.name] - [cleanbots.bot_mode_flags & BOT_MODE_ON ? "En ligne" : "Hors ligne"]"
 
 		var/list/tool_information = list(
 			ref = REF(custodial_tools),
@@ -297,7 +297,7 @@
 	filedesc = "Fission360"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "radarsyndicate"
-	extended_desc = "This program allows for tracking of nuclear authorization disks and warheads."
+	extended_desc = "Ce programme permet de suivre les disques d'autorisation nucléaire et les têtes nucléaires."
 	requires_ntnet = FALSE
 	available_on_ntnet = FALSE
 	available_on_syndinet = TRUE
@@ -360,7 +360,7 @@
 
 	for(var/obj/machinery/nuclearbomb/bomb as anything in GLOB.nuke_list)
 		if(bomb.timing)
-			examine_list += span_danger("Extreme danger. Arming signal detected. Time remaining: [bomb.get_time_left()].")
+			examine_list += span_danger("Danger extrême. signale d'armement détecté. Temps restant : [bomb.get_time_left()].")
 	return examine_list
 
 /*
@@ -375,9 +375,9 @@
 
 	playsound(computer, 'sound/items/nuke_toy_lowpower.ogg', 50, FALSE)
 	if(isliving(computer.loc))
-		to_chat(computer.loc, span_userdanger("Your [computer.name] vibrates and lets out an ominous alarm. Uh oh."))
+		to_chat(computer.loc, span_userdanger("votre [computer.name] vibre et active une alerte inquiétante. Uh oh."))
 	else
 		computer.audible_message(
-			span_danger("[computer] vibrates and lets out an ominous alarm. Uh oh."),
-			span_notice("[computer] begins to vibrate rapidly. Wonder what that means..."),
+			span_danger("[computer] vibre et active une alerte inquiétante. Uh oh."),
+			span_notice("[computer] commence a vibrer rapidement. Je me demande ce que ça peut vouloir dire..."),
 		)

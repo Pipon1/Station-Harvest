@@ -1,11 +1,11 @@
 /datum/round_event_control/scrubber_clog
-	name = "Scrubber Clog: Minor"
+	name = "Scrubber bouché : mineur"
 	typepath = /datum/round_event/scrubber_clog
 	weight = 25
 	max_occurrences = 3
 	earliest_start = 5 MINUTES
 	category = EVENT_CATEGORY_JANITORIAL
-	description = "Harmless mobs climb out of a scrubber."
+	description = "Des êtres vivants inoffensifs sortent d'un scrubber."
 
 /datum/round_event/scrubber_clog
 	announce_when = 10
@@ -26,7 +26,7 @@
 	var/clogged = TRUE
 
 /datum/round_event/scrubber_clog/announce()
-	priority_announce("Minor biological obstruction detected in the ventilation network. Blockage is believed to be in the [get_area_name(scrubber)].", "Custodial Notification")
+	priority_announce("Obstruction biologique mineure détectée dans le système de ventilation. Le blocage semble être dans la zone '[get_area_name(scrubber)]'.", "Notification de la conciergerie")
 
 /datum/round_event/scrubber_clog/setup()
 	scrubber = get_scrubber()
@@ -131,15 +131,15 @@
 	scrubber.produce_mob(spawned_mob, living_mobs)
 
 	announce_to_ghosts(scrubber)
-	priority_announce("Lifesign readings have moved to a new location in the ventilation network. New Location: [prob(50) ? "Unknown.":"[get_area_name(scrubber)]."]", "Lifesign Notification")
+	priority_announce("Les signes de vies coincés dans la ventalisation ont changés d'endroit. Nouvelle localisation : [prob(50) ? "Inconnue.":"[get_area_name(scrubber)]."]", "Notification de la conciergerie")
 
 /datum/round_event_control/scrubber_clog/major
-	name = "Scrubber Clog: Major"
+	name = "Scrubber bouché : majeur"
 	typepath = /datum/round_event/scrubber_clog/major
 	weight = 12
 	max_occurrences = 3
 	earliest_start = 10 MINUTES
-	description = "Dangerous mobs climb out of a scrubber."
+	description = "Des mobs dangereux sortent d'un scrubber."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 4
 
@@ -157,16 +157,16 @@
 	return pick(mob_list)
 
 /datum/round_event/scrubber_clog/major/announce()
-	priority_announce("Major biological obstruction detected in the ventilation network. Blockage is believed to be in the [get_area_name(scrubber)] area.", "Infestation Alert")
+	priority_announce("Obstruction biologique majeure détectée dans le système de ventilation. Le blocage semble être dans la zone '[get_area_name(scrubber)]'.", "Alerte infestation")
 
 /datum/round_event_control/scrubber_clog/critical
-	name = "Scrubber Clog: Critical"
+	name = "Scrubber bouché : critique"
 	typepath = /datum/round_event/scrubber_clog/critical
 	weight = 8
 	min_players = 15
 	max_occurrences = 1
 	earliest_start = 25 MINUTES
-	description = "Really dangerous mobs climb out of a scrubber."
+	description = "Des mobs très dangereux sortent d'un scrubber."
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 6
 
@@ -178,7 +178,7 @@
 	spawn_delay = rand(15,25)
 
 /datum/round_event/scrubber_clog/critical/announce()
-	priority_announce("Potentially hazardous lifesigns detected in the [get_area_name(scrubber)] ventilation network.", "Security Alert")
+	priority_announce("Signes de vie potentiellement dangereux détectés dans le réseau de ventalisation de la zone '[get_area_name(scrubber)]'.", "Alerte de sécurité")
 
 /datum/round_event/scrubber_clog/critical/get_mob()
 	var/static/list/mob_list = list(
@@ -189,11 +189,11 @@
 	return pick(mob_list)
 
 /datum/round_event_control/scrubber_clog/strange
-	name = "Scrubber Clog: Strange"
+	name = "Scrubber bouché : étrange"
 	typepath = /datum/round_event/scrubber_clog/strange
 	weight = 5
 	max_occurrences = 1
-	description = "Strange mobs climb out of a scrubber, harmfulness varies."
+	description = "Des mobs étranges sortent d'un scrubber, plus ou moins dangereux."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 7
 
@@ -206,7 +206,7 @@
 	spawn_delay = rand(6, 25) //Wide range, for maximum utility/comedy
 
 /datum/round_event/scrubber_clog/strange/announce()
-	priority_announce("Unusual lifesign readings detected in the [get_area_name(scrubber)] ventilation network.", "Lifesign Alert", ANNOUNCER_ALIENS)
+	priority_announce("Signes de vie inhabituels détectés dans le réseau de ventilation de la zone '[get_area_name(scrubber)]'.", "Alerte signes de vie", ANNOUNCER_ALIENS)
 
 /datum/round_event/scrubber_clog/strange/get_mob()
 	var/static/list/mob_list = list(

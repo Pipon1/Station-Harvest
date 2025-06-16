@@ -1,11 +1,11 @@
 /datum/round_event_control/sentient_disease
-	name = "Spawn Sentient Disease"
+	name = "Spawn de maladie consciente"
 	typepath = /datum/round_event/ghost_role/sentient_disease
 	weight = 7
 	max_occurrences = 1
 	min_players = 25
 	category = EVENT_CATEGORY_HEALTH
-	description = "Spawns a sentient disease, who wants to infect as many people as possible."
+	description = "Spawn une maladie consciente, qui a pour but d'infecter le plus de personnes possible."
 	min_wizard_trigger_potency = 4
 	max_wizard_trigger_potency = 7
 
@@ -22,7 +22,7 @@
 	var/mob/camera/disease/virus = new /mob/camera/disease(SSmapping.get_station_center())
 	virus.key = selected.key
 	INVOKE_ASYNC(virus, TYPE_PROC_REF(/mob/camera/disease, pick_name))
-	message_admins("[ADMIN_LOOKUPFLW(virus)] has been made into a sentient disease by an event.")
-	virus.log_message("was spawned as a sentient disease by an event.", LOG_GAME)
+	message_admins("[ADMIN_LOOKUPFLW(virus)] a été mis en maladie consciente par un événement.")
+	virus.log_message("a été mis en maladie consciente par un événement.", LOG_GAME)
 	spawned_mobs += virus
 	return SUCCESSFUL_SPAWN

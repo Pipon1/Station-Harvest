@@ -1,7 +1,7 @@
 /datum/computer_file/program/filemanager
 	filename = "filemanager"
-	filedesc = "File Manager"
-	extended_desc = "This program allows management of files."
+	filedesc = "Explorateur de fichier"
+	extended_desc = "Ce programme permet la gestion des fichiers."
 	program_icon_state = "generic"
 	size = 8
 	requires_ntnet = FALSE

@@ -55,17 +55,17 @@
 /obj/structure/reagent_dispensers/examine(mob/user)
 	. = ..()
 	if(can_be_tanked)
-		. += span_notice("Use a sheet of iron to convert this into a plumbing-compatible tank.")
+		. += span_notice("Un lingot de fer peut être utilisé pour convertir ce distribiteur en version avec plomberie.")
 	if(openable)
 		if(!leaking)
-			. += span_notice("Its tap looks like it could be <b>wrenched</b> open.")
+			. += span_notice("Le robinet peut être ouvert avec une <b>clé à molette</b>.")
 		else
-			. += span_warning("Its tap is <b>wrenched</b> open!")
+			. += span_warning("Le robinet a été ouvert avec une <b>clé à molette</b> !")
 	if(accepts_rig && get_dist(user, src) <= 2)
 		if(rig)
-			. += span_warning("There is some kind of device <b>rigged</b> to the tank!")
+			. += span_warning("Il y'a un objet <b>connecté</b> au reservoir !")
 		else
-			. += span_notice("It looks like you could <b>rig</b> a device to the tank.")
+			. += span_notice("Vous pourriez <b>connecter</b> un objet sur le reservoir.")
 
 
 /obj/structure/reagent_dispensers/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
@@ -79,13 +79,13 @@
 		return FALSE //so we can refill them via their afterattack.
 	if(istype(W, /obj/item/assembly_holder) && accepts_rig)
 		if(rig)
-			balloon_alert(user, "another device is in the way!")
+			balloon_alert(user, "Il y'a déja quelque chose de connecté.")
 			return ..()
 		var/obj/item/assembly_holder/holder = W
 		if(!(locate(/obj/item/assembly/igniter) in holder.assemblies))
 			return ..()
 
-		user.balloon_alert_to_viewers("attaching rig...")
+		user.balloon_alert_to_viewers("Vous connectez l'object...")
 		add_fingerprint(user)
 		if(!do_after(user, 2 SECONDS, target = src) || !user.transferItemToLoc(holder, src))
 			return
@@ -99,7 +99,7 @@
 		RegisterSignal(src, COMSIG_IGNITER_ACTIVATE, PROC_REF(rig_boom))
 		log_bomber(user, "attached [holder.name] to ", src)
 		last_rigger = user
-		user.balloon_alert_to_viewers("attached rig")
+		user.balloon_alert_to_viewers("object connecté")
 		return
 
 	if(istype(W, /obj/item/stack/sheet/iron) && can_be_tanked)
@@ -108,7 +108,7 @@
 		var/obj/structure/reagent_dispensers/plumbed/storage/new_tank = new /obj/structure/reagent_dispensers/plumbed/storage(drop_location())
 		new_tank.reagents.maximum_volume = reagents.maximum_volume
 		reagents.trans_to(new_tank, reagents.total_volume)
-		new_tank.name = "stationary [name]"
+		new_tank.name = "[name] stationnaire"
 		new_tank.update_appearance(UPDATE_OVERLAYS)
 		new_tank.set_anchored(anchored)
 		qdel(src)
@@ -130,10 +130,10 @@
 	rig.on_found()
 	if(QDELETED(src))
 		return
-	user.balloon_alert_to_viewers("detaching rig...")
+	user.balloon_alert_to_viewers("vous détachez l'objet...")
 	if(!do_after(user, 2 SECONDS, target = src))
 		return
-	user.balloon_alert_to_viewers("detached rig")
+	user.balloon_alert_to_viewers("vous avez détaché l'objet")
 	user.log_message("detached [rig] from [src].", LOG_GAME)
 	if(!user.put_in_hands(rig))
 		rig.forceMove(get_turf(user))
@@ -162,12 +162,12 @@
 		reagents.del_reagent(/datum/reagent/fuel) // not actually used for the explosion
 	if(reagents.total_volume)
 		if(!fuel_amt)
-			visible_message(span_danger("\The [src] ruptures!"))
+			visible_message(span_danger("Lae [src] se perce !"))
 		// Leave it up to future terrorists to figure out the best way to mix reagents with fuel for a useful boom here
 		chem_splash(loc, null, 2 + (reagents.total_volume + fuel_amt) / 1000, list(reagents), extra_heat=(fuel_amt / 50),adminlog=(fuel_amt<25))
 
 	if(fuel_amt) // with that done, actually explode
-		visible_message(span_danger("\The [src] explodes!"))
+		visible_message(span_danger("Lae [src] explose !"))
 		// old code for reference:
 		// standard fuel tank = 1000 units = heavy_impact_range = 1, light_impact_range = 5, flame_range = 5
 		// big fuel tank = 5000 units = devastation_range = 1, heavy_impact_range = 2, light_impact_range = 7, flame_range = 12
@@ -206,7 +206,7 @@
 	if(!openable)
 		return FALSE
 	leaking = !leaking
-	balloon_alert(user, "[leaking ? "opened" : "closed"] [src]'s tap")
+	balloon_alert(user, "[leaking ? "ouvert" : "fermé"] le robinet de lae [src].")
 	user.log_message("[leaking ? "opened" : "closed"] [src].", LOG_GAME)
 	tank_leak()
 	return TOOL_ACT_TOOLTYPE_SUCCESS
@@ -216,28 +216,28 @@
 	tank_leak()
 
 /obj/structure/reagent_dispensers/watertank
-	name = "water tank"
-	desc = "A water tank."
+	name = "réservoir d'eau"
+	desc = "Un réservoir d'eau."
 	icon_state = "water"
 	openable = TRUE
 
 /obj/structure/reagent_dispensers/watertank/high
-	name = "high-capacity water tank"
-	desc = "A highly pressurized water tank made to hold gargantuan amounts of water."
+	name = "réservoir d'eau à haute capacité"
+	desc = "Un réservoir d'eau à haute capacité fait pour contenir de gigantesque quantité d'eau."
 	icon_state = "water_high" //I was gonna clean my room...
 	tank_volume = 100000
 
 /obj/structure/reagent_dispensers/foamtank
-	name = "firefighting foam tank"
-	desc = "A tank full of firefighting foam."
+	name = "résevoir de mousse anti-incendie"
+	desc = "Un réservoir remplie de mousse anti-incendie."
 	icon_state = "foam"
 	reagent_id = /datum/reagent/firefighting_foam
 	tank_volume = 500
 	openable = TRUE
 
 /obj/structure/reagent_dispensers/fueltank
-	name = "fuel tank"
-	desc = "A tank full of industrial welding fuel. Do not consume."
+	name = "résevoir de carburant pour soudeur"
+	desc = "Un réservoir remplie de carburant pour soudeur. Ne pas avaler."
 	icon_state = "fuel"
 	reagent_id = /datum/reagent/fuel
 	openable = TRUE
@@ -275,19 +275,19 @@
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WELDER)
 		if(!reagents.has_reagent(/datum/reagent/fuel))
-			to_chat(user, span_warning("[src] is out of fuel!"))
+			to_chat(user, span_warning("[src] n'a plus de carburant !"))
 			return
 		var/obj/item/weldingtool/W = I
 		if(istype(W) && !W.welding)
 			if(W.reagents.has_reagent(/datum/reagent/fuel, W.max_fuel))
-				to_chat(user, span_warning("Your [W.name] is already full!"))
+				to_chat(user, span_warning("Votre [W.name] est plein !"))
 				return
 			reagents.trans_to(W, W.max_fuel, transfered_by = user)
-			user.visible_message(span_notice("[user] refills [user.p_their()] [W.name]."), span_notice("You refill [W]."))
+			user.visible_message(span_notice("[user] remplie son/sa [W.name]."), span_notice("Vous remplissez votre [W.name]"))
 			playsound(src, 'sound/effects/refill.ogg', 50, TRUE)
 			W.update_appearance()
 		else
-			user.visible_message(span_danger("[user] catastrophically fails at refilling [user.p_their()] [I.name]!"), span_userdanger("That was stupid of you."))
+			user.visible_message(span_danger("[user] échoue de façon catastrophique a remplir leur [I.name] !"), span_userdanger("C'était vraiment stupide de votre part."))
 			log_bomber(user, "detonated a", src, "via welding tool")
 			boom()
 		return
@@ -295,8 +295,8 @@
 	return ..()
 
 /obj/structure/reagent_dispensers/fueltank/large
-	name = "high capacity fuel tank"
-	desc = "A tank full of a high quantity of welding fuel. Keep away from open flames."
+	name = "réservoir de carburant de soudeur de haute capacité"
+	desc = "Un réservoir de carburant de soudeur à haute capacité. Ne pas approcher du feu."
 	icon_state = "fuel_high"
 	tank_volume = 5000
 
@@ -307,8 +307,8 @@
 	can_be_tanked = FALSE
 
 /obj/structure/reagent_dispensers/wall/peppertank
-	name = "pepper spray refiller"
-	desc = "Contains condensed capsaicin for use in law \"enforcement.\""
+	name = "station de recharge pour spray au poivre"
+	desc = "Contient de la capsaicin concentré. Reservé à l'utilisation de agents de \"l'ordre\"."
 	icon_state = "pepper"
 	reagent_id = /datum/reagent/consumable/condensedcapsaicin
 
@@ -317,11 +317,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 /obj/structure/reagent_dispensers/wall/peppertank/Initialize(mapload)
 	. = ..()
 	if(prob(1))
-		desc = "IT'S PEPPER TIME, BITCH!"
+		desc = "C'EST L'HEURE DU POIVRE, SALOPE"
 
 /obj/structure/reagent_dispensers/water_cooler
-	name = "liquid cooler"
-	desc = "A machine that dispenses liquid to drink."
+	name = "glacière"
+	desc = "Une machine qui distribue des liquides à boire."
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "water_cooler"
 	anchored = TRUE
@@ -331,27 +331,27 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 /obj/structure/reagent_dispensers/water_cooler/examine(mob/user)
 	. = ..()
 	if (paper_cups > 1)
-		. += "There are [paper_cups] paper cups left."
+		. += "Il y'a encore [paper_cups] verre en papier en réserve."
 	else if (paper_cups == 1)
-		. += "There is one paper cup left."
+		. += "Il y'a encore 1 verre en papier en réserve."
 	else
-		. += "There are no paper cups left."
+		. += "Il n y'a plus de verre en papier en réserve."
 
 /obj/structure/reagent_dispensers/water_cooler/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
 	if(!paper_cups)
-		to_chat(user, span_warning("There aren't any cups left!"))
+		to_chat(user, span_warning("Il n'y a plus de verre !"))
 		return
-	user.visible_message(span_notice("[user] takes a cup from [src]."), span_notice("You take a paper cup from [src]."))
+	user.visible_message(span_notice("[user] prend un verre de la [src]."), span_notice("Vous prennez un verre en papier de la [src]."))
 	var/obj/item/reagent_containers/cup/glass/sillycup/S = new(get_turf(src))
 	user.put_in_hands(S)
 	paper_cups--
 
 /obj/structure/reagent_dispensers/beerkeg
-	name = "beer keg"
-	desc = "Beer is liquid bread, it's good for you..."
+	name = "fût à bière"
+	desc = "La bière c'est du pain liquide, c'est bon pour vous..."
 	icon_state = "beer"
 	reagent_id = /datum/reagent/consumable/ethanol/beer
 	openable = TRUE
@@ -362,34 +362,34 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 		qdel(src)
 
 /obj/structure/reagent_dispensers/wall/virusfood
-	name = "virus food dispenser"
-	desc = "A dispenser of low-potency virus mutagenic."
+	name = "distributeur de nourriture à virus"
+	desc = "Un distributeur de mutagène pour virus."
 	icon_state = "virus_food"
 	reagent_id = /datum/reagent/consumable/virus_food
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/virusfood, 30)
 
 /obj/structure/reagent_dispensers/cooking_oil
-	name = "vat of cooking oil"
-	desc = "A huge metal vat with a tap on the front. Filled with cooking oil for use in frying food."
+	name = "fût d'huile de cuisson"
+	desc = "Un gros fût en métal avec un robinet devant. Il est remplie d'huile de cuisson."
 	icon_state = "vat"
 	anchored = TRUE
 	reagent_id = /datum/reagent/consumable/cooking_oil
 	openable = TRUE
 
 /obj/structure/reagent_dispensers/servingdish
-	name = "serving dish"
-	desc = "A dish full of food slop for your bowl."
+	name = "plât"
+	desc = "Un plât remplie de nourriture horrible pour votre bol."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "serving"
 	anchored = TRUE
 	reagent_id = /datum/reagent/consumable/nutraslop
 
 /obj/structure/reagent_dispensers/plumbed
-	name = "stationary water tank"
+	name = "réservoir d'eau stationnaire"
 	anchored = TRUE
 	icon_state = "water_stationary"
-	desc = "A stationary, plumbed, water tank."
+	desc = "Un réservoir d'eau, stationnaire avec de la plomberie."
 	can_be_tanked = FALSE
 
 /obj/structure/reagent_dispensers/plumbed/Initialize(mapload)
@@ -402,7 +402,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/virusfood, 30
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/structure/reagent_dispensers/plumbed/storage
-	name = "stationary storage tank"
+	name = "réservoir de stockage stationnaire"
 	icon_state = "tank_stationary"
 	reagent_id = null //start empty
 
@@ -426,8 +426,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/virusfood, 30
 	. += tank_color
 
 /obj/structure/reagent_dispensers/plumbed/fuel
-	name = "stationary fuel tank"
+	name = "réservoir de carburant stationnaire"
 	icon_state = "fuel_stationary"
-	desc = "A stationary, plumbed, fuel tank."
+	desc = "Un réservoir de carburant, stationnaire avec de la plomberie."
 	reagent_id = /datum/reagent/fuel
 	accepts_rig = TRUE
